@@ -103,10 +103,7 @@ export function Footer({ links }: FooterProps) {
               </Link>
             </div>
             <div className="mt-3 font-size-80 text-muted">
-              © {new Date().getFullYear()} Turnberry Place Las Vegas | 
-              Built with <a href="https://cursor.sh" target="_blank" rel="noopener noreferrer" className="footer-external-link">Cursor AI</a>, 
-              deployed on <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="footer-external-link">Vercel</a>, 
-              hosted on <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="footer-external-link">GitHub</a>
+              Turnberry Place Las Vegas | Listings, Sales & Market Updates | Dr. Jan Duffy | <a href="tel:7022221964" className="footer-phone-link">702-222-1964</a>
             </div>
           </div>
         </div>
