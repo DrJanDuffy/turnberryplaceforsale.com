@@ -19,7 +19,10 @@ export default function HomePage({ menus }: HomePageProps) {
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 text-white">
         <div className="absolute inset-0 opacity-30">
-          <div className="w-full h-full bg-gray-900" />
+          <div 
+            className="w-full h-full bg-gray-900 bg-cover bg-center"
+            style={{ backgroundImage: 'url(/images/turnberry/asset-1.jpg)' }}
+          />
         </div>
         <div className="container px-6 mx-auto text-center relative z-10">
           <h1 className="text-5xl font-bold mb-4 md:text-6xl lg:text-7xl">

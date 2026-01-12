@@ -31,6 +31,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# Image URL extraction cache (optional - can be committed)
+# scripts/image-urls.json
+
 # vercel
 .vercel
 

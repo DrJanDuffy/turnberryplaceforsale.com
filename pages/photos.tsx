@@ -5,12 +5,18 @@ import { PhotoGallery } from "components/photo-gallery"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 
-// Placeholder photos - these would come from Drupal in production
+// Photos downloaded from live site
 const photos = [
-  "/images/turnberry-1.jpg",
-  "/images/turnberry-2.jpg",
-  "/images/turnberry-3.jpg",
-  "/images/turnberry-4.jpg",
+  "/images/turnberry/photo-2.jpg",
+  "/images/turnberry/photo-3.jpg",
+  "/images/turnberry/photo-4.jpg",
+  "/images/turnberry/photo-5.jpg",
+  "/images/turnberry/photo-6.jpg",
+  "/images/turnberry/photo-7.jpg",
+  "/images/turnberry/photo-8.jpg",
+  "/images/turnberry/photo-9.jpg",
+  "/images/turnberry/photo-21.jpg",
+  "/images/turnberry/photo-22.jpg",
 ]
 
 interface PhotosPageProps extends LayoutProps {}
