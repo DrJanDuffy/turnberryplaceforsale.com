@@ -13,7 +13,7 @@ export function LocaleSwitcher() {
             data-cy={`local-switcher-${locale}`}
             className={classNames(
               "flex items-center justify-center p-2 uppercase",
-              locale === currentLocale ? "text-black" : "text-gray-500"
+              locale === currentLocale ? "text-white font-semibold" : "text-gray-300 hover:text-white"
             )}
           >
             {locale}
