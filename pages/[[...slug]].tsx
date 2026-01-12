@@ -21,6 +21,8 @@ import { ContactForm } from "components/contact-form"
 import { TowerSection } from "components/tower-section"
 import { HeroSlideshow } from "components/hero-slideshow"
 
+// Note: TowerSection requires a 'tower' prop object, not individual props
+
 const RESOURCE_TYPES = ["node--page", "node--landing_page", "node--article"]
 
 interface NodePageProps extends LayoutProps {
