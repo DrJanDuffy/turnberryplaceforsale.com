@@ -20,15 +20,8 @@ const floorPlans = [
 ]
 
 export default function FloorPlansPage() {
-  const [menus, setMenus] = useState({ main: [], footer: [] })
-
-  useEffect(() => {
-    // Fetch menus on client side
-    fetch('/api/menus')
-      .then(res => res.json())
-      .then(data => setMenus(data))
-      .catch(() => setMenus({ main: [], footer: [] }))
-  }, [])
+  // Use empty menus for client component - layout handles gracefully
+  const menus = { main: [], footer: [] }
   const [activeTab, setActiveTab] = useState(0)
   
   const floorPlanImages = [
