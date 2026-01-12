@@ -52,21 +52,35 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
       <div className="container h-100">
         <div className="row h-100 align-items-center">
           <div className="col-12 text-center hero-content">
-            <h1 className="display-4">
-              Turnberry Place Las Vegas 
+            <h1 className="display-4 mb-3">
+              Turnberry Place Condos From $800K
             </h1>
-            <div className="d-flex align-items-center justify-content-center">
-              <div className="w-10 horiz-line"></div>
-              <h4 className="my-0 mx-4">
-                Las Vegas, NV
-              </h4>
-              <div className="w-10 horiz-line"></div>
+            <div className="mb-4">
+              <h3 className="text-white font-weight-bold">
+                Only <span id="available-units-count" className="text-warning">12</span> Units Available Now
+              </h3>
             </div>
-            <div className="mt-4 d-flex align-items-center justify-content-center">
-              <div className="p-2 status-banner">
-                <h4>
-                  Units for Sale
-                </h4>
+            <div className="d-flex align-items-center justify-content-center flex-wrap gap-3 mt-4">
+              <Link href="/available-condos" className="btn btn-lg btn-warning px-5 py-3 font-weight-bold">
+                View Available Condos
+              </Link>
+              <a href="tel:7022221964" className="btn btn-lg btn-outline-light px-5 py-3 font-weight-bold">
+                Schedule Private Tour
+              </a>
+            </div>
+            {/* Social Proof */}
+            <div className="mt-5 d-flex flex-wrap justify-content-center align-items-center gap-4 text-white">
+              <div className="text-center">
+                <div className="h3 mb-0 font-weight-bold">500+</div>
+                <div className="small">Las Vegas Families Helped</div>
+              </div>
+              <div className="text-center">
+                <div className="h3 mb-0 font-weight-bold">30+</div>
+                <div className="small">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="h3 mb-0 font-weight-bold">⭐ 4.9/5</div>
+                <div className="small">Google Reviews</div>
               </div>
             </div>
           </div>

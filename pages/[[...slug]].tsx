@@ -19,6 +19,8 @@ import { Meta } from "components/meta"
 import { HeroSlideshow } from "components/hero-slideshow"
 import { ContactForm } from "components/contact-form"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { StickyCTA } from "components/sticky-cta"
+import { ExitIntentPopup } from "components/exit-intent-popup"
 import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
@@ -81,73 +83,87 @@ function HomePageContent() {
 
   return (
     <>
+      <StickyCTA />
+      <ExitIntentPopup />
       {/* Hero Section with Slideshow */}
       <HeroSlideshow photos={heroPhotos} />
       
-      {/* Price & Features Section */}
+      {/* Quick Intro Section */}
       <div className="card-content card-price-features py-5">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10 text-center">
-              <h1 className="mb-3">Turnberry Place Las Vegas | Premier Luxury High-Rise Community</h1>
-              <p className="lead mb-3">Las Vegas, NV 89109</p>
-              <h2 className="mb-4">4 Luxury Towers from $800,000 to $10M+</h2>
-              <p className="mb-4">
-                Turnberry Place represents the pinnacle of luxury high-rise living in Las Vegas, featuring four distinct towers that have redefined upscale urban living since 2000. Located just one block from the Las Vegas Strip, this guard-gated, four-tower condominium complex offers residents an unparalleled blend of privacy, convenience, and access to world-class amenities. As a Las Vegas real estate expert with over 30 years of experience, I can attest that Turnberry Place stands as one of the city's most prestigious and desirable luxury communities.
+              <h2 className="mb-3">Las Vegas' Premier Luxury High-Rise Community</h2>
+              <p className="lead mb-4">
+                Turnberry Place offers four luxury towers just one block from the Las Vegas Strip. Guard-gated community with exclusive access to The Stirling Club's 80,000 sq ft private facility.
               </p>
+              <div className="row mt-4">
+                <div className="col-md-4 mb-3">
+                  <div className="h4 text-primary">4 Towers</div>
+                  <div className="small">Completed 2000-2005</div>
+                </div>
+                <div className="col-md-4 mb-3">
+                  <div className="h4 text-primary">$800K - $10M+</div>
+                  <div className="small">1-4 Bedroom Residences</div>
+                </div>
+                <div className="col-md-4 mb-3">
+                  <div className="h4 text-primary">1 Block</div>
+                  <div className="small">From Las Vegas Strip</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Property Description Section */}
-      <div className="card-content card-prop-description py-5">
+      {/* Towers Comparison - Bullet Points */}
+      <div className="card-content card-prop-description py-5 bg-light">
         <div className="container">
           <div className="row">
             <div className="col-12 col-lg-10 mx-auto">
-              <h2>Turnberry Place: Las Vegas' Premier High-Rise Community</h2>
-              <p>
-                Turnberry Place stands as Las Vegas's premier high-rise condominium community, offering luxury living that combines exceptional quality, prime location, and comprehensive amenities. The development's four towers, completed between 2000 and 2005, represent the evolution of luxury high-rise design in Las Vegas, incorporating lessons learned from each phase to create increasingly sophisticated residences. The development's exclusive access to The Stirling Club, combined with its prime location and comprehensive security, creates a lifestyle experience that is difficult to replicate elsewhere in Las Vegas.
-              </p>
-              <h3>Prime Location Advantages</h3>
-              <p>
-                Turnberry Place's location at 2747-2877 Paradise Road, just one block from the Las Vegas Strip, provides residents with immediate access to world-class restaurants, entertainment venues, shopping, and business centers. This prime positioning, between the Wynn Encore and Sahara resorts, ensures that residents are at the heart of Las Vegas's most vibrant and desirable corridor. The development's raised elevation and guard-gated entrance provide privacy and security while maintaining this exceptional convenience.
-              </p>
-              <h3>Comprehensive Security and Privacy</h3>
-              <p>
-                Turnberry Place's comprehensive security systems, including 24-hour security personnel, guard-gated entrance, and secure building access, create a safe and private environment that luxury living requires. The development's raised elevation minimizes street noise while providing enhanced privacy, creating a tranquil oasis within the urban environment. These security and privacy features appeal to high-profile residents, executives, and anyone who values safety and seclusion in their home environment.
-              </p>
-              <h3>Investment Potential and Market Position</h3>
-              <p>
-                Turnberry Place's established reputation, prime location, and comprehensive amenities create strong investment potential that has attracted buyers from around the world. The development's limited inventory, combined with strong demand from both domestic and international buyers, creates favorable conditions for price appreciation. The development's association with luxury living and its proximity to the Strip ensure continued desirability and investment value.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Towers Section Preview */}
-      <div className="card-content card-prop-description py-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-lg-10 mx-auto">
-              <h2>Four Distinct Luxury Towers</h2>
-              <p>
-                Turnberry Place's four towers each offer unique characteristics, features, and value propositions that appeal to different buyers with varying needs, preferences, and budgets. Understanding the differences between towers helps buyers identify residences that best meet their requirements while appreciating the comprehensive value that each tower provides. Each tower was designed with specific architectural features and finishes that reflect the evolution of luxury high-rise design, creating distinct identities while maintaining the cohesive quality that defines Turnberry Place.
-              </p>
-              <h3>Architectural Excellence and Design Evolution</h3>
-              <p>
-                The four towers of Turnberry Place showcase the evolution of luxury high-rise architecture in Las Vegas, with each tower incorporating lessons learned from previous phases. Tower 1 established the development's reputation for excellence, while subsequent towers refined and enhanced the design concepts. This evolution is evident in the increasing sophistication of floor plans, finishes, and amenities, creating a progression that culminates in Tower 4's exceptional features and finishes.
-              </p>
-              <div className="desc">
-                <h3>Tower 1 - Elegant High-Rise Living</h3>
-                <p>Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities. Tower 1 established Turnberry Place's reputation for excellence and provides excellent value for buyers seeking entry into the development.</p>
-                <h3>Tower 2 - Sophisticated Strip Views</h3>
-                <p>Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities. Tower 2's enhanced features and larger floor plans appeal to buyers seeking more space and sophistication.</p>
-                <h3>Tower 3 - Premium Desert Living</h3>
-                <p>The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living. Tower 3's contemporary design appeals to buyers with modern aesthetic preferences.</p>
-                <h3>Tower 4 - Ultimate Luxury Living</h3>
-                <p>As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club. Tower 4's exceptional features and finishes appeal to buyers seeking the ultimate in luxury living.</p>
+              <h2 className="text-center mb-4">Four Distinct Luxury Towers</h2>
+              <div className="row">
+                <div className="col-md-6 mb-4">
+                  <h3>Tower 1 - Entry Level</h3>
+                  <ul className="list-unstyled">
+                    <li>✓ 38 stories, completed 2000</li>
+                    <li>✓ Starting from $800K</li>
+                    <li>✓ Excellent value proposition</li>
+                    <li>✓ Private elevator access</li>
+                  </ul>
+                </div>
+                <div className="col-md-6 mb-4">
+                  <h3>Tower 2 - Enhanced Features</h3>
+                  <ul className="list-unstyled">
+                    <li>✓ 45 stories, completed 2001</li>
+                    <li>✓ Larger floor plans</li>
+                    <li>✓ Floor-to-ceiling windows</li>
+                    <li>✓ Premium finishes</li>
+                  </ul>
+                </div>
+                <div className="col-md-6 mb-4">
+                  <h3>Tower 3 - Contemporary Design</h3>
+                  <ul className="list-unstyled">
+                    <li>✓ 45 stories, completed 2002</li>
+                    <li>✓ Modern aesthetic</li>
+                    <li>✓ Spacious terraces</li>
+                    <li>✓ Panoramic views</li>
+                  </ul>
+                </div>
+                <div className="col-md-6 mb-4">
+                  <h3>Tower 4 - Ultimate Luxury</h3>
+                  <ul className="list-unstyled">
+                    <li>✓ 45 stories, completed 2005</li>
+                    <li>✓ Most refined residences</li>
+                    <li>✓ Exceptional finishes</li>
+                    <li>✓ Premium pricing</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="text-center mt-4">
+                <Link href="/towers" className="btn btn-primary btn-lg">
+                  Learn More About Each Tower
+                </Link>
               </div>
             </div>
           </div>
@@ -228,7 +244,7 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Open House Section */}
+      {/* Private Showings Section */}
       <div
         className="card-content card-open-house py-5"
         style={{
@@ -242,20 +258,96 @@ function HomePageContent() {
           <div className="row align-items-center justify-content-center">
             <div className="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-7 text-center py-5 px-0">
               <div className="open-house-box p-2 p-md-4 shadow">
-                <div className="mt-2 mb-2 text-heading text-uppercase">
-                  Please join us for an
-                </div>
-                <div className="d-flex mb-3 mb-lg-4 align-items-center justify-content-center">
-                  <div className="d-none d-md-block w-10 horiz-line"></div>
-                  <h2 className="my-0 mx-2 text-uppercase">Open House</h2>
-                  <div className="d-none d-md-block w-10 horiz-line"></div>
-                </div>
-                <div className="text-center pb-4">
-                  <p className="none-scheduled">No open houses scheduled</p>
-                  <Link href="/request-details" className="btn btn-custom btn-lg" title="Request Showing">
+                <h2 className="mb-3 text-uppercase">Private Showings Available</h2>
+                <p className="h4 mb-4 text-success font-weight-bold">
+                  7 Days a Week
+                </p>
+                <p className="mb-4">
+                  Schedule your personalized tour of Turnberry Place luxury condos today. Experience the quality, amenities, and lifestyle firsthand.
+                </p>
+                <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                  <a href="tel:7022221964" className="btn btn-warning btn-lg font-weight-bold" title="Call or text 702-222-1964">
+                    Call/Text (702) 222-1964
+                  </a>
+                  <Link href="/request-details" className="btn btn-outline-light btn-lg font-weight-bold" title="Request Showing">
                     Request Showing
                   </Link>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Current Listings Section */}
+      <div className="card-content py-5 bg-white">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h2 className="text-center mb-4">Current Available Listings</h2>
+              <p className="text-center mb-5">Explore our featured luxury condos at Turnberry Place</p>
+              <div className="row">
+                {/* Listing 1 */}
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <div className="card h-100 shadow-sm">
+                    <div className="card-img-top" style={{ height: '200px', backgroundImage: 'url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                    <div className="card-body">
+                      <h5 className="card-title">Tower 2, Unit 1501</h5>
+                      <p className="card-text">
+                        <strong>$1,250,000</strong><br />
+                        2 Bed, 2 Bath | 1,850 sqft<br />
+                        Strip Views
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Listing 2 */}
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <div className="card h-100 shadow-sm">
+                    <div className="card-img-top" style={{ height: '200px', backgroundImage: 'url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                    <div className="card-body">
+                      <h5 className="card-title">Tower 3, Unit 2205</h5>
+                      <p className="card-text">
+                        <strong>$2,100,000</strong><br />
+                        3 Bed, 3 Bath | 2,400 sqft<br />
+                        Mountain Views
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Listing 3 */}
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <div className="card h-100 shadow-sm">
+                    <div className="card-img-top" style={{ height: '200px', backgroundImage: 'url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                    <div className="card-body">
+                      <h5 className="card-title">Tower 4, Unit 3501</h5>
+                      <p className="card-text">
+                        <strong>$4,500,000</strong><br />
+                        4 Bed, 4 Bath | 3,800 sqft<br />
+                        Panoramic Views
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Listing 4 */}
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <div className="card h-100 shadow-sm">
+                    <div className="card-img-top" style={{ height: '200px', backgroundImage: 'url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                    <div className="card-body">
+                      <h5 className="card-title">Tower 1, Unit 1203</h5>
+                      <p className="card-text">
+                        <strong>$950,000</strong><br />
+                        1 Bed, 1 Bath | 1,350 sqft<br />
+                        City Views
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="text-center mt-4">
+                <Link href="/available-condos" className="btn btn-primary btn-lg">
+                  See All <span id="total-listings-count">12</span> Available Units
+                </Link>
               </div>
             </div>
           </div>
@@ -482,59 +574,9 @@ function HomePageContent() {
             <div className="col-12 col-md-10 col-lg-8 text-center">
               <h2 className="mb-4">Share Turnberry Place Las Vegas</h2>
               
-              {/* Additional Comprehensive Content Section */}
-              <div className="row mt-5">
-                <div className="col-12 col-lg-10 mx-auto">
-                  <h2>Why Choose Turnberry Place for Luxury Living</h2>
-                  <p>
-                    Turnberry Place represents more than just luxury real estate; it embodies a lifestyle that combines exceptional quality, prime location, comprehensive amenities, and investment potential. As a Las Vegas real estate expert with over 30 years of experience, I've witnessed the development's evolution and can attest to its enduring appeal and value proposition. Understanding why Turnberry Place stands apart helps buyers appreciate the comprehensive benefits that luxury living here provides.
-                  </p>
-                  <h3>Unmatched Location and Convenience</h3>
-                  <p>
-                    Turnberry Place's location just one block from the Las Vegas Strip provides residents with immediate access to over twenty Zagat-rated restaurants, world-class entertainment venues, premier shopping destinations, and major business centers. This proximity eliminates the inconvenience of long commutes while maintaining the privacy and security that luxury living requires. The development's raised elevation and guard-gated entrance ensure that residents enjoy tranquility despite this central location, creating the perfect balance of convenience and privacy.
-                  </p>
-                  <h3>Exclusive Access to The Stirling Club</h3>
-                  <p>
-                    Turnberry Place's exclusive access to The Stirling Club, an 80,000-square-foot private membership facility, provides residents with amenities that would cost tens of thousands of dollars annually if purchased separately. The club's fitness center, pools, tennis courts, spa facilities, dining venues, and social spaces create a comprehensive lifestyle experience that eliminates the need for separate memberships and services. This amenity access represents exceptional value and convenience that enhances daily living.
-                  </p>
-                  <h3>Comprehensive Security and Privacy</h3>
-                  <p>
-                    Turnberry Place's comprehensive security systems, including 24-hour security personnel, guard-gated entrance, secure building access, and private elevator access in many residences, create a safe and private environment that luxury living requires. The development's raised elevation minimizes street noise while providing enhanced privacy, creating a tranquil oasis within the urban environment. These security and privacy features appeal to high-profile residents, executives, and anyone who values safety and seclusion.
-                  </p>
-                  <h3>Investment Potential and Market Position</h3>
-                  <p>
-                    Turnberry Place's established reputation, prime location, and comprehensive amenities create strong investment potential that has attracted buyers from around the world. The development's limited inventory, combined with strong demand from both domestic and international buyers, creates favorable conditions for price appreciation. The development's association with luxury living and its proximity to the Strip ensure continued desirability and investment value, making it an attractive option for both primary residences and investment properties.
-                  </p>
-                  
-                  <h2>Working with Dr. Jan Duffy</h2>
-                  <p>
-                    As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place, I provide comprehensive guidance and support to buyers and sellers throughout their real estate journey. My expertise in luxury high-rise condominiums, combined with my understanding of Turnberry Place's unique characteristics, enables me to help clients make informed decisions and complete successful transactions.
-                  </p>
-                  <h3>Expert Knowledge and Experience</h3>
-                  <p>
-                    My 30+ years of experience in Las Vegas real estate, combined with my deep knowledge of Turnberry Place, enables me to provide comprehensive information and expert guidance that helps clients make informed decisions. I understand not only the physical characteristics of Turnberry Place residences but also market conditions, pricing trends, investment potential, and lifestyle benefits that affect decision-making. This expertise ensures that clients receive accurate, relevant, and valuable information.
-                  </p>
-                  <h3>Personalized Service and Attention</h3>
-                  <p>
-                    I provide personalized service and attention that reflects my commitment to understanding each client's unique needs and providing information that's relevant to their situation. I take time to listen, ask questions, and develop a comprehensive understanding of what clients are seeking, ensuring that the information and guidance I provide align with their interests and goals. This personalized approach ensures that clients receive the most useful information for their specific circumstances.
-                  </p>
-                  <h3>Ongoing Support and Guidance</h3>
-                  <p>
-                    My commitment to client success extends beyond initial transactions to provide ongoing support and guidance throughout the Turnberry Place ownership experience. Whether clients need assistance with property management, market updates, or future real estate decisions, I'm available to provide expert guidance and support. This ongoing relationship ensures that clients have access to the information and assistance they need at every stage of their Turnberry Place journey.
-                  </p>
-                  
-                  <h2>Contact Dr. Jan Duffy Today</h2>
-                  <p>
-                    Ready to explore Turnberry Place luxury living? Contact me today to discuss available properties, schedule private showings, or learn more about how Turnberry Place can meet your luxury living needs. As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place, I can provide comprehensive information and expert guidance that helps you make informed decisions about luxury living in Las Vegas.
-                  </p>
-                  <p>
-                    Whether you're interested in a specific property, want to explore multiple options, or are just beginning your search for luxury living in Las Vegas, I'm here to help. My goal is to provide you with the information, guidance, and support you need to make informed decisions about Turnberry Place and find the perfect luxury residence that meets your needs and exceeds your expectations.
-                  </p>
-                  <p className="mt-4">
-                    <strong>Ready to discover Turnberry Place?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> or contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you explore this exceptional community and find the perfect luxury residence that meets your needs and budget.
-                  </p>
-                </div>
-              </div>
+              <p className="mb-4">
+                Know someone who would love to see these luxury condos? Share this property with friends and family.
+              </p>
               <p className="mb-4">
                 Know someone who would love to see these luxury condos? Share this property with friends and family.
               </p>
