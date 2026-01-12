@@ -37,11 +37,11 @@ export function Meta({ title, tags }: MetaProps) {
         })
       ) : (
         <>
-          <title>{`${title} | Next.js for Drupal`}</title>
+          <title>{`${title} | Turnberry Place Las Vegas`}</title>
           <meta
             key="description"
             name="description"
-            content="A Next.js blog powered by a Drupal backend."
+            content="Luxury high-rise condos for sale in Las Vegas. Built with Next.js, powered by Drupal, developed with Cursor AI, and deployed on Vercel."
           />
           <meta
             key="og_image"

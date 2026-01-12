@@ -1,6 +1,7 @@
 {
-  "name": "example-marketing",
+  "name": "turnberryplaceforsale",
   "version": "1.5.0",
+  "description": "Luxury real estate site built with Next.js, Drupal, Cursor AI, Vercel, and GitHub",
   "private": true,
   "license": "MIT",
   "scripts": {

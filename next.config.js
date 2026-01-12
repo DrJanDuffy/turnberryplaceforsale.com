@@ -1,3 +1,8 @@
+/**
+ * Next.js Configuration
+ * Built with Cursor AI, deployed on Vercel, version controlled on GitHub
+ */
+
 function getImageDomain() {
   if (process.env.NEXT_IMAGE_DOMAIN) {
     return [process.env.NEXT_IMAGE_DOMAIN]
