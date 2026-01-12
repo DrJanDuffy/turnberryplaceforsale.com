@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { DynamicUnitCount } from "components/dynamic-unit-count"
 
 interface HeroSlideshowProps {
   photos: string[]
@@ -57,7 +58,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
             </h1>
             <div className="mb-4">
               <h3 className="text-white font-weight-bold">
-                Only <span id="available-units-count" className="text-warning">12</span> Units Available Now
+                Only <DynamicUnitCount defaultCount={12} elementId="available-units-count" /> Units Available Now
               </h3>
             </div>
             <div className="d-flex align-items-center justify-content-center flex-wrap gap-3 mt-4">

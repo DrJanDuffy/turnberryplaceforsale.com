@@ -21,6 +21,7 @@ import { ContactForm } from "components/contact-form"
 import { JsonLdSchema } from "components/json-ld-schema"
 import { StickyCTA } from "components/sticky-cta"
 import { ExitIntentPopup } from "components/exit-intent-popup"
+import { DynamicUnitCount } from "components/dynamic-unit-count"
 import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
@@ -346,7 +347,7 @@ function HomePageContent() {
               </div>
               <div className="text-center mt-4">
                 <Link href="/available-condos" className="btn btn-primary btn-lg">
-                  See All <span id="total-listings-count">12</span> Available Units
+                  See All <DynamicUnitCount defaultCount={12} elementId="total-listings-count" /> Available Units
                 </Link>
               </div>
             </div>
