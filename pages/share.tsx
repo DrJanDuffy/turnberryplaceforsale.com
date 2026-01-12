@@ -79,11 +79,14 @@ export default function SharePage({ menus }: SharePageProps) {
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8">
               <div className="bg-white rounded-lg shadow-lg p-6">
-                <h1 className="text-center mb-4">Share Turnberry Place Las Vegas</h1>
+                <h1 className="text-center mb-4">Share Turnberry Place Las Vegas with Friends and Family</h1>
+                <p className="lead text-center mb-5">
+                  Discovered something special at Turnberry Place? Share this exceptional luxury high-rise community with friends, family, or colleagues who might appreciate Las Vegas's premier condominium living. Use the tools below to share Turnberry Place through social media or send a personalized message directly to someone you know.
+                </p>
                 
                 {/* Social Share Buttons */}
                 <div className="mb-5">
-                  <h3 className="text-center mb-4">Share on Social Media</h3>
+                  <h2 className="text-center mb-4">Share on Social Media</h2>
                   <div className="d-flex flex-wrap justify-content-center gap-3">
                     <a
                       href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
@@ -122,7 +125,10 @@ export default function SharePage({ menus }: SharePageProps) {
 
                 {/* Send to Friend Form */}
                 <div className="border-top pt-4">
-                  <h3 className="text-center mb-4">Or Send to a Friend</h3>
+                  <h2 className="text-center mb-4">Send to a Friend</h2>
+                  <p className="text-center mb-4">
+                    Share Turnberry Place with someone specific using our send-to-friend form. Add a personal message to let them know why you think they'd be interested in this exceptional luxury community.
+                  </p>
                   
                   {submitted ? (
                     <div className="text-center py-4">
@@ -238,6 +244,89 @@ export default function SharePage({ menus }: SharePageProps) {
                   )}
                 </div>
               </div>
+            </div>
+          </div>
+          
+          <div className="row mt-5">
+            <div className="col-12 col-lg-10 mx-auto">
+              <h2>Why Share Turnberry Place</h2>
+              <p>
+                Turnberry Place represents one of Las Vegas's most exceptional luxury high-rise communities, offering an unparalleled combination of location, amenities, security, and lifestyle benefits. Sharing Turnberry Place with friends, family, or colleagues helps them discover this exceptional community and provides them with the opportunity to explore luxury living in Las Vegas's most desirable location.
+              </p>
+              <h3>Exceptional Location and Convenience</h3>
+              <p>
+                Turnberry Place's location just one block from the Las Vegas Strip provides residents with immediate access to world-class restaurants, entertainment venues, shopping, and business centers. Sharing this location advantage helps others understand the convenience and accessibility that Turnberry Place offers, as well as the lifestyle benefits that come with this prime positioning. The development's proximity to the Strip, combined with its privacy and security, creates a unique value proposition that's worth sharing.
+              </p>
+              <h3>World-Class Amenities and Lifestyle</h3>
+              <p>
+                Turnberry Place's exclusive access to The Stirling Club, an 80,000-square-foot private membership facility, provides residents with amenities that rival the best private clubs worldwide. Sharing information about these amenities helps others understand the comprehensive lifestyle benefits that Turnberry Place provides, including fitness facilities, pools, tennis courts, spa services, dining venues, and social spaces. These amenities create a true luxury lifestyle experience that's worth sharing with those who appreciate quality and convenience.
+              </p>
+              <h3>Investment Potential and Value</h3>
+              <p>
+                Turnberry Place's established reputation, prime location, and comprehensive amenities create strong investment potential that makes it worth sharing with those interested in luxury real estate investments. The development's limited inventory, combined with strong demand from both domestic and international buyers, creates favorable conditions for price appreciation. Sharing this investment potential helps others understand the value proposition and long-term benefits of Turnberry Place ownership.
+              </p>
+
+              <h2>How to Share Turnberry Place</h2>
+              <p>
+                Sharing Turnberry Place is easy and convenient, whether you prefer social media sharing or sending a personalized message directly to someone you know. Both methods help others discover this exceptional community and provide them with the information they need to explore Turnberry Place further.
+              </p>
+              <h3>Social Media Sharing</h3>
+              <p>
+                Social media sharing provides a quick and convenient way to share Turnberry Place with your network. The social share buttons above allow you to share Turnberry Place on Facebook, Twitter, Pinterest, and LinkedIn with just one click. These shares include the Turnberry Place website URL, description, and images, providing your network with comprehensive information about the community. Social media sharing is particularly effective for reaching a broad audience and generating interest among those who might not be actively searching for luxury properties.
+              </p>
+              <h3>Send-to-Friend Form</h3>
+              <p>
+                The send-to-friend form provides a more personalized way to share Turnberry Place with specific individuals. This form allows you to add a personal message explaining why you think the recipient would be interested in Turnberry Place, making the share more meaningful and relevant. The send-to-friend option is particularly effective for sharing with friends, family members, or colleagues who you know are interested in luxury living or real estate investments.
+              </p>
+              <h3>Direct Recommendations</h3>
+              <p>
+                In addition to online sharing tools, you can also recommend Turnberry Place directly to friends, family, or colleagues who might be interested. Personal recommendations carry significant weight and can be particularly effective when you can speak from experience or knowledge about the community. Whether you're a current resident, have visited Turnberry Place, or have researched the community extensively, your personal recommendation can help others discover this exceptional luxury community.
+              </p>
+
+              <h2>What to Share About Turnberry Place</h2>
+              <p>
+                When sharing Turnberry Place, consider highlighting the aspects that make it exceptional and relevant to your audience. Different people may be interested in different aspects of Turnberry Place, so tailoring your share to your audience's interests can make your recommendation more effective and relevant.
+              </p>
+              <h3>Location and Convenience</h3>
+              <p>
+                Highlight Turnberry Place's prime location just one block from the Las Vegas Strip, emphasizing the convenience and accessibility this provides. Mention the proximity to world-class restaurants, entertainment venues, shopping, and business centers, as well as the privacy and security that the development maintains despite this central location. This location advantage appeals to those who value convenience and want to be at the center of Las Vegas's vibrant energy.
+              </p>
+              <h3>Amenities and Lifestyle</h3>
+              <p>
+                Emphasize The Stirling Club's comprehensive amenities, including fitness facilities, pools, tennis courts, spa services, dining venues, and social spaces. Highlight how these amenities create a true luxury lifestyle experience and eliminate the need for separate club memberships. This amenity focus appeals to those who value convenience, quality, and comprehensive lifestyle benefits.
+              </p>
+              <h3>Investment and Value</h3>
+              <p>
+                For those interested in real estate investments, emphasize Turnberry Place's established reputation, strong demand, and appreciation potential. Highlight the development's limited inventory, prime location, and comprehensive amenities that support long-term value. This investment focus appeals to those who are considering luxury real estate as an investment opportunity.
+              </p>
+
+              <h2>Benefits of Sharing Turnberry Place</h2>
+              <p>
+                Sharing Turnberry Place provides benefits for both you and those you share with. For recipients, sharing provides access to information about an exceptional luxury community they might not have discovered otherwise. For you, sharing can help friends, family, or colleagues discover a community that might meet their needs while potentially creating opportunities for referrals or community connections.
+              </p>
+              <h3>Helping Others Discover Quality</h3>
+              <p>
+                Sharing Turnberry Place helps others discover a luxury community that represents exceptional quality, value, and lifestyle benefits. Your share provides them with information they might not have found independently, potentially helping them discover a community that meets their needs and preferences. This sharing creates value for recipients while demonstrating your knowledge and interest in quality real estate.
+              </p>
+              <h3>Building Community Connections</h3>
+              <p>
+                Sharing Turnberry Place with others can help build community connections, whether you're a current resident, prospective buyer, or simply someone who appreciates quality real estate. If others you share with become interested in Turnberry Place, you may have the opportunity to connect with them as neighbors or community members. These connections can enhance your own Turnberry Place experience while helping others discover the community.
+              </p>
+              <h3>Supporting Real Estate Professionals</h3>
+              <p>
+                Sharing Turnberry Place also supports real estate professionals like Dr. Jan Duffy who work to help buyers and sellers achieve their goals. When you share Turnberry Place and others become interested, you're helping connect them with expert guidance and support that can help them make informed decisions. This support benefits both recipients and the real estate professionals who serve them.
+              </p>
+
+              <h2>Contact Dr. Jan Duffy for More Information</h2>
+              <p>
+                If you or someone you've shared Turnberry Place with has questions or wants to learn more, I'm here to provide comprehensive information and expert guidance. As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place, I can answer questions, provide detailed information, and help interested parties explore this exceptional community further.
+              </p>
+              <p>
+                Whether you're sharing Turnberry Place with others or have received a share and want to learn more, I'm available to provide the information and support you need. My goal is to help everyone discover the exceptional quality and lifestyle that Turnberry Place offers and find the perfect luxury residence that meets their needs.
+              </p>
+              <p className="mt-4">
+                <strong>Have questions about Turnberry Place?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> or contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>. I'm here to provide comprehensive information about Turnberry Place and help you or those you've shared with explore this exceptional luxury community.
+              </p>
             </div>
           </div>
         </div>

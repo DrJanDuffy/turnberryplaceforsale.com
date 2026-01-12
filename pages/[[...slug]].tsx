@@ -88,10 +88,13 @@ function HomePageContent() {
       <div className="card-content card-price-features py-5">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12 text-center">
-              <h1 className="mb-1">Turnberry Place Las Vegas</h1>
-              <p>Las Vegas, NV 89109</p>
-              <h3>4 Luxury Towers from $800,000 to $10M+</h3>
+            <div className="col-12 col-lg-10 text-center">
+              <h1 className="mb-3">Turnberry Place Las Vegas | Premier Luxury High-Rise Community</h1>
+              <p className="lead mb-3">Las Vegas, NV 89109</p>
+              <h2 className="mb-4">4 Luxury Towers from $800,000 to $10M+</h2>
+              <p className="mb-4">
+                Turnberry Place represents the pinnacle of luxury high-rise living in Las Vegas, featuring four distinct towers that have redefined upscale urban living since 2000. Located just one block from the Las Vegas Strip, this guard-gated, four-tower condominium complex offers residents an unparalleled blend of privacy, convenience, and access to world-class amenities. As a Las Vegas real estate expert with over 30 years of experience, I can attest that Turnberry Place stands as one of the city's most prestigious and desirable luxury communities.
+              </p>
             </div>
           </div>
         </div>
@@ -101,8 +104,11 @@ function HomePageContent() {
       <div className="card-content card-prop-description py-5">
         <div className="container">
           <div className="row">
-            <div className="col-12">
-              <h1 className="text-center mb-4">Turnberry Place | Las Vegas' Premier High-Rise Community</h1>
+            <div className="col-12 col-lg-10 mx-auto">
+              <h2>Turnberry Place: Las Vegas' Premier High-Rise Community</h2>
+              <p>
+                Turnberry Place stands as Las Vegas's premier high-rise condominium community, offering luxury living that combines exceptional quality, prime location, and comprehensive amenities. The development's four towers, completed between 2000 and 2005, represent the evolution of luxury high-rise design in Las Vegas, incorporating lessons learned from each phase to create increasingly sophisticated residences. The development's exclusive access to The Stirling Club, combined with its prime location and comprehensive security, creates a lifestyle experience that is difficult to replicate elsewhere in Las Vegas.
+              </p>
             </div>
           </div>
         </div>
@@ -112,16 +118,20 @@ function HomePageContent() {
       <div className="card-content card-prop-description py-5">
         <div className="container">
           <div className="row">
-            <div className="col-12">
+            <div className="col-12 col-lg-10 mx-auto">
+              <h2>Four Distinct Luxury Towers</h2>
+              <p>
+                Turnberry Place's four towers each offer unique characteristics, features, and value propositions that appeal to different buyers with varying needs, preferences, and budgets. Understanding the differences between towers helps buyers identify residences that best meet their requirements while appreciating the comprehensive value that each tower provides.
+              </p>
               <div className="desc">
-                <h1>Tower 1 - Elegant High-Rise Living</h1>
-                <p>Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities.</p>
-                <h1>Tower 2 - Sophisticated Strip Views</h1>
-                <p>Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities.</p>
-                <h1>Tower 3 - Premium Desert Living</h1>
-                <p>The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living.</p>
-                <h1>Tower 4 - Ultimate Luxury Living</h1>
-                <p>As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club.</p>
+                <h3>Tower 1 - Elegant High-Rise Living</h3>
+                <p>Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities. Tower 1 established Turnberry Place's reputation for excellence and provides excellent value for buyers seeking entry into the development.</p>
+                <h3>Tower 2 - Sophisticated Strip Views</h3>
+                <p>Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities. Tower 2's enhanced features and larger floor plans appeal to buyers seeking more space and sophistication.</p>
+                <h3>Tower 3 - Premium Desert Living</h3>
+                <p>The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living. Tower 3's contemporary design appeals to buyers with modern aesthetic preferences.</p>
+                <h3>Tower 4 - Ultimate Luxury Living</h3>
+                <p>As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club. Tower 4's exceptional features and finishes appeal to buyers seeking the ultimate in luxury living.</p>
               </div>
             </div>
           </div>
@@ -135,7 +145,7 @@ function HomePageContent() {
             <div className="col-12">
               <div className="pb-4 pb-sm-5 amenities-border">
                 <div className="amenities-title">
-                  <h1>Amenities</h1>
+                  <h2>Amenities</h2>
                 </div>
                 <div className="row pt-2 pt-sm-4 pl-3 pl-sm-5">
                   {["Gated Community", "City View", "Secure Building", "Gym", "Tennis Courts", "Spa", "Swimming Pool", "Workout Room", "Mountains", "Private Patio"].map((amenity, index) => (
@@ -162,7 +172,7 @@ function HomePageContent() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-12 d-none d-sm-block pb-1">
-              <h1 className="text-center mb-0">Photo Gallery</h1>
+              <h2 className="text-center mb-0">Photo Gallery</h2>
               <div className="d-slideshow">
                 <div className="font-size-90 text-center d-none d-md-flex align-items-md-center justify-content-md-center">
                   <Link href="/photos" className="text-underline">
@@ -249,9 +259,9 @@ function HomePageContent() {
               <div className="contact-form-box p-4">
                 <div className="mt-0 mt-md-2 d-flex align-items-center justify-content-center">
                   <div className="w-10 horiz-line d-none d-sm-block"></div>
-                  <h1 className="my-0 mx-2 heading-color" id="contact-label">
+                  <h2 className="my-0 mx-2 heading-color" id="contact-label">
                     Turnberry Place Request Pricing & Details
-                  </h1>
+                  </h2>
                   <div className="w-10 horiz-line d-none d-sm-block"></div>
                 </div>
                 <ContactForm title="Turnberry Place Request Pricing & Details" />
@@ -268,7 +278,7 @@ function HomePageContent() {
             <div className="col-12">
               <div className="row justify-content-center">
                 <div className="py-2 col-12 text-center">
-                  <h1>Dr. Jan Duffy, REALTOR</h1>
+                  <h2>Dr. Jan Duffy, REALTOR</h2>
                   <div className="my-1">
                     The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
                     <br /> License: S.0197614.LLC
@@ -315,7 +325,7 @@ function HomePageContent() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12">
-              <h1 className="text-center mb-4">Available Las Vegas Condos</h1>
+              <h2 className="text-center mb-4">Available Las Vegas Condos</h2>
               <div className="widget-wrapper">
                 <Script
                   src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
@@ -353,7 +363,7 @@ function HomePageContent() {
         <div className="container-fluid">
           <div className="row align-items-center justify-content-center">
             <div className="col-12 col-lg-11 col-xl-10 text-center">
-              <h1 className="text-center mb-4">Floor Plans</h1>
+              <h2 className="text-center mb-4">Floor Plans</h2>
               <p className="mb-4">
                 Explore our collection of luxury floor plans ranging from 1-4 bedrooms. Each residence features premium finishes and stunning views.
               </p>
@@ -370,7 +380,7 @@ function HomePageContent() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h1 className="text-center">The Stirling Club</h1>
+              <h2 className="text-center">The Stirling Club</h2>
               <h4 className="text-center mb-4">Exclusive Luxury at Your Doorstep</h4>
             </div>
           </div>
@@ -422,7 +432,7 @@ function HomePageContent() {
           <div className="row align-items-center justify-content-center">
             <div className="col-12 col-sm-11 col-lg-10 col-xl-9">
               <div className="py-4">
-                <h1 className="text-center mb-4">Turnberry Place Neighborhood and Area Profile</h1>
+                <h2 className="text-center mb-4">Turnberry Place Neighborhood and Area Profile</h2>
                 <div className="mb-4">
                   <p>
                     Turnberry Place stands as a pinnacle of luxury living in Las Vegas, offering an unparalleled blend of privacy, convenience, and access to world-class amenities. Situated just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts, this guard-gated, four-tower condominium complex redefines upscale urban living.
@@ -451,7 +461,7 @@ function HomePageContent() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 text-center">
-              <h1 className="mb-4">Share Turnberry Place Las Vegas</h1>
+              <h2 className="mb-4">Share Turnberry Place Las Vegas</h2>
               <p className="mb-4">
                 Know someone who would love to see these luxury condos? Share this property with friends and family.
               </p>
