@@ -64,10 +64,10 @@ export default function NodePage({ node, menus }: NodePageProps) {
 // Home page content component
 function HomePageContent() {
   const heroPhotos = [
-    "/images/turnberry/photo-21.jpg",
-    "/images/turnberry/photo-22.jpg",
-    "/images/turnberry/asset-1.jpg",
-    "/images/turnberry/asset-10.jpg",
+    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1600,height=1200,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg",
+    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1600,height=1200,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg",
+    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1600,height=1200,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg",
+    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1600,height=1200,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg",
   ]
 
   return (

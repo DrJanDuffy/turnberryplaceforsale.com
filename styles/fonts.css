@@ -1,24 +1,5 @@
 /* Custom Fonts - Matching Live Site */
-@font-face {
-  font-family: 'Cinzel';
-  font-style: normal;
-  font-weight: 500;
-  src: url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
-}
-
-@font-face {
-  font-family: 'Questrial';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-}
-
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Questrial&family=Open+Sans&display=swap');
 
 :root {
   --default-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

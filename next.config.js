@@ -24,9 +24,19 @@ module.exports = {
     locales: ["en", "es"],
     defaultLocale: "en",
   },
-  images: {
-    domains: getImageDomain(),
-  },
+        images: {
+          domains: getImageDomain(),
+          remotePatterns: [
+            {
+              protocol: 'https',
+              hostname: 'photos.cribflyer-proxy.com',
+            },
+            {
+              protocol: 'https',
+              hostname: 'assets.cribflyer-proxy.com',
+            },
+          ],
+        },
   async rewrites() {
     return [
       {
