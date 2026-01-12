@@ -4,6 +4,7 @@ import Head from "next/head"
 import { useState, useEffect } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { Meta } from "components/meta"
+import { JsonLdSchema } from "components/json-ld-schema"
 import Image from "next/image"
 import classNames from "classnames"
 
@@ -41,7 +42,12 @@ export default function FloorPlansPage() {
       <Meta title="Floor Plans - Turnberry Place Las Vegas" />
       <Head>
         <title>Floor Plans - Turnberry Place Las Vegas</title>
+        <meta
+          name="description"
+          content="View Turnberry Place Las Vegas floor plans: 1-4 bedroom luxury condo layouts from $800K-$10M+. See detailed floor plans for all 4 towers. Call/text 702-222-1964"
+        />
       </Head>
+      <JsonLdSchema type="property" />
       <div className="card-content card-floor-plans py-5">
         <div className="container-fluid">
           <div className="row">

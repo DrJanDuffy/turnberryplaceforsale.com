@@ -73,7 +73,12 @@ export default function TowersPage({ menus }: TowersPageProps) {
       <Meta title="Towers - Turnberry Place Las Vegas" />
       <Head>
         <title>Towers - Turnberry Place Las Vegas</title>
+        <meta
+          name="description"
+          content="Explore Turnberry Place's 4 luxury towers: Tower 1 (38 stories), Tower 2-4 (45 stories). Completed 2000-2005, featuring Strip views & Stirling Club access. Call/text 702-222-1964"
+        />
       </Head>
+      <JsonLdSchema type="property" />
       <div className="card-content card-prop-description py-5">
         <div className="container">
           <div className="row">
