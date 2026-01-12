@@ -65,7 +65,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
               <Link href="/available-condos" className="btn btn-lg btn-warning px-5 py-3 font-weight-bold">
                 View Available Condos
               </Link>
-              <a href="tel:7022221964" className="btn btn-lg btn-outline-light px-5 py-3 font-weight-bold">
+              <a href="tel:7022221988" className="btn btn-lg btn-outline-light px-5 py-3 font-weight-bold">
                 Schedule Private Tour
               </a>
             </div>

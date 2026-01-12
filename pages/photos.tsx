@@ -32,7 +32,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         <title>Photo Gallery - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="View luxury condo photos at Turnberry Place Las Vegas. See interior & exterior images of 1-4 bedroom residences with Strip views. Call/text 702-222-1964"
+          content="View luxury condo photos at Turnberry Place Las Vegas. See interior & exterior images of 1-4 bedroom residences with Strip views. Call/text 702-222-1988"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -216,7 +216,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                 Whether you're interested in scheduling a private showing to see residences in person, discussing the features visible in these photographs, or learning more about Turnberry Place's amenities and lifestyle, I can provide detailed information and expert guidance. My goal is to help you understand how these photographs reflect the exceptional quality and lifestyle that Turnberry Place offers, and how they can help you identify the perfect residence for your needs.
               </p>
               <p className="mt-4">
-                <strong>Ready to see Turnberry Place in person?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to schedule a private showing and experience the luxury and sophistication that these photographs represent. With my extensive knowledge of Turnberry Place, I can provide context and insights that help you appreciate the exceptional quality visible in every photograph.
+                <strong>Ready to see Turnberry Place in person?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private showing and experience the luxury and sophistication that these photographs represent. With my extensive knowledge of Turnberry Place, I can provide context and insights that help you appreciate the exceptional quality visible in every photograph.
               </p>
             </div>
           </div>

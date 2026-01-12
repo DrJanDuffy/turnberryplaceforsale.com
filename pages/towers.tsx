@@ -75,7 +75,7 @@ export default function TowersPage({ menus }: TowersPageProps) {
         <title>Towers - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Explore Turnberry Place's 4 luxury towers: Tower 1 (38 stories), Tower 2-4 (45 stories). Completed 2000-2005, featuring Strip views & Stirling Club access. Call/text 702-222-1964"
+          content="Explore Turnberry Place's 4 luxury towers: Tower 1 (38 stories), Tower 2-4 (45 stories). Completed 2000-2005, featuring Strip views & Stirling Club access. Call/text 702-222-1988"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -239,7 +239,7 @@ export default function TowersPage({ menus }: TowersPageProps) {
                   Whether you're interested in Tower 1's established value, Tower 2's enhanced features, Tower 3's contemporary design, or Tower 4's ultimate luxury, I can provide detailed information about available residences, market conditions, and the unique characteristics of each tower. My goal is to help you find the perfect Turnberry Place residence that meets your lifestyle needs while representing a sound investment in Las Vegas luxury real estate.
                 </p>
                 <p className="mt-4">
-                  <strong>Ready to explore Turnberry Place towers?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to schedule a private showing or discuss your luxury condominium needs. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you find the perfect tower residence that exceeds your expectations.
+                  <strong>Ready to explore Turnberry Place towers?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private showing or discuss your luxury condominium needs. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you find the perfect tower residence that exceeds your expectations.
                 </p>
               </div>
             </div>

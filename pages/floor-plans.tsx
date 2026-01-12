@@ -44,7 +44,7 @@ export default function FloorPlansPage() {
         <title>Floor Plans - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="View Turnberry Place Las Vegas floor plans: 1-4 bedroom luxury condo layouts from $800K-$10M+. See detailed floor plans for all 4 towers. Call/text 702-222-1964"
+          content="View Turnberry Place Las Vegas floor plans: 1-4 bedroom luxury condo layouts from $800K-$10M+. See detailed floor plans for all 4 towers. Call/text 702-222-1988"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -186,7 +186,7 @@ export default function FloorPlansPage() {
                 Whether you're interested in one-bedroom efficiency, two-bedroom flexibility, three-bedroom space, or four-bedroom luxury, I can provide detailed information about available floor plans, their features, and how they compare to help you make informed decisions. My goal is to help you find the perfect Turnberry Place residence that meets your space requirements, lifestyle needs, and budget while providing exceptional value and luxury living.
               </p>
               <p className="mt-4">
-                <strong>Ready to explore Turnberry Place floor plans?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to discuss available floor plans, schedule a private showing, and learn how different floor plans can accommodate your lifestyle needs. With my extensive knowledge of Turnberry Place floor plans, I can help you find the perfect residence that exceeds your expectations.
+                <strong>Ready to explore Turnberry Place floor plans?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to discuss available floor plans, schedule a private showing, and learn how different floor plans can accommodate your lifestyle needs. With my extensive knowledge of Turnberry Place floor plans, I can help you find the perfect residence that exceeds your expectations.
               </p>
             </div>
           </div>

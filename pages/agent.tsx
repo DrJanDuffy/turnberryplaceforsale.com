@@ -4,6 +4,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { AgentBioModal } from "components/agent-bio-modal"
 import Image from "next/image"
 
 interface AgentPageProps extends LayoutProps {}
@@ -16,7 +17,7 @@ export default function AgentPage({ menus }: AgentPageProps) {
         <title>Dr. Jan Duffy, REALTOR - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Dr. Jan Duffy specializes in luxury high-rise condos at Turnberry Place Las Vegas. Licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices. Call/text 702-222-1964"
+          content="Dr. Jan Duffy specializes in luxury high-rise condos at Turnberry Place Las Vegas. Licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices. Call/text 702-222-1988"
         />
       </Head>
       <JsonLdSchema type="agent" />
@@ -48,8 +49,8 @@ export default function AgentPage({ menus }: AgentPageProps) {
                   <div className="py-2 d-flex flex-column flex-lg-row align-items-center justify-content-center" style={{ gap: "5px" }}>
                     <div className="mx-2">
                       <span className="">Call/Text:</span>{" "}
-                      <a href="tel:7022221964" title="Call or text Dr. Jan Duffy">
-                        (702) 222-1964
+                      <a href="tel:7022221988" title="Call or text Dr. Jan Duffy">
+                        (702) 222-1988
                       </a>
                     </div>
                     <div className="mx-2">
@@ -60,9 +61,7 @@ export default function AgentPage({ menus }: AgentPageProps) {
                     </div>
                   </div>
                   <div className="py-2">
-                    <a className="cursor-pointer btn-agent-bio" data-agentid="14435" title="View Bio">
-                      View Bio
-                    </a>
+                    <AgentBioModal agentId="14435" />
                   </div>
                 </div>
                 <div className="col-12 text-center py-2">
@@ -186,7 +185,7 @@ export default function AgentPage({ menus }: AgentPageProps) {
                     To discuss your real estate needs, schedule a property showing, or learn more about Turnberry Place and the Las Vegas luxury market, contact Dr. Jan Duffy today. Her expertise, dedication, and personalized service ensure that you receive the guidance and support you need to make informed decisions and complete successful transactions.
                   </p>
                   <p className="mt-4">
-                    <strong>Ready to work with a Las Vegas luxury real estate expert?</strong> Call or text Dr. Jan Duffy at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> or contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>. With over 30 years of experience and deep knowledge of Turnberry Place and the Las Vegas luxury market, Dr. Duffy can help you achieve your real estate goals with confidence and expertise.
+                    <strong>Ready to work with a Las Vegas luxury real estate expert?</strong> Call or text Dr. Jan Duffy at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> or contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>. With over 30 years of experience and deep knowledge of Turnberry Place and the Las Vegas luxury market, Dr. Duffy can help you achieve your real estate goals with confidence and expertise.
                   </p>
                 </div>
               </div>

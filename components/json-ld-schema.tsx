@@ -30,7 +30,7 @@ export function JsonLdSchema({
     description:
       'Las Vegas real estate expert specializing in luxury high-rise condos at Turnberry Place. Licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties.',
     url: baseUrl,
-    telephone: ['+17025001955', '+17022221964'],
+    telephone: ['+17025001955', '+17022221988'],
     email: 'jan@lasvegas55plushomes.com',
     identifier: {
       '@type': 'PropertyValue',

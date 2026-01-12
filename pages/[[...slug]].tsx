@@ -44,7 +44,7 @@ export default function NodePage({ node, menus }: NodePageProps) {
           <title>Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale</title>
           <meta
             name="description"
-            content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. 4 luxury towers from $800K-$10M+ with Strip views & exclusive Stirling Club access. Call/text 702-222-1964"
+            content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. 4 luxury towers from $800K-$10M+ with Strip views & exclusive Stirling Club access. Call/text 702-222-1988"
           />
         </Head>
         <JsonLdSchema type="home" propertyPrice="$800,000 - $10,000,000+" />
@@ -267,8 +267,8 @@ function HomePageContent() {
                   Schedule your personalized tour of Turnberry Place luxury condos today. Experience the quality, amenities, and lifestyle firsthand.
                 </p>
                 <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                  <a href="tel:7022221964" className="btn btn-warning btn-lg font-weight-bold" title="Call or text 702-222-1964">
-                    Call/Text (702) 222-1964
+                  <a href="tel:7022221988" className="btn btn-warning btn-lg font-weight-bold" title="Call or text 702-222-1988">
+                    Call/Text (702) 222-1988
                   </a>
                   <Link href="/request-details" className="btn btn-outline-light btn-lg font-weight-bold" title="Request Showing">
                     Request Showing
@@ -409,8 +409,8 @@ function HomePageContent() {
                   <div className="py-2 d-flex flex-column flex-lg-row align-items-center justify-content-center" style={{ gap: "5px" }}>
                     <div className="mx-2">
                       <span className="">Call/Text:</span>{" "}
-                      <a href="tel:7022221964" title="Call or text Dr. Jan Duffy">
-                        (702) 222-1964
+                      <a href="tel:7022221988" title="Call or text Dr. Jan Duffy">
+                        (702) 222-1988
                       </a>
                     </div>
                     <div className="mx-2">
@@ -461,8 +461,8 @@ function HomePageContent() {
               </div>
               <div className="text-center mt-4">
                 <p className="mb-3">Interested in viewing these luxury condos?</p>
-                <a href="tel:7022221964" className="btn btn-custom btn-lg" title="Call or text 702-222-1964">
-                  Call/Text (702) 222-1964
+                <a href="tel:7022221988" className="btn btn-custom btn-lg" title="Call or text 702-222-1988">
+                  Call/Text (702) 222-1988
                 </a>
               </div>
             </div>

@@ -17,7 +17,7 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
         <title>Available Las Vegas Condos - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Browse available luxury condos for sale at Turnberry Place Las Vegas. 1-4 bedroom residences from $800K-$10M+ with Strip views. Call/text 702-222-1964"
+          content="Browse available luxury condos for sale at Turnberry Place Las Vegas. 1-4 bedroom residences from $800K-$10M+ with Strip views. Call/text 702-222-1988"
         />
       </Head>
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
@@ -52,8 +52,8 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
               </div>
               <div className="text-center mt-4">
                 <p className="mb-3">Interested in viewing these luxury condos?</p>
-                <a href="tel:7022221964" className="btn btn-custom btn-lg" title="Call or text 702-222-1964">
-                  Call/Text (702) 222-1964
+                <a href="tel:7022221988" className="btn btn-custom btn-lg" title="Call or text 702-222-1988">
+                  Call/Text (702) 222-1988
                 </a>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
                 Whether you're interested in a specific available property, want to explore multiple options, or are just beginning your search for luxury living in Las Vegas, I'm here to help. My goal is to provide you with the information, guidance, and support you need to make informed decisions about available Turnberry Place properties and complete successful purchases.
               </p>
               <p className="mt-4">
-                <strong>Ready to explore available Turnberry Place condominiums?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to discuss available properties, schedule private showings, or learn more about the luxury residences currently on the market. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you find the perfect available residence that meets your needs and budget.
+                <strong>Ready to explore available Turnberry Place condominiums?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to discuss available properties, schedule private showings, or learn more about the luxury residences currently on the market. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you find the perfect available residence that meets your needs and budget.
               </p>
             </div>
           </div>
