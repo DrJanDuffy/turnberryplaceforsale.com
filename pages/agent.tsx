@@ -5,6 +5,7 @@ import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
 import { AgentBioModal } from "components/agent-bio-modal"
+import { ContactMessageModal } from "components/contact-message-modal"
 import Image from "next/image"
 
 interface AgentPageProps extends LayoutProps {}
@@ -178,6 +179,9 @@ export default function AgentPage({ menus }: AgentPageProps) {
                   </p>
 
                   <h2>Contact Dr. Jan Duffy</h2>
+                  <div className="py-3">
+                    <ContactMessageModal />
+                  </div>
                   <p>
                     Whether you're interested in buying or selling a luxury property at Turnberry Place or another Las Vegas luxury development, Dr. Jan Duffy is ready to help you achieve your real estate goals. Her 30+ years of experience, deep market knowledge, and commitment to client success make her an ideal partner for luxury real estate transactions.
                   </p>
