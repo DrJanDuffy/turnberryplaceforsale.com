@@ -31,9 +31,9 @@ export function DynamicUnitCount({ defaultCount = 12, elementId = 'available-uni
           // Cleanup after 10 seconds
           setTimeout(() => observer.disconnect(), 10000)
         }
-      } catch (error) {
+        } catch (error) {
         // Silently fail - use default count
-        console.debug('Could not update unit count dynamically')
+        // Unit count will remain at default value
       }
     }
 
