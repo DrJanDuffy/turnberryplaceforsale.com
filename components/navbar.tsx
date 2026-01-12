@@ -34,7 +34,7 @@ export function Navbar({ links, ...props }: NavbarProps) {
 
   return (
     <nav
-      className="py-2 card-top-nav active w-100 fixed top-0 z-50 bg-gray-900 text-white"
+      className="card-top-nav active w-100 fixed top-0 z-50 bg-gray-900 text-white"
       {...props}
     >
       <div className="container-fluid text-heading pr-3">
