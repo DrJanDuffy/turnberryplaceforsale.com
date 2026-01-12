@@ -32,7 +32,11 @@ export function Link({ href, passHref, as, children, ...props }: LinkProps) {
     )
   }
 
-  return React.cloneElement(children, {
+  if (!children) {
+    return <a href={href} {...props} />
+  }
+
+  return React.cloneElement(children as React.ReactElement<any>, {
     href,
   })
 }

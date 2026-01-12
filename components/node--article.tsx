@@ -43,6 +43,7 @@ export function NodeArticleFull({ node, ...props }) {
               layout="intrinsic"
               objectFit="cover"
               className="rounded-lg"
+              alt={node.field_image.resourceIdObjMeta?.alt || node.title || "Article image"}
             />
           )}
           {node.body?.processed && (
@@ -66,6 +67,7 @@ export function NodeArticleTeaser({ node, ...props }) {
             layout="intrinsic"
             objectFit="cover"
             className="rounded-lg"
+            alt={node.field_image.resourceIdObjMeta?.alt || node.title || "Article image"}
           />
         </div>
       )}

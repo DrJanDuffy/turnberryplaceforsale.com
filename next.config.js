@@ -1,3 +1,18 @@
+function getImageDomain() {
+  if (process.env.NEXT_IMAGE_DOMAIN) {
+    return [process.env.NEXT_IMAGE_DOMAIN]
+  }
+  if (process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
+    try {
+      const url = new URL(process.env.NEXT_PUBLIC_DRUPAL_BASE_URL)
+      return [url.hostname]
+    } catch {
+      // Invalid URL, return empty array
+    }
+  }
+  return []
+}
+
 module.exports = {
   swcMinify: true,
   i18n: {
@@ -5,7 +20,7 @@ module.exports = {
     defaultLocale: "en",
   },
   images: {
-    domains: [process.env.NEXT_IMAGE_DOMAIN],
+    domains: getImageDomain(),
   },
   async rewrites() {
     return [

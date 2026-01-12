@@ -30,6 +30,7 @@ export function NodePropertyGrid({ node }) {
           height={240}
           layout="responsive"
           objectFit="cover"
+          alt={thumbnail.resourceIdObjMeta?.alt || node.title || "Property image"}
         />
       )}
       <div className="p-6">
@@ -87,6 +88,7 @@ export function NodePropertyList({ node }) {
             layout="responsive"
             objectFit="cover"
             className="rounded-lg"
+            alt={thumbnail.resourceIdObjMeta?.alt || node.title || "Property image"}
           />
         )}
         <div className="col-span-2 px-6">

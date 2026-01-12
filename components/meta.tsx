@@ -1,3 +1,4 @@
+import React from "react"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { DrupalMetatag } from "types/drupal"
@@ -31,7 +32,7 @@ export function Meta({ title, tags }: MetaProps) {
               <title key={tag.attributes.name}>{tag.attributes.content}</title>
             )
           }
-          const Tag = tag.tag as keyof JSX.IntrinsicElements
+          const Tag = tag.tag as keyof React.JSX.IntrinsicElements
           return <Tag key={index} {...tag.attributes}></Tag>
         })
       ) : (

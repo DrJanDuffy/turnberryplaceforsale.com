@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { HTMLReactParserOptions, domToReact } from "html-react-parser"
-import { Element } from "domhandler/lib/node"
+import { Element } from "domhandler"
 import parse from "html-react-parser"
 
 import { isRelative } from "lib/utils/is-relative"
@@ -13,12 +13,16 @@ const options: HTMLReactParserOptions = {
         const { src, alt, width = "100px", height = "100px" } = domNode.attribs
 
         if (isRelative(src)) {
+          // Parse width and height to extract numeric values
+          const widthNum = parseInt(width.toString().replace(/px|em|rem/, ""), 10) || 100
+          const heightNum = parseInt(height.toString().replace(/px|em|rem/, ""), 10) || 100
+
           return (
             <Image
               src={`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/${src}`}
-              width={`${width}px`}
-              height={`${height}px`}
-              alt={alt}
+              width={widthNum}
+              height={heightNum}
+              alt={alt || ""}
               layout="intrinsic"
               objectFit="cover"
             />

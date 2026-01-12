@@ -21,7 +21,7 @@ Router.events.on("routeChangeComplete", () => NProgress.done())
 Router.events.on("routeChangeError", () => NProgress.done())
 
 export default function App({ Component, pageProps }) {
-  const queryClientRef = React.useRef<QueryClient>()
+  const queryClientRef = React.useRef<QueryClient | null>(null)
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient()
   }

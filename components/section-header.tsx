@@ -1,3 +1,4 @@
+import React from "react"
 import { LinksProps, Links } from "components/links"
 import { FormattedText } from "components/formatted-text"
 
@@ -15,7 +16,7 @@ export function SectionHeader({
   links,
   ...props
 }: SectionHeaderProps) {
-  const HeadingLevel = `h${level}` as keyof JSX.IntrinsicElements
+  const HeadingLevel = `h${level}` as keyof React.JSX.IntrinsicElements
   return (
     <div className="container px-6 mx-auto text-center" {...props}>
       {heading && (
