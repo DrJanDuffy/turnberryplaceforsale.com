@@ -5,7 +5,6 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { ContactForm } from "components/contact-form"
-import Image from "next/image"
 
 interface HomePageProps extends LayoutProps {}
 
