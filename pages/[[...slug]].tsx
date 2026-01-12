@@ -6,6 +6,7 @@ import {
   GetStaticPropsResult,
 } from "next"
 import Head from "next/head"
+import Link from "next/link"
 import { useRouter } from "next/router"
 import { DrupalNode } from "next-drupal"
 
@@ -16,6 +17,7 @@ import { getParams } from "lib/get-params"
 import { Node } from "components/node"
 import { Layout, LayoutProps } from "components/layout"
 import { Meta } from "components/meta"
+import { ContactForm } from "components/contact-form"
 
 const RESOURCE_TYPES = ["node--page", "node--landing_page", "node--article"]
 
@@ -25,6 +27,19 @@ interface NodePageProps extends LayoutProps {
 
 export default function NodePage({ node, menus }: NodePageProps) {
   const router = useRouter()
+
+  // Handle home page when Drupal is not configured
+  if (node.id === 'home' && node.type === 'node--landing_page') {
+    return (
+      <Layout menus={menus}>
+        <Meta title="Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale" />
+        <Head>
+          <title>Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale</title>
+        </Head>
+        <HomePageContent />
+      </Layout>
+    )
+  }
 
   return (
     <Layout menus={menus}>
@@ -46,13 +61,90 @@ export default function NodePage({ node, menus }: NodePageProps) {
   )
 }
 
+// Home page content component
+function HomePageContent() {
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+        <div className="absolute inset-0 opacity-30">
+          <div 
+            className="w-full h-full bg-gray-900 bg-cover bg-center"
+            style={{ backgroundImage: 'url(/images/turnberry/asset-1.jpg)' }}
+          />
+        </div>
+        <div className="container px-6 mx-auto text-center relative z-10">
+          <h1 className="text-5xl font-bold mb-4 md:text-6xl lg:text-7xl">
+            TURNBERRY PLACE LAS VEGAS
+          </h1>
+          <div className="flex items-center justify-center gap-2 mb-6 text-xl md:text-2xl">
+            <span className="w-12 h-px bg-white"></span>
+            <span>LAS VEGAS, NV</span>
+            <span className="w-12 h-px bg-white"></span>
+          </div>
+          <p className="text-2xl mb-8 md:text-3xl font-light">
+            4 Luxury Towers from $800,000 to $10M+
+          </p>
+          <Link href="/towers">
+            <a className="inline-block border-2 border-white px-8 py-3 text-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+              UNITS FOR SALE
+            </a>
+          </Link>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-12 md:py-20">
+        <div className="container px-6 mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl font-bold mb-4 md:text-5xl">
+            Turnberry Place | Las Vegas' Premier High-Rise Community
+          </h2>
+          <p className="text-xl text-gray-600 mb-12">
+            Las Vegas, NV 89109
+          </p>
+        </div>
+      </section>
+
+      {/* Quick Links */}
+      <section className="py-12 md:py-20 bg-gray-50">
+        <div className="container px-6 mx-auto">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <Link href="/towers">
+              <a className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold mb-2">4 Luxury Towers</h3>
+                <p className="text-gray-600">Explore our elegant high-rise residences</p>
+              </a>
+            </Link>
+            <Link href="/amenities">
+              <a className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold mb-2">World-Class Amenities</h3>
+                <p className="text-gray-600">The Stirling Club and more</p>
+              </a>
+            </Link>
+            <Link href="/photos">
+              <a className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold mb-2">Photo Gallery</h3>
+                <p className="text-gray-600">View our luxury residences</p>
+              </a>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form */}
+      <ContactForm />
+    </>
+  )
+}
+
 export async function getStaticPaths(
   context: GetStaticPathsContext
 ): Promise<GetStaticPathsResult> {
   // Early return if Drupal base URL is not configured
+  // Use fallback to handle root route
   if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
     console.warn(
-      "NEXT_PUBLIC_DRUPAL_BASE_URL not set. Returning empty paths array."
+      "NEXT_PUBLIC_DRUPAL_BASE_URL not set. Using fallback for all routes."
     )
     return {
       paths: [],
@@ -60,15 +152,18 @@ export async function getStaticPaths(
     }
   }
 
-  return {
-    paths: await drupal.getStaticPathsFromContext(RESOURCE_TYPES, context, {
-      params: {
-        filter: {
-          "field_site.meta.drupal_internal__target_id":
-            process.env.DRUPAL_SITE_ID,
-        },
+  // Get Drupal paths
+  const drupalPaths = await drupal.getStaticPathsFromContext(RESOURCE_TYPES, context, {
+    params: {
+      filter: {
+        "field_site.meta.drupal_internal__target_id":
+          process.env.DRUPAL_SITE_ID,
       },
-    }),
+    },
+  })
+
+  return {
+    paths: drupalPaths,
     fallback: "blocking",
   }
 }
@@ -76,7 +171,29 @@ export async function getStaticPaths(
 export async function getStaticProps(
   context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<NodePageProps>> {
-  // Early return if Drupal base URL is not configured
+  const slug = context.params?.slug as string[] | undefined
+  
+  // Handle root route (/) - return home page when Drupal is not configured
+  if (!slug || slug.length === 0) {
+    if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
+      // Return a simple home page structure when Drupal is not available
+      return {
+        props: {
+          node: {
+            type: 'node--landing_page',
+            id: 'home',
+            title: 'Turnberry Place Las Vegas',
+            status: true,
+            path: { alias: '/' },
+            field_sections: [],
+          } as any,
+          menus: await getMenus(context),
+        },
+      }
+    }
+  }
+
+  // Early return if Drupal base URL is not configured for other routes
   if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
     return {
       notFound: true,
@@ -84,7 +201,6 @@ export async function getStaticProps(
   }
 
   // Check if this is a static page route that should be handled elsewhere
-  const slug = context.params?.slug as string[] | undefined
   const staticRoutes = ['towers', 'amenities', 'photos', 'floor-plans', 'stirling-club', 'neighborhood']
   if (slug && slug.length === 1 && staticRoutes.includes(slug[0])) {
     return {
