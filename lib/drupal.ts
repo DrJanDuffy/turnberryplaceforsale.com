@@ -9,13 +9,20 @@ if (!baseUrl) {
   )
 }
 
+// Only set up auth if we have a real base URL and credentials
+const authConfig = baseUrl && process.env.DRUPAL_CLIENT_ID && process.env.DRUPAL_CLIENT_SECRET
+  ? {
+      auth: {
+        clientId: process.env.DRUPAL_CLIENT_ID,
+        clientSecret: process.env.DRUPAL_CLIENT_SECRET,
+      },
+    }
+  : {}
+
 export const drupal = new DrupalClient(
   baseUrl || "https://placeholder.drupal.site",
   {
     frontPage: "/home",
-    auth: {
-      clientId: process.env.DRUPAL_CLIENT_ID,
-      clientSecret: process.env.DRUPAL_CLIENT_SECRET,
-    },
+    ...authConfig,
   }
 )
