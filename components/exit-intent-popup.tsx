@@ -64,9 +64,11 @@ export function ExitIntentPopup() {
       >
         <button
           className="close-btn position-absolute"
-          style={{ top: '10px', right: '15px', fontSize: '2rem', lineHeight: '1', border: 'none', background: 'transparent', cursor: 'pointer', color: '#333' }}
+          style={{ top: '10px', right: '15px', fontSize: '2rem', lineHeight: '1', border: 'none', background: 'transparent', cursor: 'pointer', color: '#333', zIndex: 1 }}
           onClick={handleClose}
-          aria-label="Close"
+          onKeyDown={(e) => e.key === 'Escape' && handleClose()}
+          aria-label="Close popup"
+          tabIndex={0}
         >
           ×
         </button>

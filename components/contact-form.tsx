@@ -16,6 +16,16 @@ export function ContactForm({ title = "Request Pricing & Details", onSubmit }: C
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Track form submission
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'form_submit', {
+        event_category: 'engagement',
+        event_label: 'contact_form_submitted',
+        form_name: title
+      })
+    }
+    
     if (onSubmit) {
       const data = new FormData()
       Object.entries(formData).forEach(([key, value]) => {
