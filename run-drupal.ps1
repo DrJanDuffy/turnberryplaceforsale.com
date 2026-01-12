@@ -3,7 +3,7 @@
 
 $drupalPath = "C:\Users\geneb\AppData\Roaming\drupal"
 $webPath = "$drupalPath\web"
-$host = "localhost"
+$serverHost = "localhost"
 $port = "8888"
 
 Write-Host "========================================" -ForegroundColor Cyan
@@ -29,10 +29,8 @@ if (-not (Test-Path "$drupalPath\vendor\autoload.php")) {
     Write-Host "WARNING: Composer dependencies not installed!" -ForegroundColor Yellow
     Write-Host "Run 'composer install' in $drupalPath first." -ForegroundColor Yellow
     Write-Host ""
-    $continue = Read-Host "Continue anyway? (y/n)"
-    if ($continue -ne "y" -and $continue -ne "Y") {
-        exit 1
-    }
+    Write-Host "Attempting to continue anyway..." -ForegroundColor Yellow
+    Write-Host ""
 }
 
 # Try to find PHP
@@ -90,7 +88,7 @@ Write-Host ""
 
 # Start the server
 Write-Host "Starting Drupal development server..." -ForegroundColor Cyan
-Write-Host "Server URL: http://$host`:$port" -ForegroundColor Green
+Write-Host "Server URL: http://${serverHost}:${port}" -ForegroundColor Green
 Write-Host "Document Root: $webPath" -ForegroundColor Gray
 Write-Host ""
 Write-Host "Press Ctrl+C to stop the server" -ForegroundColor Yellow
@@ -98,4 +96,4 @@ Write-Host ""
 
 # Change to web directory and start PHP server
 Set-Location $webPath
-& $phpExe -S "$host`:$port" -t . index.php
+& $phpExe -S "${serverHost}:${port}" -t . index.php
