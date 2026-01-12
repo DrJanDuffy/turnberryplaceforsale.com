@@ -42,7 +42,8 @@ yarn install
 Create a `.env.local` file in the root directory with the following variables:
 
 ```env
-# Drupal Configuration
+# Drupal Configuration (REQUIRED)
+# This is required for the build to succeed. Set this in Vercel project settings for deployment.
 NEXT_PUBLIC_DRUPAL_BASE_URL=https://your-drupal-site.com
 
 # Drupal OAuth2 Client Credentials (optional, for preview mode)
@@ -82,7 +83,19 @@ yarn build
 
 ### Deployment
 
-The site is configured for deployment on Vercel. Make sure to set all environment variables in your Vercel project settings.
+The site is configured for deployment on Vercel. **IMPORTANT:** You must set the following environment variables in your Vercel project settings before deploying:
+
+**Required:**
+- `NEXT_PUBLIC_DRUPAL_BASE_URL` - Your Drupal backend URL (required for build)
+
+**Optional:**
+- `DRUPAL_CLIENT_ID` - For preview mode
+- `DRUPAL_CLIENT_SECRET` - For preview mode
+- `DRUPAL_SITE_ID` - For multi-site installations
+- `NEXT_IMAGE_DOMAIN` - Image domain (auto-extracted from Drupal URL if not set)
+- `NEXT_PUBLIC_BASE_URL` - Your Next.js site URL
+
+Without `NEXT_PUBLIC_DRUPAL_BASE_URL`, the build will fail during the "Collecting page data" phase.
 
 ## Project Structure
 

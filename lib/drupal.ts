@@ -1,7 +1,16 @@
 import { DrupalClient } from "next-drupal"
 
+// Validate required environment variable
+const baseUrl = process.env.NEXT_PUBLIC_DRUPAL_BASE_URL
+
+if (!baseUrl) {
+  console.warn(
+    "Warning: NEXT_PUBLIC_DRUPAL_BASE_URL is not set. Drupal features will not work."
+  )
+}
+
 export const drupal = new DrupalClient(
-  process.env.NEXT_PUBLIC_DRUPAL_BASE_URL,
+  baseUrl || "https://placeholder.drupal.site",
   {
     frontPage: "/home",
     auth: {

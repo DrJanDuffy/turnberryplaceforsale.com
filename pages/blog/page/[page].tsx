@@ -70,6 +70,13 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 export async function getStaticProps(
   context
 ): Promise<GetStaticPropsResult<BlogPageProps>> {
+  // Early return if Drupal base URL is not configured
+  if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
+    return {
+      notFound: true,
+    }
+  }
+
   const current = parseInt(context.params.page)
 
   const params = new DrupalJsonApiParams()

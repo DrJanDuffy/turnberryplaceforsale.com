@@ -49,6 +49,17 @@ export default function NodePage({ node, menus }: NodePageProps) {
 export async function getStaticPaths(
   context: GetStaticPathsContext
 ): Promise<GetStaticPathsResult> {
+  // Early return if Drupal base URL is not configured
+  if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
+    console.warn(
+      "NEXT_PUBLIC_DRUPAL_BASE_URL not set. Returning empty paths array."
+    )
+    return {
+      paths: [],
+      fallback: "blocking",
+    }
+  }
+
   return {
     paths: await drupal.getStaticPathsFromContext(RESOURCE_TYPES, context, {
       params: {
@@ -65,6 +76,13 @@ export async function getStaticPaths(
 export async function getStaticProps(
   context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<NodePageProps>> {
+  // Early return if Drupal base URL is not configured
+  if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
+    return {
+      notFound: true,
+    }
+  }
+
   const path = await drupal.translatePathFromContext(context)
 
   if (!path || !RESOURCE_TYPES.includes(path.jsonapi.resourceName)) {
