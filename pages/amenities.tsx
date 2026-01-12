@@ -188,6 +188,7 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
               <p>
                 Turnberry Place's amenities enhance residents' lifestyles while fostering community connections. The Stirling Club's social spaces, recreational facilities, and dining venues provide opportunities for residents to connect, socialize, and build relationships. This community-building aspect creates value that extends beyond individual amenities, as residents benefit from the social connections and sense of community that the amenities facilitate. The lifestyle enhancement and community building represent intangible value that significantly enhances the overall living experience.
               </p>
+              </div>
 
               <h2>Contact Dr. Jan Duffy for Amenities Information</h2>
               <p>
