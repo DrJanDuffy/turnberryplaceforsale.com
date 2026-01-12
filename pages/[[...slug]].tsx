@@ -18,6 +18,7 @@ import { Node } from "components/node"
 import { Layout, LayoutProps } from "components/layout"
 import { Meta } from "components/meta"
 import { ContactForm } from "components/contact-form"
+import { TowerSection } from "components/tower-section"
 
 const RESOURCE_TYPES = ["node--page", "node--landing_page", "node--article"]
 
@@ -105,6 +106,69 @@ function HomePageContent() {
           <p className="text-xl text-gray-600 mb-12">
             Las Vegas, NV 89109
           </p>
+        </div>
+      </section>
+
+      {/* Tower Sections */}
+      <section className="py-12 md:py-20 bg-gray-50">
+        <div className="container px-6 mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 md:text-4xl">
+            4 Luxury Towers
+          </h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <TowerSection
+              number={1}
+              title="Tower 1 - Elegant High-Rise Living"
+              description="Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities."
+              features={[
+                "Private elevator access",
+                "24-hour security",
+                "Direct access to The Stirling Club",
+                "Stunning Strip and mountain views",
+              ]}
+              year={2000}
+              stories={38}
+            />
+            <TowerSection
+              number={2}
+              title="Tower 2 - Sophisticated Strip Views"
+              description="Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities."
+              features={[
+                "Larger floor plans",
+                "Floor-to-ceiling windows",
+                "Private balconies",
+                "Concierge services",
+              ]}
+              year={2001}
+              stories={45}
+            />
+            <TowerSection
+              number={3}
+              title="Tower 3 - Premium Desert Living"
+              description="The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living."
+              features={[
+                "Contemporary designs",
+                "Spacious terraces",
+                "Sophisticated finishes",
+                "Panoramic views",
+              ]}
+              year={2002}
+              stories={45}
+            />
+            <TowerSection
+              number={4}
+              title="Tower 4 - Ultimate Luxury Living"
+              description="As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club."
+              features={[
+                "Most refined residences",
+                "Unparalleled views",
+                "Premium amenities",
+                "Exceptional finishes",
+              ]}
+              year={2005}
+              stories={45}
+            />
+          </div>
         </div>
       </section>
 
