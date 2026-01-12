@@ -65,22 +65,25 @@ export function Navbar({ links, ...props }: NavbarProps) {
           <div className="col-2 col-md-8 col-lg-9">
             <div className="nav-wrapper">
               {navigationLinks.map((link) => (
-                <Link key={link.href} href={link.href} passHref>
-                  <a
-                    className={classNames(
-                      "py-2 d-none font-size-90 d-lg-inline-block nav-link px-3",
-                      asPath === link.href ? "active" : ""
-                    )}
-                    title={link.title}
-                  >
-                    {link.title}
-                  </a>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={classNames(
+                    "py-2 d-none font-size-90 d-lg-inline-block nav-link px-3",
+                    asPath === link.href ? "active" : ""
+                  )}
+                  title={link.title}
+                >
+                  {link.title}
                 </Link>
               ))}
-              <Link href="https://translate.google.com/translate?hl=es&sl=auto&tl=es&u=https://www.turnberryplaceforsale.com" passHref>
-                <a className="d-none font-size-90 d-lg-inline-block px-3 nav-link" target="_blank">
-                  Español
-                </a>
+              <Link
+                href="https://translate.google.com/translate?hl=es&sl=auto&tl=es&u=https://www.turnberryplaceforsale.com"
+                className="d-none font-size-90 d-lg-inline-block px-3 nav-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Español
               </Link>
               <a
                 className="ml-auto pr-2 d-inline d-lg-none nav-mobile cursor-pointer align-items-center"
@@ -128,25 +131,24 @@ export function Navbar({ links, ...props }: NavbarProps) {
           <ul className="pl-2">
             {navigationLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} passHref>
-                  <a
-                    className="nav-mobile-link"
-                    title={link.title}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.title}
-                  </a>
+                <Link
+                  href={link.href}
+                  className="nav-mobile-link"
+                  title={link.title}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.title}
                 </Link>
               </li>
             ))}
             <li>
               <Link
                 href="https://translate.google.com/translate?hl=es&sl=auto&tl=es&u=https://www.turnberryplaceforsale.com"
-                passHref
+                className="nav-mobile-link"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <a className="nav-mobile-link" target="_blank">
-                  Español
-                </a>
+                Español
               </Link>
             </li>
           </ul>

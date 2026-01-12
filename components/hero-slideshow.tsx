@@ -92,12 +92,10 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
             />
           </div>
         ))}
-        <Link href="/photos">
-          <a className="ml-2 text-white hover:text-gray-300">
-            <svg height="40" width="30" fill="currentColor" viewBox="0 0 192 512">
-              <path d="M0 128.032v255.93c0 28.425 34.488 42.767 54.627 22.627l128-127.962c12.496-12.496 12.497-32.758 0-45.255l-128-127.968C34.528 85.305 0 99.55 0 128.032zM160 256L32 384V128l128 128z" />
-            </svg>
-          </a>
+        <Link href="/photos" className="ml-2 text-white hover:text-gray-300">
+          <svg height="40" width="30" fill="currentColor" viewBox="0 0 192 512">
+            <path d="M0 128.032v255.93c0 28.425 34.488 42.767 54.627 22.627l128-127.962c12.496-12.496 12.497-32.758 0-45.255l-128-127.968C34.528 85.305 0 99.55 0 128.032zM160 256L32 384V128l128 128z" />
+          </svg>
         </Link>
       </div>
     </header>

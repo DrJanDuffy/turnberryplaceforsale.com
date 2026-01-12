@@ -37,10 +37,8 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
                 </div>
                 <div className="text-center pb-4">
                   <p className="none-scheduled">No open houses scheduled</p>
-                  <Link href="/request-details">
-                    <a className="btn btn-custom btn-lg" title="Request Showing">
-                      Request Showing
-                    </a>
+                  <Link href="/request-details" className="btn btn-custom btn-lg" title="Request Showing">
+                    Request Showing
                   </Link>
                 </div>
               </div>

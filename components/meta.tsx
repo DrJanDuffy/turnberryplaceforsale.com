@@ -12,14 +12,15 @@ interface MetaProps {
 export function Meta({ title, tags }: MetaProps) {
   const router = useRouter()
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.turnberryplaceforsale.com"
+  const canonicalUrl = `${baseUrl}${router.asPath !== "/" ? router.asPath : ""}`
+
   return (
     <Head>
       <link
         key="canonical_link"
         rel="canonical"
-        href={`${process.env.NEXT_PUBLIC_BASE_URL}${
-          router.asPath !== "/" ? router.asPath : ""
-        }`}
+        href={canonicalUrl}
       />
       {tags?.length ? (
         tags.map((tag, index) => {
@@ -56,7 +57,7 @@ export function Meta({ title, tags }: MetaProps) {
           <meta
             key="og_url"
             property="og:url"
-            content={process.env.NEXT_PUBLIC_BASE_URL || "https://www.turnberryplaceforsale.com"}
+            content={canonicalUrl}
           />
           <meta
             key="og_type"

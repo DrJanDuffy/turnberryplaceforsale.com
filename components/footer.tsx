@@ -33,8 +33,8 @@ export function Footer({ links }: FooterProps) {
               <div className="row">
                 {footerLinks.map((link) => (
                   <div key={link.href} className="col-6 col-sm-4 text-center">
-                    <Link href={link.href} passHref>
-                      <a className="nav-link font-size-90 text-underline">{link.title}</a>
+                    <Link href={link.href} className="nav-link font-size-90 text-underline">
+                      {link.title}
                     </Link>
                   </div>
                 ))}
@@ -78,10 +78,12 @@ export function Footer({ links }: FooterProps) {
               </a>
             </div>
             <div className="mt-3 font-size-80">
-              <Link href="/privacy" passHref>
-                <a className="text-underline privacy-link" title="Privacy Policy and Cookie Policy">
-                  Privacy, Cookie & Web Accessibility Policy
-                </a>
+              <Link
+                href="/privacy"
+                className="text-underline privacy-link"
+                title="Privacy Policy and Cookie Policy"
+              >
+                Privacy, Cookie & Web Accessibility Policy
               </Link>
             </div>
             <div className="mt-3 font-size-80 text-muted">

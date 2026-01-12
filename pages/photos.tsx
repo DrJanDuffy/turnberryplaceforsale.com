@@ -37,10 +37,8 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
               <h1 className="text-center mb-0">Photo Gallery</h1>
               <div className="d-slideshow">
                 <div className="font-size-90 text-center d-none d-md-flex align-items-md-center justify-content-md-center">
-                  <Link href="/tour">
-                    <a className="text-underline" target="_blank">
-                      Launch Slideshow Viewer
-                    </a>
+                  <Link href="/tour" className="text-underline" target="_blank" rel="noopener noreferrer">
+                    Launch Slideshow Viewer
                   </Link>
                   <div className="ml-1">
                     <span className="icon-custom">
