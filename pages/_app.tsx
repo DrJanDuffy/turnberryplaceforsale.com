@@ -10,6 +10,7 @@ import { syncDrupalPreviewRoutes } from "next-drupal"
 import "nprogress/nprogress.css"
 
 import "styles/globals.css"
+import "styles/fonts.css"
 
 NProgress.configure({ showSpinner: false })
 

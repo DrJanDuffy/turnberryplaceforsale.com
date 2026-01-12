@@ -19,6 +19,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { Meta } from "components/meta"
 import { ContactForm } from "components/contact-form"
 import { TowerSection } from "components/tower-section"
+import { HeroSlideshow } from "components/hero-slideshow"
 
 const RESOURCE_TYPES = ["node--page", "node--landing_page", "node--article"]
 
@@ -64,38 +65,17 @@ export default function NodePage({ node, menus }: NodePageProps) {
 
 // Home page content component
 function HomePageContent() {
+  const heroPhotos = [
+    "/images/turnberry/photo-2.jpg",
+    "/images/turnberry/photo-3.jpg",
+    "/images/turnberry/photo-4.jpg",
+    "/images/turnberry/photo-5.jpg",
+  ]
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 text-white">
-        <div className="absolute inset-0 opacity-30">
-          <div 
-            className="w-full h-full bg-gray-900 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/images/turnberry/asset-1.jpg)' }}
-          />
-        </div>
-        <div className="container px-6 mx-auto text-center relative z-10">
-          <h1 className="text-5xl font-bold mb-4 md:text-6xl lg:text-7xl">
-            TURNBERRY PLACE LAS VEGAS
-          </h1>
-          <div className="flex items-center justify-center gap-2 mb-6 text-xl md:text-2xl">
-            <span className="w-12 h-px bg-white"></span>
-            <span>LAS VEGAS, NV</span>
-            <span className="w-12 h-px bg-white"></span>
-          </div>
-          <p className="text-2xl mb-8 md:text-3xl font-light">
-            4 Luxury Towers from $800,000 to $10M+
-          </p>
-          <Link href="/towers">
-            <a className="inline-block border-2 border-white px-8 py-3 text-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
-              UNITS FOR SALE
-            </a>
-          </Link>
-          <p className="text-lg mt-4 text-gray-300">
-            Las Vegas, NV 89109
-          </p>
-        </div>
-      </section>
+      {/* Hero Section with Slideshow */}
+      <HeroSlideshow photos={heroPhotos} />
 
       {/* Main Content */}
       <section className="py-12 md:py-20">
