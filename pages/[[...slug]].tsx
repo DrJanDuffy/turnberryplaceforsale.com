@@ -83,6 +83,15 @@ export async function getStaticProps(
     }
   }
 
+  // Check if this is a static page route that should be handled elsewhere
+  const slug = context.params?.slug as string[] | undefined
+  const staticRoutes = ['towers', 'amenities', 'photos', 'floor-plans', 'stirling-club', 'neighborhood']
+  if (slug && slug.length === 1 && staticRoutes.includes(slug[0])) {
+    return {
+      notFound: true,
+    }
+  }
+
   const path = await drupal.translatePathFromContext(context)
 
   if (!path || !RESOURCE_TYPES.includes(path.jsonapi.resourceName)) {
