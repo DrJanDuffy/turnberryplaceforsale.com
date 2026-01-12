@@ -3,6 +3,7 @@ import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
+import { JsonLdSchema } from "components/json-ld-schema"
 import Link from "next/link"
 
 interface OpenHousePageProps extends LayoutProps {}
@@ -13,7 +14,12 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
       <Meta title="Open House - Turnberry Place Las Vegas" />
       <Head>
         <title>Open House - Turnberry Place Las Vegas</title>
+        <meta
+          name="description"
+          content="Schedule a private showing at Turnberry Place Las Vegas luxury condos. No open houses currently scheduled. Call/text 702-222-1964 to request a showing"
+        />
       </Head>
+      <JsonLdSchema type="property" />
       <div
         className="card-content card-open-house py-5"
         style={{
@@ -37,9 +43,15 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
                 </div>
                 <div className="text-center pb-4">
                   <p className="none-scheduled">No open houses scheduled</p>
-                  <Link href="/request-details" className="btn btn-custom btn-lg" title="Request Showing">
-                    Request Showing
-                  </Link>
+                  <p className="mb-3">Schedule a private showing today!</p>
+                  <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                    <Link href="/request-details" className="btn btn-custom btn-lg" title="Request Showing">
+                      Request Showing
+                    </Link>
+                    <a href="tel:7022221964" className="btn btn-custom btn-lg" title="Call or text 702-222-1964">
+                      Call/Text (702) 222-1964
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

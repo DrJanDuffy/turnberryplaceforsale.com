@@ -3,6 +3,7 @@ import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
+import { JsonLdSchema } from "components/json-ld-schema"
 import { ContactForm } from "components/contact-form"
 import Image from "next/image"
 
@@ -14,7 +15,12 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
       <Meta title="Request Details - Turnberry Place Las Vegas" />
       <Head>
         <title>Request Details - Turnberry Place Las Vegas</title>
+        <meta
+          name="description"
+          content="Request pricing and details for luxury condos at Turnberry Place Las Vegas. Get information on 1-4 bedroom residences from $800K-$10M+. Call/text 702-222-1964"
+        />
       </Head>
+      <JsonLdSchema type="property" />
       <div 
         className="card-content card-contact-form py-5" 
         style={{

@@ -41,23 +41,22 @@ export function Navbar({ links, ...props }: NavbarProps) {
         <div className="row align-items-center">
           <div className="col-10 col-md-4 col-lg-3">
             <div className="d-flex align-items-center pl-0 pl-sm-1 pl-lg-2 pl-xl-3">
-              <div className="">
+              <div className="agent-photo-wrapper">
                 <Image
                   src="https://assets.cribflyer-proxy.com/cdn-cgi/image/height=300,fit=contain,rotate=0,format=auto,quality=85/4616/2/2953539/asset.jpg"
                   className="agent-photo"
                   width={75}
                   height={75}
                   alt="Dr. Jan Duffy"
-                  style={{ maxWidth: "100px" }}
                 />
               </div>
               <div className="agent-text">
-                <div>Dr. Jan Duffy, REALTOR</div>
-                <div className="d-none d-xl-block">
+                <div className="agent-name">Dr. Jan Duffy, REALTOR</div>
+                <div className="d-none d-xl-block agent-company">
                   The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
                 </div>
-                <div itemScope itemType="https://schema.org/LocalBusiness">
-                  <a href="tel:7022221988">(702) 222-1988</a>
+                <div className="agent-phone">
+                  <a href="tel:7022221964" title="Call or text Dr. Jan Duffy">(702) 222-1964</a>
                 </div>
               </div>
             </div>

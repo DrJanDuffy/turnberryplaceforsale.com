@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
+import { JsonLdSchema } from "components/json-ld-schema"
 import Image from "next/image"
 
 interface MapPageProps extends LayoutProps {}
@@ -31,7 +32,12 @@ export default function MapPage({ menus }: MapPageProps) {
       <Meta title="Map & Nearby Places - Turnberry Place Las Vegas" />
       <Head>
         <title>Map & Nearby Places - Turnberry Place Las Vegas</title>
+        <meta
+          name="description"
+          content="Turnberry Place location map: 2747-2877 Paradise Road, Las Vegas NV 89109. Nearby schools, parks, restaurants, coffee shops & more. Call/text 702-222-1964"
+        />
       </Head>
+      <JsonLdSchema type="property" />
       <div className="card-content card-map pt-0 pt-md-5">
         <div className="container-fluid px-0 mx-0">
           <div className="row">

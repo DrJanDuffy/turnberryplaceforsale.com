@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
+import { JsonLdSchema } from "components/json-ld-schema"
 
 interface SharePageProps extends LayoutProps {}
 
@@ -67,7 +68,12 @@ export default function SharePage({ menus }: SharePageProps) {
       <Meta title="Share - Turnberry Place Las Vegas" />
       <Head>
         <title>Share - Turnberry Place Las Vegas</title>
+        <meta
+          name="description"
+          content="Share Turnberry Place Las Vegas luxury condos with friends. Social media sharing & send-to-friend form. Call/text 702-222-1964"
+        />
       </Head>
+      <JsonLdSchema type="property" />
       <div className="card-content py-5">
         <div className="container">
           <div className="row justify-content-center">

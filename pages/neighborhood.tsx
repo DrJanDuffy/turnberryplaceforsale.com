@@ -3,6 +3,7 @@ import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
+import { JsonLdSchema } from "components/json-ld-schema"
 import Image from "next/image"
 
 interface NeighborhoodPageProps extends LayoutProps {}
@@ -22,7 +23,12 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
       <Meta title="Neighborhood - Turnberry Place Las Vegas" />
       <Head>
         <title>Neighborhood - Turnberry Place Las Vegas</title>
+        <meta
+          name="description"
+          content="Turnberry Place neighborhood: One block from Las Vegas Strip, near Wynn/Encore. 20+ Zagat restaurants, T-Mobile Arena, Allegiant Stadium nearby. Call/text 702-222-1964"
+        />
       </Head>
+      <JsonLdSchema type="property" />
       <div className="card-content card-areas py-5">
         <div className="container-fluid">
           <div className="row align-items-center justify-content-center">
@@ -56,20 +62,33 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
                     <p>
                       Turnberry Place's location at 2747–2877 Paradise Road positions it at the heart of Las Vegas' most dynamic corridor. The property lies within a one-mile radius of over twenty Zagat-rated restaurants, including establishments at the Wynn, Encore, and Resorts World. The Strip's iconic attractions—such as the T-Mobile Arena (home of the Vegas Golden Knights) and Allegiant Stadium (home of the Las Vegas Raiders)—are mere minutes away, alongside the Las Vegas Convention Center and McCarran International Airport. Despite its central location, the community maintains a tranquil ambiance, shielded from the Strip's bustle by its elevated design and guarded entrance.
                     </p>
+                    <h3>Transportation and Accessibility</h3>
                     <p>
                       The area scores moderately on walkability (46–52) and transit (48–49), reflecting its car-dependent nature, though valet parking and limousine services are included for residents. Major highways, including Interstate 15 and the Las Vegas Beltway, provide swift access to the broader metropolitan area, while the nearby Las Vegas Golf Course adds a touch of greenery to the urban landscape.
                     </p>
+                    <h3>Proximity to Major Attractions</h3>
+                    <p>
+                      Turnberry Place's strategic location provides residents with immediate access to Las Vegas's most iconic attractions. The T-Mobile Arena, home of the Vegas Golden Knights NHL team, is just minutes away, offering residents convenient access to professional sports and major entertainment events. Allegiant Stadium, home of the Las Vegas Raiders NFL team, is similarly accessible, providing residents with opportunities to enjoy professional football and major concerts. The Las Vegas Convention Center, one of the largest convention facilities in the world, is nearby, making Turnberry Place ideal for business professionals who attend or participate in conventions and trade shows.
+                    </p>
                     <h2>Exclusive Community Features</h2>
-                    <h2>The Stirling Club</h2>
+                    <h3>The Stirling Club</h3>
                     <p>
                       At the heart of Turnberry Place lies the Stirling Club, an 80,000-square-foot private membership facility exclusively for residents. This luxury hub features a state-of-the-art fitness center, resort-style indoor and outdoor pools, clay tennis and pickleball courts, a full-service spa, and multiple dining venues. The club's social spaces—including a business center with conference rooms, a media lounge, and a martini bar—foster a vibrant community atmosphere, allowing residents to host events or unwind without leaving the premises.
                     </p>
                     <h2>Architectural Distinction</h2>
                     <p>
-                      Designed with Art Deco influences and Miami-inspired flair, the four 38- to 45-story towers feature curved facades and symmetrical layouts that create a striking silhouette against the Las Vegas skyline. Units prioritize outdoor living, with many offering wrap-around terraces showcasing panoramic views of the Strip, Red Rock Canyon, and the Spring Mountain Range. Penthouses above the 30th floor feature elevated ceilings (up to 12 feet) and expansive floor plans exceeding 8,000 square feet
+                      Designed with Art Deco influences and Miami-inspired flair, the four 38- to 45-story towers feature curved facades and symmetrical layouts that create a striking silhouette against the Las Vegas skyline. Units prioritize outdoor living, with many offering wrap-around terraces showcasing panoramic views of the Strip, Red Rock Canyon, and the Spring Mountain Range. Penthouses above the 30th floor feature elevated ceilings (up to 12 feet) and expansive floor plans exceeding 8,000 square feet.
+                    </p>
+                    <h3>Design Philosophy and Aesthetic</h3>
+                    <p>
+                      Turnberry Place's architectural design reflects a sophisticated blend of Art Deco elegance and contemporary luxury, creating a distinctive aesthetic that stands out in the Las Vegas skyline. The towers' curved facades and symmetrical layouts create visual interest from every angle, while the development's strategic positioning maximizes views and natural light. The design philosophy emphasizes both exterior beauty and interior functionality, ensuring that residences are both visually striking and highly livable.
+                    </p>
+                    <h3>Outdoor Living Spaces</h3>
+                    <p>
+                      Turnberry Place's emphasis on outdoor living reflects Las Vegas's year-round pleasant weather and the desire for residents to enjoy the city's dramatic views and natural beauty. Many residences feature wrap-around terraces that provide private outdoor retreats with panoramic views of the Strip, Red Rock Canyon, and the Spring Mountain Range. These outdoor spaces are designed for both relaxation and entertaining, with many units featuring outdoor kitchens, fire features, and comfortable seating areas that extend the living space outdoors.
                     </p>
                     <h2>Nearby Attractions and Lifestyle Amenities</h2>
-                    <h2>Dining and Entertainment</h2>
+                    <h3>Dining and Entertainment</h3>
                     <p>Within a 10-minute drive, residents can access:</p>
                     <ul>
                       <li>
@@ -85,7 +104,11 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
                         <p><strong>Retail Therapy:</strong> Fashion Show Mall, Crystals at CityCenter</p>
                       </li>
                     </ul>
-                    <h2>Outdoor and Family Activities</h2>
+                    <h3>Cultural and Entertainment Venues</h3>
+                    <p>
+                      Beyond dining and nightlife, Turnberry Place residents enjoy access to world-class cultural and entertainment venues. The Bellagio Gallery of Fine Art showcases rotating exhibitions of renowned artists, while The Smith Center for the Performing Arts hosts Broadway shows, concerts, and cultural performances. These venues provide residents with opportunities to enjoy high culture and entertainment without traveling far from home, enhancing the sophisticated lifestyle that Turnberry Place residents value.
+                    </p>
+                    <h3>Outdoor and Family Activities</h3>
                     <p>The neighborhood caters to diverse interests:</p>
                     <ul>
                       <li>
@@ -101,6 +124,14 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
                     <h2>Security and Privacy</h2>
                     <p>
                       Turnberry Place's guard-gated entrance, 24/7 security personnel, and video surveillance systems ensure a secure environment. The property's raised elevation and strategic positioning minimize street noise, while keycard access and private elevators to residences enhance privacy. A dedicated concierge team handles package delivery, housekeeping coordination, and transportation arrangements, allowing residents to enjoy a seamless lifestyle.
+                    </p>
+                    <h3>Comprehensive Security Systems</h3>
+                    <p>
+                      Turnberry Place's security systems are comprehensive and continuously updated to ensure the highest levels of protection. The guard-gated entrance provides controlled access, while 24-hour security personnel patrol the property and monitor security systems. Video surveillance covers common areas, entrances, and parking facilities, providing additional security coverage. These systems work together to create a safe environment that allows residents to enjoy their homes with confidence.
+                    </p>
+                    <h3>Privacy Features and Seclusion</h3>
+                    <p>
+                      The development's privacy features, including keycard access, private elevator access to many residences, and raised elevation, create a sense of seclusion despite the proximity to the Strip. The strategic positioning and soundproofing minimize external noise, creating a tranquil environment within the residences. These privacy features are essential for high-profile residents, executives, and anyone who values peace and quiet in their home environment.
                     </p>
                     <h2>Views and Natural Surroundings</h2>
                     <p>Every residence capitalizes on Las Vegas' dramatic vistas:</p>

@@ -20,6 +20,21 @@ main .card-top-header:first-of-type {
   margin-top: var(--navbar-height, 120px);
 }
 
+/* Desktop-specific adjustments */
+@media (min-width: 992px) {
+  /* Ensure proper spacing on desktop */
+  .card-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  /* Desktop container adjustments */
+  .container,
+  .container-fluid {
+    max-width: 100%;
+  }
+}
+
 /* Navigation */
 .card-top-nav {
   position: fixed;
@@ -39,6 +54,19 @@ main .card-top-header:first-of-type {
   padding-bottom: 0.5rem;
 }
 
+/* Desktop navbar container */
+@media (min-width: 992px) {
+  .card-top-nav .container-fluid {
+    padding-left: 0;
+    padding-right: 0.75rem;
+  }
+  
+  .card-top-nav .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .card-top-nav a {
   color: var(--nav-link-color, rgba(255, 255, 255, 1));
   transition: ease-in-out color 0.15s;
@@ -56,17 +84,60 @@ main .card-top-header:first-of-type {
 }
 
 .card-top-nav .agent-photo {
-  border-radius: var(--agent-border-radius, 3px);
+  border-radius: 50%;
   height: 75px;
-  width: auto;
+  width: 75px;
   max-height: 75px;
-  object-fit: contain;
+  max-width: 75px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-top-nav .agent-photo-wrapper {
+  flex-shrink: 0;
+  margin-right: 10px;
 }
 
 .card-top-nav .agent-text {
-  padding-left: 10px;
+  padding-left: 0;
   font-size: 0.85rem;
-  line-height: 1.2;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-top-nav .agent-text .agent-name {
+  font-weight: 500;
+  margin-bottom: 2px;
+  font-size: 0.9rem;
+}
+
+/* Desktop agent text styling */
+@media (min-width: 1200px) {
+  .card-top-nav .agent-text {
+    font-size: 0.9rem;
+  }
+  
+  .card-top-nav .agent-text .agent-name {
+    font-size: 0.95rem;
+  }
+  
+  .card-top-nav .agent-text .agent-company {
+    font-size: 0.8rem;
+  }
+}
+
+.card-top-nav .agent-text .agent-company {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  margin-bottom: 2px;
+}
+
+.card-top-nav .agent-text .agent-phone a {
+  color: var(--body-copy-color, rgba(255, 255, 255, 1));
+  text-decoration: none;
+  font-size: 0.85rem;
 }
 
 .card-top-nav .row {
@@ -80,6 +151,37 @@ main .card-top-header:first-of-type {
   align-items: center;
   justify-content: flex-end;
   min-height: 75px;
+  gap: 0;
+  width: 100%;
+}
+
+/* Desktop navigation links */
+@media (min-width: 992px) {
+  .card-top-nav .nav-wrapper {
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+  
+  .card-top-nav .nav-link {
+    padding: 0.5rem 0.75rem;
+    display: inline-block;
+  }
+}
+
+.card-top-nav .nav-link {
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  display: inline-block;
+}
+
+.card-top-nav .nav-link:hover {
+  opacity: 0.8;
+}
+
+.card-top-nav .nav-link.active {
+  border-bottom: 2px solid var(--nav-link-color, rgba(255, 255, 255, 1));
+  padding-bottom: calc(0.5rem - 2px);
 }
 
 /* Responsive navbar height adjustments */
@@ -146,6 +248,11 @@ main .card-top-header:first-of-type {
   text-decoration: none;
 }
 
+.card-top-nav .agent-text .agent-phone a:hover {
+  color: var(--body-copy-color, rgba(255, 255, 255, 1));
+  text-decoration: underline;
+}
+
 /* Hero Header */
 .card-top-header {
   height: 100vh;
@@ -171,18 +278,74 @@ main .card-top-header:first-of-type {
   background-color: rgba(0, 0, 0, var(--overlay-opacity, 0.35));
 }
 
-.card-top-header .hero-content {
-  z-index: 13;
+/* Hero content already defined above */
+
+.card-top-header h1 {
+  color: var(--heading-overlay-color, rgba(255, 255, 255, 1));
+  font-family: var(--headlines-font, 'Cinzel', serif);
+  font-weight: var(--headlines-font-weight, 500);
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.card-top-header h1,
-.card-top-header h4,
+/* Desktop hero title */
+@media (min-width: 992px) {
+  .card-top-header h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .card-top-header h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .card-top-header h1 {
+    font-size: 2rem;
+  }
+}
+
+.card-top-header h4 {
+  color: var(--heading-overlay-color, rgba(255, 255, 255, 1));
+  font-family: var(--headlines-font, 'Cinzel', serif);
+  font-weight: var(--headlines-font-weight, 500);
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
 .card-top-header h5 {
   color: var(--heading-overlay-color, rgba(255, 255, 255, 1));
 }
 
 .card-top-header .horiz-line {
   border-top: 2px solid var(--heading-overlay-color, rgba(255, 255, 255, 1));
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.card-top-header .w-10 {
+  width: 40px;
+}
+
+.card-top-header .container {
+  height: 100%;
+  position: relative;
+  z-index: 20;
+}
+
+.card-top-header .container .row {
+  height: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.card-top-header .hero-content {
+  position: relative;
+  z-index: 13;
 }
 
 .card-top-header .status-banner {
@@ -190,6 +353,27 @@ main .card-top-header:first-of-type {
   border-radius: 4px;
   min-width: 200px;
   background-color: rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1rem;
+  backdrop-filter: blur(5px);
+}
+
+.card-top-header .status-banner h4 {
+  margin-top: 2px;
+  margin-bottom: 0px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Desktop status banner */
+@media (min-width: 992px) {
+  .card-top-header .status-banner {
+    min-width: 220px;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .card-top-header .status-banner h4 {
+    font-size: 1.25rem;
+  }
 }
 
 .thumbnails-bar {
@@ -198,6 +382,9 @@ main .card-top-header:first-of-type {
   width: 100%;
   z-index: 13;
   padding-inline: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .thumbnails-bar .photo-thumbnail {
@@ -205,6 +392,18 @@ main .card-top-header:first-of-type {
   border-radius: 3px;
   cursor: pointer;
   transition: transform 0.3s ease;
+  width: 45px;
+  height: 45px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnails-bar .photo-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .thumbnails-bar .photo-thumbnail:hover {
@@ -454,8 +653,18 @@ main .card-top-header:first-of-type {
 }
 
 .card-agent .company-logo {
-  max-width: 225px;
-  max-height: 225px;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+/* Responsive agent logo */
+@media (max-width: 767.98px) {
+  .card-agent .company-logo {
+    max-width: 250px;
+  }
 }
 
 /* Floor Plans */
@@ -610,34 +819,100 @@ main .card-top-header:first-of-type {
   background-color: var(--footer-bg-color, inherit);
 }
 
+/* Footer Navigation Links */
+.card-site-footer .footer-nav-link {
+  color: var(--footer-text-color, rgba(108, 117, 125, 1));
+  text-decoration: underline;
+  font-size: 0.9rem;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  transition: color 0.15s ease-in-out;
+}
+
+.card-site-footer .footer-nav-link:hover {
+  color: var(--footer-link-hover-color, rgba(0, 123, 255, 1));
+  text-decoration: underline;
+}
+
+/* Footer Phone Link */
+.card-site-footer .footer-phone-link {
+  color: var(--footer-text-color, rgba(108, 117, 125, 1));
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.15s ease-in-out;
+}
+
+.card-site-footer .footer-phone-link:hover {
+  color: var(--footer-link-hover-color, rgba(0, 123, 255, 1));
+  text-decoration: underline;
+}
+
+/* Footer Privacy Link */
+.card-site-footer .footer-privacy-link {
+  color: var(--footer-text-color, rgba(108, 117, 125, 1));
+  text-decoration: underline;
+  transition: color 0.15s ease-in-out;
+}
+
+.card-site-footer .footer-privacy-link:hover {
+  color: var(--footer-link-hover-color, rgba(0, 123, 255, 1));
+  text-decoration: underline;
+}
+
+/* Footer External Links */
+.card-site-footer .footer-external-link {
+  color: var(--footer-text-color, rgba(108, 117, 125, 1));
+  text-decoration: underline;
+  transition: color 0.15s ease-in-out;
+}
+
+.card-site-footer .footer-external-link:hover {
+  color: var(--footer-link-hover-color, rgba(0, 123, 255, 1));
+  text-decoration: underline;
+}
+
+/* Legacy footer link styles for backward compatibility */
 .card-site-footer a,
 .card-site-footer a:hover,
 .card-site-footer a.nav-link,
 .card-site-footer a.nav-link:hover {
-  color: var(--nav-link-color, rgba(108, 117, 125, 1));
+  color: var(--footer-text-color, rgba(108, 117, 125, 1));
   padding-left: 0px;
   display: inline-block;
 }
 
 .card-site-footer img.footer-team-logo {
   max-width: var(--logo-max-width, 300px);
+  width: 100%;
+  height: auto;
   max-height: var(--logo-max-height, 125px);
   filter: invert(var(--invert-logo-colors, 0));
+  object-fit: contain;
 }
 
 .card-site-footer img.footer-wl-logo {
   max-height: 100px;
-  max-width: 75%;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
   filter: invert(var(--invert-logo-colors, 0));
+  object-fit: contain;
 }
 
-.card-site-footer a.powered-by-link,
-.card-site-footer a.privacy-link,
-.card-site-footer a.powered-by-link:hover,
-.card-site-footer a.privacy-link:hover {
-  color: var(--footer-text-color, rgba(108, 117, 125, 1));
-  padding-left: 0px;
-  display: inline-block;
+/* Responsive Footer */
+@media (max-width: 767.98px) {
+  .card-site-footer .footer-nav-link {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.3rem;
+  }
+  
+  .card-site-footer .agent-company-info {
+    font-size: 0.85rem;
+  }
+  
+  .card-site-footer .agent-company-info > div {
+    margin-bottom: 0.5rem;
+  }
 }
 
 /* Responsive */
@@ -658,6 +933,11 @@ main .card-top-header:first-of-type {
     columns: 1;
   }
   .card-site-footer img.footer-team-logo {
-    max-width: 100%;
+    max-width: 250px;
+    width: 100%;
+  }
+  
+  .card-site-footer img.footer-wl-logo {
+    max-width: 250px;
   }
 }

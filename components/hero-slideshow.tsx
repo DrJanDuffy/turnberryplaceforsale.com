@@ -49,53 +49,54 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
       <div className="absolute inset-0 bg-black opacity-35 z-10" />
 
       {/* Hero Content */}
-      <div className="container h-full relative z-20 flex items-center">
-        <div className="w-full text-center hero-content">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
-            Turnberry Place Las Vegas
-          </h1>
-          <div className="flex items-center justify-center mb-4">
-            <div className="w-10 border-t-2 border-white"></div>
-            <h4 className="my-0 mx-4 text-white text-xl md:text-2xl">Las Vegas, NV</h4>
-            <div className="w-10 border-t-2 border-white"></div>
-          </div>
-          <div className="mt-4 flex items-center justify-center">
-            <div className="p-2 border-2 border-white rounded bg-white bg-opacity-30">
-              <h4 className="my-0 text-white text-lg md:text-xl">Units for Sale</h4>
+      <div className="container h-100">
+        <div className="row h-100 align-items-center">
+          <div className="col-12 text-center hero-content">
+            <h1 className="display-4">
+              Turnberry Place Las Vegas 
+            </h1>
+            <div className="d-flex align-items-center justify-content-center">
+              <div className="w-10 horiz-line"></div>
+              <h4 className="my-0 mx-4">
+                Las Vegas, NV
+              </h4>
+              <div className="w-10 horiz-line"></div>
+            </div>
+            <div className="mt-4 d-flex align-items-center justify-content-center">
+              <div className="p-2 status-banner">
+                <h4>
+                  Units for Sale
+                </h4>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Thumbnails Bar */}
-      <div className="thumbnails-bar absolute bottom-4 w-full z-20 flex items-center justify-center gap-2 px-4">
+      <div className="thumbnails-bar d-flex align-items-center justify-content-center">
         {photos.map((photo, index) => (
           <div
             key={index}
-            className={`photo-thumbnail cursor-pointer border-2 rounded transition-transform ${
-              index === currentSlide
-                ? "border-white scale-110 selected"
-                : "border-white border-opacity-30"
-            }`}
+            className={`photo-thumbnail photo-${index + 1} ${index === currentSlide ? "selected" : ""} ${index > 0 ? "ml-2" : ""}`}
+            data-idx={index + 1}
             onClick={() => goToSlide(index)}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            data-idx={index + 1}
           >
-            <Image
+            <img
               src={photo}
-              width={45}
-              height={45}
+              className="img-fluid"
               alt={`Slide ${index + 1}`}
-              className="rounded"
-              objectFit="cover"
             />
           </div>
         ))}
-        <Link href="/photos" className="ml-2 text-white hover:text-gray-300">
-          <svg height="40" width="30" fill="currentColor" viewBox="0 0 192 512">
-            <path d="M0 128.032v255.93c0 28.425 34.488 42.767 54.627 22.627l128-127.962c12.496-12.496 12.497-32.758 0-45.255l-128-127.968C34.528 85.305 0 99.55 0 128.032zM160 256L32 384V128l128 128z" />
-          </svg>
+        <Link href="/photos" className="ml-2">
+          <div>
+            <svg height="40" width="30" className="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" style={{ color: "#ddd" }}>
+              <path fill="currentColor" d="M0 128.032v255.93c0 28.425 34.488 42.767 54.627 22.627l128-127.962c12.496-12.496 12.497-32.758 0-45.255l-128-127.968C34.528 85.305 0 99.55 0 128.032zM160 256L32 384V128l128 128z"/>
+            </svg>
+          </div>
         </Link>
       </div>
     </header>
