@@ -13,6 +13,22 @@ export interface LayoutProps {
 }
 
 export function Layout({ menus, children }: LayoutProps) {
+  React.useEffect(() => {
+    // Adjust header margin for fixed navbar
+    const adjustHeaderMargin = () => {
+      const nav = document.querySelector('.card-top-nav')
+      const header = document.querySelector('.card-top-header')
+      if (nav && header) {
+        const navHeight = (nav as HTMLElement).offsetHeight
+        ;(header as HTMLElement).style.marginTop = `${navHeight}px`
+      }
+    }
+    
+    adjustHeaderMargin()
+    window.addEventListener('resize', adjustHeaderMargin)
+    return () => window.removeEventListener('resize', adjustHeaderMargin)
+  }, [])
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar links={menus.main} />

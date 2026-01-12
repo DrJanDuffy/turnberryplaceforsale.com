@@ -37,16 +37,56 @@ export function Meta({ title, tags }: MetaProps) {
         })
       ) : (
         <>
-          <title>{`${title} | Turnberry Place Las Vegas`}</title>
+          <title>{title || "Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale"}</title>
           <meta
             key="description"
             name="description"
-            content="Luxury high-rise condos for sale in Las Vegas. Built with Next.js, powered by Drupal, developed with Cursor AI, and deployed on Vercel."
+            content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. Featuring 1-4 bedroom residences with Strip views, & exclusive Stirling Club"
+          />
+          <meta
+            key="og_title"
+            property="og:title"
+            content="Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale"
+          />
+          <meta
+            key="og_description"
+            property="og:description"
+            content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. Featuring 1-4 bedroom residences with Strip views, & exclusive Stirling Club"
+          />
+          <meta
+            key="og_url"
+            property="og:url"
+            content={process.env.NEXT_PUBLIC_BASE_URL || "https://www.turnberryplaceforsale.com"}
+          />
+          <meta
+            key="og_type"
+            property="og:type"
+            content="website"
           />
           <meta
             key="og_image"
             property="og:image"
-            content={`${process.env.NEXT_PUBLIC_BASE_URL}/images/meta.jpg`}
+            content="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1200,height=630,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg"
+          />
+          <meta
+            key="twitter_card"
+            name="twitter:card"
+            content="summary_large_image"
+          />
+          <meta
+            key="twitter_title"
+            name="twitter:title"
+            content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. Featuring 1-4 bedroom residences with Strip views, & exclusive Stirling Club"
+          />
+          <meta
+            key="twitter_description"
+            name="twitter:description"
+            content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. Featuring 1-4 bedroom residences with Strip views, & exclusive Stirling Club"
+          />
+          <meta
+            key="twitter_image"
+            name="twitter:image"
+            content="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1200,height=630,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg"
           />
           <meta key="og_image_width" property="og:image:width" content="800" />
           <meta

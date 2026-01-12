@@ -8,16 +8,21 @@ interface HeroSlideshowProps {
 
 export function HeroSlideshow({ photos }: HeroSlideshowProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
+    if (isPaused) return
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % photos.length)
     }, 5000)
     return () => clearInterval(interval)
-  }, [photos.length])
+  }, [photos.length, isPaused])
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
+    setIsPaused(true)
+    // Resume after 10 seconds
+    setTimeout(() => setIsPaused(false), 10000)
   }
 
   return (
@@ -69,10 +74,13 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
             key={index}
             className={`photo-thumbnail cursor-pointer border-2 rounded transition-transform ${
               index === currentSlide
-                ? "border-white scale-110"
+                ? "border-white scale-110 selected"
                 : "border-white border-opacity-30"
             }`}
             onClick={() => goToSlide(index)}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            data-idx={index + 1}
           >
             <Image
               src={photo}
