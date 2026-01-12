@@ -21,14 +21,14 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
   }
 
   return (
-    <header className="card-top-header relative min-h-screen" style={{ marginTop: 0 }}>
+    <header className="card-top-header relative h-screen min-h-[500px] w-full" style={{ marginTop: 0 }}>
       {/* Slideshow */}
-      <div className="slick-slideshow absolute inset-0">
+      <div className="slick-slideshow absolute inset-0 z-0">
         {photos.map((photo, index) => (
           <div
             key={index}
             className={`slide absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
+              index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
             style={{
               backgroundImage: `url(${photo})`,
@@ -44,21 +44,19 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
       <div className="absolute inset-0 bg-black opacity-35 z-10" />
 
       {/* Hero Content */}
-      <div className="container h-full relative z-20">
-        <div className="row h-full items-center justify-center">
-          <div className="col-12 text-center hero-content">
-            <h1 className="display-4 text-white mb-4">
-              Turnberry Place Las Vegas
-            </h1>
-            <div className="flex items-center justify-center mb-4">
-              <div className="w-10 border-t-2 border-white"></div>
-              <h4 className="my-0 mx-4 text-white">Las Vegas, NV</h4>
-              <div className="w-10 border-t-2 border-white"></div>
-            </div>
-            <div className="mt-4 flex items-center justify-center">
-              <div className="p-2 border-2 border-white rounded bg-white bg-opacity-30">
-                <h4 className="my-0 text-white">Units for Sale</h4>
-              </div>
+      <div className="container h-full relative z-20 flex items-center">
+        <div className="w-full text-center hero-content">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
+            Turnberry Place Las Vegas
+          </h1>
+          <div className="flex items-center justify-center mb-4">
+            <div className="w-10 border-t-2 border-white"></div>
+            <h4 className="my-0 mx-4 text-white text-xl md:text-2xl">Las Vegas, NV</h4>
+            <div className="w-10 border-t-2 border-white"></div>
+          </div>
+          <div className="mt-4 flex items-center justify-center">
+            <div className="p-2 border-2 border-white rounded bg-white bg-opacity-30">
+              <h4 className="my-0 text-white text-lg md:text-xl">Units for Sale</h4>
             </div>
           </div>
         </div>
@@ -86,8 +84,8 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
             />
           </div>
         ))}
-        <Link href="#photos">
-          <a className="ml-2 text-white">
+        <Link href="/photos">
+          <a className="ml-2 text-white hover:text-gray-300">
             <svg height="40" width="30" fill="currentColor" viewBox="0 0 192 512">
               <path d="M0 128.032v255.93c0 28.425 34.488 42.767 54.627 22.627l128-127.962c12.496-12.496 12.497-32.758 0-45.255l-128-127.968C34.528 85.305 0 99.55 0 128.032zM160 256L32 384V128l128 128z" />
             </svg>
