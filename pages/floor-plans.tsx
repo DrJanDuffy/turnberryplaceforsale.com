@@ -4,7 +4,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import Image from "next/image"
-import { absoluteURL } from "lib/utils/absolute-url"
+import classNames from "classnames"
 
 const floorPlans = [
   "Turnberry Place Floor Plan A",
@@ -21,37 +21,73 @@ const floorPlans = [
 interface FloorPlansPageProps extends LayoutProps {}
 
 export default function FloorPlansPage({ menus }: FloorPlansPageProps) {
+  const floorPlanImages = [
+    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59361.png",
+    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59362.png",
+    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59363.png",
+    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59364.png",
+    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59365.png",
+    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59366.png",
+    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59367.png",
+    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59368.png",
+    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59369.png",
+  ]
+
   return (
     <Layout menus={menus}>
       <Meta title="Floor Plans - Turnberry Place Las Vegas" />
       <Head>
         <title>Floor Plans - Turnberry Place Las Vegas</title>
       </Head>
-      <section className="py-12 md:py-20">
-        <div className="container px-6 mx-auto">
-          <h1 className="text-4xl font-bold text-center mb-12 md:text-5xl lg:text-6xl">
-            Floor Plans
-          </h1>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {floorPlans.map((plan, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-              >
-                <div className="aspect-video bg-gray-200 flex items-center justify-center">
-                  <span className="text-gray-500">Floor Plan Image</span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{plan}</h3>
-                  <button className="text-blue-600 hover:text-blue-800 font-medium">
-                    View Details →
-                  </button>
+      <div className="card-content card-floor-plans py-5">
+        <div className="container-fluid">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-12 col-lg-11 col-xl-10 text-center">
+              <h1 className="text-center mb-0">Floor Plans</h1>
+              <div className="py-4">
+                <ul className="nav nav-tabs justify-content-center" id="fpTabs" role="tablist">
+                  {floorPlans.map((plan, index) => (
+                    <li key={index} className="nav-item">
+                      <a
+                        className={classNames("nav-link", index === 0 && "active")}
+                        id={`fp-tab-${59361 + index}`}
+                        data-toggle="tab"
+                        href={`#fp-${59361 + index}`}
+                        role="tab"
+                        aria-controls="home"
+                        aria-selected={index === 0}
+                      >
+                        {plan}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <div className="tab-content p-4" id="myTabContent">
+                  {floorPlans.map((plan, index) => (
+                    <div
+                      key={index}
+                      className={classNames("tab-pane fade", index === 0 && "show active")}
+                      id={`fp-${59361 + index}`}
+                      role="tabpanel"
+                      aria-labelledby={`fp-tab-${59361 + index}`}
+                    >
+                      <div className="text-center fp-image">
+                        <Image
+                          src={floorPlanImages[index]}
+                          width={800}
+                          height={600}
+                          alt={plan}
+                          className="img-thumbnail cursor-pointer"
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </Layout>
   )
 }

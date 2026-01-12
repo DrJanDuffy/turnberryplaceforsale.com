@@ -1,81 +1,151 @@
+'use client'
+
 import { GetStaticPropsResult } from "next"
 import Head from "next/head"
+import { useState } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
+import Image from "next/image"
 
 interface MapPageProps extends LayoutProps {}
 
 export default function MapPage({ menus }: MapPageProps) {
+  const [activeTab, setActiveTab] = useState("map")
+  const mapKey = "AIzaSyDSF9E67HCf0-pecnANALPYA-donlDhIww"
+  const baseUrl = "https://www.google.com/maps/embed/v1/"
+  const streetAddress = "Turnberry Place Las Vegas, Las Vegas, NV 89109"
+  const propertyZip = "89109"
+  const mapZoom = 15
+
+  const getMapUrl = (query: string) => {
+    if (query === "map") {
+      return `${baseUrl}place?key=${mapKey}&q=${encodeURI(streetAddress)}&zoom=${mapZoom}`
+    }
+    const keywords = `${query} ${propertyZip}`
+    return `${baseUrl}search?key=${mapKey}&q=${encodeURI(keywords)}&zoom=${mapZoom - 1}`
+  }
+
   return (
     <Layout menus={menus}>
       <Meta title="Map & Nearby Places - Turnberry Place Las Vegas" />
       <Head>
         <title>Map & Nearby Places - Turnberry Place Las Vegas</title>
       </Head>
-      <section className="py-12 md:py-20">
-        <div className="container px-6 mx-auto">
-          <h1 className="text-4xl font-bold text-center mb-8 md:text-5xl lg:text-6xl">
-            Map & Nearby Places
-          </h1>
-          
-          {/* Google Maps Embed */}
-          <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
-            <iframe
-              width="100%"
-              height="600"
-              style={{ border: 0 }}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDSF9E67HCf0-pecnANALPYA-donlDhIww&q=Turnberry+Place+Las+Vegas,+Las+Vegas,+NV+89109&zoom=15"
-            ></iframe>
-          </div>
-
-          {/* Nearby Places Categories */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Schools</h3>
-              <p className="text-gray-600">Nearby educational institutions</p>
+      <div className="card-content card-map pt-0 pt-md-5">
+        <div className="container-fluid px-0 mx-0">
+          <div className="row">
+            <div className="col-12">
+              <h1 className="text-center d-none d-md-block">Map & Nearby Places</h1>
+              <div className="map-controls d-none d-md-block">
+                <ul className="nav nav-pills justify-content-center">
+                  <li className="nav-item">
+                    <a
+                      className={activeTab === "map" ? "nav-link active btn-map-address" : "nav-link btn-map-address"}
+                      onClick={() => setActiveTab("map")}
+                    >
+                      Map
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className={activeTab === "schools" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
+                      data-qry="schools"
+                      onClick={() => setActiveTab("schools")}
+                    >
+                      Schools
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className={activeTab === "parks" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
+                      data-qry="parks"
+                      onClick={() => setActiveTab("parks")}
+                    >
+                      Parks
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className={activeTab === "bars" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
+                      data-qry="bars"
+                      onClick={() => setActiveTab("bars")}
+                    >
+                      Bars
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className={activeTab === "restaurants" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
+                      data-qry="restaurants"
+                      onClick={() => setActiveTab("restaurants")}
+                    >
+                      Restaurants
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className={activeTab === "coffee" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
+                      data-qry="coffee shops"
+                      onClick={() => setActiveTab("coffee")}
+                    >
+                      Coffee
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className={activeTab === "atms" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
+                      data-qry="bank with atm"
+                      onClick={() => setActiveTab("atms")}
+                    >
+                      ATMs
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a
+                      className={activeTab === "gyms" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
+                      data-qry="gyms"
+                      onClick={() => setActiveTab("gyms")}
+                    >
+                      Gyms
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="map-container">
+                <div className="info-box d-flex align-items-center">
+                  <div className="media m-0 p-2">
+                    <Image
+                      className="img-fluid _info-window-image"
+                      src="/images/turnberry/photo-21.jpg"
+                      width={75}
+                      height={75}
+                      alt="Turnberry Place"
+                    />
+                    <div className="media-body my-auto pl-3">
+                      <div className="info-window-address">
+                        <div>Turnberry Place Las Vegas</div>
+                        <div className="font-size-80">Las Vegas, NV 89109</div>
+                      </div>
+                      <div className="info-window-property-detail">
+                        <span> Property For Sale</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <iframe
+                  id="gMap"
+                  width="100%"
+                  height="600"
+                  frameBorder="0"
+                  src={getMapUrl(activeTab)}
+                  allowFullScreen
+                ></iframe>
+              </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Parks</h3>
-              <p className="text-gray-600">Recreational areas and green spaces</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Restaurants</h3>
-              <p className="text-gray-600">Fine dining and casual eateries</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Coffee</h3>
-              <p className="text-gray-600">Coffee shops and cafes</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Bars</h3>
-              <p className="text-gray-600">Nightlife and entertainment</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">ATMs</h3>
-              <p className="text-gray-600">Banking and financial services</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Gyms</h3>
-              <p className="text-gray-600">Fitness centers and health clubs</p>
-            </div>
-          </div>
-
-          {/* Location Details */}
-          <div className="mt-12 bg-gray-50 p-8 rounded-lg">
-            <h2 className="text-2xl font-bold mb-4">Turnberry Place Las Vegas</h2>
-            <p className="text-lg text-gray-700 mb-2">
-              <strong>Address:</strong> 2747–2877 Paradise Road, Las Vegas, NV 89109
-            </p>
-            <p className="text-lg text-gray-700">
-              Located just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts.
-            </p>
           </div>
         </div>
-      </section>
+      </div>
     </Layout>
   )
 }
