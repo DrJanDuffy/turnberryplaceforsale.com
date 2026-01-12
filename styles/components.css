@@ -6,12 +6,17 @@
 }
 
 /* Add top padding to pages that don't have hero header to account for fixed navbar */
-main > .card-content:first-child:not(.card-top-header) {
+main .card-content:not(.card-top-header):first-of-type {
   padding-top: calc(var(--navbar-height, 120px) + 2rem) !important;
 }
 
 /* Ensure hero header accounts for navbar */
 .card-top-header {
+  margin-top: var(--navbar-height, 120px);
+}
+
+/* Override for pages that start with hero (home page) */
+main .card-top-header:first-of-type {
   margin-top: var(--navbar-height, 120px);
 }
 
