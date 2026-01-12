@@ -18,7 +18,7 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
       <div 
         className="card-content card-contact-form py-5" 
         style={{
-          backgroundImage: "url(/images/turnberry/photo-22.jpg)",
+          backgroundImage: "url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1500,height=1000,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg)",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",

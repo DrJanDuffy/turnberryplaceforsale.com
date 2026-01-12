@@ -1,7 +1,8 @@
-import { GetStaticPropsResult } from "next"
+'use client'
+
 import Head from "next/head"
+import { useState, useEffect } from "react"
 import { Layout, LayoutProps } from "components/layout"
-import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import Image from "next/image"
 import classNames from "classnames"
@@ -18,9 +19,18 @@ const floorPlans = [
   "Turnberry Place Floor Plan H",
 ]
 
-interface FloorPlansPageProps extends LayoutProps {}
+export default function FloorPlansPage() {
+  const [menus, setMenus] = useState({ main: [], footer: [] })
 
-export default function FloorPlansPage({ menus }: FloorPlansPageProps) {
+  useEffect(() => {
+    // Fetch menus on client side
+    fetch('/api/menus')
+      .then(res => res.json())
+      .then(data => setMenus(data))
+      .catch(() => setMenus({ main: [], footer: [] }))
+  }, [])
+  const [activeTab, setActiveTab] = useState(0)
+  
   const floorPlanImages = [
     "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59361.png",
     "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59362.png",
@@ -48,25 +58,25 @@ export default function FloorPlansPage({ menus }: FloorPlansPageProps) {
                 <ul className="nav nav-tabs justify-content-center" id="fpTabs" role="tablist">
                   {floorPlans.map((plan, index) => (
                     <li key={index} className="nav-item">
-                      <a
-                        className={classNames("nav-link", index === 0 && "active")}
+                      <button
+                        className={classNames("nav-link", activeTab === index && "active")}
                         id={`fp-tab-${59361 + index}`}
-                        data-toggle="tab"
-                        href={`#fp-${59361 + index}`}
+                        onClick={() => setActiveTab(index)}
                         role="tab"
-                        aria-controls="home"
-                        aria-selected={index === 0}
+                        aria-controls={`fp-${59361 + index}`}
+                        aria-selected={activeTab === index}
+                        type="button"
                       >
                         {plan}
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ul>
-                <div className="tab-content p-4" id="myTabContent">
+                <div className={classNames("tab-content p-4", floorPlans.length === 1 && "just-one")} id="myTabContent">
                   {floorPlans.map((plan, index) => (
                     <div
                       key={index}
-                      className={classNames("tab-pane fade", index === 0 && "show active")}
+                      className={classNames("tab-pane fade", activeTab === index && "show active")}
                       id={`fp-${59361 + index}`}
                       role="tabpanel"
                       aria-labelledby={`fp-tab-${59361 + index}`}
@@ -92,10 +102,3 @@ export default function FloorPlansPage({ menus }: FloorPlansPageProps) {
   )
 }
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<FloorPlansPageProps>> {
-  return {
-    props: {
-      menus: await getMenus({} as any),
-    },
-  }
-}

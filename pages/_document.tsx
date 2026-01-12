@@ -13,26 +13,28 @@ export default class Document extends NextDocument {
           <meta name="robots" content="noimageindex" />
           <meta name="author" content="Dr. Jan Duffy, REALTOR" />
           {/* Google Analytics */}
-          {process.env.NEXT_PUBLIC_GA_ID && (
-            <>
-              <script
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-              />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                      page_location: window.location.href
-                    });
-                  `,
-                }}
-              />
-            </>
-          )}
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-RZ48JCVXWJ"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                // Google Analytics 4 property
+                gtag('config', 'G-RZ48JCVXWJ', {
+                  page_location: typeof window !== 'undefined' ? window.location.href : 'https://www.turnberryplaceforsale.com'
+                });
+                // Universal Analytics property
+                gtag('config', 'UA-46249003-1', {
+                  page_path: typeof window !== 'undefined' ? window.location.pathname : '/2877-paradise-rd'
+                });
+                gtag('config', 'AW-859648231');
+              `,
+            }}
+          />
         </Head>
         <body data-spy="scroll" data-target=".card-top-nav" data-offset="80">
           <Main />

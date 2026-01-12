@@ -8,10 +8,17 @@ import Link from "next/link"
 
 // Photos matching the live site
 const photos = [
-  "/images/turnberry/photo-21.jpg",
-  "/images/turnberry/photo-22.jpg",
-  "/images/turnberry/asset-1.jpg",
-  "/images/turnberry/asset-10.jpg",
+  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=400,fit=contain,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg",
+  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=400,fit=contain,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg",
+  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=400,fit=contain,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg",
+  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=400,fit=contain,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg",
+]
+
+const photoFullSize = [
+  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=960,fit=contain,rotate=0,format=auto,quality=60/4616/60013/2953237/photo.jpg",
+  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=960,fit=contain,rotate=0,format=auto,quality=60/4616/60013/2953238/photo.jpg",
+  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=850,fit=contain,rotate=0,format=auto,quality=60/4616/60013/2953240/photo.jpg",
+  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=686,fit=contain,rotate=0,format=auto,quality=60/4616/60013/2953239/photo.jpg",
 ]
 
 interface PhotosPageProps extends LayoutProps {}
@@ -60,7 +67,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                 {photos.map((photo, index) => (
                   <div key={index} className="item">
                     <div className="photo">
-                      <a className="swipebox desktop" href={photo} title="Turnberry Place Las Vegas, Las Vegas, NV">
+                      <a className="swipebox desktop" href={photoFullSize[index]} title="Turnberry Place Las Vegas, Las Vegas, NV">
                         <Image
                           src={photo}
                           width={400}
@@ -121,9 +128,9 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                   <div className="mobile-gallery">
                     {photos.map((photo, index) => (
                       <div key={index} className="text-center mobile-slide">
-                        <a className="swipebox mobile" href={photo} title="Turnberry Place Las Vegas, Las Vegas, NV">
+                        <a className="swipebox mobile" href={`https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1200,fit=contain,rotate=0,format=auto,quality=85/4616/60013/295323${7 + (index === 2 ? 3 : index === 3 ? 2 : index)}/photo.jpg`} title="Turnberry Place Las Vegas, Las Vegas, NV">
                           <Image
-                            src={photo}
+                            src={`https://photos.cribflyer-proxy.com/cdn-cgi/image/width=600,height=450,fit=crop,rotate=0,format=auto,quality=85/4616/60013/295323${7 + (index === 2 ? 3 : index === 3 ? 2 : index)}/photo.jpg`}
                             width={600}
                             height={450}
                             alt="Turnberry Place Las Vegas, Las Vegas, NV"
