@@ -17,11 +17,7 @@ import { getParams } from "lib/get-params"
 import { Node } from "components/node"
 import { Layout, LayoutProps } from "components/layout"
 import { Meta } from "components/meta"
-import { ContactForm } from "components/contact-form"
-import { TowerSection } from "components/tower-section"
 import { HeroSlideshow } from "components/hero-slideshow"
-
-// Note: TowerSection requires a 'tower' prop object, not individual props
 
 const RESOURCE_TYPES = ["node--page", "node--landing_page", "node--article"]
 
@@ -68,128 +64,16 @@ export default function NodePage({ node, menus }: NodePageProps) {
 // Home page content component
 function HomePageContent() {
   const heroPhotos = [
-    "/images/turnberry/photo-2.jpg",
-    "/images/turnberry/photo-3.jpg",
-    "/images/turnberry/photo-4.jpg",
-    "/images/turnberry/photo-5.jpg",
+    "/images/turnberry/photo-21.jpg",
+    "/images/turnberry/photo-22.jpg",
+    "/images/turnberry/asset-1.jpg",
+    "/images/turnberry/asset-10.jpg",
   ]
 
   return (
     <>
       {/* Hero Section with Slideshow */}
       <HeroSlideshow photos={heroPhotos} />
-
-      {/* Main Content */}
-      <section className="py-12 md:py-20">
-        <div className="container px-6 mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold mb-4 md:text-5xl">
-            Turnberry Place | Las Vegas' Premier High-Rise Community
-          </h2>
-          <p className="text-xl text-gray-600 mb-12">
-            Las Vegas, NV 89109
-          </p>
-        </div>
-      </section>
-
-      {/* Tower Sections */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="container px-6 mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 md:text-4xl">
-            4 Luxury Towers
-          </h2>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <TowerSection
-              tower={{
-                number: 1,
-                title: "Tower 1 - Elegant High-Rise Living",
-                description: "Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities.",
-                features: [
-                  "Private elevator access",
-                  "24-hour security",
-                  "Direct access to The Stirling Club",
-                  "Stunning Strip and mountain views",
-                ],
-                year: 2000,
-                stories: 38,
-              }}
-            />
-            <TowerSection
-              tower={{
-                number: 2,
-                title: "Tower 2 - Sophisticated Strip Views",
-                description: "Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities.",
-                features: [
-                  "Larger floor plans",
-                  "Floor-to-ceiling windows",
-                  "Private balconies",
-                  "Concierge services",
-                ],
-                year: 2001,
-                stories: 45,
-              }}
-            />
-            <TowerSection
-              tower={{
-                number: 3,
-                title: "Tower 3 - Premium Desert Living",
-                description: "The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living.",
-                features: [
-                  "Contemporary designs",
-                  "Spacious terraces",
-                  "Sophisticated finishes",
-                  "Panoramic views",
-                ],
-                year: 2002,
-                stories: 45,
-              }}
-            />
-            <TowerSection
-              tower={{
-                number: 4,
-                title: "Tower 4 - Ultimate Luxury Living",
-                description: "As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club.",
-                features: [
-                  "Most refined residences",
-                  "Unparalleled views",
-                  "Premium amenities",
-                  "Exceptional finishes",
-                ],
-                year: 2005,
-                stories: 45,
-              }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Links */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="container px-6 mx-auto">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <Link href="/towers">
-              <a className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold mb-2">4 Luxury Towers</h3>
-                <p className="text-gray-600">Explore our elegant high-rise residences</p>
-              </a>
-            </Link>
-            <Link href="/amenities">
-              <a className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold mb-2">World-Class Amenities</h3>
-                <p className="text-gray-600">The Stirling Club and more</p>
-              </a>
-            </Link>
-            <Link href="/photos">
-              <a className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-semibold mb-2">Photo Gallery</h3>
-                <p className="text-gray-600">View our luxury residences</p>
-              </a>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form */}
-      <ContactForm />
     </>
   )
 }
