@@ -26,7 +26,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
   }
 
   return (
-    <header className="card-top-header relative h-screen min-h-[500px] w-full" style={{ marginTop: 0 }}>
+    <header className="card-top-header relative h-screen min-h-[500px] w-full">
       {/* Slideshow */}
       <div className="slick-slideshow absolute inset-0 z-0">
         {photos.map((photo, index) => (

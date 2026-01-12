@@ -14,13 +14,17 @@ export interface LayoutProps {
 
 export function Layout({ menus, children }: LayoutProps) {
   React.useEffect(() => {
-    // Adjust header margin for fixed navbar
+    // Adjust header margin for fixed navbar and set CSS variable
     const adjustHeaderMargin = () => {
       const nav = document.querySelector('.card-top-nav')
       const header = document.querySelector('.card-top-header')
-      if (nav && header) {
+      if (nav) {
         const navHeight = (nav as HTMLElement).offsetHeight
-        ;(header as HTMLElement).style.marginTop = `${navHeight}px`
+        document.documentElement.style.setProperty('--navbar-height', `${navHeight}px`)
+        
+        if (header) {
+          ;(header as HTMLElement).style.marginTop = `${navHeight}px`
+        }
       }
     }
     
@@ -32,7 +36,9 @@ export function Layout({ menus, children }: LayoutProps) {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar links={menus.main} />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1" style={{ paddingTop: 0 }}>
+        {children}
+      </main>
       <Footer links={menus.footer} />
     </div>
   )

@@ -1,5 +1,20 @@
 /* Component-specific styles matching live site */
 
+/* Ensure card-content sections have proper positioning for ::after pseudo-elements */
+.card-content {
+  position: relative;
+}
+
+/* Add top padding to pages that don't have hero header to account for fixed navbar */
+main > .card-content:first-child:not(.card-top-header) {
+  padding-top: calc(var(--navbar-height, 120px) + 2rem) !important;
+}
+
+/* Ensure hero header accounts for navbar */
+.card-top-header {
+  margin-top: var(--navbar-height, 120px);
+}
+
 /* Navigation */
 .card-top-nav {
   position: fixed;
