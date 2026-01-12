@@ -4,7 +4,6 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import Link from "next/link"
-import Image from "next/image"
 
 interface AvailableCondosPageProps extends LayoutProps {}
 
@@ -72,12 +71,9 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
               >
                 <div className="aspect-video bg-gray-200 relative">
-                  <Image
-                    src={condo.image}
-                    alt={`${condo.tower} - ${condo.beds} bed, ${condo.baths} bath`}
-                    layout="fill"
-                    objectFit="cover"
-                  />
+                  <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+                    <span className="text-gray-500">Property Image</span>
+                  </div>
                 </div>
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-2">

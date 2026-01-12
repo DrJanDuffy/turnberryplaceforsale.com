@@ -3,7 +3,6 @@ import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
-import Image from "next/image"
 
 interface AgentPageProps extends LayoutProps {}
 

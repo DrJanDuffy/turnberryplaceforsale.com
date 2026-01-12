@@ -90,6 +90,9 @@ function HomePageContent() {
               UNITS FOR SALE
             </a>
           </Link>
+          <p className="text-lg mt-4 text-gray-300">
+            Las Vegas, NV 89109
+          </p>
         </div>
       </section>
 
