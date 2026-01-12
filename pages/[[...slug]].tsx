@@ -109,6 +109,18 @@ function HomePageContent() {
               <p>
                 Turnberry Place stands as Las Vegas's premier high-rise condominium community, offering luxury living that combines exceptional quality, prime location, and comprehensive amenities. The development's four towers, completed between 2000 and 2005, represent the evolution of luxury high-rise design in Las Vegas, incorporating lessons learned from each phase to create increasingly sophisticated residences. The development's exclusive access to The Stirling Club, combined with its prime location and comprehensive security, creates a lifestyle experience that is difficult to replicate elsewhere in Las Vegas.
               </p>
+              <h3>Prime Location Advantages</h3>
+              <p>
+                Turnberry Place's location at 2747-2877 Paradise Road, just one block from the Las Vegas Strip, provides residents with immediate access to world-class restaurants, entertainment venues, shopping, and business centers. This prime positioning, between the Wynn Encore and Sahara resorts, ensures that residents are at the heart of Las Vegas's most vibrant and desirable corridor. The development's raised elevation and guard-gated entrance provide privacy and security while maintaining this exceptional convenience.
+              </p>
+              <h3>Comprehensive Security and Privacy</h3>
+              <p>
+                Turnberry Place's comprehensive security systems, including 24-hour security personnel, guard-gated entrance, and secure building access, create a safe and private environment that luxury living requires. The development's raised elevation minimizes street noise while providing enhanced privacy, creating a tranquil oasis within the urban environment. These security and privacy features appeal to high-profile residents, executives, and anyone who values safety and seclusion in their home environment.
+              </p>
+              <h3>Investment Potential and Market Position</h3>
+              <p>
+                Turnberry Place's established reputation, prime location, and comprehensive amenities create strong investment potential that has attracted buyers from around the world. The development's limited inventory, combined with strong demand from both domestic and international buyers, creates favorable conditions for price appreciation. The development's association with luxury living and its proximity to the Strip ensure continued desirability and investment value.
+              </p>
             </div>
           </div>
         </div>
@@ -121,7 +133,11 @@ function HomePageContent() {
             <div className="col-12 col-lg-10 mx-auto">
               <h2>Four Distinct Luxury Towers</h2>
               <p>
-                Turnberry Place's four towers each offer unique characteristics, features, and value propositions that appeal to different buyers with varying needs, preferences, and budgets. Understanding the differences between towers helps buyers identify residences that best meet their requirements while appreciating the comprehensive value that each tower provides.
+                Turnberry Place's four towers each offer unique characteristics, features, and value propositions that appeal to different buyers with varying needs, preferences, and budgets. Understanding the differences between towers helps buyers identify residences that best meet their requirements while appreciating the comprehensive value that each tower provides. Each tower was designed with specific architectural features and finishes that reflect the evolution of luxury high-rise design, creating distinct identities while maintaining the cohesive quality that defines Turnberry Place.
+              </p>
+              <h3>Architectural Excellence and Design Evolution</h3>
+              <p>
+                The four towers of Turnberry Place showcase the evolution of luxury high-rise architecture in Las Vegas, with each tower incorporating lessons learned from previous phases. Tower 1 established the development's reputation for excellence, while subsequent towers refined and enhanced the design concepts. This evolution is evident in the increasing sophistication of floor plans, finishes, and amenities, creating a progression that culminates in Tower 4's exceptional features and finishes.
               </p>
               <div className="desc">
                 <h3>Tower 1 - Elegant High-Rise Living</h3>
@@ -145,7 +161,10 @@ function HomePageContent() {
             <div className="col-12">
               <div className="pb-4 pb-sm-5 amenities-border">
                 <div className="amenities-title">
-                  <h2>Amenities</h2>
+                  <h2>World-Class Amenities and Lifestyle Benefits</h2>
+                  <p className="text-center mb-4">
+                    Turnberry Place residents enjoy exclusive access to The Stirling Club, an 80,000-square-foot private membership facility that provides world-class amenities without separate membership costs. This comprehensive amenity package, combined with the development's security, location, and quality, creates exceptional value that justifies the development's premium positioning.
+                  </p>
                 </div>
                 <div className="row pt-2 pt-sm-4 pl-3 pl-sm-5">
                   {["Gated Community", "City View", "Secure Building", "Gym", "Tennis Courts", "Spa", "Swimming Pool", "Workout Room", "Mountains", "Private Patio"].map((amenity, index) => (
@@ -462,6 +481,60 @@ function HomePageContent() {
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8 text-center">
               <h2 className="mb-4">Share Turnberry Place Las Vegas</h2>
+              
+              {/* Additional Comprehensive Content Section */}
+              <div className="row mt-5">
+                <div className="col-12 col-lg-10 mx-auto">
+                  <h2>Why Choose Turnberry Place for Luxury Living</h2>
+                  <p>
+                    Turnberry Place represents more than just luxury real estate; it embodies a lifestyle that combines exceptional quality, prime location, comprehensive amenities, and investment potential. As a Las Vegas real estate expert with over 30 years of experience, I've witnessed the development's evolution and can attest to its enduring appeal and value proposition. Understanding why Turnberry Place stands apart helps buyers appreciate the comprehensive benefits that luxury living here provides.
+                  </p>
+                  <h3>Unmatched Location and Convenience</h3>
+                  <p>
+                    Turnberry Place's location just one block from the Las Vegas Strip provides residents with immediate access to over twenty Zagat-rated restaurants, world-class entertainment venues, premier shopping destinations, and major business centers. This proximity eliminates the inconvenience of long commutes while maintaining the privacy and security that luxury living requires. The development's raised elevation and guard-gated entrance ensure that residents enjoy tranquility despite this central location, creating the perfect balance of convenience and privacy.
+                  </p>
+                  <h3>Exclusive Access to The Stirling Club</h3>
+                  <p>
+                    Turnberry Place's exclusive access to The Stirling Club, an 80,000-square-foot private membership facility, provides residents with amenities that would cost tens of thousands of dollars annually if purchased separately. The club's fitness center, pools, tennis courts, spa facilities, dining venues, and social spaces create a comprehensive lifestyle experience that eliminates the need for separate memberships and services. This amenity access represents exceptional value and convenience that enhances daily living.
+                  </p>
+                  <h3>Comprehensive Security and Privacy</h3>
+                  <p>
+                    Turnberry Place's comprehensive security systems, including 24-hour security personnel, guard-gated entrance, secure building access, and private elevator access in many residences, create a safe and private environment that luxury living requires. The development's raised elevation minimizes street noise while providing enhanced privacy, creating a tranquil oasis within the urban environment. These security and privacy features appeal to high-profile residents, executives, and anyone who values safety and seclusion.
+                  </p>
+                  <h3>Investment Potential and Market Position</h3>
+                  <p>
+                    Turnberry Place's established reputation, prime location, and comprehensive amenities create strong investment potential that has attracted buyers from around the world. The development's limited inventory, combined with strong demand from both domestic and international buyers, creates favorable conditions for price appreciation. The development's association with luxury living and its proximity to the Strip ensure continued desirability and investment value, making it an attractive option for both primary residences and investment properties.
+                  </p>
+                  
+                  <h2>Working with Dr. Jan Duffy</h2>
+                  <p>
+                    As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place, I provide comprehensive guidance and support to buyers and sellers throughout their real estate journey. My expertise in luxury high-rise condominiums, combined with my understanding of Turnberry Place's unique characteristics, enables me to help clients make informed decisions and complete successful transactions.
+                  </p>
+                  <h3>Expert Knowledge and Experience</h3>
+                  <p>
+                    My 30+ years of experience in Las Vegas real estate, combined with my deep knowledge of Turnberry Place, enables me to provide comprehensive information and expert guidance that helps clients make informed decisions. I understand not only the physical characteristics of Turnberry Place residences but also market conditions, pricing trends, investment potential, and lifestyle benefits that affect decision-making. This expertise ensures that clients receive accurate, relevant, and valuable information.
+                  </p>
+                  <h3>Personalized Service and Attention</h3>
+                  <p>
+                    I provide personalized service and attention that reflects my commitment to understanding each client's unique needs and providing information that's relevant to their situation. I take time to listen, ask questions, and develop a comprehensive understanding of what clients are seeking, ensuring that the information and guidance I provide align with their interests and goals. This personalized approach ensures that clients receive the most useful information for their specific circumstances.
+                  </p>
+                  <h3>Ongoing Support and Guidance</h3>
+                  <p>
+                    My commitment to client success extends beyond initial transactions to provide ongoing support and guidance throughout the Turnberry Place ownership experience. Whether clients need assistance with property management, market updates, or future real estate decisions, I'm available to provide expert guidance and support. This ongoing relationship ensures that clients have access to the information and assistance they need at every stage of their Turnberry Place journey.
+                  </p>
+                  
+                  <h2>Contact Dr. Jan Duffy Today</h2>
+                  <p>
+                    Ready to explore Turnberry Place luxury living? Contact me today to discuss available properties, schedule private showings, or learn more about how Turnberry Place can meet your luxury living needs. As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place, I can provide comprehensive information and expert guidance that helps you make informed decisions about luxury living in Las Vegas.
+                  </p>
+                  <p>
+                    Whether you're interested in a specific property, want to explore multiple options, or are just beginning your search for luxury living in Las Vegas, I'm here to help. My goal is to provide you with the information, guidance, and support you need to make informed decisions about Turnberry Place and find the perfect luxury residence that meets your needs and exceeds your expectations.
+                  </p>
+                  <p className="mt-4">
+                    <strong>Ready to discover Turnberry Place?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> or contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you explore this exceptional community and find the perfect luxury residence that meets your needs and budget.
+                  </p>
+                </div>
+              </div>
               <p className="mb-4">
                 Know someone who would love to see these luxury condos? Share this property with friends and family.
               </p>
