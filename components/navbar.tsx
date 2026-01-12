@@ -23,6 +23,7 @@ const navigationLinks = [
   { href: "/agent", title: "Agent" },
   { href: "/available-condos", title: "Available Condos" },
   { href: "/floor-plans", title: "Floor Plans" },
+  { href: "/share", title: "Share" },
   { href: "/stirling-club", title: "Stirling Club" },
   { href: "/neighborhood", title: "Neighborhood" },
 ]
