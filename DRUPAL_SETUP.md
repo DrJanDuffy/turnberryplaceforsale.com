@@ -73,8 +73,51 @@ Once Composer dependencies are installed:
    - Set `NEXT_PUBLIC_DRUPAL_BASE_URL` in your Next.js `.env.local` or Vercel settings
    - Point it to your Drupal installation URL
 
+## Running Drupal
+
+### Quick Start Script
+
+A PowerShell script is provided to easily start Drupal:
+
+```powershell
+cd C:\Users\geneb\turnberryplaceforsale.com
+.\run-drupal.ps1
+```
+
+This script will:
+- Check for PHP installation
+- Verify Drupal dependencies
+- Start PHP's built-in development server on `http://localhost:8888`
+
+### Manual Start
+
+If you have PHP installed, you can manually start Drupal:
+
+```powershell
+cd C:\Users\geneb\AppData\Roaming\drupal\web
+php -S localhost:8888 -t . index.php
+```
+
+Then visit `http://localhost:8888` in your browser.
+
+### Using XAMPP/Laragon
+
+If you're using XAMPP or Laragon:
+1. Copy Drupal files to `htdocs` or `www` directory
+2. Access via `http://localhost/drupal/web`
+
+### Using Docker
+
+If you have Docker installed, you can use a Drupal Docker image:
+
+```bash
+docker run -d -p 8080:80 --name drupal -v C:\Users\geneb\AppData\Roaming\drupal:/var/www/html drupal:latest
+```
+
 ## Troubleshooting
 
 - **PHP not found:** Install PHP 8.1+ from https://windows.php.net/download/
 - **Composer not found:** Add Composer to your system PATH or use Option 2 above
 - **Memory limit errors:** Increase PHP memory limit in `php.ini`: `memory_limit = 512M`
+- **Port already in use:** Change the port in the script (default: 8888)
+- **Permission errors:** Make sure `web/sites/default/files` is writable
