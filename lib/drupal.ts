@@ -3,7 +3,8 @@ import { DrupalClient } from "next-drupal"
 // Validate required environment variable
 const baseUrl = process.env.NEXT_PUBLIC_DRUPAL_BASE_URL
 
-if (!baseUrl) {
+// Only show warning in development, not during build
+if (!baseUrl && process.env.NODE_ENV === 'development') {
   console.warn(
     "Warning: NEXT_PUBLIC_DRUPAL_BASE_URL is not set. Drupal features will not work."
   )
