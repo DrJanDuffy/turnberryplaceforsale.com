@@ -5,7 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'headline': ['Cinzel', 'serif'],
+        'body': ['Questrial', 'sans-serif'],
+        'sans': ['Questrial', 'sans-serif'],
+        'serif': ['Cinzel', 'serif'],
+      },
+    },
   },
   variants: {
     extend: {},
