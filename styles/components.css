@@ -95,49 +95,86 @@ main .card-top-header:first-of-type {
 
 .card-top-nav .agent-photo-wrapper {
   flex-shrink: 0;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 .card-top-nav .agent-text {
   padding-left: 0;
-  font-size: 0.85rem;
-  line-height: 1.4;
+  font-size: 0.875rem;
+  line-height: 1.5;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
+  flex: 1;
 }
 
 .card-top-nav .agent-text .agent-name {
-  font-weight: 500;
-  margin-bottom: 2px;
-  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Desktop agent text styling */
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .card-top-nav .agent-text {
     font-size: 0.9rem;
   }
   
   .card-top-nav .agent-text .agent-name {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    margin-bottom: 4px;
   }
   
   .card-top-nav .agent-text .agent-company {
     font-size: 0.8rem;
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-top-nav .agent-text {
+    font-size: 0.95rem;
+  }
+  
+  .card-top-nav .agent-text .agent-name {
+    font-size: 1.05rem;
+  }
+  
+  .card-top-nav .agent-text .agent-company {
+    font-size: 0.85rem;
   }
 }
 
 .card-top-nav .agent-text .agent-company {
   font-size: 0.75rem;
   opacity: 0.9;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
+  line-height: 1.3;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.card-top-nav .agent-text .agent-phone {
+  margin-top: 2px;
 }
 
 .card-top-nav .agent-text .agent-phone a {
   color: var(--body-copy-color, rgba(255, 255, 255, 1));
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@media (min-width: 992px) {
+  .card-top-nav .agent-text .agent-phone a {
+    font-size: 0.95rem;
+  }
 }
 
 .card-top-nav .row {
@@ -196,11 +233,26 @@ main .card-top-header:first-of-type {
   
   .card-top-nav .agent-photo {
     height: 65px;
+    width: 65px;
     max-height: 65px;
+    max-width: 65px;
+  }
+  
+  .card-top-nav .agent-photo-wrapper {
+    margin-right: 10px;
   }
   
   .card-top-nav .agent-text {
     font-size: 0.8rem;
+  }
+  
+  .card-top-nav .agent-text .agent-name {
+    font-size: 0.85rem;
+    margin-bottom: 2px;
+  }
+  
+  .card-top-nav .agent-text .agent-phone a {
+    font-size: 0.85rem;
   }
 }
 
@@ -215,7 +267,13 @@ main .card-top-header:first-of-type {
   
   .card-top-nav .agent-photo {
     height: 55px;
+    width: 55px;
     max-height: 55px;
+    max-width: 55px;
+  }
+  
+  .card-top-nav .agent-photo-wrapper {
+    margin-right: 8px;
   }
   
   .card-top-nav .row {
@@ -224,6 +282,19 @@ main .card-top-header:first-of-type {
   
   .card-top-nav .nav-wrapper {
     min-height: 55px;
+  }
+  
+  .card-top-nav .agent-text {
+    font-size: 0.75rem;
+  }
+  
+  .card-top-nav .agent-text .agent-name {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+  }
+  
+  .card-top-nav .agent-text .agent-phone a {
+    font-size: 0.8rem;
   }
 }
 
@@ -238,6 +309,29 @@ main .card-top-header:first-of-type {
   
   .card-top-nav .row {
     min-height: 75px;
+  }
+  
+  .card-top-nav .agent-photo {
+    height: 50px;
+    width: 50px;
+    max-height: 50px;
+    max-width: 50px;
+  }
+  
+  .card-top-nav .agent-photo-wrapper {
+    margin-right: 6px;
+  }
+  
+  .card-top-nav .agent-text {
+    font-size: 0.7rem;
+  }
+  
+  .card-top-nav .agent-text .agent-name {
+    font-size: 0.75rem;
+  }
+  
+  .card-top-nav .agent-text .agent-phone a {
+    font-size: 0.75rem;
   }
 }
 

@@ -39,7 +39,7 @@ export function Navbar({ links, ...props }: NavbarProps) {
     >
       <div className="container-fluid text-heading pr-3">
         <div className="row align-items-center">
-          <div className="col-10 col-md-4 col-lg-3">
+          <div className="col-10 col-md-5 col-lg-4">
             <div className="d-flex align-items-center pl-0 pl-sm-1 pl-lg-2 pl-xl-3">
               <div className="agent-photo-wrapper">
                 <Image
@@ -52,7 +52,7 @@ export function Navbar({ links, ...props }: NavbarProps) {
               </div>
               <div className="agent-text">
                 <div className="agent-name">Dr. Jan Duffy, REALTOR</div>
-                <div className="d-none d-xl-block agent-company">
+                <div className="d-none d-lg-block agent-company">
                   The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
                 </div>
                 <div className="agent-phone">
