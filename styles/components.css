@@ -72,6 +72,24 @@
   border-radius: 0.5rem;
   height: 100%;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Ensure stat cards row doesn't stack unnecessarily */
+.card-content .row.justify-content-center > .col-md-4 {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .card-content .row.justify-content-center > .col-md-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
 }
 
 .stat-card:hover {
@@ -94,6 +112,22 @@
   border-radius: 0.5rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Ensure tower cards display in proper grid */
+.card-content .row > .col-md-6 {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .card-content .row > .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }
 
 .feature-card:hover {
@@ -1075,6 +1109,21 @@ main .card-top-header:first-of-type {
   border-top: 1px solid var(--accent-line-color, rgba(222, 226, 230, 1));
 }
 
+/* Ensure buttons in Private Showings section stay side-by-side on desktop */
+.card-open-house .d-flex.flex-column.flex-sm-row {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (min-width: 576px) {
+  .card-open-house .d-flex.flex-column.flex-sm-row {
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .card-open-house p.none-scheduled {
   margin-bottom: 35px;
 }
@@ -1093,6 +1142,48 @@ main .card-top-header:first-of-type {
 
 .card-contact-form .horiz-line {
   border-top: 1px solid var(--accent-line-color, rgba(181, 152, 90, 1));
+  flex: 1;
+  min-width: 50px;
+}
+
+/* VIP Pre-Market section buttons */
+.card-content.bg-primary .d-flex.flex-column.flex-sm-row {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (min-width: 576px) {
+  .card-content.bg-primary .d-flex.flex-column.flex-sm-row {
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Contact form header with horizontal lines */
+.card-contact-form .d-flex.align-items-center {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.card-contact-form .horiz-line.d-none.d-sm-block {
+  display: block !important;
+}
+
+@media (max-width: 575.98px) {
+  .card-contact-form .horiz-line.d-none.d-sm-block {
+    display: none !important;
+  }
+  
+  .card-contact-form .d-flex.align-items-center {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 
 .card-contact-form input {
@@ -1133,6 +1224,55 @@ main .card-top-header:first-of-type {
 @media (max-width: 767.98px) {
   .card-agent .company-logo {
     max-width: 250px;
+  }
+}
+
+/* Agent section row - ensure proper side-by-side layout */
+.card-agent .row.align-items-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-agent .row.align-items-center > .col-12.col-md-4 {
+  flex: 0 0 auto;
+}
+
+.card-agent .row.align-items-center > .col-12.col-md-8 {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 767.98px) {
+  .card-agent .row.align-items-center {
+    flex-direction: column;
+  }
+  
+  .card-agent .row.align-items-center > .col-12.col-md-4,
+  .card-agent .row.align-items-center > .col-12.col-md-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Agent contact info - ensure phone numbers stay side-by-side on desktop */
+.card-agent .d-flex.flex-column.flex-md-row {
+  display: flex !important;
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 768px) {
+  .card-agent .d-flex.flex-column.flex-md-row {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .card-agent .d-flex.flex-column.flex-md-row > div {
+    margin-right: 1.5rem;
+  }
+  
+  .card-agent .d-flex.flex-column.flex-md-row > div:last-child {
+    margin-right: 0;
   }
 }
 
