@@ -112,7 +112,7 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Towers Section - Matching Live Site */}
+      {/* Towers Section - Compact Cards */}
       <div className="card-content card-prop-description py-5" id="card-id-2271757" data-card-type="4">
         <div className="container">
           <div className="row">
@@ -120,15 +120,70 @@ function HomePageContent() {
               <h1 className="mb-4 text-center">
                 Turnberry Place | Las Vegas' Premier High-Rise Community
               </h1>
-              <div className="desc" style={{ columns: 1, columnGap: '35px' }}>
-                <h1>Tower 1 - Elegant High-Rise Living</h1>
-                <p>Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities.</p>
-                <h1>Tower 2 - Sophisticated Strip Views</h1>
-                <p>Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities.</p>
-                <h1>Tower 3 - Premium Desert Living</h1>
-                <p>The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living.</p>
-                <h1>Tower 4 - Ultimate Luxury Living</h1>
-                <p>As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club.</p>
+              <div className="row">
+                {/* Tower 1 Card */}
+                <div className="col-12 col-md-6 mb-4">
+                  <div className="card h-100 border-0 shadow-sm" style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: '4px',
+                    padding: '1.5rem',
+                  }}>
+                    <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
+                      Tower 1 - Elegant High-Rise Living
+                    </h2>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                      Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tower 2 Card */}
+                <div className="col-12 col-md-6 mb-4">
+                  <div className="card h-100 border-0 shadow-sm" style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: '4px',
+                    padding: '1.5rem',
+                  }}>
+                    <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
+                      Tower 2 - Sophisticated Strip Views
+                    </h2>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                      Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tower 3 Card */}
+                <div className="col-12 col-md-6 mb-4">
+                  <div className="card h-100 border-0 shadow-sm" style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: '4px',
+                    padding: '1.5rem',
+                  }}>
+                    <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
+                      Tower 3 - Premium Desert Living
+                    </h2>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                      The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tower 4 Card */}
+                <div className="col-12 col-md-6 mb-4">
+                  <div className="card h-100 border-0 shadow-sm" style={{
+                    backgroundColor: '#ffffff',
+                    borderRadius: '4px',
+                    padding: '1.5rem',
+                  }}>
+                    <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
+                      Tower 4 - Ultimate Luxury Living
+                    </h2>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                      As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
