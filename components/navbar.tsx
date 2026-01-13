@@ -127,7 +127,8 @@ export function Navbar({ links, ...props }: NavbarProps) {
                       onMouseEnter={() => setOpenDropdown(item.title)}
                       onMouseLeave={() => setOpenDropdown(null)}
                     >
-                      <button
+                      <Link
+                        href={item.href}
                         className={classNames(
                           "nav-link py-2 px-3",
                           isItemActive && "active"
@@ -161,7 +162,7 @@ export function Navbar({ links, ...props }: NavbarProps) {
                         >
                           <path d="M6 9L1 4h10L6 9z" />
                         </svg>
-                      </button>
+                      </Link>
                       {isDropdownOpen && (
                         <div
                           className="dropdown-menu show"
