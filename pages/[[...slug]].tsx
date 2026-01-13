@@ -397,6 +397,83 @@ function HomePageContent() {
         </div>
       </div>
 
+      {/* VIP Pre-Market Listings Section */}
+      <div className="card-content py-5 bg-primary text-white" style={{ backgroundColor: '#007bff' }}>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10 text-center">
+              <h2 className="homepage-section text-white mb-3" style={{ color: '#fff' }}>
+                VIP Pre-Market Listings
+              </h2>
+              <p className="lead mb-4" style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '1.15rem' }}>
+                Get exclusive early access to Turnberry Place listings before they're available to the public. View upcoming properties, coming soon listings, and off-market opportunities.
+              </p>
+              <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center">
+                <a
+                  href="https://drjanduffy.realscout.com/homesearch/shared-searches/U2hhcmVhYmxlU2VhcmNoTGluay00MDE0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-light btn-lg font-weight-bold"
+                  style={{
+                    padding: '1rem 2.5rem',
+                    fontSize: '1.1rem',
+                    borderRadius: '6px',
+                    fontWeight: 600,
+                    transition: 'all 0.3s ease',
+                    minWidth: '250px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)'
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)'
+                    e.currentTarget.style.boxShadow = 'none'
+                  }}
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'click', {
+                        event_category: 'VIP Pre-Market',
+                        event_label: 'View Pre-Market Listings',
+                        value: 1
+                      })
+                    }
+                  }}
+                >
+                  View Pre-Market Listings
+                </a>
+                <a
+                  href="tel:7022221988"
+                  className="btn btn-outline-light btn-lg font-weight-bold"
+                  style={{
+                    padding: '1rem 2.5rem',
+                    fontSize: '1.1rem',
+                    borderRadius: '6px',
+                    fontWeight: 600,
+                    borderWidth: '2px',
+                    transition: 'all 0.3s ease',
+                    minWidth: '250px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)'
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)'
+                    e.currentTarget.style.backgroundColor = 'transparent'
+                  }}
+                >
+                  Call/Text (702) 222-1988
+                </a>
+              </div>
+              <p className="mt-4 mb-0" style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>
+                <strong>Exclusive Access:</strong> This link provides early access to listings that may not yet be publicly available. Contact me for personalized assistance with any property.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Quick Search Widget */}
       <div className="card-content py-5 bg-light">
         <div className="container">

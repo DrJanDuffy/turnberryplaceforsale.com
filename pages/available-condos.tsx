@@ -37,6 +37,47 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
                 </p>
               </div>
 
+              {/* VIP Pre-Market Listings Section */}
+              <div className="content-section mb-5">
+                <div className="card border-primary shadow-sm" style={{ borderWidth: '2px' }}>
+                  <div className="card-body p-4 text-center">
+                    <h3 className="mb-3" style={{ color: '#007bff' }}>
+                      <strong>VIP Pre-Market Listings</strong>
+                    </h3>
+                    <p className="mb-4">
+                      Get exclusive early access to Turnberry Place listings before they're available to the public. View upcoming properties, coming soon listings, and off-market opportunities.
+                    </p>
+                    <a
+                      href="https://drjanduffy.realscout.com/homesearch/shared-searches/U2hhcmVhYmxlU2VhcmNoTGluay00MDE0"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary btn-lg font-weight-bold mb-3"
+                      style={{
+                        padding: '0.875rem 2rem',
+                        fontSize: '1rem',
+                        borderRadius: '6px',
+                        fontWeight: 600,
+                        minWidth: '250px'
+                      }}
+                      onClick={() => {
+                        if (typeof window !== 'undefined' && (window as any).gtag) {
+                          (window as any).gtag('event', 'click', {
+                            event_category: 'VIP Pre-Market',
+                            event_label: 'View Pre-Market Listings - Available Condos Page',
+                            value: 1
+                          })
+                        }
+                      }}
+                    >
+                      View Pre-Market Listings
+                    </a>
+                    <p className="text-muted mb-0" style={{ fontSize: '0.9rem' }}>
+                      <strong>Exclusive Access:</strong> This link provides early access to listings that may not yet be publicly available.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <div className="content-section">
               <div className="widget-wrapper">
                 <Script
