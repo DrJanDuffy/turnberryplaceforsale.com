@@ -816,19 +816,31 @@ export async function getStaticPaths(
     }
   }
 
-  // Get Drupal paths
-  const drupalPaths = await drupal.getStaticPathsFromContext(RESOURCE_TYPES, context, {
-    params: {
-      filter: {
-        "field_site.meta.drupal_internal__target_id":
-          process.env.DRUPAL_SITE_ID,
+  // Try to get Drupal paths, but handle errors gracefully
+  try {
+    const drupalPaths = await drupal.getStaticPathsFromContext(RESOURCE_TYPES, context, {
+      params: {
+        filter: {
+          "field_site.meta.drupal_internal__target_id":
+            process.env.DRUPAL_SITE_ID,
+        },
       },
-    },
-  })
+    })
 
-  return {
-    paths: drupalPaths,
-    fallback: "blocking",
+    return {
+      paths: drupalPaths,
+      fallback: "blocking",
+    }
+  } catch (error) {
+    // If Drupal is not available, return empty paths
+    // This allows the build to continue without Drupal
+    if (process.env.NODE_ENV === 'development') {
+      console.warn("Drupal is not available. Using fallback for all routes.")
+    }
+    return {
+      paths: [],
+      fallback: "blocking",
+    }
   }
 }
 
