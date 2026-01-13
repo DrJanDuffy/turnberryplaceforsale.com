@@ -121,9 +121,9 @@ function HomePageContent() {
                 Turnberry Place | Las Vegas' Premier High-Rise Community
               </h1>
               <div className="row">
-                {/* Tower 1 Card */}
-                <div className="col-12 col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm" style={{
+                {/* Tower 1 Card - Stacked Vertically */}
+                <div className="col-12 mb-4">
+                  <div className="card border-0 shadow-sm" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
                     padding: '1.5rem',
@@ -137,9 +137,9 @@ function HomePageContent() {
                   </div>
                 </div>
 
-                {/* Tower 2 Card */}
-                <div className="col-12 col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm" style={{
+                {/* Tower 2 Card - Stacked Vertically */}
+                <div className="col-12 mb-4">
+                  <div className="card border-0 shadow-sm" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
                     padding: '1.5rem',
@@ -153,9 +153,9 @@ function HomePageContent() {
                   </div>
                 </div>
 
-                {/* Tower 3 Card */}
-                <div className="col-12 col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm" style={{
+                {/* Tower 3 Card - Stacked Vertically */}
+                <div className="col-12 mb-4">
+                  <div className="card border-0 shadow-sm" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
                     padding: '1.5rem',
@@ -169,9 +169,9 @@ function HomePageContent() {
                   </div>
                 </div>
 
-                {/* Tower 4 Card */}
-                <div className="col-12 col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm" style={{
+                {/* Tower 4 Card - Stacked Vertically */}
+                <div className="col-12 mb-4">
+                  <div className="card border-0 shadow-sm" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
                     padding: '1.5rem',
