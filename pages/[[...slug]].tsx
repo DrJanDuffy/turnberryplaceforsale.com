@@ -849,42 +849,66 @@ export async function getStaticProps(
 ): Promise<GetStaticPropsResult<NodePageProps>> {
   const slug = context.params?.slug as string[] | undefined
   
-  // Handle root route (/) - return home page when Drupal is not configured
+  // Handle root route (/) - always return home page structure
+  // Try Drupal first if configured, but fallback to static home page if it fails
   if (!slug || slug.length === 0) {
-    if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
-      // Return a simple home page structure when Drupal is not available
+    // Try to get home page from Drupal if configured
+    if (process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
       try {
-        return {
-          props: {
-            node: {
-              type: 'node--landing_page',
-              id: 'home',
-              title: 'Turnberry Place Las Vegas',
-              status: true,
-              path: { alias: '/' },
-              field_sections: [],
-            } as any,
-            menus: await getMenus(context),
-          },
+        const path = await drupal.translatePathFromContext(context)
+        if (path && RESOURCE_TYPES.includes(path.jsonapi.resourceName)) {
+          const node = await drupal.getResourceFromContext<DrupalNode>(path, context, {
+            params: getParams(path.jsonapi.resourceName),
+          })
+          if (node && (context.preview || node?.status !== false)) {
+            return {
+              props: {
+                node,
+                menus: await getMenus(context),
+              },
+            }
+          }
         }
       } catch (error) {
-        // If getMenus fails, return empty menus
-        return {
-          props: {
-            node: {
-              type: 'node--landing_page',
-              id: 'home',
-              title: 'Turnberry Place Las Vegas',
-              status: true,
-              path: { alias: '/' },
-              field_sections: [],
-            } as any,
-            menus: {
-              main: [],
-              footer: [],
-            },
-          },
+        // Drupal not available, fall through to static home page
+        if (process.env.NODE_ENV === 'development') {
+          console.warn("Drupal not available for homepage, using static fallback.")
         }
+      }
+    }
+    
+    // Return static home page structure (fallback or when Drupal not configured)
+    try {
+      return {
+        props: {
+          node: {
+            type: 'node--landing_page',
+            id: 'home',
+            title: 'Turnberry Place Las Vegas',
+            status: true,
+            path: { alias: '/' },
+            field_sections: [],
+          } as any,
+          menus: await getMenus(context),
+        },
+      }
+    } catch (error) {
+      // If getMenus fails, return empty menus
+      return {
+        props: {
+          node: {
+            type: 'node--landing_page',
+            id: 'home',
+            title: 'Turnberry Place Las Vegas',
+            status: true,
+            path: { alias: '/' },
+            field_sections: [],
+          } as any,
+          menus: {
+            main: [],
+            footer: [],
+          },
+        },
       }
     }
   }
