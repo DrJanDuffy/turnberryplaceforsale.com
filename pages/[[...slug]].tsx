@@ -46,7 +46,6 @@ export default function NodePage({ node, menus }: NodePageProps) {
       <Layout menus={menus}>
         <Meta title="Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale" />
         <Head>
-          <title>Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale</title>
           <meta
             name="description"
             content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. 4 luxury towers from $800K-$10M+ with Strip views & exclusive Stirling Club access. Call/text 702-222-1988"
