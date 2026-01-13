@@ -473,14 +473,14 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Quick Search Widget - RealScout Advanced Search */}
+      {/* Quick Search Widget - RealScout Simple Search */}
       <div className="card-content py-5 bg-light">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-8">
               <div className="text-center mb-4">
                 <h2 className="homepage-section mb-2">Search Turnberry Place Properties</h2>
-                <p className="text-muted">Find your perfect luxury condominium with our advanced search</p>
+                <p className="text-muted">Search by neighborhood, city, or school to find your perfect luxury condominium</p>
               </div>
               <div className="d-flex justify-content-center">
                 <Script
