@@ -63,13 +63,16 @@ export default function FloorPlansPage() {
           <div className="row align-items-center justify-content-center">
             <div className="col-12 col-lg-11 col-xl-10 text-center">
               <div className="py-4">
-                <ul className="nav nav-tabs justify-content-center" id="fpTabs" role="tablist">
+                <ul className="nav nav-tabs justify-content-center floor-plan-tabs" id="fpTabs" role="tablist">
                   {floorPlans.map((plan, index) => (
                     <li key={index} className="nav-item">
                       <button
-                        className={classNames("nav-link", activeTab === index && "active")}
+                        className={classNames("nav-link floor-plan-tab", activeTab === index && "active")}
                         id={`fp-tab-${59361 + index}`}
-                        onClick={() => setActiveTab(index)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setActiveTab(index);
+                        }}
                         role="tab"
                         aria-controls={`fp-${59361 + index}`}
                         aria-selected={activeTab === index}
