@@ -124,7 +124,7 @@ export function Footer({ links }: FooterProps) {
           <div className="col-12 text-center">
             <div className="d-inline-block" style={{ maxWidth: '300px', width: '100%' }}>
               <Image
-                src="https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=60/4616/3/2953540/asset.jpg"
+                src="/images/turnberry/asset-19.jpg"
                 className="img-fluid footer-team-logo"
                 alt="Berkshire Hathaway HomeServices Nevada Properties logo"
                 width={300}
@@ -147,7 +147,7 @@ export function Footer({ links }: FooterProps) {
                 style={{ maxWidth: '300px', width: '100%' }}
               >
                 <Image
-                  src="https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/4616/4/2829593/asset.jpg"
+                  src="/images/turnberry/asset-20.jpg"
                   className="img-fluid footer-wl-logo"
                   alt="Las Vegas 55 Plus Homes company logo"
                   width={300}

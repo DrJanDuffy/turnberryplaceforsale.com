@@ -697,7 +697,7 @@ function HomePageContent() {
                     <div className="col-12 col-md-4 text-center mb-4 mb-md-0">
                       <Image
                         className="img-fluid agent-photo rounded-circle"
-                        src="https://assets.cribflyer-proxy.com/cdn-cgi/image/width=500,height=500,fit=crop,rotate=0,format=webp,quality=90/4616/2/2953539/asset.jpg"
+                        src="/images/turnberry/asset-1.jpg"
                         alt="Dr. Jan Duffy, Las Vegas real estate expert specializing in Turnberry Place luxury condos"
                         width={225}
                         height={225}

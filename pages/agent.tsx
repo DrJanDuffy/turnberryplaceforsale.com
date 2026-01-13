@@ -44,7 +44,7 @@ export default function AgentPage({ menus }: AgentPageProps) {
                 <div className="col-12 py-2 d-flex align-items-center justify-content-center">
                   <Image
                     className="img-fluid agent-photo"
-                    src="https://assets.cribflyer-proxy.com/cdn-cgi/image/width=500,fit=contain,rotate=0,format=auto,quality=100/4616/2/2953539/asset.jpg"
+                    src="/images/turnberry/asset-1.jpg"
                     alt="Photo of Dr. Jan Duffy, REALTOR"
                     width={225}
                     height={225}
@@ -73,7 +73,7 @@ export default function AgentPage({ menus }: AgentPageProps) {
                   <div className="d-inline-block" style={{ maxWidth: '300px', width: '100%' }}>
                     <Image
                       className="img-fluid company-logo"
-                      src="https://assets.cribflyer-proxy.com/cdn-cgi/image/width=500,fit=contain,rotate=0,format=auto,quality=100/4616/3/2953540/asset.jpg"
+                      src="/images/turnberry/asset-19.jpg"
                       alt="The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties Logo"
                       width={300}
                       height={125}

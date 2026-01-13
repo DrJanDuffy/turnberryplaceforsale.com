@@ -95,7 +95,7 @@ export function Navbar({ links, ...props }: NavbarProps) {
             <div className="d-flex align-items-center pl-0 pl-sm-1 pl-lg-2 pl-xl-3">
               <div className="agent-photo-wrapper">
                 <Image
-                  src="https://assets.cribflyer-proxy.com/cdn-cgi/image/height=300,fit=contain,rotate=0,format=auto,quality=85/4616/2/2953539/asset.jpg"
+                  src="/images/turnberry/asset-1.jpg"
                   className="agent-photo"
                   width={75}
                   height={75}

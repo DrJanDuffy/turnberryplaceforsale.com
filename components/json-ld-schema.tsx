@@ -65,8 +65,8 @@ export function JsonLdSchema({
       'The Stirling Club',
     ],
     priceRange: '$800,000 - $10,000,000+',
-    image: 'https://assets.cribflyer-proxy.com/cdn-cgi/image/height=300,fit=contain,rotate=0,format=auto,quality=85/4616/2/2953539/asset.jpg',
-    logo: 'https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=60/4616/3/2953540/asset.jpg',
+    image: 'https://www.turnberryplaceforsale.com/images/turnberry/asset-1.jpg',
+    logo: 'https://www.turnberryplaceforsale.com/images/turnberry/asset-19.jpg',
     sameAs: [
       'https://lasvegas55plushomes.com',
     ],

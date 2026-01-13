@@ -26,15 +26,15 @@ export default function FloorPlansPage() {
   const [activeTab, setActiveTab] = useState(0)
   
   const floorPlanImages = [
-    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59361.png",
-    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59362.png",
-    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59363.png",
-    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59364.png",
-    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59365.png",
-    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59366.png",
-    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59367.png",
-    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59368.png",
-    "https://assets.cribflyer-proxy.com/cdn-cgi/image/fit=scale-down,rotate=0,format=auto,quality=85/60013/media/59369.png",
+    "/images/turnberry/turnberry-place-floor-plan-a.png",
+    "/images/turnberry/turnberry-place-floor-plan-b.png",
+    "/images/turnberry/turnberry-place-floor-plan-c.png",
+    "/images/turnberry/turnberry-place-floor-plan-d.png",
+    "/images/turnberry/turnberry-place-floor-plan-e.png",
+    "/images/turnberry/turnberry-place-floor-plan-er.png",
+    "/images/turnberry/turnberry-place-floor-plan-f.png",
+    "/images/turnberry/turnberry-place-floor-plan-g.png",
+    "/images/turnberry/turnberry-place-floor-plan-h.png",
   ]
 
   return (

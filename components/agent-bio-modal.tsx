@@ -51,7 +51,7 @@ export function AgentBioModal({ agentId = '14435' }: AgentBioModalProps) {
               <p className="mb-3">0197614 NV</p>
               <Image
                 className="img-fluid agent-photo rounded-circle mb-3"
-                src="https://assets.cribflyer-proxy.com/cdn-cgi/image/width=500,fit=contain,rotate=0,format=auto,quality=100/4616/2/2953539/asset.jpg"
+                src="/images/turnberry/asset-1.jpg"
                 alt="Photo of Dr. Jan Duffy, REALTOR"
                 width={200}
                 height={200}
