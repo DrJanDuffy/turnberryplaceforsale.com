@@ -872,6 +872,13 @@ export async function getStaticProps(
     }
   }
 
+  // Ensure Drupal is configured before making any calls
+  if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
+    return {
+      notFound: true,
+    }
+  }
+
   const path = await drupal.translatePathFromContext(context)
 
   if (!path || !RESOURCE_TYPES.includes(path.jsonapi.resourceName)) {
