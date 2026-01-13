@@ -92,6 +92,41 @@ function HomePageContent() {
       {/* Hero Section with Slideshow */}
       <HeroSlideshow photos={heroPhotos} />
       
+      {/* Home Value Widget Section */}
+      <div className="card-content py-5 bg-white">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-8">
+              <div className="text-center mb-4">
+                <h2 className="homepage-section mb-2">What's My Home Worth?</h2>
+                <p className="text-muted">Get a free home value estimate instantly</p>
+              </div>
+              <div className="d-flex justify-content-center">
+                <Script
+                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+                  type="module"
+                  strategy="lazyOnload"
+                />
+                <style jsx>{`
+                  realscout-home-value {
+                    --rs-hvw-background-color: #ffffff;
+                    --rs-hvw-title-color: #000000;
+                    --rs-hvw-subtitle-color: rgba(28, 30, 38, 0.5);
+                    --rs-hvw-primary-button-text-color: #ffffff;
+                    --rs-hvw-primary-button-color: rgb(35, 93, 137);
+                    --rs-hvw-secondary-button-text-color: rgb(35, 93, 137);
+                    --rs-hvw-secondary-button-color: #ffffff;
+                    --rs-hvw-widget-width: auto;
+                  }
+                `}</style>
+                {/* @ts-ignore - Custom web component */}
+                <realscout-home-value agent-encoded-id="QWdlbnQtMjI1MDUw" include-name include-phone></realscout-home-value>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Quick Intro Section */}
       <div className="card-content card-price-features">
         <div className="container">
