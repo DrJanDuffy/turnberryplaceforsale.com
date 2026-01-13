@@ -12,7 +12,10 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test:e2e": "start-server-and-test 'yarn preview' http://localhost:3001 cy:open",
-    "test:e2e:ci": "start-server-and-test 'yarn preview' http://localhost:3001 cy:run"
+    "test:e2e:ci": "start-server-and-test 'yarn preview' http://localhost:3001 cy:run",
+    "vbuild": "npx vercel build",
+    "check": "npm run lint && npx vercel build",
+    "deploy": "git add . && git commit -m 'update' && git push"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.7",
