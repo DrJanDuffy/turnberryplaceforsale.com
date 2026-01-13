@@ -99,191 +99,87 @@ function HomePageContent() {
       {/* Hero Section with Slideshow */}
       <HeroSlideshow photos={heroPhotos} />
       
-      {/* Home Value Widget Section */}
+      {/* Property Address Section */}
+      <div className="card-content py-4 bg-white">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 text-center">
+              <h1 className="homepage-section mb-2" style={{ fontSize: '2.5rem', fontWeight: 600 }}>
+                Turnberry Place Las Vegas
+              </h1>
+              <p className="lead mb-0" style={{ fontSize: '1.25rem', color: '#666' }}>
+                Las Vegas, NV 89109
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Price Range Section */}
+      <div className="card-content py-4 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 text-center">
+              <h2 className="homepage-section mb-0" style={{ fontSize: '2rem', fontWeight: 600 }}>
+                4 Luxury Towers from $800,000 to $10M+
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Heading Section */}
       <div className="card-content py-5 bg-white">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12 col-lg-8">
-              <div className="text-center mb-4">
-                <h2 className="homepage-section mb-2">What's My Home Worth?</h2>
-                <p className="text-muted">Get a free home value estimate instantly</p>
-              </div>
-              <div className="d-flex justify-content-center">
-                <Script
-                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-                  type="module"
-                  strategy="lazyOnload"
-                />
-                <style jsx>{`
-                  realscout-home-value {
-                    --rs-hvw-background-color: #ffffff;
-                    --rs-hvw-title-color: #000000;
-                    --rs-hvw-subtitle-color: rgba(28, 30, 38, 0.5);
-                    --rs-hvw-primary-button-text-color: #ffffff;
-                    --rs-hvw-primary-button-color: rgb(35, 93, 137);
-                    --rs-hvw-secondary-button-text-color: rgb(35, 93, 137);
-                    --rs-hvw-secondary-button-color: #ffffff;
-                    --rs-hvw-widget-width: auto;
-                  }
-                `}</style>
-                {/* @ts-ignore - Custom web component */}
-                <realscout-home-value agent-encoded-id="QWdlbnQtMjI1MDUw" include-name include-phone></realscout-home-value>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Intro Section */}
-      <div className="card-content card-price-features">
-        <div className="container">
-          <div className="row justify-content-center">
             <div className="col-12 col-lg-10 text-center">
-              <h2 className="homepage-section">
-                Las Vegas' Premier Luxury High-Rise Community
+              <h2 className="homepage-section" style={{ fontSize: '2.5rem', fontWeight: 600 }}>
+                Turnberry Place | Las Vegas' Premier High-Rise Community
               </h2>
-              <p className="lead homepage-lead">
-                Turnberry Place offers four luxury towers just one block from the Las Vegas Strip. Guard-gated community with exclusive access to The Stirling Club's 80,000 sq ft private facility.
-              </p>
-              <div className="row justify-content-center">
-                <div className="col-md-4 mb-4 mb-md-0">
-                  <div className="stat-card bg-light">
-                    <div className="stat-value text-primary">4 Towers</div>
-                    <div className="stat-label text-muted">Completed 2000-2005</div>
-                  </div>
-                </div>
-                <div className="col-md-4 mb-4 mb-md-0">
-                  <div className="stat-card bg-light">
-                    <div className="stat-value text-primary">$800K - $10M+</div>
-                    <div className="stat-label text-muted">1-4 Bedroom Residences</div>
-                  </div>
-                </div>
-                <div className="col-md-4 mb-4 mb-md-0">
-                  <div className="stat-card bg-light">
-                    <div className="stat-value text-primary">1 Block</div>
-                    <div className="stat-label text-muted">From Las Vegas Strip</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Towers Comparison - Bullet Points - MOVED TO /towers page */}
-      <div className="card-content card-prop-description bg-light">
+      {/* Tower Sections - Matching Live Site */}
+      <div className="card-content card-prop-description bg-white">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
-              <h2 className="text-center homepage-section">
-                Four Distinct Luxury Towers
-              </h2>
-              <div className="row">
-                <div className="col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm feature-card">
-                    <div className="card-body p-4">
-                      <h3>Tower 1 - Entry Level</h3>
-                      <ul className="list-unstyled mb-0">
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          38 stories, completed 2000
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Starting from $800K
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Excellent value proposition
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Private elevator access
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm feature-card">
-                    <div className="card-body p-4">
-                      <h3>Tower 2 - Enhanced Features</h3>
-                      <ul className="list-unstyled mb-0">
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          45 stories, completed 2001
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Larger floor plans
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Floor-to-ceiling windows
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Premium finishes
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm feature-card">
-                    <div className="card-body p-4">
-                      <h3>Tower 3 - Contemporary Design</h3>
-                      <ul className="list-unstyled mb-0">
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          45 stories, completed 2002
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Modern aesthetic
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Spacious terraces
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Panoramic views
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm feature-card">
-                    <div className="card-body p-4">
-                      <h3>Tower 4 - Ultimate Luxury</h3>
-                      <ul className="list-unstyled mb-0">
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          45 stories, completed 2005
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Most refined residences
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Exceptional finishes
-                        </li>
-                        <li>
-                          <span className="text-success check-icon">✓</span>
-                          Premium pricing
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+              <div className="content-section">
+                <h2 className="homepage-section" style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>
+                  Tower 1 - Elegant High-Rise Living
+                </h2>
+                <p className="homepage-lead" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
+                  Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities.
+                </p>
               </div>
-              <div className="text-center">
-                <Link href="/towers" className="btn btn-primary btn-lg">
-                  Learn More About Each Tower
-                </Link>
+
+              <div className="content-section">
+                <h2 className="homepage-section" style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>
+                  Tower 2 - Sophisticated Strip Views
+                </h2>
+                <p className="homepage-lead" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
+                  Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities.
+                </p>
+              </div>
+
+              <div className="content-section">
+                <h2 className="homepage-section" style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>
+                  Tower 3 - Premium Desert Living
+                </h2>
+                <p className="homepage-lead" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
+                  The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living.
+                </p>
+              </div>
+
+              <div className="content-section">
+                <h2 className="homepage-section" style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>
+                  Tower 4 - Ultimate Luxury Living
+                </h2>
+                <p className="homepage-lead" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
+                  As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club.
+                </p>
               </div>
             </div>
           </div>
