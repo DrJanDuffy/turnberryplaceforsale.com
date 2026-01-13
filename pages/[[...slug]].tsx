@@ -26,7 +26,6 @@ import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 // Components moved to other pages:
 // WhyWorkWithUs, ClientTestimonials, PowerOfNumbers, InTheMedia → /agent page
 import { FeaturedListingCard } from "components/featured-listing-card"
-import { QuickSearchWidget } from "components/quick-search-widget"
 import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
@@ -474,12 +473,32 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Quick Search Widget */}
+      {/* Quick Search Widget - RealScout Advanced Search */}
       <div className="card-content py-5 bg-light">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-8">
-              <QuickSearchWidget />
+              <div className="text-center mb-4">
+                <h2 className="homepage-section mb-2">Search Turnberry Place Properties</h2>
+                <p className="text-muted">Find your perfect luxury condominium with our advanced search</p>
+              </div>
+              <div className="d-flex justify-content-center">
+                <Script
+                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+                  type="module"
+                  strategy="lazyOnload"
+                />
+                <style jsx>{`
+                  realscout-advanced-search {
+                    --rs-as-button-text-color: #ffffff;
+                    --rs-as-background-color: #ffffff;
+                    --rs-as-button-color: #4a90e2;
+                    --rs-as-widget-width: 500px !important;
+                  }
+                `}</style>
+                {/* @ts-ignore - Custom web component */}
+                <realscout-advanced-search agent-encoded-id="QWdlbnQtMjI1MDUw"></realscout-advanced-search>
+              </div>
             </div>
           </div>
         </div>
