@@ -25,11 +25,11 @@ const navigationStructure: NavItem[] = [
     href: "/available-condos",
     children: [
       { href: "/available-condos", title: "Available Condos" },
-      { href: "/floor-plans", title: "Floor Plans" },
       { href: "/towers", title: "Towers" },
       { href: "/price-features", title: "Price & Features" },
     ]
   },
+  { href: "/floor-plans", title: "Floor Plans" },
   {
     title: "About",
     href: "/amenities",
