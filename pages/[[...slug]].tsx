@@ -804,7 +804,7 @@ export async function getStaticPaths(
 ): Promise<GetStaticPathsResult> {
   // Early return if Drupal base URL is not configured
   // Use fallback to handle root route
-  if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
+  if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL && process.env.NODE_ENV === 'development') {
     console.warn(
       "NEXT_PUBLIC_DRUPAL_BASE_URL not set. Using fallback for all routes."
     )
