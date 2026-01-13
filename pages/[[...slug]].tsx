@@ -223,312 +223,23 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Private Showings Section */}
-      <div
-        className="card-content card-open-house py-5"
-        style={{
-          backgroundImage: "url(/images/turnberry/Turnberry Tower Nice Vew.jpg)",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center center",
-          backgroundSize: "cover",
-          position: 'relative',
-          paddingTop: '5rem',
-          paddingBottom: '5rem'
-        }}
-      >
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 1
-        }}></div>
-        <div className="container-fluid position-relative" style={{ zIndex: 2 }}>
-          <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-7 text-center py-5 px-0">
-              <div className="open-house-box p-4 p-md-5 shadow-lg" style={{
-                backgroundColor: 'rgba(255,255,255,0.98)',
-                borderRadius: '12px',
-                backdropFilter: 'blur(10px)'
-              }}>
-                <h2 className="mb-3" style={{ 
-                  fontSize: '2.25rem', 
-                  fontWeight: 600, 
-                  color: '#333',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.05em'
-                }}>
-                  Private Showings Available
-                </h2>
-                <p className="h4 mb-4" style={{ 
-                  fontSize: '1.75rem',
-                  color: '#28a745',
-                  fontWeight: 700,
-                  marginBottom: '1.5rem'
-                }}>
-                  7 Days a Week
-                </p>
-                <p className="mb-4" style={{ 
-                  fontSize: '1.1rem',
-                  lineHeight: 1.7,
-                  color: '#495057',
-                  marginBottom: '2rem'
-                }}>
-                  Schedule your personalized tour of Turnberry Place luxury condos today. Experience the quality, amenities, and lifestyle firsthand.
-                </p>
-                <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                  <a 
-                    href="tel:7022221988" 
-                    className="btn btn-warning btn-lg font-weight-bold" 
-                    title="Call or text 702-222-1988"
-                    style={{
-                      padding: '1rem 2.5rem',
-                      fontSize: '1.1rem',
-                      borderRadius: '6px',
-                      fontWeight: 600,
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-                      transition: 'all 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-2px)'
-                      e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.3)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)'
-                    }}
-                  >
-                    Call/Text (702) 222-1988
-                  </a>
-                  <Link 
-                    href="/request-details" 
-                    className="btn btn-outline-primary btn-lg font-weight-bold" 
-                    title="Request Showing"
-                    style={{
-                      padding: '1rem 2.5rem',
-                      fontSize: '1.1rem',
-                      borderRadius: '6px',
-                      fontWeight: 600,
-                      borderWidth: '2px',
-                      transition: 'all 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-2px)'
-                      e.currentTarget.style.backgroundColor = '#007bff'
-                      e.currentTarget.style.color = '#fff'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.backgroundColor = 'transparent'
-                      e.currentTarget.style.color = '#007bff'
-                    }}
-                  >
-                    Request Showing
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* VIP Pre-Market Listings Section */}
-      <div className="card-content py-5 bg-primary text-white" style={{ backgroundColor: '#007bff' }}>
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10 text-center">
-              <h2 className="homepage-section text-white mb-3" style={{ color: '#fff' }}>
-                VIP Pre-Market Listings
-              </h2>
-              <p className="lead mb-4" style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '1.15rem' }}>
-                Get exclusive early access to Turnberry Place listings before they're available to the public. View upcoming properties, coming soon listings, and off-market opportunities.
-              </p>
-              <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center">
-                <a
-                  href="https://drjanduffy.realscout.com/homesearch/shared-searches/U2hhcmVhYmxlU2VhcmNoTGluay00MDE0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-light btn-lg font-weight-bold"
-                  style={{
-                    padding: '1rem 2.5rem',
-                    fontSize: '1.1rem',
-                    borderRadius: '6px',
-                    fontWeight: 600,
-                    transition: 'all 0.3s ease',
-                    minWidth: '250px'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)'
-                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)'
-                    e.currentTarget.style.boxShadow = 'none'
-                  }}
-                  onClick={() => {
-                    if (typeof window !== 'undefined' && (window as any).gtag) {
-                      (window as any).gtag('event', 'click', {
-                        event_category: 'VIP Pre-Market',
-                        event_label: 'View Pre-Market Listings',
-                        value: 1
-                      })
-                    }
-                  }}
-                >
-                  View Pre-Market Listings
-                </a>
-                <a
-                  href="tel:7022221988"
-                  className="btn btn-outline-light btn-lg font-weight-bold"
-                  style={{
-                    padding: '1rem 2.5rem',
-                    fontSize: '1.1rem',
-                    borderRadius: '6px',
-                    fontWeight: 600,
-                    borderWidth: '2px',
-                    transition: 'all 0.3s ease',
-                    minWidth: '250px'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)'
-                    e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)'
-                    e.currentTarget.style.backgroundColor = 'transparent'
-                  }}
-                >
-                  Call/Text (702) 222-1988
-                </a>
-              </div>
-              <p className="mt-4 mb-0" style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem' }}>
-                <strong>Exclusive Access:</strong> This link provides early access to listings that may not yet be publicly available. Contact me for personalized assistance with any property.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Search Widget - RealScout Simple Search */}
-      <div className="card-content py-5 bg-light">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-8">
-              <div className="text-center mb-4">
-                <h2 className="homepage-section mb-2">Search Turnberry Place Properties</h2>
-                <p className="text-muted">Search by neighborhood, city, or school to find your perfect luxury condominium</p>
-              </div>
-              <div className="d-flex justify-content-center">
-                <Script
-                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-                  type="module"
-                  strategy="lazyOnload"
-                />
-                <style jsx>{`
-                  realscout-simple-search {
-                    --rs-ss-font-primary-color: #000000;
-                    --rs-ss-searchbar-border-color: #8b572a;
-                    --rs-ss-box-shadow: 0 10px 15px -3px #0000001a;
-                    --rs-ss-widget-width: 500px !important;
-                  }
-                `}</style>
-                {/* @ts-ignore - Custom web component */}
-                <realscout-simple-search agent-encoded-id="QWdlbnQtMjI1MDUw"></realscout-simple-search>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Featured Listings Section */}
+      {/* Open House Section - Matching Live Site */}
       <div className="card-content py-5 bg-white">
         <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h2 className="text-center mb-2">Featured Listings</h2>
-              <p className="text-center mb-5 text-muted">Explore our featured luxury condos at Turnberry Place</p>
-              <div className="row">
-                <div className="col-md-6 col-lg-3 mb-4">
-                  <FeaturedListingCard
-                    image="/images/turnberry/Turnberry_Place_For_Sale.jpg"
-                    title="Tower 2, Unit 1501"
-                    price="$1,250,000"
-                    beds={2}
-                    baths={2}
-                    sqft={1850}
-                    views="Strip Views"
-                    tower="Tower 2"
-                    unit="Unit 1501"
-                    featured={true}
-                    priority={true}
-                  />
-                </div>
-                <div className="col-md-6 col-lg-3 mb-4">
-                  <FeaturedListingCard
-                    image="/images/turnberry/Turnberry Tower Nice Vew.jpg"
-                    title="Tower 3, Unit 2205"
-                    price="$2,100,000"
-                    beds={3}
-                    baths={3}
-                    sqft={2400}
-                    views="Mountain Views"
-                    tower="Tower 3"
-                    unit="Unit 2205"
-                  />
-                </div>
-                <div className="col-md-6 col-lg-3 mb-4">
-                  <FeaturedListingCard
-                    image="/images/turnberry/Turnberry Tower South View.jpeg"
-                    title="Tower 4, Unit 3501"
-                    price="$4,500,000"
-                    beds={4}
-                    baths={4}
-                    sqft={3800}
-                    views="Panoramic Views"
-                    tower="Tower 4"
-                    unit="Unit 3501"
-                    featured={true}
-                  />
-                </div>
-                <div className="col-md-6 col-lg-3 mb-4">
-                  <FeaturedListingCard
-                    image="/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg"
-                    title="Tower 1, Unit 1203"
-                    price="$950,000"
-                    beds={1}
-                    baths={1}
-                    sqft={1350}
-                    views="City Views"
-                    tower="Tower 1"
-                    unit="Unit 1203"
-                  />
-                </div>
-              </div>
-              <div className="text-center mt-5">
-                <Link href="/available-condos" className="btn btn-primary btn-lg" style={{ 
-                  padding: '0.875rem 2.5rem',
-                  fontSize: '1.1rem',
-                  borderRadius: '6px',
-                  fontWeight: 600
-                }}>
-                  See All <DynamicUnitCount defaultCount={12} elementId="total-listings-count" /> Available Units
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Client Testimonials, Power of Numbers, In The Media - MOVED TO /agent page */}
-
-      {/* VIP Newsletter Signup */}
-      <div className="card-content py-5 bg-light" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
-        <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12 col-md-8 col-lg-6">
-              <VIPNewsletterSignup />
+            <div className="col-12 col-lg-8 text-center">
+              <h2 className="homepage-section mb-3" style={{ fontSize: '2rem', fontWeight: 600 }}>
+                Please join us for an
+              </h2>
+              <h3 className="mb-4" style={{ fontSize: '1.75rem', fontWeight: 600 }}>
+                Open House
+              </h3>
+              <p className="lead mb-4" style={{ fontSize: '1.25rem' }}>
+                No open houses scheduled
+              </p>
+              <Link href="/request-details" className="btn btn-primary btn-lg">
+                Request Showing
+              </Link>
             </div>
           </div>
         </div>
@@ -690,7 +401,110 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Available Condos, Floor Plans, Stirling Club, Neighborhood, Share sections - MOVED TO respective pages */}
+      {/* Available Las Vegas Condos Section */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10 text-center">
+              <h2 className="homepage-section mb-4" style={{ fontSize: '2rem', fontWeight: 600 }}>
+                Available Las Vegas Condos
+              </h2>
+              <Link href="/available-condos" className="btn btn-primary btn-lg">
+                View All Available Condos
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floor Plans Section */}
+      <div className="card-content py-5 bg-white">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10 text-center">
+              <h2 className="homepage-section mb-4" style={{ fontSize: '2rem', fontWeight: 600 }}>
+                Floor Plans
+              </h2>
+              <Link href="/floor-plans" className="btn btn-primary btn-lg">
+                View All Floor Plans
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Share Section */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10 text-center">
+              <h2 className="homepage-section mb-4" style={{ fontSize: '2rem', fontWeight: 600 }}>
+                Share this property
+              </h2>
+              <Link href="/share" className="btn btn-primary btn-lg">
+                Share Turnberry Place
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* The Stirling Club Section */}
+      <div className="card-content py-5 bg-white">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <h2 className="homepage-section mb-3" style={{ fontSize: '2rem', fontWeight: 600 }}>
+                The Stirling Club
+              </h2>
+              <h3 className="mb-4" style={{ fontSize: '1.5rem', fontWeight: 500 }}>
+                Exclusive Luxury at Your Doorstep
+              </h3>
+              <p className="homepage-lead mb-4" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
+                The crown jewel of Turnberry Place is the recently renovated Stirling Club, an 80,000 square foot private club offering world-class amenities exclusively to residents. This luxurious facility includes:
+              </p>
+              <ul className="list-unstyled mb-4" style={{ fontSize: '1.1rem', lineHeight: 2 }}>
+                <li>• State-of-the-art fitness center</li>
+                <li>• Resort-style swimming pools (both indoor and outdoor)</li>
+                <li>• Tennis courts</li>
+                <li>• Spa and beauty services center</li>
+                <li>• Multiple dining venues and bars</li>
+                <li>• Business center with conference rooms</li>
+                <li>• Various lounges for socializing and relaxation</li>
+              </ul>
+              <p className="homepage-lead" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
+                The Stirling Club serves as the social and recreational hub of the Turnberry Place community, providing residents with a private oasis of luxury and convenience. Its extensive offerings contribute significantly to the upscale lifestyle that defines Turnberry Place, making it a central feature that distinguishes this development from other luxury condominiums in Las Vegas
+              </p>
+              <div className="text-center mt-4">
+                <Link href="/stirling-club" className="btn btn-primary btn-lg">
+                  Learn More About The Stirling Club
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Turnberry Place Neighborhood Section */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <h2 className="homepage-section mb-4" style={{ fontSize: '2rem', fontWeight: 600 }}>
+                Turnberry Place Neighborhood and Area Profile
+              </h2>
+              <p className="homepage-lead mb-4" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
+                Turnberry Place stands as a pinnacle of luxury living in Las Vegas, offering an unparalleled blend of privacy, convenience, and access to world-class amenities. Situated just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts, this guard-gated, four-tower condominium complex redefines upscale urban living with its strategic location and meticulously curated environment. Residents enjoy immediate proximity to the Entertainment Capital of the World while residing in a serene, tropical-inspired oasis adorned with lush palm trees and manicured landscaping.
+              </p>
+              <div className="text-center mt-4">
+                <Link href="/neighborhood" className="btn btn-primary btn-lg">
+                  Learn More About The Neighborhood
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
