@@ -99,123 +99,64 @@ function HomePageContent() {
       {/* Hero Section with Slideshow */}
       <HeroSlideshow photos={heroPhotos} />
       
-      {/* Property Address Section */}
-      <div className="card-content py-4 bg-white">
+      {/* Price & Features Section - Combined like live site */}
+      <div className="card-content card-price-features py-5" id="card-id-2271756" data-card-type="3">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 text-center">
-              <h1 className="homepage-section mb-2" style={{ fontSize: '2.5rem', fontWeight: 600 }}>
-                Turnberry Place Las Vegas
-              </h1>
-              <p className="lead mb-0" style={{ fontSize: '1.25rem', color: '#666' }}>
-                Las Vegas, NV 89109
-              </p>
+              <h1 className="mb-1">Turnberry Place Las Vegas</h1>
+              <p>Las Vegas, NV 89109</p>
+              <h3>4 Luxury Towers from $800,000 to $10M+</h3>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Price Range Section */}
-      <div className="card-content py-4 bg-light">
+      {/* Towers Section - Matching Live Site */}
+      <div className="card-content card-prop-description py-5" id="card-id-2271757" data-card-type="4">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 text-center">
-              <h2 className="homepage-section mb-0" style={{ fontSize: '2rem', fontWeight: 600 }}>
-                4 Luxury Towers from $800,000 to $10M+
-              </h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Heading Section */}
-      <div className="card-content py-5 bg-white">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10 text-center">
-              <h2 className="homepage-section" style={{ fontSize: '2.5rem', fontWeight: 600 }}>
+          <div className="row">
+            <div className="col-12">
+              <h1 className="mb-4 text-center">
                 Turnberry Place | Las Vegas' Premier High-Rise Community
-              </h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Tower Sections - Matching Live Site */}
-      <div className="card-content card-prop-description bg-white">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10">
-              <div className="content-section">
-                <h2 className="homepage-section" style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>
-                  Tower 1 - Elegant High-Rise Living
-                </h2>
-                <p className="homepage-lead" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
-                  Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities.
-                </p>
-              </div>
-
-              <div className="content-section">
-                <h2 className="homepage-section" style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>
-                  Tower 2 - Sophisticated Strip Views
-                </h2>
-                <p className="homepage-lead" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
-                  Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities.
-                </p>
-              </div>
-
-              <div className="content-section">
-                <h2 className="homepage-section" style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>
-                  Tower 3 - Premium Desert Living
-                </h2>
-                <p className="homepage-lead" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
-                  The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living.
-                </p>
-              </div>
-
-              <div className="content-section">
-                <h2 className="homepage-section" style={{ fontSize: '2rem', fontWeight: 600, marginBottom: '2rem' }}>
-                  Tower 4 - Ultimate Luxury Living
-                </h2>
-                <p className="homepage-lead" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
-                  As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club.
-                </p>
+              </h1>
+              <div className="desc" style={{ columns: 1, columnGap: '35px' }}>
+                <h1>Tower 1 - Elegant High-Rise Living</h1>
+                <p>Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities.</p>
+                <h1>Tower 2 - Sophisticated Strip Views</h1>
+                <p>Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities.</p>
+                <h1>Tower 3 - Premium Desert Living</h1>
+                <p>The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living.</p>
+                <h1>Tower 4 - Ultimate Luxury Living</h1>
+                <p>As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Amenities Section Preview */}
-      <div className="card-content card-amenities">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10">
-              <div className="amenities-border">
+      {/* Amenities Section - Matching Live Site */}
+      <div className="card-content card-amenities py-5" id="card-id-2271758" data-card-type="5">
+        <div className="container pt-2">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-12">
+              <div className="pb-4 pb-sm-5 amenities-border">
                 <div className="amenities-title">
-                  <h2 className="text-center homepage-section">
-                    World-Class Amenities and Lifestyle Benefits
-                  </h2>
-                  <p className="text-center homepage-lead">
-                    Turnberry Place residents enjoy exclusive access to The Stirling Club, an 80,000-square-foot private membership facility that provides world-class amenities without separate membership costs. This comprehensive amenity package, combined with the development's security, location, and quality, creates exceptional value that justifies the development's premium positioning.
-                  </p>
+                  <h1 className="text-center">Amenities</h1>
                 </div>
-                <div className="row pt-2 pt-sm-4">
+                <div className="row pt-2 pt-sm-4 pl-3 pl-sm-5">
                   {["Gated Community", "City View", "Secure Building", "Gym", "Tennis Courts", "Spa", "Swimming Pool", "Workout Room", "Mountains", "Private Patio"].map((amenity, index) => (
-                    <div key={index} className="col-6 col-lg-4 py-3 amenity-item">
-                      <span className="amenity-icon">
-                        <svg height="18" width="18" aria-hidden="true" focusable="false" className="d-inline" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                          <path fill="currentColor" d="M413.505 91.951L133.49 371.966l-98.995-98.995c-4.686-4.686-12.284-4.686-16.971 0L6.211 284.284c-4.686 4.686-4.686 12.284 0 16.971l118.794 118.794c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-11.314-11.314c-4.686-4.686-12.284-4.686-16.97 0z"/>
-                        </svg>
-                      </span>
+                    <div key={index} className="col-6 col-lg-4 py-2 d-flex align-items-center">
+                      <div className="mr-2 pb-1">
+                        <span className="icon-custom">
+                          <svg height="15" width="15" aria-hidden="true" focusable="false" className="d-inline" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path fill="currentColor" d="M413.505 91.951L133.49 371.966l-98.995-98.995c-4.686-4.686-12.284-4.686-16.971 0L6.211 284.284c-4.686 4.686-4.686 12.284 0 16.971l118.794 118.794c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-11.314-11.314c-4.686-4.686-12.284-4.686-16.97 0z"/>
+                          </svg>
+                        </span>
+                      </div>
                       <span className="amenity-name">{amenity}</span>
                     </div>
                   ))}
-                </div>
-                <div className="text-center mt-4 pt-3" style={{ borderTop: '1px solid #e9ecef' }}>
-                  <Link href="/amenities" className="btn btn-outline-primary btn-lg">
-                    View All Amenities
-                  </Link>
                 </div>
               </div>
             </div>
@@ -224,67 +165,61 @@ function HomePageContent() {
       </div>
 
       {/* Open House Section - Matching Live Site */}
-      <div className="card-content py-5 bg-white">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-8 text-center">
-              <h2 className="homepage-section mb-3" style={{ fontSize: '2rem', fontWeight: 600 }}>
-                Please join us for an
-              </h2>
-              <h3 className="mb-4" style={{ fontSize: '1.75rem', fontWeight: 600 }}>
-                Open House
-              </h3>
-              <p className="lead mb-4" style={{ fontSize: '1.25rem' }}>
-                No open houses scheduled
-              </p>
-              <Link href="/request-details" className="btn btn-primary btn-lg">
-                Request Showing
-              </Link>
+      <div className="card-content card-open-house py-5" id="card-id-2271761" data-card-type="8" style={{
+        backgroundImage: "url(/images/turnberry/Turnberry Tower Nice Vew.jpg)",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
+      }}>
+        <div className="container-fluid">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-7 text-center py-5 px-0">
+              <div className="open-house-box p-2 p-md-4 shadow" style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                borderRadius: '4px',
+              }}>
+                <div className="mt-2 mb-2 text-heading text-uppercase">
+                  Please join us for an
+                </div>
+                <div className="d-flex mb-3 mb-lg-4 align-items-center justify-content-center">
+                  <div className="d-none d-md-block w-10 horiz-line" style={{ flex: '1', maxWidth: '100px', height: '1px', backgroundColor: 'rgba(222,226,230,1)' }}></div>
+                  <h2 className="my-0 mx-2 text-uppercase">Open House</h2>
+                  <div className="d-none d-md-block w-10 horiz-line" style={{ flex: '1', maxWidth: '100px', height: '1px', backgroundColor: 'rgba(222,226,230,1)' }}></div>
+                </div>
+                <div className="text-center pb-4">
+                  <p className="none-scheduled mb-4">
+                    No open houses scheduled
+                  </p>
+                  <Link className="btn btn-custom btn-lg" href="/request-details" title="Request Showing">
+                    Request Showing
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Contact Form Section */}
-      <div
-        className="card-content card-contact-form py-5"
-        style={{
-          backgroundImage: "url(/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg)",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center center",
-          backgroundSize: "cover",
-          position: 'relative',
-          paddingTop: '5rem',
-          paddingBottom: '5rem'
-        }}
-      >
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 1
-        }}></div>
-        <div className="container-fluid position-relative" style={{ zIndex: 2 }}>
+      {/* Contact Form Section - Matching Live Site */}
+      <div className="card-content card-contact-form py-5" id="card-id-2271763" data-card-type="11" style={{
+        backgroundImage: "url(/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg)",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
+      }}>
+        <div className="container-fluid">
           <div className="row align-items-center justify-content-center">
             <div className="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6 text-center px-sm-2">
-              <div className="contact-form-box p-4 p-md-5 shadow-lg" style={{
-                backgroundColor: 'rgba(255,255,255,0.98)',
-                borderRadius: '12px',
-                backdropFilter: 'blur(10px)'
+              <div className="contact-form-box p-4" style={{
+                backgroundColor: 'rgba(255,255,255,0.95)',
+                borderRadius: '4px',
               }}>
-                <div className="mt-0 mt-md-2 mb-4 d-flex align-items-center justify-content-center">
-                  <div className="w-10 horiz-line d-none d-sm-block" style={{ height: '2px', backgroundColor: '#007bff' }}></div>
-                  <h2 className="my-0 mx-3" id="contact-label" style={{ 
-                    fontSize: '2rem',
-                    fontWeight: 600,
-                    color: '#333'
-                  }}>
+                <div className="mt-0 mt-md-2 d-flex align-items-center justify-content-center">
+                  <div className="w-10 horiz-line d-none d-sm-block" style={{ flex: '1', maxWidth: '100px', height: '1px', backgroundColor: 'rgba(181,152,90,1)' }}></div>
+                  <h1 className="my-0 mx-2 heading-color" id="contact-label">
                     Turnberry Place Request Pricing & Details
-                  </h2>
-                  <div className="w-10 horiz-line d-none d-sm-block" style={{ height: '2px', backgroundColor: '#007bff' }}></div>
+                  </h1>
+                  <div className="w-10 horiz-line d-none d-sm-block" style={{ flex: '1', maxWidth: '100px', height: '1px', backgroundColor: 'rgba(181,152,90,1)' }}></div>
                 </div>
                 <ContactForm title="Turnberry Place Request Pricing & Details" />
               </div>
@@ -293,107 +228,53 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Agent Section */}
-      <div className="card-content card-agent py-5" style={{ paddingTop: '4rem', paddingBottom: '4rem', backgroundColor: '#f8f9fa' }}>
-        <div className="container">
+      {/* Agent Section - Matching Live Site */}
+      <div className="card-content card-agent py-5" id="card-id-2271762" data-card-type="12">
+        <div className="container-fluid">
           <div className="row justify-content-center">
-            <div className="col-12 col-lg-10">
-              <div className="card border-0 shadow-lg" style={{ borderRadius: '12px', overflow: 'hidden' }}>
-                <div className="card-body p-4 p-md-5">
-                  <div className="row align-items-center">
-                    <div className="col-12 col-md-4 text-center mb-4 mb-md-0">
-                      <Image
-                        className="img-fluid agent-photo rounded-circle"
-                        src="/images/turnberry/asset-1.jpg"
-                        alt="Dr. Jan Duffy, Las Vegas real estate expert specializing in Turnberry Place luxury condos"
-                        width={225}
-                        height={225}
-                        loading="lazy"
-                        style={{
-                          border: '4px solid #007bff',
-                          boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
-                        }}
-                      />
+            <div className="col-12">
+              <div className="row justify-content-center">
+                <div className="py-2 col-12 text-center">
+                  <h1>Dr. Jan Duffy, REALTOR</h1>
+                  <div className="my-1">
+                    The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
+                    <br /> 0197614 NV
+                  </div>
+                </div>
+                <div className="col-12 py-2 d-flex align-items-center justify-content-center">
+                  <Image
+                    className="img-fluid agent-photo"
+                    src="/images/turnberry/asset-1.jpg"
+                    alt="Photo of Dr. Jan Duffy, REALTOR"
+                    width={225}
+                    height={225}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="col-12 text-center py-2">
+                  <div className="py-2 d-flex flex-column flex-lg-row align-items-center justify-content-center" style={{ gap: '5px' }}>
+                    <div className="mx-2" itemScope itemType="https://schema.org/LocalBusiness">
+                      <span>Mobile:</span> <a href="tel:7022221988" title="Phone cell">(702) 222-1988</a>
                     </div>
-                    <div className="col-12 col-md-8 text-center text-md-left">
-                      <h2 className="mb-3" style={{ fontSize: '2.25rem', fontWeight: 600, color: '#333' }}>
-                        Dr. Jan Duffy, REALTOR
-                      </h2>
-                      <p className="mb-3" style={{ fontSize: '1.1rem', color: '#495057', lineHeight: 1.6 }}>
-                        The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
-                      </p>
-                      <p className="mb-4 small text-muted">
-                        License: S.0197614.LLC
-                      </p>
-                      <div className="d-flex flex-column flex-md-row align-items-center justify-content-md-start gap-3">
-                        <div>
-                          <span className="font-weight-bold">Call/Text:</span>{" "}
-                          <a 
-                            href="tel:7022221988" 
-                            title="Call or text Dr. Jan Duffy"
-                            style={{
-                              fontSize: '1.25rem',
-                              fontWeight: 600,
-                              color: '#007bff',
-                              textDecoration: 'none'
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.textDecoration = 'underline'
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.textDecoration = 'none'
-                            }}
-                          >
-                            (702) 222-1988
-                          </a>
-                        </div>
-                        <div>
-                          <span className="font-weight-bold">Office:</span>{" "}
-                          <a 
-                            href="tel:7025001955" 
-                            title="Berkshire Hathaway office"
-                            style={{
-                              fontSize: '1.1rem',
-                              color: '#007bff',
-                              textDecoration: 'none'
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.textDecoration = 'underline'
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.textDecoration = 'none'
-                            }}
-                          >
-                            (702) 500-1955
-                          </a>
-                        </div>
-                      </div>
-                      <div className="mt-4">
-                        <Link 
-                          href="/agent" 
-                          className="btn btn-primary"
-                          title="View Dr. Jan Duffy's bio"
-                          style={{
-                            padding: '0.75rem 1.5rem',
-                            fontSize: '1rem',
-                            borderRadius: '6px',
-                            fontWeight: 600,
-                            transition: 'all 0.3s ease'
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-2px)'
-                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,123,255,0.3)'
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = 'translateY(0)'
-                            e.currentTarget.style.boxShadow = 'none'
-                          }}
-                        >
-                          View Full Profile
-                        </Link>
-                      </div>
+                    <div className="mx-2" itemScope itemType="https://schema.org/LocalBusiness">
+                      <span>Office:</span> <a href="tel:7022221988" title="Phone office">(702) 222-1988</a>
                     </div>
                   </div>
+                  <div className="py-2">
+                    <Link className="cursor-pointer btn-agent-bio" href="/agent" title="View Bio">
+                      View Bio
+                    </Link>
+                  </div>
+                </div>
+                <div className="col-12 text-center py-2">
+                  <Image
+                    className="img-fluid company-logo"
+                    src="/images/turnberry/asset-19.jpg"
+                    alt="The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties Logo"
+                    width={225}
+                    height={225}
+                    loading="lazy"
+                  />
                 </div>
               </div>
             </div>
@@ -401,46 +282,58 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Available Las Vegas Condos Section */}
-      <div className="card-content py-5 bg-light">
+      {/* Available Las Vegas Condos Section - Matching Live Site */}
+      <div className="card-content card-embed-widget py-5" id="card-id-2271977" data-card-type="39">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12 col-lg-10 text-center">
-              <h2 className="homepage-section mb-4" style={{ fontSize: '2rem', fontWeight: 600 }}>
-                Available Las Vegas Condos
-              </h2>
-              <Link href="/available-condos" className="btn btn-primary btn-lg">
-                View All Available Condos
-              </Link>
+            <div className="col-12">
+              <h1 className="text-center mb-4">
+                Available Las Vegas Condos 
+              </h1>
+              <div className="widget-wrapper">
+                <Script
+                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+                  type="module"
+                  strategy="lazyOnload"
+                />
+                <style jsx>{`
+                  realscout-office-listings {
+                    --rs-listing-divider-color: rgb(101, 141, 172);
+                    width: 100%;
+                  }
+                `}</style>
+                {/* @ts-ignore - Custom web component */}
+                <realscout-office-listings agent-encoded-id="QWdlbnQtMjI1MDUw" sort-order="PRICE_HIGH" listing-status="For Sale" property-types="TC" price-min="600000"></realscout-office-listings>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Floor Plans Section */}
-      <div className="card-content py-5 bg-white">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10 text-center">
-              <h2 className="homepage-section mb-4" style={{ fontSize: '2rem', fontWeight: 600 }}>
+      {/* Floor Plans Section - Link to dedicated page */}
+      <div className="card-content card-floor-plans py-5" id="card-id-2281722" data-card-type="34">
+        <div className="container-fluid">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-12 col-lg-11 col-xl-10 text-center">
+              <h1 className="text-center mb-4">
                 Floor Plans
-              </h2>
-              <Link href="/floor-plans" className="btn btn-primary btn-lg">
-                View All Floor Plans
-              </Link>
+              </h1>
+              <div className="py-4">
+                <Link href="/floor-plans" className="btn btn-primary btn-lg">
+                  View All Floor Plans
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Share Section */}
-      <div className="card-content py-5 bg-light">
+      {/* Share Section - Link to dedicated page */}
+      <div className="card-content py-5 bg-light" id="card-id-2271764" data-card-type="20">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12 col-lg-10 text-center">
-              <h2 className="homepage-section mb-4" style={{ fontSize: '2rem', fontWeight: 600 }}>
-                Share this property
-              </h2>
+            <div className="col-12 text-center">
+              <h1 className="mb-4">Share this property</h1>
               <Link href="/share" className="btn btn-primary btn-lg">
                 Share Turnberry Place
               </Link>
@@ -449,57 +342,66 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* The Stirling Club Section */}
-      <div className="card-content py-5 bg-white">
+      {/* The Stirling Club Section - Matching Live Site */}
+      <div className="card-content card-custom card-custom-03 py-5" id="card-id-2273044" data-card-type="40">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10">
-              <h2 className="homepage-section mb-3" style={{ fontSize: '2rem', fontWeight: 600 }}>
-                The Stirling Club
-              </h2>
-              <h3 className="mb-4" style={{ fontSize: '1.5rem', fontWeight: 500 }}>
-                Exclusive Luxury at Your Doorstep
-              </h3>
-              <p className="homepage-lead mb-4" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
-                The crown jewel of Turnberry Place is the recently renovated Stirling Club, an 80,000 square foot private club offering world-class amenities exclusively to residents. This luxurious facility includes:
-              </p>
-              <ul className="list-unstyled mb-4" style={{ fontSize: '1.1rem', lineHeight: 2 }}>
-                <li>• State-of-the-art fitness center</li>
-                <li>• Resort-style swimming pools (both indoor and outdoor)</li>
-                <li>• Tennis courts</li>
-                <li>• Spa and beauty services center</li>
-                <li>• Multiple dining venues and bars</li>
-                <li>• Business center with conference rooms</li>
-                <li>• Various lounges for socializing and relaxation</li>
-              </ul>
-              <p className="homepage-lead" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
-                The Stirling Club serves as the social and recreational hub of the Turnberry Place community, providing residents with a private oasis of luxury and convenience. Its extensive offerings contribute significantly to the upscale lifestyle that defines Turnberry Place, making it a central feature that distinguishes this development from other luxury condominiums in Las Vegas
-              </p>
-              <div className="text-center mt-4">
-                <Link href="/stirling-club" className="btn btn-primary btn-lg">
-                  Learn More About The Stirling Club
-                </Link>
+          <div className="row">
+            <div className="col-12">
+              <h1 className="text-center">The Stirling Club</h1>
+              <h4 className="text-center">Exclusive Luxury at Your Doorstep</h4>
+            </div>
+          </div>
+          <div className="row py-4 justify-content-center">
+            <div className="col-12 col-xl-10">
+              <div className="row align-items-center">
+                <div className="col-12 col-md-6">
+                  <div className="left-image pb-4 pb-md-0 text-center">
+                    <Image
+                      src="/images/turnberry/Turnberry Tower Nice Vew.jpg"
+                      alt="The Stirling Club"
+                      width={400}
+                      height={400}
+                      className="img-fluid"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                <div className="col-12 col-md-6">
+                  <div className="text-content pt-3 pt-md-0">
+                    <p>The crown jewel of Turnberry Place is the recently renovated Stirling Club, an 80,000 square foot private club offering world-class amenities exclusively to residents. This luxurious facility includes:</p>
+                    <ul>
+                      <li>State-of-the-art fitness center</li>
+                      <li>Resort-style swimming pools (both indoor and outdoor)</li>
+                      <li>Tennis courts</li>
+                      <li>Spa and beauty services center</li>
+                      <li>Multiple dining venues and bars</li>
+                      <li>Business center with conference rooms</li>
+                      <li>Various lounges for socializing and relaxation</li>
+                    </ul>
+                    <p>The Stirling Club serves as the social and recreational hub of the Turnberry Place community, providing residents with a private oasis of luxury and convenience. Its extensive offerings contribute significantly to the upscale lifestyle that defines Turnberry Place, making it a central feature that distinguishes this development from other luxury condominiums in Las Vegas</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Turnberry Place Neighborhood Section */}
-      <div className="card-content py-5 bg-light">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10">
-              <h2 className="homepage-section mb-4" style={{ fontSize: '2rem', fontWeight: 600 }}>
-                Turnberry Place Neighborhood and Area Profile
-              </h2>
-              <p className="homepage-lead mb-4" style={{ fontSize: '1.1rem', lineHeight: 1.8 }}>
-                Turnberry Place stands as a pinnacle of luxury living in Las Vegas, offering an unparalleled blend of privacy, convenience, and access to world-class amenities. Situated just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts, this guard-gated, four-tower condominium complex redefines upscale urban living with its strategic location and meticulously curated environment. Residents enjoy immediate proximity to the Entertainment Capital of the World while residing in a serene, tropical-inspired oasis adorned with lush palm trees and manicured landscaping.
-              </p>
-              <div className="text-center mt-4">
-                <Link href="/neighborhood" className="btn btn-primary btn-lg">
-                  Learn More About The Neighborhood
-                </Link>
+      {/* Turnberry Place Neighborhood Section - Link to dedicated page */}
+      <div className="card-content card-areas py-5" id="card-id-2282239" data-card-type="42">
+        <div className="container-fluid">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-12 col-sm-11 col-lg-10 col-xl-9">
+              <div className="py-4">
+                <h1 className="text-center mb-4">Turnberry Place Neighborhood and Area Profile</h1>
+                <div className="area-desc">
+                  <p>Turnberry Place stands as a pinnacle of luxury living in Las Vegas, offering an unparalleled blend of privacy, convenience, and access to world-class amenities. Situated just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts, this guard-gated, four-tower condominium complex redefines upscale urban living with its strategic location and meticulously curated environment. Residents enjoy immediate proximity to the Entertainment Capital of the World while residing in a serene, tropical-inspired oasis adorned with lush palm trees and manicured landscaping.</p>
+                </div>
+                <div className="text-center mt-4">
+                  <Link href="/neighborhood" className="btn btn-primary btn-lg">
+                    Learn More About The Neighborhood
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
