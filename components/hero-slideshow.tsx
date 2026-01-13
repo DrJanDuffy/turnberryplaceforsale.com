@@ -52,73 +52,61 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
       {/* Hero Content */}
       <div className="container h-100 d-flex align-items-center justify-content-center">
         <div className="row w-100 justify-content-center">
-          <div className="col-12 col-lg-10 col-xl-8 text-center hero-content position-relative" style={{ zIndex: 14 }}>
-            <h1 className="display-4 mb-3">
-              Turnberry Place Condos From $800K
+          <div className="col-12 text-center hero-content position-relative" style={{ zIndex: 14 }}>
+            <h1 className="display-4 mb-4" style={{ 
+              fontFamily: 'Cinzel, serif',
+              fontWeight: 600,
+              fontSize: '4rem',
+              letterSpacing: '0.05em',
+              textTransform: 'uppercase',
+              color: '#ffffff',
+              textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)'
+            }}>
+              Turnberry Place Las Vegas
             </h1>
-            <div className="mb-4">
-              <h3 className="text-white font-weight-bold" style={{ fontSize: '1.5rem', textShadow: '1px 1px 4px rgba(0,0,0,0.6)' }}>
-                Only <DynamicUnitCount defaultCount={12} elementId="available-units-count" /> Units Available Now
-              </h3>
+            <div className="d-flex align-items-center justify-content-center mb-4" style={{ gap: '1rem' }}>
+              <div style={{ flex: '1', maxWidth: '100px', height: '2px', backgroundColor: '#ffffff' }}></div>
+              <h4 style={{ 
+                fontFamily: 'Cinzel, serif',
+                fontWeight: 400,
+                fontSize: '1.25rem',
+                color: '#ffffff',
+                textShadow: '1px 1px 4px rgba(0,0,0,0.6)',
+                margin: 0,
+                whiteSpace: 'nowrap'
+              }}>
+                Las Vegas, NV
+              </h4>
+              <div style={{ flex: '1', maxWidth: '100px', height: '2px', backgroundColor: '#ffffff' }}></div>
             </div>
-            <div className="d-flex align-items-center justify-content-center flex-wrap gap-3 mt-4 mb-4">
+            <div className="mt-4">
               <Link 
                 href="/available-condos" 
-                className="btn btn-lg btn-warning px-5 py-3 font-weight-bold"
+                className="btn"
                 style={{ 
-                  fontSize: '1.1rem',
-                  borderRadius: '6px',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-                  transition: 'all 0.3s ease'
+                  fontSize: '1rem',
+                  fontWeight: 500,
+                  padding: '0.75rem 2rem',
+                  borderRadius: '4px',
+                  border: '1px solid rgba(255, 255, 255, 0.5)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                  color: '#ffffff',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  transition: 'all 0.3s ease',
+                  backdropFilter: 'blur(4px)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)'
-                  e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.4)'
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.25)'
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.8)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)'
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)'
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)'
                 }}
               >
-                View Available Condos
+                Units for Sale
               </Link>
-              <a 
-                href="tel:7022221988" 
-                className="btn btn-lg btn-outline-light px-5 py-3 font-weight-bold"
-                style={{ 
-                  fontSize: '1.1rem',
-                  borderRadius: '6px',
-                  borderWidth: '2px',
-                  backdropFilter: 'blur(4px)',
-                  backgroundColor: 'rgba(255,255,255,0.1)',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.2)'
-                  e.currentTarget.style.transform = 'translateY(-2px)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'
-                  e.currentTarget.style.transform = 'translateY(0)'
-                }}
-              >
-                Schedule Private Tour
-              </a>
-            </div>
-            {/* Social Proof */}
-            <div className="mt-5 pt-3 d-flex flex-wrap justify-content-center align-items-center gap-4 text-white" style={{ borderTop: '1px solid rgba(255,255,255,0.2)' }}>
-              <div className="text-center px-3">
-                <div className="h3 mb-1 font-weight-bold" style={{ fontSize: '2rem', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>500+</div>
-                <div className="small" style={{ fontSize: '0.9rem', opacity: 0.95 }}>Las Vegas Families Helped</div>
-              </div>
-              <div className="text-center px-3">
-                <div className="h3 mb-1 font-weight-bold" style={{ fontSize: '2rem', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>30+</div>
-                <div className="small" style={{ fontSize: '0.9rem', opacity: 0.95 }}>Years Experience</div>
-              </div>
-              <div className="text-center px-3">
-                <div className="h3 mb-1 font-weight-bold" style={{ fontSize: '2rem', textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>⭐ 4.9/5</div>
-                <div className="small" style={{ fontSize: '0.9rem', opacity: 0.95 }}>Google Reviews</div>
-              </div>
             </div>
           </div>
         </div>

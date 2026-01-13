@@ -114,133 +114,36 @@ export function Navbar({ links, ...props }: NavbarProps) {
             </div>
           </div>
           <div className="col" style={{ flex: '1 1 auto', minWidth: 0 }}>
-            <div className="nav-wrapper">
-              {navigationStructure.map((item) => {
-                if (item.children) {
-                  const isDropdownOpen = openDropdown === item.title
-                  const isItemActive = isActive(item.href, item.children)
-                  
-                  return (
-                    <div
-                      key={item.title}
-                      className="nav-dropdown position-relative d-none d-lg-block"
-                      onMouseEnter={() => setOpenDropdown(item.title)}
-                      onMouseLeave={() => setOpenDropdown(null)}
-                    >
-                      <Link
-                        href={item.href}
-                        className={classNames(
-                          "nav-link py-2 px-3",
-                          isItemActive && "active"
-                        )}
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          color: 'rgba(255, 255, 255, 0.95)',
-                          cursor: 'pointer',
-                          fontSize: '0.9rem',
-                          fontWeight: 500,
-                          fontFamily: 'Cinzel, serif',
-                          whiteSpace: 'nowrap',
-                          textDecoration: 'none',
-                          display: 'inline-block'
-                        }}
-                      >
-                        {item.title}
-                        <svg
-                          width="10"
-                          height="10"
-                          viewBox="0 0 12 12"
-                          fill="currentColor"
-                          className="ml-1"
-                          style={{
-                            display: 'inline-block',
-                            verticalAlign: 'middle',
-                            transition: 'transform 0.2s ease',
-                            transform: isDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-                          }}
-                        >
-                          <path d="M6 9L1 4h10L6 9z" />
-                        </svg>
-                      </Link>
-                      {isDropdownOpen && (
-                        <div
-                          className="dropdown-menu show"
-                          style={{
-                            position: 'absolute',
-                            top: '100%',
-                            left: 0,
-                            backgroundColor: '#1a1a1a',
-                            border: '1px solid rgba(255, 255, 255, 0.1)',
-                            borderRadius: '6px',
-                            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.4)',
-                            minWidth: '220px',
-                            padding: '0.5rem 0',
-                            zIndex: 1000,
-                            marginTop: '4px'
-                          }}
-                        >
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              className={classNames(
-                                "dropdown-item",
-                                asPath === child.href && "active"
-                              )}
-                              style={{
-                                display: 'block',
-                                padding: '0.75rem 1.25rem',
-                                color: asPath === child.href ? '#fff' : 'rgba(255, 255, 255, 0.9)',
-                                textDecoration: 'none',
-                                fontSize: '0.9rem',
-                                fontFamily: 'Cinzel, serif',
-                                transition: 'all 0.2s ease',
-                                whiteSpace: 'nowrap',
-                                backgroundColor: asPath === child.href ? 'rgba(255, 255, 255, 0.15)' : 'transparent',
-                                fontWeight: asPath === child.href ? 500 : 400
-                              }}
-                              onMouseEnter={(e) => {
-                                if (asPath !== child.href) {
-                                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
-                                }
-                              }}
-                              onMouseLeave={(e) => {
-                                if (asPath !== child.href) {
-                                  e.currentTarget.style.backgroundColor = 'transparent'
-                                }
-                              }}
-                            >
-                              {child.title}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  )
-                }
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={classNames(
-                      "py-2 d-none font-size-90 d-lg-inline-block nav-link px-3",
-                      asPath === item.href ? "active" : ""
-                    )}
-                    title={item.title}
-                  >
-                    {item.title}
-                  </Link>
-                )
-              })}
-              <Link
-                href="https://translate.google.com/translate?hl=es&sl=auto&tl=es&u=https://www.turnberryplaceforsale.com"
-                className="d-none font-size-90 d-lg-inline-block px-3 nav-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Español
-              </Link>
+            <div className="nav-wrapper d-none d-lg-block">
+              {/* Top Row Navigation */}
+              <div className="d-flex flex-wrap align-items-center justify-content-end" style={{ marginBottom: '0.25rem' }}>
+                <Link href="/" className={classNames("nav-link px-2", asPath === "/" && "active")}>Home</Link>
+                <Link href="/price-features" className={classNames("nav-link px-2", asPath === "/price-features" && "active")}>Price & Features</Link>
+                <Link href="/towers" className={classNames("nav-link px-2", asPath === "/towers" && "active")}>Towers</Link>
+                <Link href="/amenities" className={classNames("nav-link px-2", asPath === "/amenities" && "active")}>Amenities</Link>
+                <Link href="/photos" className={classNames("nav-link px-2", asPath === "/photos" && "active")}>Photos</Link>
+                <Link href="/map" className={classNames("nav-link px-2", asPath === "/map" && "active")}>Map</Link>
+                <Link href="/open-house" className={classNames("nav-link px-2", asPath === "/open-house" && "active")}>Open House</Link>
+                <Link href="/request-details" className={classNames("nav-link px-2", asPath === "/request-details" && "active")}>Request Details</Link>
+                <Link href="/agent" className={classNames("nav-link px-2", asPath === "/agent" && "active")}>Agent</Link>
+              </div>
+              {/* Bottom Row Navigation */}
+              <div className="d-flex flex-wrap align-items-center justify-content-end">
+                <Link href="/available-condos" className={classNames("nav-link px-2", asPath === "/available-condos" && "active")}>Available Condos</Link>
+                <Link href="/floor-plans" className={classNames("nav-link px-2", asPath === "/floor-plans" && "active")}>Floor Plans</Link>
+                <Link href="/share" className={classNames("nav-link px-2", asPath === "/share" && "active")}>Share</Link>
+                <Link href="/stirling-club" className={classNames("nav-link px-2", asPath === "/stirling-club" && "active")}>Stirling Club</Link>
+                <Link href="/neighborhood" className={classNames("nav-link px-2", asPath === "/neighborhood" && "active")}>Neighborhood</Link>
+                <Link
+                  href="https://translate.google.com/translate?hl=es&sl=auto&tl=es&u=https://www.turnberryplaceforsale.com"
+                  className="nav-link px-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Español
+                </Link>
+              </div>
+            </div>
               <a
                 className="ml-auto pr-2 d-inline d-lg-none nav-mobile cursor-pointer align-items-center"
                 aria-label="Toggle mobile navigation"
