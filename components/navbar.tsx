@@ -103,7 +103,7 @@ export function Navbar({ links, ...props }: NavbarProps) {
                 />
               </div>
               <div className="agent-text">
-                <div className="agent-name">Dr. Jan Duffy, REALTOR</div>
+                <div className="agent-name">DR. JAN DUFFY, REALTOR</div>
                 <div className="d-none d-lg-block agent-company">
                   The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
                 </div>

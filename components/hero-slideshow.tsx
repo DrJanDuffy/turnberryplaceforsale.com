@@ -117,15 +117,15 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                   fontFamily: 'Questrial, sans-serif'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.25)'
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.8)'
+                  e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 1)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.15)'
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)'
+                  e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.3)'
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 1)'
                 }}
               >
-                Units for Sale
+                UNITS FOR SALE
               </Link>
             </div>
           </div>
