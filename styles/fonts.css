@@ -1,5 +1,5 @@
-/* Custom Fonts - Matching Live Site */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Questrial&family=Open+Sans&display=swap');
+/* Custom Fonts - Simplified to 2 font families */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Questrial:wght@400;500;600&display=swap');
 
 :root {
   --default-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -7,8 +7,6 @@
   --headlines-font-weight: 500;
   --body-font: 'Questrial', sans-serif;
   --body-font-weight: 400;
-  --buttons-font: 'Open Sans', sans-serif;
-  --buttons-font-weight: 400;
   --nav-font: 'Cinzel', serif;
   --nav-font-weight: 500;
   --heading-color: #212529;
@@ -17,21 +15,25 @@
   --nav-bg-color: rgba(26, 26, 26, 1);
 }
 
+/* Body text and buttons use Questrial */
 body, .body-font {
   font-family: var(--body-font);
   font-weight: var(--body-font-weight);
 }
 
+/* Headings use Cinzel */
 h1, h2, h3, h4, h5, h6, .headlines-font {
   font-family: var(--headlines-font);
   font-weight: var(--headlines-font-weight);
 }
 
+/* Buttons use Questrial (same as body) */
 button, .btn, .buttons-font {
-  font-family: var(--buttons-font);
-  font-weight: var(--buttons-font-weight);
+  font-family: var(--body-font);
+  font-weight: var(--body-font-weight);
 }
 
+/* Navigation uses Cinzel (same as headings) */
 a.nav-link, .nav-font {
   font-family: var(--nav-font);
   font-weight: var(--nav-font-weight);
