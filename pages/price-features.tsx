@@ -35,40 +35,21 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
 
               <h2>Pricing Overview: Four Luxury Towers</h2>
               <p>
-                Turnberry Place's pricing structure reflects the development's luxury positioning, prime location, and comprehensive amenities. The four towers, completed between 2000 and 2005, offer residences ranging from approximately 1,200 to over 8,000 square feet, with prices corresponding to size, floor level, view quality, and tower positioning. Understanding the pricing factors helps buyers identify the best value propositions within the development.
+                Turnberry Place offers residences from $800K to over $10M across four towers (completed 2000-2005), ranging from 1,200 to over 8,000 square feet. Pricing varies by tower, floor level, view quality, and unit size.
               </p>
-              <h3>Entry-Level Pricing: Tower 1 Residences</h3>
               <p>
-                Tower 1, completed in 2000, typically offers the most accessible entry point into Turnberry Place, with prices generally starting around $800,000 for one-bedroom units on lower floors. These residences, ranging from approximately 1,200 to 2,500 square feet, provide excellent value for buyers seeking luxury living near the Strip without the premium pricing of newer towers. Two-bedroom units in Tower 1 typically range from $1.2 million to $2.5 million, while three-bedroom residences command prices from $2 million to $4 million depending on floor level and view quality.
+                <strong>Tower 1:</strong> Entry-level pricing starting around $800K for 1-bedroom units, $1.2M-$2.5M for 2-bedroom, $2M-$4M for 3-bedroom.
               </p>
-              <h3>Mid-Range Pricing: Towers 2 and 3</h3>
               <p>
-                Towers 2 and 3, completed in 2001 and 2002 respectively, command premium pricing due to their larger floor plans, enhanced features, and contemporary design elements. One-bedroom residences in these towers typically start around $1.2 million, with two-bedroom units ranging from $1.8 million to $3.5 million. Three-bedroom residences in Towers 2 and 3 generally range from $2.5 million to $5 million, while four-bedroom units can command prices from $4 million to $7 million. The towers' increased height and enhanced amenities justify the premium pricing, providing buyers with larger spaces and more sophisticated finishes.
+                <strong>Towers 2 & 3:</strong> Mid-range pricing from $1.2M for 1-bedroom, $1.8M-$3.5M for 2-bedroom, $2.5M-$5M for 3-bedroom, $4M-$7M for 4-bedroom.
               </p>
-              <h3>Premium Pricing: Tower 4 Residences</h3>
               <p>
-                Tower 4, completed in 2005, represents the pinnacle of pricing at Turnberry Place, with residences commanding the highest prices in the development. One-bedroom units in Tower 4 typically start around $1.5 million, with two-bedroom residences ranging from $2.5 million to $4.5 million. Three-bedroom units command prices from $3.5 million to $6.5 million, while four-bedroom residences range from $5 million to $8 million. Tower 4's penthouses, located above the 30th floor with elevated ceilings and expansive floor plans exceeding 8,000 square feet, represent the ultimate in luxury pricing, with prices ranging from $6 million to over $10 million.
+                <strong>Tower 4:</strong> Premium pricing from $1.5M for 1-bedroom, $2.5M-$4.5M for 2-bedroom, $3.5M-$6.5M for 3-bedroom, $5M-$8M for 4-bedroom. Penthouses above 30th floor: $6M-$10M+.
               </p>
 
               <h2>Key Features That Drive Value</h2>
               <p>
-                Turnberry Place's pricing reflects numerous premium features that create exceptional value for buyers. Understanding these features helps buyers appreciate the development's pricing structure and identify the best value propositions within their budget range. These features include exclusive access to The Stirling Club, prime location near the Strip, comprehensive security systems, and world-class amenities that rival the best luxury developments in Las Vegas.
-              </p>
-              <h3>Exclusive Access to The Stirling Club</h3>
-              <p>
-                One of Turnberry Place's most significant value drivers is exclusive resident access to The Stirling Club, an 80,000-square-foot private membership facility. This world-class amenity includes a state-of-the-art fitness center, resort-style indoor and outdoor pools, clay tennis and pickleball courts, a full-service spa, multiple dining venues, business center with conference rooms, and various lounges for socializing and relaxation. The club's value, if purchased separately, would cost tens of thousands of dollars annually in membership fees, making it a significant component of Turnberry Place's value proposition.
-              </p>
-              <h3>Prime Location Near Las Vegas Strip</h3>
-              <p>
-                Turnberry Place's location just one block east of the Las Vegas Strip, between the Wynn Encore and Sahara resorts, represents one of the most desirable locations in Las Vegas. This prime positioning provides residents with immediate access to world-class restaurants, entertainment venues, shopping, and business centers, while maintaining the privacy and security that luxury living requires. The development's proximity to the Strip creates strong demand among both domestic and international buyers, supporting premium pricing and strong appreciation potential.
-              </p>
-              <h3>Comprehensive Security and Privacy Features</h3>
-              <p>
-                Turnberry Place's comprehensive security systems, including guard-gated entrance, 24-hour security personnel, video surveillance, keycard access, and private elevator access to residences, provide the security and privacy that luxury buyers demand. These features are essential for high-profile residents, executives, and anyone who values peace of mind in their home environment. The development's raised elevation and strategic positioning minimize street noise while providing a sense of seclusion despite the proximity to the Strip.
-              </p>
-              <h3>Premium Interior Finishes and Features</h3>
-              <p>
-                Turnberry Place residences feature premium interior finishes that reflect the development's luxury positioning. These include hardwood or premium tile flooring, granite or quartz countertops, high-end appliances from brands like Sub-Zero, Wolf, and Miele, custom cabinetry, designer fixtures, and floor-to-ceiling windows that maximize natural light and views. The quality of these finishes varies by tower and price point, with Tower 4 offering the most exceptional finishes and Tower 1 providing proven quality at more accessible price points.
+                Turnberry Place's pricing reflects premium features including exclusive Stirling Club access (80,000 sq ft private facility), prime location one block from the Strip, comprehensive security (guard-gated, 24-hour security, video surveillance), and premium interior finishes (hardwood/tile flooring, granite/quartz countertops, high-end appliances, custom cabinetry, floor-to-ceiling windows).
               </p>
 
               <h2>Residence Features by Price Range</h2>
