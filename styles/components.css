@@ -1317,23 +1317,67 @@ main .card-top-header:first-of-type {
   background-color: var(--section-bgcolor, inherit);
 }
 
-.card-floor-plans .tab-content {
-  border-left: 1px solid var(--box-tab-border-color, rgba(222, 226, 230, 1));
-  border-right: 1px solid var(--box-tab-border-color, rgba(222, 226, 230, 1));
-  border-bottom: 1px solid var(--box-tab-border-color, rgba(222, 226, 230, 1));
-}
-
 .card-floor-plans .nav-tabs {
-  border-bottom: 1px solid var(--box-tab-border-color, rgba(222, 226, 230, 1));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  flex-wrap: wrap;
 }
 
-.card-floor-plans .nav-tabs .nav-link.active {
-  color: var(--body-copy-color, inherit);
-  border-left: 1px solid var(--box-tab-border-color, rgba(222, 226, 230, 1));
-  border-right: 1px solid var(--box-tab-border-color, rgba(222, 226, 230, 1));
-  border-top: 1px solid var(--box-tab-border-color, rgba(222, 226, 230, 1));
+.card-floor-plans .nav-tabs .nav-item {
+  margin-bottom: 0;
+}
+
+.card-floor-plans .nav-tabs .nav-link.floor-plan-tab {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.card-floor-plans .nav-tabs .nav-link.floor-plan-tab:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-floor-plans .nav-tabs .nav-link.floor-plan-tab.active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   border-bottom: 1px solid transparent;
-    background-color: var(--section-bgcolor, #1a1a1a);
+  font-weight: 500;
+}
+
+.card-floor-plans .tab-content {
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(42, 42, 42, 0.5);
+  border-radius: 0 0 8px 8px;
+}
+
+.card-floor-plans .tab-pane {
+  display: none;
+}
+
+.card-floor-plans .tab-pane.show.active {
+  display: block;
+}
+
+.card-floor-plans .fp-image {
+  padding: 2rem;
+}
+
+.card-floor-plans .fp-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 /* Stirling Club */
