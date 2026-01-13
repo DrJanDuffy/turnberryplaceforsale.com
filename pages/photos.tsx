@@ -173,9 +173,23 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<PhotosPageProps>> {
-  return {
-    props: {
-      menus: await getMenus({} as any),
-    },
+  // Handle Drupal connection errors gracefully
+  try {
+    return {
+      props: {
+        menus: await getMenus({} as any),
+      },
+    }
+  } catch (error) {
+    // If Drupal is not available, return empty menus
+    // This allows the build to continue without Drupal
+    return {
+      props: {
+        menus: {
+          main: [],
+          footer: [],
+        },
+      },
+    }
   }
 }

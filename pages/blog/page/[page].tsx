@@ -77,57 +77,69 @@ export async function getStaticProps(
     }
   }
 
-  const current = parseInt(context.params.page)
+  // Try to get Drupal data, but handle errors gracefully
+  try {
+    const current = parseInt(context.params.page)
 
-  const params = new DrupalJsonApiParams()
-    .addFilter(
-      "field_site.meta.drupal_internal__target_id",
-      process.env.DRUPAL_SITE_ID
-    )
-    .addInclude(["uid", "field_image"])
-    .addFields("node--article", [
-      "title",
-      "path",
-      "body",
-      "uid",
-      "created",
-      "field_image",
-    ])
-    .addFields("user--user", ["field_name"])
-    .addFilter("status", "1")
-    .addSort("created", "DESC")
+    const params = new DrupalJsonApiParams()
+      .addFilter(
+        "field_site.meta.drupal_internal__target_id",
+        process.env.DRUPAL_SITE_ID
+      )
+      .addInclude(["uid", "field_image"])
+      .addFields("node--article", [
+        "title",
+        "path",
+        "body",
+        "uid",
+        "created",
+        "field_image",
+      ])
+      .addFields("user--user", ["field_name"])
+      .addFilter("status", "1")
+      .addSort("created", "DESC")
 
-  const result = await drupal.getResourceCollectionFromContext<JsonApiResponse>(
-    "node--article",
-    context,
-    {
-      deserialize: false,
-      params: {
-        ...params.getQueryObject(),
-        page: {
-          limit: NUMBER_OF_POSTS_PER_PAGE,
-          offset: context.params.page ? NUMBER_OF_POSTS_PER_PAGE * current : 0,
+    const result = await drupal.getResourceCollectionFromContext<JsonApiResponse>(
+      "node--article",
+      context,
+      {
+        deserialize: false,
+        params: {
+          ...params.getQueryObject(),
+          page: {
+            limit: NUMBER_OF_POSTS_PER_PAGE,
+            offset: context.params.page ? NUMBER_OF_POSTS_PER_PAGE * current : 0,
+          },
         },
+      }
+    )
+
+    if (!result.data?.length) {
+      return {
+        notFound: true,
+      }
+    }
+
+    const nodes = drupal.deserialize(result) as DrupalNode[]
+
+    return {
+      props: {
+        nodes,
+        page: {
+          current,
+          total: Math.ceil(result.meta.count / NUMBER_OF_POSTS_PER_PAGE),
+        },
+        menus: await getMenus(context),
       },
     }
-  )
-
-  if (!result.data?.length) {
+  } catch (error) {
+    // If Drupal is not available, return not found
+    // This allows the build to continue without Drupal
+    if (process.env.NODE_ENV === 'development') {
+      console.warn("Drupal is not available for blog page. Returning not found.")
+    }
     return {
       notFound: true,
     }
-  }
-
-  const nodes = drupal.deserialize(result) as DrupalNode[]
-
-  return {
-    props: {
-      nodes,
-      page: {
-        current,
-        total: Math.ceil(result.meta.count / NUMBER_OF_POSTS_PER_PAGE),
-      },
-      menus: await getMenus(context),
-    },
   }
 }
