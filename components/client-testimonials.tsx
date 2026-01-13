@@ -74,12 +74,20 @@ export function ClientTestimonials() {
   const currentTestimonial = testimonials[currentIndex]
 
   return (
-    <div className="card-content py-5 bg-white">
+    <div className="card-content py-5 bg-white" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
       <div className="container">
         <div className="row">
           <div className="col-12 text-center mb-5">
-            <h2 className="mb-3">What Our Clients Say</h2>
-            <p className="lead text-muted">
+            <h2 className="mb-3" style={{ fontSize: '2.5rem', fontWeight: 600, marginBottom: '1rem' }}>
+              What Our Clients Say
+            </h2>
+            <p className="lead" style={{ 
+              fontSize: '1.25rem', 
+              color: '#6c757d',
+              lineHeight: 1.6,
+              maxWidth: '700px',
+              margin: '0 auto'
+            }}>
               Real experiences from satisfied Turnberry Place buyers and sellers
             </p>
           </div>
@@ -87,8 +95,8 @@ export function ClientTestimonials() {
         <div className="row justify-content-center">
           <div className="col-12 col-lg-10">
             <div className="testimonial-carousel">
-              <div className="card shadow-sm border-0">
-                <div className="card-body p-4 p-md-5">
+              <div className="card shadow-lg border-0" style={{ borderRadius: '12px', overflow: 'hidden' }}>
+                <div className="card-body p-4 p-md-5" style={{ backgroundColor: '#fff' }}>
                   {currentTestimonial.rating && (
                     <div className="text-center mb-3">
                       {[...Array(currentTestimonial.rating)].map((_, i) => (

@@ -97,26 +97,61 @@ function HomePageContent() {
       <HeroSlideshow photos={heroPhotos} />
       
       {/* Quick Intro Section */}
-      <div className="card-content card-price-features py-5">
+      <div className="card-content card-price-features py-5" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10 text-center">
-              <h2 className="mb-3">Las Vegas' Premier Luxury High-Rise Community</h2>
-              <p className="lead mb-4">
+              <h2 className="mb-4" style={{ fontSize: '2.5rem', fontWeight: 600, lineHeight: 1.3 }}>
+                Las Vegas' Premier Luxury High-Rise Community
+              </h2>
+              <p className="lead mb-5" style={{ fontSize: '1.25rem', lineHeight: 1.7, color: '#495057', maxWidth: '800px', margin: '0 auto' }}>
                 Turnberry Place offers four luxury towers just one block from the Las Vegas Strip. Guard-gated community with exclusive access to The Stirling Club's 80,000 sq ft private facility.
               </p>
-              <div className="row mt-4">
-                <div className="col-md-4 mb-3">
-                  <div className="h4 text-primary">4 Towers</div>
-                  <div className="small">Completed 2000-2005</div>
+              <div className="row mt-5 justify-content-center">
+                <div className="col-md-4 mb-4 mb-md-0">
+                  <div className="p-4 bg-light rounded-lg h-100" style={{ transition: 'all 0.3s ease' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-4px)'
+                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = 'none'
+                    }}
+                  >
+                    <div className="h3 text-primary mb-2" style={{ fontSize: '2.5rem', fontWeight: 700 }}>4 Towers</div>
+                    <div className="small text-muted" style={{ fontSize: '0.95rem' }}>Completed 2000-2005</div>
+                  </div>
                 </div>
-                <div className="col-md-4 mb-3">
-                  <div className="h4 text-primary">$800K - $10M+</div>
-                  <div className="small">1-4 Bedroom Residences</div>
+                <div className="col-md-4 mb-4 mb-md-0">
+                  <div className="p-4 bg-light rounded-lg h-100" style={{ transition: 'all 0.3s ease' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-4px)'
+                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = 'none'
+                    }}
+                  >
+                    <div className="h3 text-primary mb-2" style={{ fontSize: '2.5rem', fontWeight: 700 }}>$800K - $10M+</div>
+                    <div className="small text-muted" style={{ fontSize: '0.95rem' }}>1-4 Bedroom Residences</div>
+                  </div>
                 </div>
-                <div className="col-md-4 mb-3">
-                  <div className="h4 text-primary">1 Block</div>
-                  <div className="small">From Las Vegas Strip</div>
+                <div className="col-md-4 mb-4 mb-md-0">
+                  <div className="p-4 bg-light rounded-lg h-100" style={{ transition: 'all 0.3s ease' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-4px)'
+                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = 'none'
+                    }}
+                  >
+                    <div className="h3 text-primary mb-2" style={{ fontSize: '2.5rem', fontWeight: 700 }}>1 Block</div>
+                    <div className="small text-muted" style={{ fontSize: '0.95rem' }}>From Las Vegas Strip</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -128,51 +163,158 @@ function HomePageContent() {
       <WhyWorkWithUs />
 
       {/* Towers Comparison - Bullet Points */}
-      <div className="card-content card-prop-description py-5 bg-light">
+      <div className="card-content card-prop-description py-5 bg-light" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
         <div className="container">
           <div className="row">
             <div className="col-12 col-lg-10 mx-auto">
-              <h2 className="text-center mb-4">Four Distinct Luxury Towers</h2>
+              <h2 className="text-center mb-5" style={{ fontSize: '2.5rem', fontWeight: 600, marginBottom: '3rem' }}>
+                Four Distinct Luxury Towers
+              </h2>
               <div className="row">
                 <div className="col-md-6 mb-4">
-                  <h3>Tower 1 - Entry Level</h3>
-                  <ul className="list-unstyled">
-                    <li>✓ 38 stories, completed 2000</li>
-                    <li>✓ Starting from $800K</li>
-                    <li>✓ Excellent value proposition</li>
-                    <li>✓ Private elevator access</li>
-                  </ul>
+                  <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: '8px', transition: 'all 0.3s ease' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-4px)'
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'
+                    }}
+                  >
+                    <div className="card-body p-4">
+                      <h3 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600, color: '#333' }}>Tower 1 - Entry Level</h3>
+                      <ul className="list-unstyled mb-0">
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          38 stories, completed 2000
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Starting from $800K
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Excellent value proposition
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Private elevator access
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
                 <div className="col-md-6 mb-4">
-                  <h3>Tower 2 - Enhanced Features</h3>
-                  <ul className="list-unstyled">
-                    <li>✓ 45 stories, completed 2001</li>
-                    <li>✓ Larger floor plans</li>
-                    <li>✓ Floor-to-ceiling windows</li>
-                    <li>✓ Premium finishes</li>
-                  </ul>
+                  <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: '8px', transition: 'all 0.3s ease' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-4px)'
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'
+                    }}
+                  >
+                    <div className="card-body p-4">
+                      <h3 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600, color: '#333' }}>Tower 2 - Enhanced Features</h3>
+                      <ul className="list-unstyled mb-0">
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          45 stories, completed 2001
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Larger floor plans
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Floor-to-ceiling windows
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Premium finishes
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
                 <div className="col-md-6 mb-4">
-                  <h3>Tower 3 - Contemporary Design</h3>
-                  <ul className="list-unstyled">
-                    <li>✓ 45 stories, completed 2002</li>
-                    <li>✓ Modern aesthetic</li>
-                    <li>✓ Spacious terraces</li>
-                    <li>✓ Panoramic views</li>
-                  </ul>
+                  <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: '8px', transition: 'all 0.3s ease' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-4px)'
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'
+                    }}
+                  >
+                    <div className="card-body p-4">
+                      <h3 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600, color: '#333' }}>Tower 3 - Contemporary Design</h3>
+                      <ul className="list-unstyled mb-0">
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          45 stories, completed 2002
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Modern aesthetic
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Spacious terraces
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Panoramic views
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
                 <div className="col-md-6 mb-4">
-                  <h3>Tower 4 - Ultimate Luxury</h3>
-                  <ul className="list-unstyled">
-                    <li>✓ 45 stories, completed 2005</li>
-                    <li>✓ Most refined residences</li>
-                    <li>✓ Exceptional finishes</li>
-                    <li>✓ Premium pricing</li>
-                  </ul>
+                  <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: '8px', transition: 'all 0.3s ease' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-4px)'
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'
+                    }}
+                  >
+                    <div className="card-body p-4">
+                      <h3 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600, color: '#333' }}>Tower 4 - Ultimate Luxury</h3>
+                      <ul className="list-unstyled mb-0">
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          45 stories, completed 2005
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Most refined residences
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Exceptional finishes
+                        </li>
+                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
+                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                          Premium pricing
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="text-center mt-4">
-                <Link href="/towers" className="btn btn-primary btn-lg">
+              <div className="text-center mt-5">
+                <Link href="/towers" className="btn btn-primary btn-lg" style={{ 
+                  padding: '0.875rem 2.5rem',
+                  fontSize: '1.1rem',
+                  borderRadius: '6px',
+                  fontWeight: 600
+                }}>
                   Learn More About Each Tower
                 </Link>
               </div>
@@ -182,30 +324,47 @@ function HomePageContent() {
       </div>
 
       {/* Amenities Section Preview */}
-      <div className="card-content card-amenities py-5">
+      <div className="card-content card-amenities py-5" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
         <div className="container pt-2">
           <div className="row align-items-center justify-content-center">
             <div className="col-12">
-              <div className="pb-4 pb-sm-5 amenities-border">
-                <div className="amenities-title">
-                  <h2>World-Class Amenities and Lifestyle Benefits</h2>
-                  <p className="text-center mb-4">
+              <div className="pb-4 pb-sm-5 amenities-border" style={{ 
+                border: '2px solid #e9ecef',
+                borderRadius: '12px',
+                padding: '3rem 2rem',
+                backgroundColor: '#fff'
+              }}>
+                <div className="amenities-title mb-4">
+                  <h2 className="text-center mb-4" style={{ fontSize: '2.5rem', fontWeight: 600, marginBottom: '1.5rem' }}>
+                    World-Class Amenities and Lifestyle Benefits
+                  </h2>
+                  <p className="text-center mb-4" style={{ fontSize: '1.1rem', lineHeight: 1.7, color: '#495057', maxWidth: '900px', margin: '0 auto 2rem' }}>
                     Turnberry Place residents enjoy exclusive access to The Stirling Club, an 80,000-square-foot private membership facility that provides world-class amenities without separate membership costs. This comprehensive amenity package, combined with the development's security, location, and quality, creates exceptional value that justifies the development's premium positioning.
                   </p>
                 </div>
-                <div className="row pt-2 pt-sm-4 pl-3 pl-sm-5">
+                <div className="row pt-2 pt-sm-4">
                   {["Gated Community", "City View", "Secure Building", "Gym", "Tennis Courts", "Spa", "Swimming Pool", "Workout Room", "Mountains", "Private Patio"].map((amenity, index) => (
-                    <div key={index} className="col-6 col-lg-4 py-2 d-flex align-items-center">
-                      <div className="mr-2 pb-1">
-                        <span className="icon-custom">
-                          <svg height="15" width="15" aria-hidden="true" focusable="false" className="d-inline" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <div key={index} className="col-6 col-lg-4 py-3 d-flex align-items-center">
+                      <div className="mr-3" style={{ flexShrink: 0 }}>
+                        <span className="icon-custom" style={{ color: '#28a745', fontSize: '1.2rem' }}>
+                          <svg height="18" width="18" aria-hidden="true" focusable="false" className="d-inline" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                             <path fill="currentColor" d="M413.505 91.951L133.49 371.966l-98.995-98.995c-4.686-4.686-12.284-4.686-16.971 0L6.211 284.284c-4.686 4.686-4.686 12.284 0 16.971l118.794 118.794c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-11.314-11.314c-4.686-4.686-12.284-4.686-16.97 0z"/>
                           </svg>
                         </span>
                       </div>
-                      <span className="amenity-name">{amenity}</span>
+                      <span className="amenity-name" style={{ fontSize: '1rem', fontWeight: 500, color: '#333' }}>{amenity}</span>
                     </div>
                   ))}
+                </div>
+                <div className="text-center mt-4 pt-3" style={{ borderTop: '1px solid #e9ecef' }}>
+                  <Link href="/amenities" className="btn btn-outline-primary btn-lg" style={{ 
+                    padding: '0.875rem 2rem',
+                    fontSize: '1rem',
+                    borderRadius: '6px',
+                    fontWeight: 600
+                  }}>
+                    View All Amenities
+                  </Link>
                 </div>
               </div>
             </div>
@@ -214,37 +373,68 @@ function HomePageContent() {
       </div>
 
       {/* Photos Section Preview */}
-      <div className="card-content card-photos py-5">
-        <div className="container-fluid">
+      <div className="card-content card-photos py-5" style={{ paddingTop: '4rem', paddingBottom: '4rem', backgroundColor: '#f8f9fa' }}>
+        <div className="container">
           <div className="row">
-            <div className="col-12 d-none d-sm-block pb-1">
-              <h2 className="text-center mb-0">Photo Gallery</h2>
-              <div className="d-slideshow">
-                <div className="font-size-90 text-center d-none d-md-flex align-items-md-center justify-content-md-center">
-                  <Link href="/photos" className="text-underline">
-                    Launch Slideshow Viewer
-                  </Link>
-                  <div className="ml-1">
-                    <span className="icon-custom">
-                      <svg height="12" width="15" aria-hidden="true" focusable="false" className="d-inline" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                        <path fill="currentColor" d="M195.515 374.828c-4.686-4.686-4.686-12.284 0-16.971l323.15-323.15-.707-.707-89.958.342c-6.627 0-12-5.373-12-12v-9.999c0-6.628 5.372-12 12-12L564 0c6.627 0 12 5.372 12 12l-.343 136c0 6.627-5.373 12-12 12h-9.999c-6.627 0-12-5.373-12-12L542 58.042l-.707-.707-323.15 323.15c-4.686 4.686-12.284 4.686-16.971 0l-5.657-5.657zm232-155.633l-8 8A12 12 0 0 0 416 235.68V464c0 8.837-7.164 16-16 16H48c-8.836 0-16-7.163-16-16V112c0-8.837 7.164-16 16-16h339.976c3.183 0 6.235-1.264 8.485-3.515l8-8c7.56-7.56 2.206-20.485-8.485-20.485H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V227.681c0-10.691-12.926-16.045-20.485-8.486z"/>
-                      </svg>
-                    </span>
-                  </div>
-                </div>
+            <div className="col-12">
+              <h2 className="text-center mb-4" style={{ fontSize: '2.5rem', fontWeight: 600, marginBottom: '1rem' }}>
+                Photo Gallery
+              </h2>
+              <div className="text-center mb-4">
+                <Link href="/photos" className="btn btn-outline-primary" style={{ 
+                  padding: '0.75rem 1.5rem',
+                  fontSize: '1rem',
+                  borderRadius: '6px',
+                  fontWeight: 500
+                }}>
+                  Launch Slideshow Viewer
+                  <svg height="16" width="16" className="ml-2 d-inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style={{ verticalAlign: 'middle' }}>
+                    <path fill="currentColor" d="M195.515 374.828c-4.686-4.686-4.686-12.284 0-16.971l323.15-323.15-.707-.707-89.958.342c-6.627 0-12-5.373-12-12v-9.999c0-6.628 5.372-12 12-12L564 0c6.627 0 12 5.372 12 12l-.343 136c0 6.627-5.373 12-12 12h-9.999c-6.627 0-12-5.373-12-12L542 58.042l-.707-.707-323.15 323.15c-4.686 4.686-12.284 4.686-16.971 0l-5.657-5.657zm232-155.633l-8 8A12 12 0 0 0 416 235.68V464c0 8.837-7.164 16-16 16H48c-8.836 0-16-7.163-16-16V112c0-8.837 7.164-16 16-16h339.976c3.183 0 6.235-1.264 8.485-3.515l8-8c7.56-7.56 2.206-20.485-8.485-20.485H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V227.681c0-10.691-12.926-16.045-20.485-8.486z"/>
+                  </svg>
+                </Link>
               </div>
-              <div className="grid">
+              <div className="row mt-4">
                 {heroPhotos.slice(0, 4).map((photo, index) => (
-                  <div key={index} className="item">
-                    <div className="photo">
-                      <a className="swipebox desktop" href={photo} title="Turnberry Place Las Vegas, Las Vegas, NV">
-                        <Image
-                          src={photo.replace('width=1600,height=1200', 'width=400')}
-                          width={400}
-                          height={300}
-                          alt="Turnberry Place Las Vegas, Las Vegas, NV"
-                          className="lazy img-fluid"
-                        />
+                  <div key={index} className="col-6 col-md-3 mb-4">
+                    <div className="card border-0 shadow-sm overflow-hidden" style={{ 
+                      borderRadius: '8px',
+                      transition: 'all 0.3s ease',
+                      cursor: 'pointer'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-4px)'
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
+                    }}
+                    >
+                      <a className="d-block" href={photo} title="Turnberry Place Las Vegas, Las Vegas, NV">
+                        <div style={{ position: 'relative', paddingTop: '75%', overflow: 'hidden' }}>
+                          <Image
+                            src={photo.replace('width=1600,height=1200', 'width=600')}
+                            width={600}
+                            height={450}
+                            alt="Turnberry Place Las Vegas, Las Vegas, NV"
+                            className="img-fluid"
+                            style={{ 
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              transition: 'transform 0.3s ease'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.transform = 'scale(1.1)'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.transform = 'scale(1)'
+                            }}
+                          />
+                        </div>
                       </a>
                     </div>
                   </div>
@@ -263,24 +453,100 @@ function HomePageContent() {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",
+          position: 'relative',
+          paddingTop: '5rem',
+          paddingBottom: '5rem'
         }}
       >
-        <div className="container-fluid">
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          zIndex: 1
+        }}></div>
+        <div className="container-fluid position-relative" style={{ zIndex: 2 }}>
           <div className="row align-items-center justify-content-center">
             <div className="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-7 text-center py-5 px-0">
-              <div className="open-house-box p-2 p-md-4 shadow">
-                <h2 className="mb-3 text-uppercase">Private Showings Available</h2>
-                <p className="h4 mb-4 text-success font-weight-bold">
+              <div className="open-house-box p-4 p-md-5 shadow-lg" style={{
+                backgroundColor: 'rgba(255,255,255,0.98)',
+                borderRadius: '12px',
+                backdropFilter: 'blur(10px)'
+              }}>
+                <h2 className="mb-3" style={{ 
+                  fontSize: '2.25rem', 
+                  fontWeight: 600, 
+                  color: '#333',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}>
+                  Private Showings Available
+                </h2>
+                <p className="h4 mb-4" style={{ 
+                  fontSize: '1.75rem',
+                  color: '#28a745',
+                  fontWeight: 700,
+                  marginBottom: '1.5rem'
+                }}>
                   7 Days a Week
                 </p>
-                <p className="mb-4">
+                <p className="mb-4" style={{ 
+                  fontSize: '1.1rem',
+                  lineHeight: 1.7,
+                  color: '#495057',
+                  marginBottom: '2rem'
+                }}>
                   Schedule your personalized tour of Turnberry Place luxury condos today. Experience the quality, amenities, and lifestyle firsthand.
                 </p>
                 <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                  <a href="tel:7022221988" className="btn btn-warning btn-lg font-weight-bold" title="Call or text 702-222-1988">
+                  <a 
+                    href="tel:7022221988" 
+                    className="btn btn-warning btn-lg font-weight-bold" 
+                    title="Call or text 702-222-1988"
+                    style={{
+                      padding: '1rem 2.5rem',
+                      fontSize: '1.1rem',
+                      borderRadius: '6px',
+                      fontWeight: 600,
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)'
+                      e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.3)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)'
+                    }}
+                  >
                     Call/Text (702) 222-1988
                   </a>
-                  <Link href="/request-details" className="btn btn-outline-light btn-lg font-weight-bold" title="Request Showing">
+                  <Link 
+                    href="/request-details" 
+                    className="btn btn-outline-primary btn-lg font-weight-bold" 
+                    title="Request Showing"
+                    style={{
+                      padding: '1rem 2.5rem',
+                      fontSize: '1.1rem',
+                      borderRadius: '6px',
+                      fontWeight: 600,
+                      borderWidth: '2px',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)'
+                      e.currentTarget.style.backgroundColor = '#007bff'
+                      e.currentTarget.style.color = '#fff'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.backgroundColor = 'transparent'
+                      e.currentTarget.style.color = '#007bff'
+                    }}
+                  >
                     Request Showing
                   </Link>
                 </div>
@@ -364,8 +630,13 @@ function HomePageContent() {
                   />
                 </div>
               </div>
-              <div className="text-center mt-4">
-                <Link href="/available-condos" className="btn btn-primary btn-lg">
+              <div className="text-center mt-5">
+                <Link href="/available-condos" className="btn btn-primary btn-lg" style={{ 
+                  padding: '0.875rem 2.5rem',
+                  fontSize: '1.1rem',
+                  borderRadius: '6px',
+                  fontWeight: 600
+                }}>
                   See All <DynamicUnitCount defaultCount={12} elementId="total-listings-count" /> Available Units
                 </Link>
               </div>

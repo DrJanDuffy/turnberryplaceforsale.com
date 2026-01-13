@@ -30,12 +30,20 @@ export function WhyWorkWithUs() {
   ]
 
   return (
-    <div className="card-content py-5 bg-light">
+    <div className="card-content py-5 bg-light" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
       <div className="container">
         <div className="row">
           <div className="col-12 text-center mb-5">
-            <h2 className="mb-3">Why Work With Us</h2>
-            <p className="lead text-muted">
+            <h2 className="mb-3" style={{ fontSize: '2.5rem', fontWeight: 600, marginBottom: '1rem' }}>
+              Why Work With Us
+            </h2>
+            <p className="lead" style={{ 
+              fontSize: '1.25rem', 
+              color: '#6c757d',
+              lineHeight: 1.6,
+              maxWidth: '700px',
+              margin: '0 auto'
+            }}>
               Three decades of expertise. Hundreds of successful transactions. One trusted advisor.
             </p>
           </div>
@@ -43,12 +51,37 @@ export function WhyWorkWithUs() {
         <div className="row">
           {powerStatements.map((statement, index) => (
             <div key={index} className="col-md-4 mb-4 mb-md-0">
-              <div className="card h-100 shadow-sm border-0">
-                <div className="card-body text-center">
-                  <h3 className="h4 mb-3">{statement.title}</h3>
-                  <p className="text-muted mb-4">{statement.description}</p>
+              <div className="card h-100 shadow-sm border-0" style={{ 
+                borderRadius: '12px',
+                transition: 'all 0.3s ease',
+                overflow: 'hidden'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px)'
+                e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.15)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
+              }}
+              >
+                <div className="card-body text-center p-4">
+                  <h3 className="h4 mb-3" style={{ fontSize: '1.5rem', fontWeight: 600, color: '#333' }}>
+                    {statement.title}
+                  </h3>
+                  <p className="text-muted mb-4" style={{ fontSize: '1rem', lineHeight: 1.7, minHeight: '120px' }}>
+                    {statement.description}
+                  </p>
                   {statement.linkText && statement.linkHref && (
-                    <Link href={statement.linkHref} className="btn btn-outline-primary">
+                    <Link 
+                      href={statement.linkHref} 
+                      className="btn btn-outline-primary"
+                      style={{
+                        borderRadius: '6px',
+                        fontWeight: 500,
+                        padding: '0.5rem 1.5rem'
+                      }}
+                    >
                       {statement.linkText}
                     </Link>
                   )}

@@ -51,9 +51,8 @@ export function QuickSearchWidget() {
   }
 
   return (
-    <div className="quick-search-widget card shadow-lg border-0">
-      <div className="card-body p-4">
-        <h3 className="card-title text-center mb-4">Quick Search</h3>
+    <div className="quick-search-widget card shadow-lg border-0" style={{ borderRadius: '12px', overflow: 'hidden' }}>
+      <div className="card-body p-4 p-md-5" style={{ backgroundColor: '#fff' }}>
         <form onSubmit={handleSearch}>
           <div className="row">
             <div className="col-12 mb-3">

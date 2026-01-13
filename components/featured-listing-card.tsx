@@ -38,9 +38,28 @@ export function FeaturedListingCard({
   }
 
   return (
-    <div className="featured-listing-card card h-100 shadow-sm border-0 position-relative overflow-hidden">
+    <div 
+      className="featured-listing-card card h-100 shadow-sm border-0 position-relative overflow-hidden"
+      style={{ 
+        borderRadius: '12px',
+        transition: 'all 0.3s ease',
+        overflow: 'hidden'
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-8px)'
+        e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.15)'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0)'
+        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
+      }}
+    >
       {featured && (
-        <div className="position-absolute top-0 end-0 bg-warning text-dark px-3 py-1 small font-weight-bold" style={{ zIndex: 10 }}>
+        <div className="position-absolute top-0 end-0 bg-warning text-dark px-3 py-1 small font-weight-bold" style={{ 
+          zIndex: 10,
+          borderRadius: '0 12px 0 8px',
+          fontSize: '0.85rem'
+        }}>
           Featured
         </div>
       )}
@@ -58,8 +77,10 @@ export function FeaturedListingCard({
           <div className="h4 mb-0 font-weight-bold">{price}</div>
         </div>
       </div>
-      <div className="card-body d-flex flex-column">
-        <h5 className="card-title mb-2">{title}</h5>
+      <div className="card-body d-flex flex-column p-4">
+        <h5 className="card-title mb-2" style={{ fontSize: '1.25rem', fontWeight: 600, color: '#333' }}>
+          {title}
+        </h5>
         {tower && unit && (
           <p className="text-muted small mb-2">
             {tower} • {unit}

@@ -39,19 +39,22 @@ main .card-top-header:first-of-type {
 .card-top-nav {
   position: fixed;
   top: 0px;
+  left: 0;
+  right: 0;
   z-index: 99;
   background-color: var(--nav-bg-color, rgba(26, 26, 26, 1));
   border-bottom: 1px solid var(--nav-border-bottom, rgba(0, 0, 0, 0.15));
   width: 100%;
   min-height: 100px;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-top-nav .container-fluid {
   min-height: 100px;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.75rem 0;
+  display: flex;
+  align-items: center;
 }
 
 /* Desktop navbar container */
@@ -95,7 +98,9 @@ main .card-top-header:first-of-type {
 
 .card-top-nav .agent-photo-wrapper {
   flex-shrink: 0;
-  margin-right: 12px;
+  margin-right: 14px;
+  display: flex;
+  align-items: center;
 }
 
 .card-top-nav .agent-text {
@@ -107,15 +112,18 @@ main .card-top-header:first-of-type {
   justify-content: center;
   min-width: 0;
   flex: 1;
+  gap: 2px;
 }
 
 .card-top-nav .agent-text .agent-name {
   font-weight: 600;
-  margin-bottom: 3px;
+  margin-bottom: 0;
   font-size: 0.95rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #fff;
+  letter-spacing: 0.01em;
 }
 
 /* Desktop agent text styling */
@@ -152,11 +160,12 @@ main .card-top-header:first-of-type {
 
 .card-top-nav .agent-text .agent-company {
   font-size: 0.75rem;
-  opacity: 0.9;
-  margin-bottom: 3px;
+  opacity: 0.85;
+  margin-bottom: 0;
   line-height: 1.3;
   white-space: normal;
   word-wrap: break-word;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .card-top-nav .agent-text .agent-phone {
@@ -164,11 +173,17 @@ main .card-top-header:first-of-type {
 }
 
 .card-top-nav .agent-text .agent-phone a {
-  color: var(--body-copy-color, rgba(255, 255, 255, 1));
+  color: #fff;
   text-decoration: none;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.card-top-nav .agent-text .agent-phone a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
 }
 
 @media (min-width: 992px) {
@@ -188,8 +203,9 @@ main .card-top-header:first-of-type {
   align-items: center;
   justify-content: flex-end;
   min-height: 75px;
-  gap: 0;
+  gap: 0.25rem;
   width: 100%;
+  padding-left: 1rem;
 }
 
 /* Desktop navigation links */
@@ -197,28 +213,36 @@ main .card-top-header:first-of-type {
   .card-top-nav .nav-wrapper {
     flex-wrap: nowrap;
     justify-content: flex-end;
+    gap: 0;
   }
   
   .card-top-nav .nav-link {
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.875rem;
     display: inline-block;
+    font-size: 0.9rem;
+    white-space: nowrap;
   }
 }
 
 .card-top-nav .nav-link {
   white-space: nowrap;
   text-decoration: none;
-  transition: all 0.15s ease-in-out;
+  transition: all 0.2s ease-in-out;
   display: inline-block;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
 }
 
 .card-top-nav .nav-link:hover {
   opacity: 0.8;
+  color: #fff;
 }
 
 .card-top-nav .nav-link.active {
   border-bottom: 2px solid var(--nav-link-color, rgba(255, 255, 255, 1));
   padding-bottom: calc(0.5rem - 2px);
+  font-weight: 500;
+  color: #fff;
 }
 
 /* Responsive navbar height adjustments */
@@ -350,13 +374,15 @@ main .card-top-header:first-of-type {
 /* Hero Header */
 .card-top-header {
   height: 100vh;
-  min-height: 500px;
+  min-height: 600px;
   width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   margin-top: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-top-header::after {
@@ -369,7 +395,7 @@ main .card-top-header:first-of-type {
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, var(--overlay-opacity, 0.35));
+  background-color: rgba(0, 0, 0, var(--overlay-opacity, 0.4));
 }
 
 /* Hero content already defined above */
@@ -377,29 +403,33 @@ main .card-top-header:first-of-type {
 .card-top-header h1 {
   color: var(--heading-overlay-color, rgba(255, 255, 255, 1));
   font-family: var(--headlines-font, 'Cinzel', serif);
-  font-weight: var(--headlines-font-weight, 500);
-  font-size: 3.5rem;
+  font-weight: var(--headlines-font-weight, 600);
+  font-size: 3rem;
   line-height: 1.2;
-  margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  letter-spacing: -0.02em;
 }
 
 /* Desktop hero title */
 @media (min-width: 992px) {
   .card-top-header h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
+    margin-bottom: 1.25rem;
   }
 }
 
 @media (max-width: 991.98px) {
   .card-top-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
+    margin-bottom: 1rem;
   }
 }
 
 @media (max-width: 767.98px) {
   .card-top-header h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
   }
 }
 
@@ -429,17 +459,25 @@ main .card-top-header:first-of-type {
   height: 100%;
   position: relative;
   z-index: 20;
+  display: flex;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .card-top-header .container .row {
   height: 100%;
   margin-left: 0;
   margin-right: 0;
+  display: flex;
+  align-items: center;
 }
 
 .card-top-header .hero-content {
   position: relative;
   z-index: 13;
+  width: 100%;
+  padding: 2rem 1rem;
 }
 
 .card-top-header .status-banner {
@@ -472,26 +510,32 @@ main .card-top-header:first-of-type {
 
 .thumbnails-bar {
   position: absolute;
-  bottom: 15px;
+  bottom: 20px;
+  left: 0;
+  right: 0;
   width: 100%;
-  z-index: 13;
-  padding-inline: 10px;
+  z-index: 15;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .thumbnails-bar .photo-thumbnail {
-  border: 2px solid var(--thumb-border-color, rgba(255, 255, 255, 0.3));
-  border-radius: 3px;
+  border: 2px solid var(--thumb-border-color, rgba(255, 255, 255, 0.4));
+  border-radius: 4px;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  width: 45px;
-  height: 45px;
+  transition: all 0.3s ease;
+  width: 50px;
+  height: 50px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
 }
 
 .thumbnails-bar .photo-thumbnail img {
@@ -501,13 +545,16 @@ main .card-top-header:first-of-type {
 }
 
 .thumbnails-bar .photo-thumbnail:hover {
-  border: 2px solid var(--thumb-selected-color, rgba(255, 255, 255, 1));
-  transform: scale(1.1);
+  border: 2px solid var(--thumb-selected-color, rgba(255, 255, 255, 0.9));
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .thumbnails-bar .photo-thumbnail.selected {
   border: 2px solid var(--thumb-selected-color, rgba(255, 255, 255, 1));
-  transform: scale(1.1);
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Price Features */
