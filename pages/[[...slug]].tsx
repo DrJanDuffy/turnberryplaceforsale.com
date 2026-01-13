@@ -28,7 +28,6 @@ import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 import { FeaturedListingCard } from "components/featured-listing-card"
 import Image from "next/image"
 import Link from "next/link"
-import Script from "next/script"
 
 const RESOURCE_TYPES = ["node--page", "node--landing_page", "node--article"]
 
@@ -117,9 +116,6 @@ function HomePageContent() {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h1 className="mb-4 text-center">
-                Turnberry Place | Las Vegas' Premier High-Rise Community
-              </h1>
               <div className="row">
                 {/* Tower 1 Card - Stacked Vertically */}
                 <div className="col-12 mb-4">
@@ -337,28 +333,16 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Available Las Vegas Condos Section - Matching Live Site */}
-      <div className="card-content card-embed-widget py-5" id="card-id-2271977" data-card-type="39">
+      {/* Photo Gallery Section - Link to dedicated page */}
+      <div className="card-content card-photo-gallery py-5" id="card-id-photo-gallery">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12">
-              <h1 className="text-center mb-4">
-                Available Las Vegas Condos 
-              </h1>
-              <div className="widget-wrapper">
-                <Script
-                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-                  type="module"
-                  strategy="lazyOnload"
-                />
-                <style jsx>{`
-                  realscout-office-listings {
-                    --rs-listing-divider-color: rgb(101, 141, 172);
-                    width: 100%;
-                  }
-                `}</style>
-                {/* @ts-ignore - Custom web component */}
-                <realscout-office-listings agent-encoded-id="QWdlbnQtMjI1MDUw" sort-order="PRICE_HIGH" listing-status="For Sale" property-types="TC" price-min="600000"></realscout-office-listings>
+            <div className="col-12 text-center">
+              <h1 className="mb-4">Photo Gallery</h1>
+              <div className="py-4">
+                <Link href="/photos" className="btn btn-primary btn-lg">
+                  View All Photos
+                </Link>
               </div>
             </div>
           </div>
@@ -383,27 +367,12 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Share Section - Link to dedicated page */}
-      <div className="card-content py-5 bg-light" id="card-id-2271764" data-card-type="20">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 text-center">
-              <h1 className="mb-4">Share this property</h1>
-              <Link href="/share" className="btn btn-primary btn-lg">
-                Share Turnberry Place
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* The Stirling Club Section - Matching Live Site */}
       <div className="card-content card-custom card-custom-03 py-5" id="card-id-2273044" data-card-type="40">
         <div className="container">
           <div className="row">
             <div className="col-12">
               <h1 className="text-center">The Stirling Club</h1>
-              <h4 className="text-center">Exclusive Luxury at Your Doorstep</h4>
             </div>
           </div>
           <div className="row py-4 justify-content-center">
@@ -423,17 +392,7 @@ function HomePageContent() {
                 </div>
                 <div className="col-12 col-md-6">
                   <div className="text-content pt-3 pt-md-0">
-                    <p>The crown jewel of Turnberry Place is the recently renovated Stirling Club, an 80,000 square foot private club offering world-class amenities exclusively to residents. This luxurious facility includes:</p>
-                    <ul>
-                      <li>State-of-the-art fitness center</li>
-                      <li>Resort-style swimming pools (both indoor and outdoor)</li>
-                      <li>Tennis courts</li>
-                      <li>Spa and beauty services center</li>
-                      <li>Multiple dining venues and bars</li>
-                      <li>Business center with conference rooms</li>
-                      <li>Various lounges for socializing and relaxation</li>
-                    </ul>
-                    <p>The Stirling Club serves as the social and recreational hub of the Turnberry Place community, providing residents with a private oasis of luxury and convenience. Its extensive offerings contribute significantly to the upscale lifestyle that defines Turnberry Place, making it a central feature that distinguishes this development from other luxury condominiums in Las Vegas</p>
+                    <p>The crown jewel of Turnberry Place is the recently renovated Stirling Club, an 80,000 square foot private club offering world-class amenities exclusively to residents, including state-of-the-art fitness center, resort-style pools, tennis courts, spa services, dining venues, and business facilities.</p>
                   </div>
                 </div>
               </div>
@@ -448,9 +407,9 @@ function HomePageContent() {
           <div className="row align-items-center justify-content-center">
             <div className="col-12 col-sm-11 col-lg-10 col-xl-9">
               <div className="py-4">
-                <h1 className="text-center mb-4">Turnberry Place Neighborhood and Area Profile</h1>
+                <h1 className="text-center mb-4">Turnberry Place Neighborhood</h1>
                 <div className="area-desc">
-                  <p>Turnberry Place stands as a pinnacle of luxury living in Las Vegas, offering an unparalleled blend of privacy, convenience, and access to world-class amenities. Situated just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts, this guard-gated, four-tower condominium complex redefines upscale urban living with its strategic location and meticulously curated environment. Residents enjoy immediate proximity to the Entertainment Capital of the World while residing in a serene, tropical-inspired oasis adorned with lush palm trees and manicured landscaping.</p>
+                  <p>Turnberry Place is located just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts. This guard-gated, four-tower condominium complex offers residents immediate proximity to the Entertainment Capital of the World while residing in a serene, tropical-inspired oasis.</p>
                 </div>
                 <div className="text-center mt-4">
                   <Link href="/neighborhood" className="btn btn-primary btn-lg">
