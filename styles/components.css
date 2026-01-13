@@ -513,13 +513,22 @@ main .card-top-header:first-of-type {
 /* Desktop navigation links */
 @media (min-width: 992px) {
   .card-top-nav .nav-wrapper {
-    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+  
+  .card-top-nav .nav-wrapper > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: flex-end;
     gap: 0;
   }
   
   .card-top-nav .nav-link {
-    padding: 0.5rem 0.875rem;
+    padding: 0.25rem 0.5rem;
     display: inline-block;
     font-size: 0.9rem;
     white-space: nowrap;
