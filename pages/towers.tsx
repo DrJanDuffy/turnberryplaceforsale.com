@@ -2,8 +2,7 @@ import { GetStaticPropsResult } from "next"
 import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { TowerSection } from "components/tower-section"
-import { QuickSearchWidget } from "components/quick-search-widget"
-import { FeaturedListingCard } from "components/featured-listing-card"
+// QuickSearchWidget and FeaturedListingCard available on homepage and /available-condos
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
@@ -199,50 +198,12 @@ export default function TowersPage({ menus }: TowersPageProps) {
                 <p>
                   Each tower offers different value propositions based on completion date, features, and market positioning. Tower 1 residences typically represent excellent value for buyers seeking entry into the Turnberry Place community, with prices generally starting around $800,000. Tower 2 and Tower 3 residences command premium prices due to their larger floor plans and enhanced features, with prices ranging from $1.2 million to $5 million depending on size, floor level, and view quality. Tower 4 residences represent the pinnacle of pricing, with penthouses and high-floor units commanding prices from $3 million to over $10 million, reflecting their exceptional features, views, and finishes.
                 </p>
-                <h3>Community and Lifestyle Considerations</h3>
-                <p>
-                  All four towers share access to The Stirling Club and the development's common amenities, creating a unified community experience. However, each tower has developed its own character and community feel over the years. Tower 1's established community appeals to long-term residents who value stability and proven quality. Tower 2 and Tower 3 attract a mix of full-time residents and second-home owners, creating vibrant communities with diverse interests. Tower 4's exclusive nature appeals to buyers seeking the ultimate in privacy and luxury, with a community that values both sophistication and discretion.
-                </p>
-
-                <h2>Investment Potential and Market Position</h2>
-                <p>
-                  Turnberry Place towers represent exceptional investment opportunities in the Las Vegas luxury real estate market. The development's prime location, world-class amenities, and established reputation create strong demand among both domestic and international buyers. The towers' proximity to the Strip, combined with their exclusive amenities and security features, ensures that they remain desirable regardless of market conditions. As a Las Vegas real estate expert, I've observed consistent appreciation in Turnberry Place values over the years, making these towers attractive to both owner-occupants and investors.
-                </p>
-                <h3>Market Trends and Appreciation</h3>
-                <p>
-                  The Las Vegas luxury condominium market has shown strong appreciation trends, with Turnberry Place consistently outperforming the broader market. The development's limited inventory, combined with strong demand from buyers seeking luxury living near the Strip, creates favorable conditions for price appreciation. Tower 4, in particular, has shown exceptional appreciation due to its limited availability and premium positioning. All towers benefit from the development's established reputation and ongoing improvements to The Stirling Club and common areas.
-                </p>
-                <h3>Rental Potential and Investment Returns</h3>
-                <p>
-                  While many Turnberry Place residents are owner-occupants, the development also offers strong rental potential for investors. The towers' prime location, luxury amenities, and established reputation create strong demand among high-end renters seeking temporary or long-term luxury accommodations. The development's proximity to the Strip makes it particularly attractive to executives, entertainers, and high-net-worth individuals who require luxury accommodations in Las Vegas. Rental rates for Turnberry Place residences typically command premium prices, reflecting the development's luxury positioning and comprehensive amenities.
-                </p>
-
                 <h2>Why Choose Turnberry Place Towers?</h2>
                 <p>
-                  Choosing a residence in one of Turnberry Place's four towers means investing in a lifestyle that combines luxury, convenience, and exclusivity. The development's prime location, world-class amenities, and established reputation create an unparalleled living experience that is difficult to replicate elsewhere in Las Vegas. Whether you're seeking a primary residence, second home, or investment property, Turnberry Place towers offer compelling value propositions that appeal to discerning buyers.
-                </p>
-                <h3>Unmatched Location and Convenience</h3>
-                <p>
-                  Turnberry Place's location just one block from the Las Vegas Strip provides unmatched convenience for residents who want to enjoy the city's entertainment, dining, and cultural offerings. The development's proximity to world-class restaurants, entertainment venues, shopping, and business centers means that residents can enjoy everything Las Vegas offers without the inconvenience of long commutes. This location advantage is particularly valuable for those who work in the hospitality, entertainment, or business sectors, as well as for those who simply want to be at the center of Las Vegas's vibrant energy.
-                </p>
-                <h3>Exclusive Access to The Stirling Club</h3>
-                <p>
-                  The Stirling Club represents one of Turnberry Place's most significant value propositions, providing residents with access to amenities that would typically require separate club memberships costing tens of thousands of dollars annually. This 80,000-square-foot private facility includes fitness centers, pools, tennis courts, spa services, dining venues, and business facilities that rival the best private clubs in Las Vegas. The club's exclusive nature ensures that it remains uncrowded and provides a true luxury experience for residents, creating a sense of exclusivity and privilege that enhances the overall living experience.
-                </p>
-                <h3>Security and Privacy</h3>
-                <p>
-                  Turnberry Place's comprehensive security systems, guard-gated entrance, and private elevator access provide residents with the security and privacy that luxury living requires. The development's raised elevation and strategic positioning minimize street noise and provide a sense of seclusion despite the proximity to the Strip. This combination of security and privacy is essential for high-profile residents, executives, and anyone who values peace of mind in their home environment. The development's security measures are continuously updated and enhanced, ensuring that they remain state-of-the-art and effective.
-                </p>
-
-                <h2>Contact Dr. Jan Duffy for Tower Information</h2>
-                <p>
-                  As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place, I can provide comprehensive information about each tower's features, availability, pricing, and investment potential. My expertise in luxury high-rise condominiums, combined with my understanding of the Las Vegas market, enables me to help buyers make informed decisions about which tower best meets their needs, preferences, and investment goals.
-                </p>
-                <p>
-                  Whether you're interested in Tower 1's established value, Tower 2's enhanced features, Tower 3's contemporary design, or Tower 4's ultimate luxury, I can provide detailed information about available residences, market conditions, and the unique characteristics of each tower. My goal is to help you find the perfect Turnberry Place residence that meets your lifestyle needs while representing a sound investment in Las Vegas luxury real estate.
+                  Each tower offers unique value: Tower 1 provides excellent entry-level pricing, Tower 2-3 feature enhanced amenities and larger floor plans, and Tower 4 represents ultimate luxury. All towers share prime location, exclusive Stirling Club access, and comprehensive security.
                 </p>
                 <p className="mt-4">
-                  <strong>Ready to explore Turnberry Place towers?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private showing or discuss your luxury condominium needs. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you find the perfect tower residence that exceeds your expectations.
+                  <strong>Ready to explore Turnberry Place towers?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private showing or discuss your luxury condominium needs.
                 </p>
               </div>
             </div>
@@ -250,89 +211,7 @@ export default function TowersPage({ menus }: TowersPageProps) {
         </div>
       </div>
 
-      {/* Quick Search Widget */}
-      <div className="card-content py-5 bg-light">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-8">
-              <QuickSearchWidget />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Featured Listings by Tower */}
-      <div className="card-content py-5 bg-white">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h2 className="text-center mb-4">Featured Listings by Tower</h2>
-              <p className="text-center mb-5 text-muted">Explore available residences across all four Turnberry Place towers</p>
-              <div className="row">
-                <div className="col-md-6 col-lg-3 mb-4">
-                  <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg"
-                    title="Tower 1, Unit 1203"
-                    price="$950,000"
-                    beds={1}
-                    baths={1}
-                    sqft={1350}
-                    views="City Views"
-                    tower="Tower 1"
-                    unit="Unit 1203"
-                  />
-                </div>
-                <div className="col-md-6 col-lg-3 mb-4">
-                  <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg"
-                    title="Tower 2, Unit 1501"
-                    price="$1,250,000"
-                    beds={2}
-                    baths={2}
-                    sqft={1850}
-                    views="Strip Views"
-                    tower="Tower 2"
-                    unit="Unit 1501"
-                    featured={true}
-                  />
-                </div>
-                <div className="col-md-6 col-lg-3 mb-4">
-                  <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg"
-                    title="Tower 3, Unit 2205"
-                    price="$2,100,000"
-                    beds={3}
-                    baths={3}
-                    sqft={2400}
-                    views="Mountain Views"
-                    tower="Tower 3"
-                    unit="Unit 2205"
-                  />
-                </div>
-                <div className="col-md-6 col-lg-3 mb-4">
-                  <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg"
-                    title="Tower 4, Unit 3501"
-                    price="$4,500,000"
-                    beds={4}
-                    baths={4}
-                    sqft={3800}
-                    views="Panoramic Views"
-                    tower="Tower 4"
-                    unit="Unit 3501"
-                    featured={true}
-                  />
-                </div>
-              </div>
-              <div className="text-center mt-4">
-                <Link href="/available-condos" className="btn btn-primary btn-lg">
-                  View All Available Condos
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Quick Search and Featured Listings - Available on homepage and /available-condos */}
     </Layout>
   )
 }

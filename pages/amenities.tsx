@@ -5,8 +5,7 @@ import { AmenitiesGrid } from "components/amenities-grid"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
-import { ClientTestimonials } from "components/client-testimonials"
-import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
+// ClientTestimonials and VIPNewsletterSignup available on homepage and /agent page
 import { FormattedSection } from "components/formatted-section"
 
 const amenities = [
@@ -208,22 +207,7 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
         </div>
       </div>
 
-      {/* Client Testimonials Section */}
-      <ClientTestimonials />
-
-      {/* VIP Newsletter Signup */}
-      <div className="card-content py-5 bg-light">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-md-8 col-lg-6">
-              <VIPNewsletterSignup 
-                title="Stay Updated on Amenities"
-                subtitle="Join our VIP list to receive updates on The Stirling Club amenities and community events"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Client Testimonials and VIP Newsletter - Available on homepage and /agent page */}
     </Layout>
   )
 }
