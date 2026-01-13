@@ -138,7 +138,8 @@ export function Navbar({ links, ...props }: NavbarProps) {
                           color: 'rgba(255, 255, 255, 0.95)',
                           cursor: 'pointer',
                           fontSize: '0.9rem',
-                          fontWeight: 400,
+                          fontWeight: 500,
+                          fontFamily: 'Cinzel, serif',
                           whiteSpace: 'nowrap',
                           textDecoration: 'none',
                           display: 'inline-block'
@@ -192,6 +193,7 @@ export function Navbar({ links, ...props }: NavbarProps) {
                                 color: asPath === child.href ? '#fff' : 'rgba(255, 255, 255, 0.9)',
                                 textDecoration: 'none',
                                 fontSize: '0.9rem',
+                                fontFamily: 'Cinzel, serif',
                                 transition: 'all 0.2s ease',
                                 whiteSpace: 'nowrap',
                                 backgroundColor: asPath === child.href ? 'rgba(255, 255, 255, 0.15)' : 'transparent',

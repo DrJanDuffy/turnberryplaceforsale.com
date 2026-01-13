@@ -536,6 +536,11 @@ main .card-top-header:first-of-type {
   }
 }
 
+.nav-dropdown .dropdown-item {
+  font-family: var(--nav-font, 'Cinzel', serif);
+  font-weight: 400;
+}
+
 .nav-dropdown .dropdown-item:hover {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
@@ -678,6 +683,8 @@ main .card-top-header:first-of-type {
 .card-top-nav .agent-text a:hover {
   color: var(--body-copy-color, rgba(255, 255, 255, 1));
   text-decoration: none;
+  font-family: var(--nav-font, 'Cinzel', serif);
+  font-weight: var(--nav-font-weight, 500);
 }
 
 .card-top-nav .agent-text .agent-phone a:hover {
