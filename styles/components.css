@@ -248,6 +248,42 @@ main .card-top-header:first-of-type {
   color: #fff;
 }
 
+/* Dropdown Menu Styles */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown .dropdown-menu {
+  display: none;
+}
+
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown .dropdown-menu.show {
+  display: block;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-dropdown .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.nav-dropdown .dropdown-item.active {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  font-weight: 500;
+  color: #fff !important;
+}
+
 /* Responsive navbar height adjustments */
 @media (max-width: 991.98px) {
   .card-top-nav {

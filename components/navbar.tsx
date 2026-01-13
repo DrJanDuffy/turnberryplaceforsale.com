@@ -11,26 +11,78 @@ interface NavbarProps {
   links: DrupalMenuLinkContent[]
 }
 
+// Streamlined navigation structure with dropdowns
+interface NavItem {
+  href: string
+  title: string
+  children?: NavItem[]
+}
+
+const navigationStructure: NavItem[] = [
+  { href: "/", title: "Home" },
+  {
+    title: "Properties",
+    href: "/available-condos",
+    children: [
+      { href: "/available-condos", title: "Available Condos" },
+      { href: "/floor-plans", title: "Floor Plans" },
+      { href: "/towers", title: "Towers" },
+      { href: "/price-features", title: "Price & Features" },
+    ]
+  },
+  {
+    title: "About",
+    href: "/amenities",
+    children: [
+      { href: "/amenities", title: "Amenities" },
+      { href: "/stirling-club", title: "Stirling Club" },
+      { href: "/neighborhood", title: "Neighborhood" },
+      { href: "/photos", title: "Photos" },
+    ]
+  },
+  {
+    title: "Contact",
+    href: "/request-details",
+    children: [
+      { href: "/request-details", title: "Request Details" },
+      { href: "/open-house", title: "Open House" },
+      { href: "/agent", title: "Agent" },
+    ]
+  },
+  { href: "/map", title: "Map" },
+  { href: "/share", title: "Share" },
+]
+
+// Flattened list for mobile menu
 const navigationLinks = [
   { href: "/", title: "Home" },
-  { href: "/price-features", title: "Price & Features" },
-  { href: "/towers", title: "Towers" },
-  { href: "/amenities", title: "Amenities" },
-  { href: "/photos", title: "Photos" },
-  { href: "/map", title: "Map" },
-  { href: "/open-house", title: "Open House" },
-  { href: "/request-details", title: "Request Details" },
-  { href: "/agent", title: "Agent" },
   { href: "/available-condos", title: "Available Condos" },
   { href: "/floor-plans", title: "Floor Plans" },
-  { href: "/share", title: "Share" },
+  { href: "/towers", title: "Towers" },
+  { href: "/price-features", title: "Price & Features" },
+  { href: "/amenities", title: "Amenities" },
   { href: "/stirling-club", title: "Stirling Club" },
   { href: "/neighborhood", title: "Neighborhood" },
+  { href: "/photos", title: "Photos" },
+  { href: "/request-details", title: "Request Details" },
+  { href: "/open-house", title: "Open House" },
+  { href: "/agent", title: "Agent" },
+  { href: "/map", title: "Map" },
+  { href: "/share", title: "Share" },
 ]
 
 export function Navbar({ links, ...props }: NavbarProps) {
   const { locale, asPath } = useRouter()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+
+  const isActive = (href: string, children?: NavItem[]) => {
+    if (asPath === href) return true
+    if (children) {
+      return children.some(child => asPath === child.href)
+    }
+    return false
+  }
 
   return (
     <nav
@@ -63,19 +115,121 @@ export function Navbar({ links, ...props }: NavbarProps) {
           </div>
           <div className="col-2 col-md-8 col-lg-9">
             <div className="nav-wrapper">
-              {navigationLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={classNames(
-                    "py-2 d-none font-size-90 d-lg-inline-block nav-link px-3",
-                    asPath === link.href ? "active" : ""
-                  )}
-                  title={link.title}
-                >
-                  {link.title}
-                </Link>
-              ))}
+              {navigationStructure.map((item) => {
+                if (item.children) {
+                  const isDropdownOpen = openDropdown === item.title
+                  const isItemActive = isActive(item.href, item.children)
+                  
+                  return (
+                    <div
+                      key={item.title}
+                      className="nav-dropdown position-relative d-none d-lg-block"
+                      onMouseEnter={() => setOpenDropdown(item.title)}
+                      onMouseLeave={() => setOpenDropdown(null)}
+                    >
+                      <button
+                        className={classNames(
+                          "nav-link py-2 px-3",
+                          isItemActive && "active"
+                        )}
+                        style={{
+                          background: 'transparent',
+                          border: 'none',
+                          color: 'rgba(255, 255, 255, 0.95)',
+                          cursor: 'pointer',
+                          fontSize: '0.9rem',
+                          fontWeight: 400,
+                          whiteSpace: 'nowrap',
+                          textDecoration: 'none',
+                          display: 'inline-block'
+                        }}
+                      >
+                        {item.title}
+                        <svg
+                          width="10"
+                          height="10"
+                          viewBox="0 0 12 12"
+                          fill="currentColor"
+                          className="ml-1"
+                          style={{
+                            display: 'inline-block',
+                            verticalAlign: 'middle',
+                            transition: 'transform 0.2s ease',
+                            transform: isDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+                          }}
+                        >
+                          <path d="M6 9L1 4h10L6 9z" />
+                        </svg>
+                      </button>
+                      {isDropdownOpen && (
+                        <div
+                          className="dropdown-menu show"
+                          style={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: 0,
+                            backgroundColor: '#1a1a1a',
+                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                            borderRadius: '6px',
+                            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.4)',
+                            minWidth: '220px',
+                            padding: '0.5rem 0',
+                            zIndex: 1000,
+                            marginTop: '4px'
+                          }}
+                        >
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className={classNames(
+                                "dropdown-item",
+                                asPath === child.href && "active"
+                              )}
+                              style={{
+                                display: 'block',
+                                padding: '0.75rem 1.25rem',
+                                color: asPath === child.href ? '#fff' : 'rgba(255, 255, 255, 0.9)',
+                                textDecoration: 'none',
+                                fontSize: '0.9rem',
+                                transition: 'all 0.2s ease',
+                                whiteSpace: 'nowrap',
+                                backgroundColor: asPath === child.href ? 'rgba(255, 255, 255, 0.15)' : 'transparent',
+                                fontWeight: asPath === child.href ? 500 : 400
+                              }}
+                              onMouseEnter={(e) => {
+                                if (asPath !== child.href) {
+                                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
+                                }
+                              }}
+                              onMouseLeave={(e) => {
+                                if (asPath !== child.href) {
+                                  e.currentTarget.style.backgroundColor = 'transparent'
+                                }
+                              }}
+                            >
+                              {child.title}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )
+                }
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={classNames(
+                      "py-2 d-none font-size-90 d-lg-inline-block nav-link px-3",
+                      asPath === item.href ? "active" : ""
+                    )}
+                    title={item.title}
+                  >
+                    {item.title}
+                  </Link>
+                )
+              })}
               <Link
                 href="https://translate.google.com/translate?hl=es&sl=auto&tl=es&u=https://www.turnberryplaceforsale.com"
                 className="d-none font-size-90 d-lg-inline-block px-3 nav-link"
