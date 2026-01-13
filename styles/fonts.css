@@ -11,12 +11,12 @@
   --nav-font: Cinzel;
   --nav-font-weight: 500;
   
-  /* Colors - Matching Live Site CSS Variables */
-  --heading-color: #212529;
-  --body-copy-color: #212529;
-  --body-copy-color-rgb: 33,37,41;
-  --nav-link-color: #212529;
-  --nav-link-color-rgb: 33,37,41;
+  /* Colors - Matching Live Site CSS Variables (luxury black theme) */
+  --heading-color: #ffffff;
+  --body-copy-color: #e0e0e0;
+  --body-copy-color-rgb: 224,224,224;
+  --nav-link-color: #ffffff;
+  --nav-link-color-rgb: 255,255,255;
   --nav-bg-color: #fafafa;
   --nav-bg-color-rgb: 250,250,250;
   --body-link-color: #007bff;
@@ -25,10 +25,10 @@
   --btn-icon-color-rgb: 108,117,125;
   --btn-text-color: #fafafa;
   --btn-text-color-rgb: 250,250,250;
-  --section-bgcolor-odd: #ffffff;
-  --section-bgcolor-odd-rgb: 255,255,255;
-  --section-bgcolor-even: #fafafa;
-  --section-bgcolor-even-rgb: 250,250,250;
+  --section-bgcolor-odd: #1a1a1a;
+  --section-bgcolor-odd-rgb: 26,26,26;
+  --section-bgcolor-even: #0d0d0d;
+  --section-bgcolor-even-rgb: 13,13,13;
 }
 
 /* Body text and buttons use Questrial */
