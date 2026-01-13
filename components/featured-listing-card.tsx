@@ -13,6 +13,7 @@ interface FeaturedListingCardProps {
   unit?: string
   href?: string
   featured?: boolean
+  priority?: boolean
 }
 
 export function FeaturedListingCard({
@@ -26,7 +27,8 @@ export function FeaturedListingCard({
   tower,
   unit,
   href = '/available-condos',
-  featured = false
+  featured = false,
+  priority = false
 }: FeaturedListingCardProps) {
   const handleClick = () => {
     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -71,6 +73,11 @@ export function FeaturedListingCard({
             fill
             style={{ objectFit: 'cover', transition: 'transform 0.3s ease' }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            loading={priority ? 'eager' : 'lazy'}
+            priority={priority}
+            quality={85}
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
         </div>
         <div className="position-absolute bottom-0 start-0 end-0 bg-dark bg-opacity-75 text-white p-2" style={{ zIndex: 5 }}>

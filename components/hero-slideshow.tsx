@@ -134,13 +134,16 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
             onClick={() => goToSlide(index)}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', position: 'relative', width: '100px', height: '60px', overflow: 'hidden' }}
           >
-            <img
+            <Image
               src={photo}
-              className="img-fluid"
               alt={`Slide ${index + 1}`}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              fill
+              sizes="100px"
+              style={{ objectFit: 'cover' }}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              quality={75}
             />
           </div>
         ))}

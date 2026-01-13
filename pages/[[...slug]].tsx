@@ -49,6 +49,12 @@ export default function NodePage({ node, menus }: NodePageProps) {
             name="description"
             content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. 4 luxury towers from $800K-$10M+ with Strip views & exclusive Stirling Club access. Call/text 702-222-1988"
           />
+          {/* Preload first hero image for faster LCP */}
+          <link
+            rel="preload"
+            as="image"
+            href="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953237/photo.jpg"
+          />
         </Head>
         <JsonLdSchema type="home" propertyPrice="$800,000 - $10,000,000+" />
         <HomePageContent />
@@ -78,11 +84,12 @@ export default function NodePage({ node, menus }: NodePageProps) {
 
 // Home page content component
 function HomePageContent() {
+  // Optimized hero photos - using WebP format and appropriate sizes
   const heroPhotos = [
-    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1600,height=1200,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg",
-    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1600,height=1200,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg",
-    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1600,height=1200,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg",
-    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1600,height=1200,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg",
+    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953237/photo.jpg",
+    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953238/photo.jpg",
+    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953240/photo.jpg",
+    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953239/photo.jpg",
   ]
 
   return (
@@ -324,7 +331,7 @@ function HomePageContent() {
       <div
         className="card-content card-open-house py-5"
         style={{
-          backgroundImage: "url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1500,height=1000,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg)",
+          backgroundImage: "url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=80/4616/60013/2953238/photo.jpg)",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",
@@ -549,7 +556,7 @@ function HomePageContent() {
               <div className="row">
                 <div className="col-md-6 col-lg-3 mb-4">
                   <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg"
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953237/photo.jpg"
                     title="Tower 2, Unit 1501"
                     price="$1,250,000"
                     beds={2}
@@ -559,11 +566,12 @@ function HomePageContent() {
                     tower="Tower 2"
                     unit="Unit 1501"
                     featured={true}
+                    priority={true}
                   />
                 </div>
                 <div className="col-md-6 col-lg-3 mb-4">
                   <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg"
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953238/photo.jpg"
                     title="Tower 3, Unit 2205"
                     price="$2,100,000"
                     beds={3}
@@ -576,7 +584,7 @@ function HomePageContent() {
                 </div>
                 <div className="col-md-6 col-lg-3 mb-4">
                   <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg"
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953240/photo.jpg"
                     title="Tower 4, Unit 3501"
                     price="$4,500,000"
                     beds={4}
@@ -590,7 +598,7 @@ function HomePageContent() {
                 </div>
                 <div className="col-md-6 col-lg-3 mb-4">
                   <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg"
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953239/photo.jpg"
                     title="Tower 1, Unit 1203"
                     price="$950,000"
                     beds={1}
@@ -634,7 +642,7 @@ function HomePageContent() {
       <div
         className="card-content card-contact-form py-5"
         style={{
-          backgroundImage: "url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1500,height=1000,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg)",
+          backgroundImage: "url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=80/4616/60013/2953239/photo.jpg)",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",
@@ -689,10 +697,11 @@ function HomePageContent() {
                     <div className="col-12 col-md-4 text-center mb-4 mb-md-0">
                       <Image
                         className="img-fluid agent-photo rounded-circle"
-                        src="https://assets.cribflyer-proxy.com/cdn-cgi/image/width=500,fit=contain,rotate=0,format=auto,quality=100/4616/2/2953539/asset.jpg"
+                        src="https://assets.cribflyer-proxy.com/cdn-cgi/image/width=500,height=500,fit=crop,rotate=0,format=webp,quality=90/4616/2/2953539/asset.jpg"
                         alt="Dr. Jan Duffy, Las Vegas real estate expert specializing in Turnberry Place luxury condos"
                         width={225}
                         height={225}
+                        loading="lazy"
                         style={{
                           border: '4px solid #007bff',
                           boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
