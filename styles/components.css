@@ -1747,7 +1747,181 @@ main .card-top-header:first-of-type {
 
 .why-work-with-us .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ============================================
+   GLOBAL FLEXBOX AND LAYOUT FIXES - ALL PAGES
+   ============================================ */
+
+/* Note: Bootstrap already handles .row and [class*="col-"] - 
+   We only add fixes for specific issues, not overriding Bootstrap defaults */
+
+/* Ensure flex containers work properly */
+.d-flex {
+  display: flex !important;
+}
+
+/* Fix flex-column/flex-row responsive behavior */
+.d-flex.flex-column {
+  flex-direction: column !important;
+}
+
+.d-flex.flex-row {
+  flex-direction: row !important;
+}
+
+/* Responsive flex direction fixes */
+@media (min-width: 576px) {
+  .d-flex.flex-column.flex-sm-row {
+    flex-direction: row !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .d-flex.flex-column.flex-md-row {
+    flex-direction: row !important;
+  }
+  
+  .d-flex.flex-column.flex-lg-row {
+    flex-direction: row !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .d-flex.flex-column.flex-lg-row {
+    flex-direction: row !important;
+  }
+}
+
+/* Fix align-items behavior */
+.align-items-center {
+  align-items: center !important;
+}
+
+.align-items-start {
+  align-items: flex-start !important;
+}
+
+.align-items-end {
+  align-items: flex-end !important;
+}
+
+/* Fix justify-content behavior */
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.justify-content-start {
+  justify-content: flex-start !important;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.justify-content-around {
+  justify-content: space-around !important;
+}
+
+/* Ensure all card-content sections have proper row/column behavior */
+.card-content .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-content .row > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fix amenity items to stay side-by-side */
+.amenity-item {
+  display: flex !important;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.amenity-item .icon-custom,
+.amenity-item .amenity-icon {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+.amenity-item .amenity-name {
+  flex: 1;
+}
+
+/* Fix amenities grid layout */
+.amenities-border .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.amenities-border .row > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure tower sections display properly */
+.tower-section .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Fix any component with buttons that should be side-by-side */
+.card-content .d-flex.flex-column.flex-sm-row > *,
+.card-content .d-flex.flex-column.flex-md-row > *,
+.card-content .d-flex.flex-column.flex-lg-row > * {
+  flex-shrink: 0;
+}
+
+/* Ensure gap spacing works in flex containers */
+.gap-1 { gap: 0.25rem !important; }
+.gap-2 { gap: 0.5rem !important; }
+.gap-3 { gap: 1rem !important; }
+.gap-4 { gap: 1.5rem !important; }
+.gap-5 { gap: 3rem !important; }
+
+/* Fix contact info sections across all pages */
+.card-content .d-flex.flex-column.flex-md-row.align-items-center > div {
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .card-content .d-flex.flex-column.flex-md-row.align-items-center {
+    flex-direction: row !important;
+    gap: 1.5rem;
+  }
+}
+
+/* Fix any horizontal line layouts */
+.d-flex.align-items-center.justify-content-center {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.d-flex.align-items-center.justify-content-center .horiz-line {
+  flex: 1;
+  min-width: 50px;
+}
+
+/* Ensure all pages maintain proper spacing */
+.card-content .row.justify-content-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Fix any nested flex containers */
+.card-content .d-flex .d-flex {
+  display: flex !important;
 }
 
 /* Featured Listing Card */
