@@ -20,10 +20,17 @@ const authConfig = baseUrl && process.env.DRUPAL_CLIENT_ID && process.env.DRUPAL
     }
   : {}
 
+// Use a valid but non-functional URL when baseUrl is not set to prevent fetch errors
+// This URL will never be called if we check for baseUrl before using drupal methods
 export const drupal = new DrupalClient(
-  baseUrl || "https://placeholder.drupal.site",
+  baseUrl || "https://localhost",
   {
     frontPage: "/home",
     ...authConfig,
   }
 )
+
+// Export a helper to check if Drupal is configured
+export const isDrupalConfigured = (): boolean => {
+  return !!baseUrl
+}
