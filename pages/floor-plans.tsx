@@ -87,7 +87,11 @@ export default function FloorPlansPage() {
                   {floorPlans.map((plan, index) => (
                     <div
                       key={index}
-                      className={classNames("tab-pane fade", activeTab === index && "show active")}
+                      className={classNames(
+                        "tab-pane fade",
+                        activeTab === index && "show active"
+                      )}
+                      style={{ display: activeTab === index ? 'block' : 'none' }}
                       id={`fp-${59361 + index}`}
                       role="tabpanel"
                       aria-labelledby={`fp-tab-${59361 + index}`}

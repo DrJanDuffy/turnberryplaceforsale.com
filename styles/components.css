@@ -1363,11 +1363,13 @@ main .card-top-header:first-of-type {
 }
 
 .card-floor-plans .tab-pane {
-  display: none;
+  display: none !important;
 }
 
+.card-floor-plans .tab-pane.show,
+.card-floor-plans .tab-pane.active,
 .card-floor-plans .tab-pane.show.active {
-  display: block;
+  display: block !important;
 }
 
 .card-floor-plans .fp-image {
