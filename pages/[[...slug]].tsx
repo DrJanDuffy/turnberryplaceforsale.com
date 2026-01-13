@@ -895,34 +895,44 @@ export async function getStaticProps(
       params: getParams(type),
     })
 
-  if (!node || (!context.preview && node?.status === false)) {
-    return {
-      notFound: true,
+    if (!node || (!context.preview && node?.status === false)) {
+      return {
+        notFound: true,
+      }
     }
-  }
 
-  // Load initial view data.
-  if (type === "node--landing_page") {
-    for (const section of node.field_sections) {
-      if (section.type === "paragraph--view" && section.field_view) {
-        const view = await drupal.getView(section.field_view, {
-          params: {
-            include: "field_location,field_images.field_media_image",
-          },
-        })
+    // Load initial view data.
+    if (type === "node--landing_page") {
+      for (const section of node.field_sections) {
+        if (section.type === "paragraph--view" && section.field_view) {
+          const view = await drupal.getView(section.field_view, {
+            params: {
+              include: "field_location,field_images.field_media_image",
+            },
+          })
 
-        section.field_view = {
-          name: section.field_view,
-          ...view,
+          section.field_view = {
+            name: section.field_view,
+            ...view,
+          }
         }
       }
     }
-  }
 
-  return {
-    props: {
-      node,
-      menus: await getMenus(context),
-    },
+    return {
+      props: {
+        node,
+        menus: await getMenus(context),
+      },
+    }
+  } catch (error) {
+    // If Drupal is not available, return not found
+    // This allows the build to continue without Drupal
+    if (process.env.NODE_ENV === 'development') {
+      console.warn("Drupal is not available for this route. Returning not found.")
+    }
+    return {
+      notFound: true,
+    }
   }
 }
