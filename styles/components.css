@@ -418,8 +418,9 @@ main .card-top-header:first-of-type {
   overflow: hidden;
   text-overflow: ellipsis;
   color: #fff;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   line-height: 1.2;
+  text-transform: uppercase;
 }
 
 /* Desktop agent text styling */
