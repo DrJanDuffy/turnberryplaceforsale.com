@@ -5,8 +5,7 @@ import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
 import { ContactForm } from "components/contact-form"
-import { ClientTestimonials } from "components/client-testimonials"
-import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
+// ClientTestimonials and VIPNewsletterSignup available on homepage and /agent page
 import Image from "next/image"
 
 interface RequestDetailsPageProps extends LayoutProps {}
@@ -169,21 +168,7 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
       </div>
 
       {/* Client Testimonials Section */}
-      <ClientTestimonials />
-
-      {/* VIP Newsletter Signup */}
-      <div className="card-content py-5 bg-light">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-md-8 col-lg-6">
-              <VIPNewsletterSignup 
-                title="Stay Updated on Turnberry Place"
-                subtitle="Join our VIP list to receive exclusive listings, pricing updates, and market insights"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Client Testimonials and VIP Newsletter - Available on homepage and /agent page */}
     </Layout>
   )
 }

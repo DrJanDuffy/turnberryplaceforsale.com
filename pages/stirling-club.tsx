@@ -4,8 +4,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
-import { ClientTestimonials } from "components/client-testimonials"
-import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
+// ClientTestimonials and VIPNewsletterSignup available on homepage and /agent page
 import Image from "next/image"
 
 interface StirlingClubPageProps extends LayoutProps {}
@@ -157,22 +156,7 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
         </div>
       </div>
 
-      {/* Client Testimonials Section */}
-      <ClientTestimonials />
-
-      {/* VIP Newsletter Signup */}
-      <div className="card-content py-5 bg-light">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-md-8 col-lg-6">
-              <VIPNewsletterSignup 
-                title="Experience The Stirling Club"
-                subtitle="Join our VIP list to receive updates on club amenities, events, and exclusive access"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Client Testimonials and VIP Newsletter - Available on homepage and /agent page */}
     </Layout>
   )
 }

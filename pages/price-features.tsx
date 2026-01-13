@@ -4,8 +4,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
-import { QuickSearchWidget } from "components/quick-search-widget"
-import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
+// QuickSearchWidget and VIPNewsletterSignup available on homepage
 import { FormattedSection } from "components/formatted-section"
 
 interface PriceFeaturesPageProps extends LayoutProps {}
@@ -23,16 +22,7 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
       </Head>
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
       
-      {/* Quick Search Widget */}
-      <div className="card-content py-5 bg-light">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-8">
-              <QuickSearchWidget />
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Quick Search Widget - Available on homepage and /available-condos */}
 
       <div className="card-content card-price-features py-5">
         <div className="container">
@@ -83,22 +73,16 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
 
               <h2>Residence Features by Price Range</h2>
               <p>
-                Understanding the features available at different price ranges helps buyers identify residences that best meet their needs and preferences. Turnberry Place's pricing structure ensures that buyers at every price point receive exceptional value, with features and amenities that justify the investment. From entry-level residences to ultra-luxury penthouses, each price range offers distinct advantages and value propositions.
+                <strong>$800K-$2M:</strong> 1-2 bedrooms, 1,200-2,500 sqft, premium finishes, private balconies, full Stirling Club access.
               </p>
-              <h3>Features in $800,000 to $2 Million Range</h3>
               <p>
-                Residences in the $800,000 to $2 million range typically include one to two bedrooms, ranging from approximately 1,200 to 2,500 square feet. These residences feature premium finishes, private balconies or terraces, floor-to-ceiling windows, and full access to The Stirling Club amenities. Common features include hardwood or premium tile flooring, granite countertops, high-end appliances, custom cabinetry, and designer fixtures. These residences provide excellent value for buyers seeking luxury living near the Strip with proven quality and established community.
+                <strong>$2M-$5M:</strong> 2-3 bedrooms, 2,000-4,000 sqft, enhanced finishes, larger terraces, premium appliances.
               </p>
-              <h3>Features in $2 Million to $5 Million Range</h3>
               <p>
-                Residences in the $2 million to $5 million range typically include two to three bedrooms, ranging from approximately 2,000 to 4,000 square feet. These residences feature enhanced finishes, larger outdoor spaces, premium appliances, custom millwork, and sophisticated design elements. Many residences in this price range feature wrap-around terraces, upgraded flooring materials, designer fixtures, and enhanced views. The larger floor plans provide more flexibility for entertaining, home offices, and comfortable daily living.
-              </p>
-              <h3>Features in $5 Million to $10 Million+ Range</h3>
-              <p>
-                Residences in the $5 million to $10 million+ range represent the pinnacle of luxury at Turnberry Place, typically including three to four bedrooms or more, ranging from approximately 4,000 to over 8,000 square feet. These residences feature the most exceptional finishes, including custom millwork, designer fixtures, premium appliances, and high-end materials throughout. Penthouses in this price range feature elevated ceilings up to 12 feet, expansive floor plans, multiple terraces, and the most dramatic views available. These residences represent the ultimate in luxury living at Turnberry Place.
+                <strong>$5M-$10M+:</strong> 3-4+ bedrooms, 4,000-8,000+ sqft, exceptional finishes, penthouses with 12ft ceilings, multiple terraces, panoramic views.
               </p>
 
-              <h2>Value Propositions and Investment Considerations</h2>
+              <h2>Value Propositions</h2>
               <p>
                 Turnberry Place's pricing reflects not only the physical features of the residences but also the intangible value of location, amenities, security, and lifestyle. Understanding these value propositions helps buyers appreciate the development's pricing structure and make informed investment decisions. The development's established reputation, prime location, and comprehensive amenities create strong demand that supports premium pricing and appreciation potential.
               </p>
@@ -173,19 +157,7 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
         </div>
       </div>
 
-      {/* VIP Newsletter Signup */}
-      <div className="card-content py-5 bg-light">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-md-8 col-lg-6">
-              <VIPNewsletterSignup 
-                title="Get Pricing Updates"
-                subtitle="Join our VIP list to receive exclusive pricing information and new listing alerts"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* VIP Newsletter Signup - Available on homepage */}
     </Layout>
   )
 }
