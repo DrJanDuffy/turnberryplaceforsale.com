@@ -72,7 +72,7 @@ export function Meta({ title, tags }: MetaProps) {
           <meta
             key="og_image"
             property="og:image"
-            content="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1200,height=630,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg"
+            content="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg"
           />
           <meta
             key="og_image_alt"
@@ -103,7 +103,7 @@ export function Meta({ title, tags }: MetaProps) {
           <meta
             key="twitter_image"
             name="twitter:image"
-            content="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1200,height=630,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg"
+            content="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg"
           />
           <meta
             key="twitter_image_alt"

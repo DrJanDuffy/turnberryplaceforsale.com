@@ -118,8 +118,8 @@ export function JsonLdSchema({
       },
     ],
     image: [
-      'https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1600,height=1200,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg',
-      'https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1600,height=1200,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg',
+      'https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg',
+      'https://www.turnberryplaceforsale.com/images/turnberry/Turnberry Tower Nice Vew.jpg',
     ],
   }
 

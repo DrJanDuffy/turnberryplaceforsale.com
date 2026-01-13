@@ -61,7 +61,7 @@ export default function SharePage({ menus }: SharePageProps) {
   const shareUrl = typeof window !== "undefined" ? window.location.href : "https://www.turnberryplaceforsale.com"
   const shareTitle = "Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale"
   const shareDescription = "Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. Featuring 1-4 bedroom residences with Strip views, & exclusive Stirling Club"
-  const shareImage = "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1200,height=630,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg"
+  const shareImage = "/images/turnberry/Turnberry_Place_For_Sale.jpg"
 
   return (
     <Layout menus={menus}>

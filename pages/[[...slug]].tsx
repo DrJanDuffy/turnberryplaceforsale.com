@@ -53,7 +53,7 @@ export default function NodePage({ node, menus }: NodePageProps) {
           <link
             rel="preload"
             as="image"
-            href="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953237/photo.jpg"
+            href="/images/turnberry/Turnberry_Place_For_Sale.jpg"
           />
         </Head>
         <JsonLdSchema type="home" propertyPrice="$800,000 - $10,000,000+" />
@@ -84,12 +84,12 @@ export default function NodePage({ node, menus }: NodePageProps) {
 
 // Home page content component
 function HomePageContent() {
-  // Optimized hero photos - using WebP format and appropriate sizes
+  // Hero photos - using local images from public/images/turnberry
   const heroPhotos = [
-    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953237/photo.jpg",
-    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953238/photo.jpg",
-    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953240/photo.jpg",
-    "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953239/photo.jpg",
+    "/images/turnberry/Turnberry_Place_For_Sale.jpg",
+    "/images/turnberry/Turnberry Tower Nice Vew.jpg",
+    "/images/turnberry/Turnberry Tower South View.jpeg",
+    "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
   ]
 
   return (
@@ -331,7 +331,7 @@ function HomePageContent() {
       <div
         className="card-content card-open-house py-5"
         style={{
-          backgroundImage: "url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=80/4616/60013/2953238/photo.jpg)",
+          backgroundImage: "url(/images/turnberry/Turnberry Tower Nice Vew.jpg)",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",
@@ -556,7 +556,7 @@ function HomePageContent() {
               <div className="row">
                 <div className="col-md-6 col-lg-3 mb-4">
                   <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953237/photo.jpg"
+                    image="/images/turnberry/Turnberry_Place_For_Sale.jpg"
                     title="Tower 2, Unit 1501"
                     price="$1,250,000"
                     beds={2}
@@ -571,7 +571,7 @@ function HomePageContent() {
                 </div>
                 <div className="col-md-6 col-lg-3 mb-4">
                   <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953238/photo.jpg"
+                    image="/images/turnberry/Turnberry Tower Nice Vew.jpg"
                     title="Tower 3, Unit 2205"
                     price="$2,100,000"
                     beds={3}
@@ -584,7 +584,7 @@ function HomePageContent() {
                 </div>
                 <div className="col-md-6 col-lg-3 mb-4">
                   <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953240/photo.jpg"
+                    image="/images/turnberry/Turnberry Tower South View.jpeg"
                     title="Tower 4, Unit 3501"
                     price="$4,500,000"
                     beds={4}
@@ -598,7 +598,7 @@ function HomePageContent() {
                 </div>
                 <div className="col-md-6 col-lg-3 mb-4">
                   <FeaturedListingCard
-                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=webp,quality=85/4616/60013/2953239/photo.jpg"
+                    image="/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg"
                     title="Tower 1, Unit 1203"
                     price="$950,000"
                     beds={1}
@@ -642,7 +642,7 @@ function HomePageContent() {
       <div
         className="card-content card-contact-form py-5"
         style={{
-          backgroundImage: "url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1920,height=1080,fit=crop,rotate=0,format=webp,quality=80/4616/60013/2953239/photo.jpg)",
+          backgroundImage: "url(/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg)",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",

@@ -7,19 +7,19 @@ import { JsonLdSchema } from "components/json-ld-schema"
 import Image from "next/image"
 import Link from "next/link"
 
-// Photos matching the live site
+// Photos using local images from public/images/turnberry
 const photos = [
-  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=400,fit=contain,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg",
-  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=400,fit=contain,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg",
-  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=400,fit=contain,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg",
-  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=400,fit=contain,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg",
+  "/images/turnberry/Turnberry_Place_For_Sale.jpg",
+  "/images/turnberry/Turnberry Tower Nice Vew.jpg",
+  "/images/turnberry/Turnberry Tower South View.jpeg",
+  "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
 ]
 
 const photoFullSize = [
-  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=960,fit=contain,rotate=0,format=auto,quality=60/4616/60013/2953237/photo.jpg",
-  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=960,fit=contain,rotate=0,format=auto,quality=60/4616/60013/2953238/photo.jpg",
-  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=850,fit=contain,rotate=0,format=auto,quality=60/4616/60013/2953240/photo.jpg",
-  "https://photos.cribflyer-proxy.com/cdn-cgi/image/width=686,fit=contain,rotate=0,format=auto,quality=60/4616/60013/2953239/photo.jpg",
+  "/images/turnberry/Turnberry_Place_For_Sale.jpg",
+  "/images/turnberry/Turnberry Tower Nice Vew.jpg",
+  "/images/turnberry/Turnberry Tower South View.jpeg",
+  "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
 ]
 
 interface PhotosPageProps extends LayoutProps {}
@@ -138,9 +138,9 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                   <div className="mobile-gallery">
                     {photos.map((photo, index) => (
                       <div key={index} className="text-center mobile-slide">
-                        <a className="swipebox mobile" href={`https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1200,fit=contain,rotate=0,format=auto,quality=85/4616/60013/295323${7 + (index === 2 ? 3 : index === 3 ? 2 : index)}/photo.jpg`} title="Turnberry Place Las Vegas, Las Vegas, NV">
+                        <a className="swipebox mobile" href={photoFullSize[index]} title="Turnberry Place Las Vegas, Las Vegas, NV">
                           <Image
-                            src={`https://photos.cribflyer-proxy.com/cdn-cgi/image/width=600,height=450,fit=crop,rotate=0,format=auto,quality=85/4616/60013/295323${7 + (index === 2 ? 3 : index === 3 ? 2 : index)}/photo.jpg`}
+                            src={photos[index]}
                             width={600}
                             height={450}
                             alt="Turnberry Place Las Vegas, Las Vegas, NV"
