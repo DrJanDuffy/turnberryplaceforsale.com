@@ -879,19 +879,21 @@ export async function getStaticProps(
     }
   }
 
-  const path = await drupal.translatePathFromContext(context)
+  // Try to get Drupal data, but handle errors gracefully
+  try {
+    const path = await drupal.translatePathFromContext(context)
 
-  if (!path || !RESOURCE_TYPES.includes(path.jsonapi.resourceName)) {
-    return {
-      notFound: true,
+    if (!path || !RESOURCE_TYPES.includes(path.jsonapi.resourceName)) {
+      return {
+        notFound: true,
+      }
     }
-  }
 
-  const type = path.jsonapi.resourceName
+    const type = path.jsonapi.resourceName
 
-  const node = await drupal.getResourceFromContext<DrupalNode>(path, context, {
-    params: getParams(type),
-  })
+    const node = await drupal.getResourceFromContext<DrupalNode>(path, context, {
+      params: getParams(type),
+    })
 
   if (!node || (!context.preview && node?.status === false)) {
     return {

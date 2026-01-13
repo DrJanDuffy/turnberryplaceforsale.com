@@ -20,10 +20,10 @@ const authConfig = baseUrl && process.env.DRUPAL_CLIENT_ID && process.env.DRUPAL
     }
   : {}
 
-// Use a valid but non-functional URL when baseUrl is not set to prevent fetch errors
-// This URL will never be called if we check for baseUrl before using drupal methods
+// Create Drupal client - will only be used if baseUrl is set (checked before use)
+// Using a non-routable IP to prevent actual network calls when not configured
 export const drupal = new DrupalClient(
-  baseUrl || "https://localhost",
+  baseUrl || "http://127.0.0.1:0",
   {
     frontPage: "/home",
     ...authConfig,
