@@ -64,6 +64,7 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
                     </div>
                   ))}
                 </div>
+                </div>
               </div>
 
               <div className="content-section">
@@ -197,16 +198,18 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
               </p>
               </div>
 
-              <h2>Contact Dr. Jan Duffy for Amenities Information</h2>
-              <p>
-                As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place, I can provide comprehensive information about the development's amenities, their value propositions, and how they enhance the luxury living experience. My expertise in luxury condominium developments, combined with my understanding of Turnberry Place's unique amenities, enables me to help buyers appreciate the comprehensive value that these amenities provide.
-              </p>
-              <p>
-                Whether you're interested in The Stirling Club's exclusive facilities, the development's security systems, recreational amenities, or service offerings, I can provide detailed information about how these amenities enhance daily living and create exceptional value. My goal is to help you understand the comprehensive nature of Turnberry Place's amenities and how they contribute to the development's reputation as Las Vegas's premier high-rise condominium community.
-              </p>
-              <p className="mt-4">
-                <strong>Ready to learn more about Turnberry Place amenities?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a tour of The Stirling Club and discuss how Turnberry Place's comprehensive amenities can enhance your luxury lifestyle. With my extensive knowledge of Turnberry Place and its amenities, I can help you appreciate the exceptional value that these facilities provide.
-              </p>
+              <div className="content-section">
+                <h2>Contact Dr. Jan Duffy for Amenities Information</h2>
+                <p>
+                  As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place, I can provide comprehensive information about the development's amenities, their value propositions, and how they enhance the luxury living experience. My expertise in luxury condominium developments, combined with my understanding of Turnberry Place's unique amenities, enables me to help buyers appreciate the comprehensive value that these amenities provide.
+                </p>
+                <p>
+                  Whether you're interested in The Stirling Club's exclusive facilities, the development's security systems, recreational amenities, or service offerings, I can provide detailed information about how these amenities enhance daily living and create exceptional value. My goal is to help you understand the comprehensive nature of Turnberry Place's amenities and how they contribute to the development's reputation as Las Vegas's premier high-rise condominium community.
+                </p>
+                <p>
+                  <strong>Ready to learn more about Turnberry Place amenities?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a tour of The Stirling Club and discuss how Turnberry Place's comprehensive amenities can enhance your luxury lifestyle. With my extensive knowledge of Turnberry Place and its amenities, I can help you appreciate the exceptional value that these facilities provide.
+                </p>
+              </div>
             </div>
           </div>
         </div>
