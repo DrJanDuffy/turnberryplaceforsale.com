@@ -22,6 +22,11 @@ import { JsonLdSchema } from "components/json-ld-schema"
 import { StickyCTA } from "components/sticky-cta"
 import { ExitIntentPopup } from "components/exit-intent-popup"
 import { DynamicUnitCount } from "components/dynamic-unit-count"
+import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
+import { WhyWorkWithUs } from "components/why-work-with-us"
+import { ClientTestimonials } from "components/client-testimonials"
+import { PowerOfNumbers } from "components/power-of-numbers"
+import { InTheMedia } from "components/in-the-media"
 import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
@@ -116,6 +121,9 @@ function HomePageContent() {
           </div>
         </div>
       </div>
+
+      {/* Why Work With Us Section */}
+      <WhyWorkWithUs />
 
       {/* Towers Comparison - Bullet Points */}
       <div className="card-content card-prop-description py-5 bg-light">
@@ -350,6 +358,26 @@ function HomePageContent() {
                   See All <DynamicUnitCount defaultCount={12} elementId="total-listings-count" /> Available Units
                 </Link>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Client Testimonials Section */}
+      <ClientTestimonials />
+
+      {/* Power of Numbers Section */}
+      <PowerOfNumbers />
+
+      {/* In The Media Section */}
+      <InTheMedia />
+
+      {/* VIP Newsletter Signup */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-8 col-lg-6">
+              <VIPNewsletterSignup />
             </div>
           </div>
         </div>

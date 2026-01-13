@@ -1089,3 +1089,81 @@ main .card-top-header:first-of-type {
 .close-btn:hover {
   color: #000;
 }
+
+/* VIP Newsletter Signup */
+.vip-newsletter-signup {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vip-newsletter-signup.compact {
+  padding: 1rem;
+}
+
+.vip-newsletter-form .form-control {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+}
+
+.vip-newsletter-form .btn-primary {
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
+
+/* Testimonials Carousel */
+.testimonial-carousel {
+  position: relative;
+}
+
+.testimonial-carousel .card {
+  min-height: 300px;
+  transition: all 0.3s ease;
+}
+
+.testimonial-carousel blockquote {
+  font-style: italic;
+  color: #333;
+}
+
+.testimonial-carousel .blockquote-footer {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Power of Numbers */
+.power-of-numbers .display-4 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (max-width: 767.98px) {
+  .power-of-numbers .display-4 {
+    font-size: 2.5rem;
+  }
+}
+
+/* In The Media */
+.in-the-media .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.in-the-media .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Why Work With Us */
+.why-work-with-us .card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+.why-work-with-us .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
