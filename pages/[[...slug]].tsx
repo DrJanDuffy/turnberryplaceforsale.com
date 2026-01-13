@@ -266,25 +266,18 @@ function HomePageContent() {
                 </div>
                 <div className="row pt-2 pt-sm-4">
                   {["Gated Community", "City View", "Secure Building", "Gym", "Tennis Courts", "Spa", "Swimming Pool", "Workout Room", "Mountains", "Private Patio"].map((amenity, index) => (
-                    <div key={index} className="col-6 col-lg-4 py-3 d-flex align-items-center">
-                      <div className="mr-3" style={{ flexShrink: 0 }}>
-                        <span className="icon-custom" style={{ color: '#28a745', fontSize: '1.2rem' }}>
-                          <svg height="18" width="18" aria-hidden="true" focusable="false" className="d-inline" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path fill="currentColor" d="M413.505 91.951L133.49 371.966l-98.995-98.995c-4.686-4.686-12.284-4.686-16.971 0L6.211 284.284c-4.686 4.686-4.686 12.284 0 16.971l118.794 118.794c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-11.314-11.314c-4.686-4.686-12.284-4.686-16.97 0z"/>
-                          </svg>
-                        </span>
-                      </div>
-                      <span className="amenity-name" style={{ fontSize: '1rem', fontWeight: 500, color: '#333' }}>{amenity}</span>
+                    <div key={index} className="col-6 col-lg-4 py-3 amenity-item">
+                      <span className="amenity-icon">
+                        <svg height="18" width="18" aria-hidden="true" focusable="false" className="d-inline" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                          <path fill="currentColor" d="M413.505 91.951L133.49 371.966l-98.995-98.995c-4.686-4.686-12.284-4.686-16.971 0L6.211 284.284c-4.686 4.686-4.686 12.284 0 16.971l118.794 118.794c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-11.314-11.314c-4.686-4.686-12.284-4.686-16.97 0z"/>
+                        </svg>
+                      </span>
+                      <span className="amenity-name">{amenity}</span>
                     </div>
                   ))}
                 </div>
                 <div className="text-center mt-4 pt-3" style={{ borderTop: '1px solid #e9ecef' }}>
-                  <Link href="/amenities" className="btn btn-outline-primary btn-lg" style={{ 
-                    padding: '0.875rem 2rem',
-                    fontSize: '1rem',
-                    borderRadius: '6px',
-                    fontWeight: 600
-                  }}>
+                  <Link href="/amenities" className="btn btn-outline-primary btn-lg">
                     View All Amenities
                   </Link>
                 </div>
