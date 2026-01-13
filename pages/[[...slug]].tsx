@@ -853,18 +853,38 @@ export async function getStaticProps(
   if (!slug || slug.length === 0) {
     if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
       // Return a simple home page structure when Drupal is not available
-      return {
-        props: {
-          node: {
-            type: 'node--landing_page',
-            id: 'home',
-            title: 'Turnberry Place Las Vegas',
-            status: true,
-            path: { alias: '/' },
-            field_sections: [],
-          } as any,
-          menus: await getMenus(context),
-        },
+      try {
+        return {
+          props: {
+            node: {
+              type: 'node--landing_page',
+              id: 'home',
+              title: 'Turnberry Place Las Vegas',
+              status: true,
+              path: { alias: '/' },
+              field_sections: [],
+            } as any,
+            menus: await getMenus(context),
+          },
+        }
+      } catch (error) {
+        // If getMenus fails, return empty menus
+        return {
+          props: {
+            node: {
+              type: 'node--landing_page',
+              id: 'home',
+              title: 'Turnberry Place Las Vegas',
+              status: true,
+              path: { alias: '/' },
+              field_sections: [],
+            } as any,
+            menus: {
+              main: [],
+              footer: [],
+            },
+          },
+        }
       }
     }
   }
@@ -879,13 +899,6 @@ export async function getStaticProps(
   // Check if this is a static page route that should be handled elsewhere
   const staticRoutes = ['towers', 'amenities', 'photos', 'floor-plans', 'stirling-club', 'neighborhood']
   if (slug && slug.length === 1 && staticRoutes.includes(slug[0])) {
-    return {
-      notFound: true,
-    }
-  }
-
-  // Ensure Drupal is configured before making any calls
-  if (!process.env.NEXT_PUBLIC_DRUPAL_BASE_URL) {
     return {
       notFound: true,
     }
