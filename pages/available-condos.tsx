@@ -87,17 +87,18 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
                 />
                 <style jsx>{`
                   realscout-office-listings {
-                    --rs-listing-divider-color: rgb(101, 141, 172);
+                    --rs-listing-divider-color: #0e64c8;
                     width: 100%;
                   }
                 `}</style>
                 {/* @ts-ignore - Custom web component */}
                 <realscout-office-listings
                   agent-encoded-id="QWdlbnQtMjI1MDUw"
-                  sort-order="PRICE_HIGH"
+                  sort-order="NEWEST"
                   listing-status="For Sale"
-                  property-types="TC"
-                  price-min="600000"
+                  property-types=",TC,LAL"
+                  price-min="500000"
+                  price-max="16000000"
                 ></realscout-office-listings>
               </div>
               <div className="text-center mt-4">
