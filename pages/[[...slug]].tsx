@@ -357,7 +357,7 @@ function HomePageContent() {
                 <div className="col-12 col-md-6">
                   <div className="left-image pb-4 pb-md-0 text-center">
                     <Image
-                      src="/images/turnberry/Turnberry Tower Nice Vew.jpg"
+                      src="/images/turnberry/sterlingclubpool-.jpeg"
                       alt="The Stirling Club"
                       width={400}
                       height={400}
