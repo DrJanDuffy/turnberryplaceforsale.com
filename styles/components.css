@@ -1167,3 +1167,81 @@ main .card-top-header:first-of-type {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
+
+/* Featured Listing Card */
+.featured-listing-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.featured-listing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.featured-listing-card:hover .card-img-wrapper img {
+  transform: scale(1.1);
+}
+
+.featured-listing-card .card-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-listing-card .listing-details {
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.featured-listing-card .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.featured-listing-card .btn {
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Quick Search Widget */
+.quick-search-widget {
+  border-radius: 8px;
+  background: #fff;
+}
+
+.quick-search-widget .form-control {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.quick-search-widget .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.quick-search-widget .form-label {
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.quick-search-widget .btn {
+  border-radius: 4px;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+}
+
+@media (max-width: 767.98px) {
+  .featured-listing-card .card-img-wrapper {
+    height: 200px !important;
+  }
+  
+  .quick-search-widget .card-body {
+    padding: 1.5rem;
+  }
+}

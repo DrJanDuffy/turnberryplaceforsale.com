@@ -27,6 +27,8 @@ import { WhyWorkWithUs } from "components/why-work-with-us"
 import { ClientTestimonials } from "components/client-testimonials"
 import { PowerOfNumbers } from "components/power-of-numbers"
 import { InTheMedia } from "components/in-the-media"
+import { FeaturedListingCard } from "components/featured-listing-card"
+import { QuickSearchWidget } from "components/quick-search-widget"
 import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
@@ -288,69 +290,78 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Current Listings Section */}
+      {/* Quick Search Widget */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-8">
+              <QuickSearchWidget />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Listings Section */}
       <div className="card-content py-5 bg-white">
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h2 className="text-center mb-4">Current Available Listings</h2>
-              <p className="text-center mb-5">Explore our featured luxury condos at Turnberry Place</p>
+              <h2 className="text-center mb-2">Featured Listings</h2>
+              <p className="text-center mb-5 text-muted">Explore our featured luxury condos at Turnberry Place</p>
               <div className="row">
-                {/* Listing 1 */}
                 <div className="col-md-6 col-lg-3 mb-4">
-                  <div className="card h-100 shadow-sm">
-                    <div className="card-img-top" style={{ height: '200px', backgroundImage: 'url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-                    <div className="card-body">
-                      <h5 className="card-title">Tower 2, Unit 1501</h5>
-                      <p className="card-text">
-                        <strong>$1,250,000</strong><br />
-                        2 Bed, 2 Bath | 1,850 sqft<br />
-                        Strip Views
-                      </p>
-                    </div>
-                  </div>
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg"
+                    title="Tower 2, Unit 1501"
+                    price="$1,250,000"
+                    beds={2}
+                    baths={2}
+                    sqft={1850}
+                    views="Strip Views"
+                    tower="Tower 2"
+                    unit="Unit 1501"
+                    featured={true}
+                  />
                 </div>
-                {/* Listing 2 */}
                 <div className="col-md-6 col-lg-3 mb-4">
-                  <div className="card h-100 shadow-sm">
-                    <div className="card-img-top" style={{ height: '200px', backgroundImage: 'url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-                    <div className="card-body">
-                      <h5 className="card-title">Tower 3, Unit 2205</h5>
-                      <p className="card-text">
-                        <strong>$2,100,000</strong><br />
-                        3 Bed, 3 Bath | 2,400 sqft<br />
-                        Mountain Views
-                      </p>
-                    </div>
-                  </div>
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg"
+                    title="Tower 3, Unit 2205"
+                    price="$2,100,000"
+                    beds={3}
+                    baths={3}
+                    sqft={2400}
+                    views="Mountain Views"
+                    tower="Tower 3"
+                    unit="Unit 2205"
+                  />
                 </div>
-                {/* Listing 3 */}
                 <div className="col-md-6 col-lg-3 mb-4">
-                  <div className="card h-100 shadow-sm">
-                    <div className="card-img-top" style={{ height: '200px', backgroundImage: 'url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-                    <div className="card-body">
-                      <h5 className="card-title">Tower 4, Unit 3501</h5>
-                      <p className="card-text">
-                        <strong>$4,500,000</strong><br />
-                        4 Bed, 4 Bath | 3,800 sqft<br />
-                        Panoramic Views
-                      </p>
-                    </div>
-                  </div>
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg"
+                    title="Tower 4, Unit 3501"
+                    price="$4,500,000"
+                    beds={4}
+                    baths={4}
+                    sqft={3800}
+                    views="Panoramic Views"
+                    tower="Tower 4"
+                    unit="Unit 3501"
+                    featured={true}
+                  />
                 </div>
-                {/* Listing 4 */}
                 <div className="col-md-6 col-lg-3 mb-4">
-                  <div className="card h-100 shadow-sm">
-                    <div className="card-img-top" style={{ height: '200px', backgroundImage: 'url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-                    <div className="card-body">
-                      <h5 className="card-title">Tower 1, Unit 1203</h5>
-                      <p className="card-text">
-                        <strong>$950,000</strong><br />
-                        1 Bed, 1 Bath | 1,350 sqft<br />
-                        City Views
-                      </p>
-                    </div>
-                  </div>
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg"
+                    title="Tower 1, Unit 1203"
+                    price="$950,000"
+                    beds={1}
+                    baths={1}
+                    sqft={1350}
+                    views="City Views"
+                    tower="Tower 1"
+                    unit="Unit 1203"
+                  />
                 </div>
               </div>
               <div className="text-center mt-4">
