@@ -23,7 +23,7 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
       </Head>
       <JsonLdSchema type="property" />
       <div 
-        className="card-content card-contact-form py-5" 
+        className="card-content card-contact-form" 
         style={{
           backgroundImage: "url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1500,height=1000,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg)",
           backgroundRepeat: "no-repeat",

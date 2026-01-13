@@ -24,12 +24,12 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
       
       {/* Quick Search Widget - Available on homepage and /available-condos */}
 
-      <div className="card-content card-price-features py-5">
+      <div className="card-content card-price-features">
         <div className="container">
-          <div className="row">
-            <div className="col-12 col-lg-10 mx-auto">
-              <h1 className="text-center mb-4">Turnberry Place Las Vegas: Pricing & Premium Features</h1>
-              <p className="lead text-center mb-5">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <h1 className="text-center">Turnberry Place Las Vegas: Pricing & Premium Features</h1>
+              <p className="lead text-center">
                 Located at 2747-2877 Paradise Road, Las Vegas, NV 89109, Turnberry Place offers luxury high-rise condominiums ranging from $800,000 to over $10 million across four distinctive towers. As a Las Vegas real estate expert with over 30 years of experience, I can provide comprehensive insights into Turnberry Place pricing, features, and value propositions that help buyers make informed investment decisions.
               </p>
 

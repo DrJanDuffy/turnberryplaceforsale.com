@@ -81,16 +81,16 @@ export default function TowersPage({ menus }: TowersPageProps) {
         />
       </Head>
       <JsonLdSchema type="property" />
-      <div className="card-content card-prop-description py-5">
+      <div className="card-content card-prop-description">
         <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h1 className="text-center mb-4">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <h1 className="text-center">
                 Turnberry Place Towers | Las Vegas' Premier High-Rise Community
               </h1>
               
               <div className="desc">
-                <p className="lead mb-4">
+                <p className="lead">
                   Turnberry Place represents the pinnacle of luxury high-rise living in Las Vegas, featuring four distinct towers that have redefined upscale urban living since 2000. Each tower offers unique architectural features, premium amenities, and breathtaking views of the Las Vegas Strip, Red Rock Canyon, and the Spring Mountain Range. As a Las Vegas real estate expert with over 30 years of experience, I can attest that Turnberry Place stands as one of the most prestigious condominium communities in the Entertainment Capital of the World.
                 </p>
 

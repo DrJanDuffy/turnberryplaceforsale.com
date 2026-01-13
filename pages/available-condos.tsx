@@ -26,12 +26,12 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
       
       {/* Quick Search Widget - Keep on this page as it's relevant */}
 
-      <div className="card-content card-embed-widget py-5">
+      <div className="card-content card-embed-widget">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12">
-              <h1 className="text-center mb-4">Available Las Vegas Condos at Turnberry Place</h1>
-              <p className="lead text-center mb-5">
+            <div className="col-12 col-lg-10">
+              <h1 className="text-center">Available Las Vegas Condos at Turnberry Place</h1>
+              <p className="lead text-center">
                 Browse available luxury condominiums for sale at Turnberry Place Las Vegas, featuring one to four bedroom residences ranging from approximately $800,000 to over $10 million. Each available residence offers premium finishes, stunning views of the Las Vegas Strip or surrounding mountains, and exclusive access to The Stirling Club's world-class amenities. As a Las Vegas real estate expert with over 30 years of experience, I can provide comprehensive information about available properties and help you find the perfect Turnberry Place residence.
               </p>
               <div className="widget-wrapper">

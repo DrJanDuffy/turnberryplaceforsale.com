@@ -35,12 +35,12 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
         />
       </Head>
       <JsonLdSchema type="property" />
-      <div className="card-content card-amenities py-5">
-        <div className="container pt-2">
-          <div className="row align-items-center justify-content-center">
+      <div className="card-content card-amenities">
+        <div className="container">
+          <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
-              <h1 className="text-center mb-4">Turnberry Place Amenities: Luxury Living Redefined</h1>
-              <p className="lead text-center mb-5">
+              <h1 className="text-center">Turnberry Place Amenities: Luxury Living Redefined</h1>
+              <p className="lead text-center">
                 Turnberry Place offers an unparalleled suite of amenities that create a true luxury lifestyle experience. From the exclusive Stirling Club to comprehensive security systems, these amenities set Turnberry Place apart as Las Vegas's premier high-rise condominium community. As a Las Vegas real estate expert with over 30 years of experience, I can attest that Turnberry Place's amenities rival the best luxury developments worldwide.
               </p>
 
@@ -64,7 +64,7 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
                 </div>
               </div>
 
-              <div className="mt-5">
+              <div>
                 <h2>The Stirling Club: Exclusive Private Membership Facility</h2>
                 <p>
                   The crown jewel of Turnberry Place amenities is The Stirling Club, an 80,000-square-foot private membership facility exclusively for residents. This world-class facility represents one of the most comprehensive private club amenities available in any Las Vegas condominium development. The club's recent renovations have enhanced its facilities, ensuring that they remain state-of-the-art and competitive with the best private clubs in Las Vegas and beyond.

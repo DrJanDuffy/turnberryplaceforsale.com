@@ -5,6 +5,66 @@
   position: relative;
 }
 
+/* Standardized Formatting System */
+/* Consistent section spacing */
+.card-content {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .card-content {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* Standardized heading spacing */
+.card-content h1 {
+  margin-bottom: 1.5rem;
+}
+
+.card-content h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.card-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.card-content h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Standardized paragraph spacing */
+.card-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+.card-content .lead {
+  margin-bottom: 2rem;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* Standardized container widths */
+.card-content .container > .row > [class*="col-"] {
+  max-width: 100%;
+}
+
+/* Consistent section spacing between major content blocks */
+.card-content > .container > .row > [class*="col-"] > * + h2 {
+  margin-top: 3rem;
+}
+
+.card-content > .container > .row > [class*="col-"] > * + h3 {
+  margin-top: 2.5rem;
+}
+
 /* Add top padding to pages that don't have hero header to account for fixed navbar */
 main .card-content:not(.card-top-header):first-of-type {
   padding-top: calc(var(--navbar-height, 80px) + 2rem) !important;

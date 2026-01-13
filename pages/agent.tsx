@@ -25,14 +25,14 @@ export default function AgentPage({ menus }: AgentPageProps) {
         />
       </Head>
       <JsonLdSchema type="agent" />
-      <div className="card-content card-agent py-5">
-        <div className="container-fluid">
+      <div className="card-content card-agent">
+        <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
               <div className="row justify-content-center">
-                <div className="py-2 col-12 text-center">
+                <div className="col-12 text-center">
                   <h1>Dr. Jan Duffy, REALTOR | Las Vegas Luxury Real Estate Expert</h1>
-                  <p className="lead mb-4">
+                  <p className="lead">
                     With over 30 years of experience in Las Vegas real estate, Dr. Jan Duffy specializes in luxury high-rise condominiums, particularly at Turnberry Place. As a licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties, Dr. Duffy brings unparalleled expertise, market knowledge, and dedication to helping buyers and sellers achieve their real estate goals in Las Vegas's premier luxury market.
                   </p>
                   <div className="my-1">

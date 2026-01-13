@@ -21,16 +21,16 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
         />
       </Head>
       <JsonLdSchema type="property" />
-      <div className="card-content card-custom card-custom-03 py-5">
+      <div className="card-content card-custom card-custom-03">
         <div className="container">
-          <div className="row">
-            <div className="col-12 col-lg-10 mx-auto">
-              <h1 className="text-center mb-4">The Stirling Club: Exclusive Luxury at Your Doorstep</h1>
-              <p className="lead text-center mb-5">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <h1 className="text-center">The Stirling Club: Exclusive Luxury at Your Doorstep</h1>
+              <p className="lead text-center">
                 The Stirling Club stands as the crown jewel of Turnberry Place, an 80,000-square-foot private membership facility exclusively for residents. This recently renovated world-class facility represents one of the most comprehensive private club amenities available in any Las Vegas condominium development. As a Las Vegas real estate expert with over 30 years of experience, I can attest that The Stirling Club's amenities rival the best private clubs worldwide, creating exceptional value for Turnberry Place residents.
               </p>
 
-              <div className="row py-4 justify-content-center">
+              <div className="row justify-content-center">
                 <div className="col-12 col-xl-10">
                   <div className="row align-items-center">
                     <div className="col-12 col-md-6">

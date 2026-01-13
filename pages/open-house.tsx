@@ -21,7 +21,7 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
       </Head>
       <JsonLdSchema type="property" />
       <div
-        className="card-content card-open-house py-5"
+        className="card-content card-open-house"
         style={{
           backgroundImage: "url(https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1500,height=1000,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg)",
           backgroundRepeat: "no-repeat",

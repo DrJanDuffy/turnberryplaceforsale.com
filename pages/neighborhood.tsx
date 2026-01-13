@@ -31,12 +31,12 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
         />
       </Head>
       <JsonLdSchema type="property" />
-      <div className="card-content card-areas py-5">
-        <div className="container-fluid">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-sm-11 col-lg-10 col-xl-9">
-              <div className="py-4">
-                <h1 className="text-center mb-4">Turnberry Place Neighborhood and Area Profile</h1>
+      <div className="card-content card-areas">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <div>
+                <h1 className="text-center">Turnberry Place Neighborhood and Area Profile</h1>
                 <div className="mb-4 d-flex flex-wrap area-photos align-items-center justify-content-center">
                   {neighborhoodImages.map((img, index) => (
                     <div key={index} className="p-1 thumb-border mx-1">

@@ -48,12 +48,12 @@ export default function FloorPlansPage() {
         />
       </Head>
       <JsonLdSchema type="property" />
-      <div className="card-content card-floor-plans py-5">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-12 col-lg-10 mx-auto">
-              <h1 className="text-center mb-4">Turnberry Place Las Vegas Floor Plans</h1>
-              <p className="lead text-center mb-5">
+      <div className="card-content card-floor-plans">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <h1 className="text-center">Turnberry Place Las Vegas Floor Plans</h1>
+              <p className="lead text-center">
                 Explore the comprehensive floor plans available at Turnberry Place Las Vegas, featuring luxury high-rise condominiums ranging from one to four bedrooms. These detailed floor plans showcase the thoughtful design, spacious layouts, and premium features that define luxury living at Turnberry Place. As a Las Vegas real estate expert with over 30 years of experience, I can provide insights into how these floor plans accommodate various lifestyle needs and preferences.
               </p>
             </div>
@@ -103,7 +103,7 @@ export default function FloorPlansPage() {
             </div>
           </div>
           
-          <div className="row mt-5">
+          <div className="row">
             <div className="col-12 col-lg-10 mx-auto">
               <h2>Understanding Turnberry Place Floor Plans</h2>
               <p>

@@ -36,12 +36,12 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         />
       </Head>
       <JsonLdSchema type="property" />
-      <div className="card-content card-photos py-5">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-12 col-lg-10 mx-auto">
-              <h1 className="text-center mb-4">Turnberry Place Las Vegas Photo Gallery</h1>
-              <p className="lead text-center mb-5">
+      <div className="card-content card-photos">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <h1 className="text-center">Turnberry Place Las Vegas Photo Gallery</h1>
+              <p className="lead text-center">
                 Explore stunning photography showcasing Turnberry Place Las Vegas luxury high-rise condominiums. These professional images capture the elegance, sophistication, and exceptional quality that define Las Vegas's premier high-rise community. As a Las Vegas real estate expert with over 30 years of experience, I can provide context and insights about the features and amenities visible in these photographs.
               </p>
             </div>
