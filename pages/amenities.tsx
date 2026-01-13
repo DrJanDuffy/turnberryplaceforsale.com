@@ -5,6 +5,9 @@ import { AmenitiesGrid } from "components/amenities-grid"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { ClientTestimonials } from "components/client-testimonials"
+import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
+import { FormattedSection } from "components/formatted-section"
 
 const amenities = [
   { name: "Gated Community" },
@@ -200,6 +203,23 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
               <p className="mt-4">
                 <strong>Ready to learn more about Turnberry Place amenities?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a tour of The Stirling Club and discuss how Turnberry Place's comprehensive amenities can enhance your luxury lifestyle. With my extensive knowledge of Turnberry Place and its amenities, I can help you appreciate the exceptional value that these facilities provide.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Client Testimonials Section */}
+      <ClientTestimonials />
+
+      {/* VIP Newsletter Signup */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-8 col-lg-6">
+              <VIPNewsletterSignup 
+                title="Stay Updated on Amenities"
+                subtitle="Join our VIP list to receive updates on The Stirling Club amenities and community events"
+              />
             </div>
           </div>
         </div>

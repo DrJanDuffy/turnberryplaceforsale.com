@@ -4,7 +4,11 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { QuickSearchWidget } from "components/quick-search-widget"
+import { FeaturedListingCard } from "components/featured-listing-card"
+import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 import Image from "next/image"
+import Link from "next/link"
 
 interface NeighborhoodPageProps extends LayoutProps {}
 
@@ -158,6 +162,92 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Listings in Neighborhood */}
+      <div className="card-content py-5 bg-white">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h2 className="text-center mb-4">Featured Turnberry Place Residences</h2>
+              <p className="text-center mb-5 text-muted">Explore luxury condos in this prime Las Vegas Strip location</p>
+              <div className="row">
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg"
+                    title="Tower 2, Unit 1501"
+                    price="$1,250,000"
+                    beds={2}
+                    baths={2}
+                    sqft={1850}
+                    views="Strip Views"
+                    tower="Tower 2"
+                    unit="Unit 1501"
+                  />
+                </div>
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg"
+                    title="Tower 3, Unit 2205"
+                    price="$2,100,000"
+                    beds={3}
+                    baths={3}
+                    sqft={2400}
+                    views="Mountain Views"
+                    tower="Tower 3"
+                    unit="Unit 2205"
+                  />
+                </div>
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg"
+                    title="Tower 4, Unit 3501"
+                    price="$4,500,000"
+                    beds={4}
+                    baths={4}
+                    sqft={3800}
+                    views="Panoramic Views"
+                    tower="Tower 4"
+                    unit="Unit 3501"
+                    featured={true}
+                  />
+                </div>
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg"
+                    title="Tower 1, Unit 1203"
+                    price="$950,000"
+                    beds={1}
+                    baths={1}
+                    sqft={1350}
+                    views="City Views"
+                    tower="Tower 1"
+                    unit="Unit 1203"
+                  />
+                </div>
+              </div>
+              <div className="text-center mt-4">
+                <Link href="/available-condos" className="btn btn-primary btn-lg">
+                  View All Available Condos
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* VIP Newsletter Signup */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-8 col-lg-6">
+              <VIPNewsletterSignup 
+                title="Explore the Neighborhood"
+                subtitle="Join our VIP list to receive neighborhood updates and new listing alerts"
+              />
             </div>
           </div>
         </div>

@@ -4,6 +4,9 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { QuickSearchWidget } from "components/quick-search-widget"
+import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
+import { FormattedSection } from "components/formatted-section"
 
 interface PriceFeaturesPageProps extends LayoutProps {}
 
@@ -19,6 +22,18 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
         />
       </Head>
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
+      
+      {/* Quick Search Widget */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-8">
+              <QuickSearchWidget />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="card-content card-price-features py-5">
         <div className="container">
           <div className="row">
@@ -153,6 +168,20 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
               <p className="mt-4">
                 <strong>Ready to explore Turnberry Place pricing and features?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to discuss available residences, current pricing, and the value propositions that make Turnberry Place an exceptional investment opportunity. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you find the perfect residence that exceeds your expectations while fitting your budget.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* VIP Newsletter Signup */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-8 col-lg-6">
+              <VIPNewsletterSignup 
+                title="Get Pricing Updates"
+                subtitle="Join our VIP list to receive exclusive pricing information and new listing alerts"
+              />
             </div>
           </div>
         </div>

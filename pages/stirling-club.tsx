@@ -4,6 +4,8 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { ClientTestimonials } from "components/client-testimonials"
+import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 import Image from "next/image"
 
 interface StirlingClubPageProps extends LayoutProps {}
@@ -150,6 +152,23 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
                   <strong>Ready to experience The Stirling Club?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private tour of The Stirling Club and discuss how this exclusive private club can enhance your luxury lifestyle. With my extensive knowledge of The Stirling Club and Turnberry Place, I can help you appreciate the exceptional value and lifestyle benefits that this world-class facility provides.
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Client Testimonials Section */}
+      <ClientTestimonials />
+
+      {/* VIP Newsletter Signup */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-8 col-lg-6">
+              <VIPNewsletterSignup 
+                title="Experience The Stirling Club"
+                subtitle="Join our VIP list to receive updates on club amenities, events, and exclusive access"
+              />
             </div>
           </div>
         </div>
