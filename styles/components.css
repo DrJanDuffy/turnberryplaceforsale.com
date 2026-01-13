@@ -155,6 +155,68 @@
   font-weight: 600;
 }
 
+/* Standardized Page Layout Structure */
+/* All pages should follow this pattern: H1, lead paragraph, content sections */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  margin-bottom: 1.5rem;
+}
+
+.page-header .lead {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+
+/* Content Section Cards/Boxes */
+.content-section {
+  margin-bottom: 3rem;
+}
+
+.content-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Tower Section Styling (for /towers page) */
+.tower-section {
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.tower-section:last-child {
+  border-bottom: none;
+}
+
+.tower-section h2 {
+  margin-bottom: 1.5rem;
+  color: #212529;
+}
+
+.tower-section h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #495057;
+}
+
+/* Content Box Styling */
+.content-box {
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 767.98px) {
+  .content-box {
+    padding: 1.5rem;
+  }
+}
+
 /* Amenities Border Box */
 .amenities-border {
   border: 2px solid #e9ecef;

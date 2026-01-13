@@ -39,15 +39,17 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
-              <h1 className="text-center">Turnberry Place Amenities: Luxury Living Redefined</h1>
-              <p className="lead text-center">
+              <div className="page-header">
+                <h1>Turnberry Place Amenities: Luxury Living Redefined</h1>
+                <p className="lead">
                 Turnberry Place offers an unparalleled suite of amenities that create a true luxury lifestyle experience. From the exclusive Stirling Club to comprehensive security systems, these amenities set Turnberry Place apart as Las Vegas's premier high-rise condominium community. As a Las Vegas real estate expert with over 30 years of experience, I can attest that Turnberry Place's amenities rival the best luxury developments worldwide.
               </p>
 
-              <div className="pb-4 pb-sm-5 amenities-border">
-                <div className="amenities-title">
-                  <h2 className="text-center mb-4">Comprehensive Amenities Overview</h2>
-                </div>
+              </div>
+
+              <div className="content-section">
+                <div className="amenities-border">
+                  <h2 className="text-center">Comprehensive Amenities Overview</h2>
                 <div className="row pt-2 pt-sm-4 pl-3 pl-sm-5">
                   {amenities.map((amenity, index) => (
                     <div key={index} className="col-6 col-lg-4 py-2 d-flex align-items-center">
@@ -64,7 +66,7 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
                 </div>
               </div>
 
-              <div>
+              <div className="content-section">
                 <h2>The Stirling Club: Exclusive Private Membership Facility</h2>
                 <p>
                   The crown jewel of Turnberry Place amenities is The Stirling Club, an 80,000-square-foot private membership facility exclusively for residents. This world-class facility represents one of the most comprehensive private club amenities available in any Las Vegas condominium development. The club's recent renovations have enhanced its facilities, ensuring that they remain state-of-the-art and competitive with the best private clubs in Las Vegas and beyond.
@@ -98,6 +100,9 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
                   The Stirling Club features various lounges and entertainment spaces that provide residents with opportunities for socializing, relaxation, and entertainment. These spaces include media lounges, game rooms, and social areas that accommodate various activities and group sizes. The club's design emphasizes both intimate spaces for small gatherings and larger areas for community events, creating a flexible environment that serves diverse resident needs. These spaces foster community connections and provide venues for resident-organized events and activities.
                 </p>
 
+              </div>
+
+              <div className="content-section">
                 <h2>Security and Privacy Amenities</h2>
                 <p>
                   Turnberry Place's comprehensive security and privacy amenities provide residents with peace of mind and the seclusion that luxury living requires. These amenities are essential for high-profile residents, executives, and anyone who values security and privacy in their home environment. The development's security systems are continuously updated and enhanced, ensuring that they remain state-of-the-art and effective.
