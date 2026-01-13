@@ -1328,6 +1328,35 @@ main .card-top-header:first-of-type {
   text-decoration: underline;
 }
 
+/* Site Links Section - Above Footer */
+.site-links-section {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+}
+
+.site-links-section h2 {
+  font-family: var(--headlines-font, 'Cinzel', serif);
+  font-weight: 600;
+  color: #212529;
+}
+
+.site-link-item {
+  font-family: var(--body-font, 'Questrial', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+@media (max-width: 767.98px) {
+  .site-links-section h2 {
+    font-size: 1.25rem;
+  }
+  
+  .site-link-item {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem !important;
+  }
+}
+
 /* Footer External Links */
 .card-site-footer .footer-external-link {
   color: var(--footer-text-color, rgba(108, 117, 125, 1));

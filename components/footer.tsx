@@ -23,26 +23,88 @@ const footerLinks = [
   { href: "/neighborhood", title: "Neighborhood" },
 ]
 
+const allPages = [
+  { href: "/", title: "Home" },
+  { href: "/available-condos", title: "Available Condos" },
+  { href: "/towers", title: "Towers" },
+  { href: "/price-features", title: "Price & Features" },
+  { href: "/floor-plans", title: "Floor Plans" },
+  { href: "/amenities", title: "Amenities" },
+  { href: "/stirling-club", title: "Stirling Club" },
+  { href: "/neighborhood", title: "Neighborhood" },
+  { href: "/photos", title: "Photos" },
+  { href: "/map", title: "Map" },
+  { href: "/open-house", title: "Open House" },
+  { href: "/request-details", title: "Request Details" },
+  { href: "/agent", title: "Agent" },
+  { href: "/share", title: "Share" },
+]
+
 export function Footer({ links }: FooterProps) {
   return (
-    <footer className="card-content card-site-footer footer-01 pt-5" role="contentinfo" aria-label="Footer">
-      <div className="container-fluid px-3 px-md-5">
-        {/* Navigation Links */}
-        <div className="row">
-          <div className="col-12">
-            <nav role="navigation" aria-label="Footer navigation" id="navbarFooter">
-              <div className="row g-2">
-                {footerLinks.map((link) => (
-                  <div key={link.href} className="col-6 col-sm-4 col-md-3 col-lg-2 text-center py-2">
-                    <Link href={link.href} className="footer-nav-link">
-                      {link.title}
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </nav>
+    <>
+      {/* Site Links Section - Above Footer */}
+      <section className="card-content site-links-section py-4" aria-label="Site Links">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h2 className="text-center mb-4" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
+                Site Navigation
+              </h2>
+              <nav role="navigation" aria-label="Site links navigation">
+                <div className="row g-3">
+                  {allPages.map((link) => (
+                    <div key={link.href} className="col-6 col-sm-4 col-md-3 col-lg-2">
+                      <Link 
+                        href={link.href} 
+                        className="site-link-item d-block text-center py-2 px-3"
+                        style={{
+                          color: '#495057',
+                          textDecoration: 'none',
+                          borderRadius: '4px',
+                          transition: 'all 0.2s ease',
+                          border: '1px solid transparent'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#f8f9fa'
+                          e.currentTarget.style.borderColor = '#dee2e6'
+                          e.currentTarget.style.color = '#212529'
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'transparent'
+                          e.currentTarget.style.borderColor = 'transparent'
+                          e.currentTarget.style.color = '#495057'
+                        }}
+                      >
+                        {link.title}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </nav>
+            </div>
           </div>
         </div>
+      </section>
+
+      <footer className="card-content card-site-footer footer-01 pt-5" role="contentinfo" aria-label="Footer">
+        <div className="container-fluid px-3 px-md-5">
+          {/* Navigation Links */}
+          <div className="row">
+            <div className="col-12">
+              <nav role="navigation" aria-label="Footer navigation" id="navbarFooter">
+                <div className="row g-2">
+                  {footerLinks.map((link) => (
+                    <div key={link.href} className="col-6 col-sm-4 col-md-3 col-lg-2 text-center py-2">
+                      <Link href={link.href} className="footer-nav-link">
+                        {link.title}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </nav>
+            </div>
+          </div>
 
         {/* Company Information */}
         <div className="row justify-content-center align-items-center pt-4 pt-md-5">
@@ -109,5 +171,6 @@ export function Footer({ links }: FooterProps) {
         </div>
       </div>
     </footer>
+    </>
   )
 }
