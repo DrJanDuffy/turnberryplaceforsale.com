@@ -50,9 +50,9 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
       <div className="absolute inset-0 bg-black opacity-35 z-10" />
 
       {/* Hero Content */}
-      <div className="container h-100">
-        <div className="row h-100 align-items-center">
-          <div className="col-12 text-center hero-content position-relative" style={{ zIndex: 14 }}>
+      <div className="container h-100 d-flex align-items-center justify-content-center">
+        <div className="row w-100 justify-content-center">
+          <div className="col-12 col-lg-10 col-xl-8 text-center hero-content position-relative" style={{ zIndex: 14 }}>
             <h1 className="display-4 mb-3">
               Turnberry Place Condos From $800K
             </h1>

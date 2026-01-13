@@ -475,9 +475,11 @@ main .card-top-header:first-of-type {
   font-weight: var(--headlines-font-weight, 600);
   font-size: 3rem;
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
   letter-spacing: -0.02em;
+  text-align: center;
+  max-width: 100%;
 }
 
 /* Desktop hero title */
