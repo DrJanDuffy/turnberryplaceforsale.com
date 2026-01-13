@@ -90,8 +90,8 @@ export function Navbar({ links, ...props }: NavbarProps) {
       {...props}
     >
       <div className="container-fluid text-heading pr-3">
-        <div className="row align-items-center">
-          <div className="col-10 col-md-5 col-lg-4">
+        <div className="row align-items-center no-gutters" style={{ display: 'flex', flexWrap: 'nowrap' }}>
+          <div className="col-auto" style={{ flexShrink: 0 }}>
             <div className="d-flex align-items-center pl-0 pl-sm-1 pl-lg-2 pl-xl-3">
               <div className="agent-photo-wrapper">
                 <Image
@@ -113,7 +113,7 @@ export function Navbar({ links, ...props }: NavbarProps) {
               </div>
             </div>
           </div>
-          <div className="col-2 col-md-8 col-lg-9">
+          <div className="col" style={{ flex: '1 1 auto', minWidth: 0 }}>
             <div className="nav-wrapper">
               {navigationStructure.map((item) => {
                 if (item.children) {
