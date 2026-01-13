@@ -1234,43 +1234,81 @@ main .card-top-header:first-of-type {
 
 /* Mobile Menu */
 .overlay {
-  display: block;
+  display: none;
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   background-color: var(--nav-bg-color, rgba(26, 26, 26, 1));
-  z-index: 98;
+  z-index: 9999;
+  overflow-y: auto;
 }
 
 .overlay-data {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .overlay-open {
+  display: block;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.5s;
-  padding-left: 25px;
-  padding-top: 100px;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 100px 25px 25px;
 }
 
-.overlay ul {
+.overlay nav {
+  width: 100%;
+  max-width: 100%;
+}
+
+.overlay nav#navbarMobile {
+  width: 100%;
+  max-width: 100%;
+}
+
+.overlay nav#navbarMobile ul {
   list-style: none;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
-.overlay ul li {
-  padding-block: 2px;
+.overlay nav#navbarMobile ul li {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.overlay ul li a {
-  font-weight: bold;
+.overlay nav#navbarMobile ul li:last-child {
+  border-bottom: none;
+}
+
+.overlay nav#navbarMobile ul li a,
+.overlay .nav-mobile-link {
+  font-weight: 500;
   text-decoration: none;
   color: var(--nav-link-color, rgba(255, 255, 255, 1));
+  display: block;
+  padding: 1rem 1.25rem;
+  font-size: 1.1rem;
+  font-family: var(--nav-font, 'Cinzel', serif);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.overlay nav#navbarMobile ul li a:hover,
+.overlay nav#navbarMobile ul li a:focus,
+.overlay .nav-mobile-link:hover,
+.overlay .nav-mobile-link:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  outline: none;
 }
 
 /* Footer */

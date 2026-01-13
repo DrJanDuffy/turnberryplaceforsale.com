@@ -282,34 +282,50 @@ export function Navbar({ links, ...props }: NavbarProps) {
         </div>
       </div>
       {/* Mobile Menu */}
-      <div className={classNames("overlay overlay-data", mobileMenuOpen && "overlay-open")}>
-        <nav role="navigation" aria-label="Mobile" id="navbarMobile">
-          <ul className="pl-2">
-            {navigationLinks.map((link) => (
-              <li key={link.href}>
+      {mobileMenuOpen && (
+        <div 
+          className="overlay overlay-data overlay-open"
+          onClick={(e) => {
+            // Close menu when clicking on overlay background
+            if (e.target === e.currentTarget) {
+              setMobileMenuOpen(false)
+            }
+          }}
+        >
+          <nav 
+            role="navigation" 
+            aria-label="Mobile Navigation" 
+            id="navbarMobile"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ul>
+              {navigationLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="nav-mobile-link"
+                    title={link.title}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
+              <li>
                 <Link
-                  href={link.href}
+                  href="https://translate.google.com/translate?hl=es&sl=auto&tl=es&u=https://www.turnberryplaceforsale.com"
                   className="nav-mobile-link"
-                  title={link.title}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link.title}
+                  Español
                 </Link>
               </li>
-            ))}
-            <li>
-              <Link
-                href="https://translate.google.com/translate?hl=es&sl=auto&tl=es&u=https://www.turnberryplaceforsale.com"
-                className="nav-mobile-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Español
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+            </ul>
+          </nav>
+        </div>
+      )}
     </nav>
   )
 }
