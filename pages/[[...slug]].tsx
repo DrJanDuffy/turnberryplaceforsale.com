@@ -23,10 +23,8 @@ import { StickyCTA } from "components/sticky-cta"
 import { ExitIntentPopup } from "components/exit-intent-popup"
 import { DynamicUnitCount } from "components/dynamic-unit-count"
 import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
-import { WhyWorkWithUs } from "components/why-work-with-us"
-import { ClientTestimonials } from "components/client-testimonials"
-import { PowerOfNumbers } from "components/power-of-numbers"
-import { InTheMedia } from "components/in-the-media"
+// Components moved to other pages:
+// WhyWorkWithUs, ClientTestimonials, PowerOfNumbers, InTheMedia → /agent page
 import { FeaturedListingCard } from "components/featured-listing-card"
 import { QuickSearchWidget } from "components/quick-search-widget"
 import Image from "next/image"
@@ -159,10 +157,7 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Why Work With Us Section */}
-      <WhyWorkWithUs />
-
-      {/* Towers Comparison - Bullet Points */}
+      {/* Towers Comparison - Bullet Points - MOVED TO /towers page */}
       <div className="card-content card-prop-description py-5 bg-light" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
         <div className="container">
           <div className="row">
@@ -372,79 +367,6 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Photos Section Preview */}
-      <div className="card-content card-photos py-5" style={{ paddingTop: '4rem', paddingBottom: '4rem', backgroundColor: '#f8f9fa' }}>
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h2 className="text-center mb-4" style={{ fontSize: '2.5rem', fontWeight: 600, marginBottom: '1rem' }}>
-                Photo Gallery
-              </h2>
-              <div className="text-center mb-4">
-                <Link href="/photos" className="btn btn-outline-primary" style={{ 
-                  padding: '0.75rem 1.5rem',
-                  fontSize: '1rem',
-                  borderRadius: '6px',
-                  fontWeight: 500
-                }}>
-                  Launch Slideshow Viewer
-                  <svg height="16" width="16" className="ml-2 d-inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style={{ verticalAlign: 'middle' }}>
-                    <path fill="currentColor" d="M195.515 374.828c-4.686-4.686-4.686-12.284 0-16.971l323.15-323.15-.707-.707-89.958.342c-6.627 0-12-5.373-12-12v-9.999c0-6.628 5.372-12 12-12L564 0c6.627 0 12 5.372 12 12l-.343 136c0 6.627-5.373 12-12 12h-9.999c-6.627 0-12-5.373-12-12L542 58.042l-.707-.707-323.15 323.15c-4.686 4.686-12.284 4.686-16.971 0l-5.657-5.657zm232-155.633l-8 8A12 12 0 0 0 416 235.68V464c0 8.837-7.164 16-16 16H48c-8.836 0-16-7.163-16-16V112c0-8.837 7.164-16 16-16h339.976c3.183 0 6.235-1.264 8.485-3.515l8-8c7.56-7.56 2.206-20.485-8.485-20.485H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V227.681c0-10.691-12.926-16.045-20.485-8.486z"/>
-                  </svg>
-                </Link>
-              </div>
-              <div className="row mt-4">
-                {heroPhotos.slice(0, 4).map((photo, index) => (
-                  <div key={index} className="col-6 col-md-3 mb-4">
-                    <div className="card border-0 shadow-sm overflow-hidden" style={{ 
-                      borderRadius: '8px',
-                      transition: 'all 0.3s ease',
-                      cursor: 'pointer'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)'
-                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
-                    }}
-                    >
-                      <a className="d-block" href={photo} title="Turnberry Place Las Vegas, Las Vegas, NV">
-                        <div style={{ position: 'relative', paddingTop: '75%', overflow: 'hidden' }}>
-                          <Image
-                            src={photo.replace('width=1600,height=1200', 'width=600')}
-                            width={600}
-                            height={450}
-                            alt="Turnberry Place Las Vegas, Las Vegas, NV"
-                            className="img-fluid"
-                            style={{ 
-                              position: 'absolute',
-                              top: 0,
-                              left: 0,
-                              width: '100%',
-                              height: '100%',
-                              objectFit: 'cover',
-                              transition: 'transform 0.3s ease'
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.transform = 'scale(1.1)'
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.transform = 'scale(1)'
-                            }}
-                          />
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Private Showings Section */}
       <div
         className="card-content card-open-house py-5"
@@ -645,14 +567,7 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Client Testimonials Section */}
-      <ClientTestimonials />
-
-      {/* Power of Numbers Section */}
-      <PowerOfNumbers />
-
-      {/* In The Media Section */}
-      <InTheMedia />
+      {/* Client Testimonials, Power of Numbers, In The Media - MOVED TO /agent page */}
 
       {/* VIP Newsletter Signup */}
       <div className="card-content py-5 bg-light" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
@@ -820,212 +735,7 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Available Condos Section */}
-      <div className="card-content card-embed-widget py-5">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12">
-              <h2 className="text-center mb-4">Available Las Vegas Condos</h2>
-              <div className="widget-wrapper">
-                <Script
-                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-                  type="module"
-                  strategy="lazyOnload"
-                />
-                <style jsx>{`
-                  realscout-office-listings {
-                    --rs-listing-divider-color: rgb(101, 141, 172);
-                    width: 100%;
-                  }
-                `}</style>
-                {/* @ts-ignore - Custom web component */}
-                <realscout-office-listings
-                  agent-encoded-id="QWdlbnQtMjI1MDUw"
-                  sort-order="PRICE_HIGH"
-                  listing-status="For Sale"
-                  property-types="TC"
-                  price-min="600000"
-                ></realscout-office-listings>
-              </div>
-              <div className="text-center mt-4">
-                <p className="mb-3">Interested in viewing these luxury condos?</p>
-                <a href="tel:7022221988" className="btn btn-custom btn-lg" title="Call or text 702-222-1988">
-                  Call/Text (702) 222-1988
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Floor Plans Section Preview */}
-      <div className="card-content card-floor-plans py-5">
-        <div className="container-fluid">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-lg-11 col-xl-10 text-center">
-              <h2 className="text-center mb-4">Floor Plans</h2>
-              <p className="mb-4">
-                Explore our collection of luxury floor plans ranging from 1-4 bedrooms. Each residence features premium finishes and stunning views.
-              </p>
-              <Link href="/floor-plans" className="btn btn-custom btn-lg" title="View all floor plans">
-                View All Floor Plans
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Stirling Club Section */}
-      <div className="card-content card-custom card-custom-03 py-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h2 className="text-center">The Stirling Club</h2>
-              <h4 className="text-center mb-4">Exclusive Luxury at Your Doorstep</h4>
-            </div>
-          </div>
-          <div className="row py-4 justify-content-center">
-            <div className="col-12 col-xl-10">
-              <div className="row align-items-center">
-                <div className="col-12 col-md-6">
-                  <div className="left-image pb-4 pb-md-0">
-                    <Image
-                      src="https://assets.cribflyer-proxy.com/cdn-cgi/image/height=400,fit=contain,format=auto,quality=85/4616/5/2976704/asset.jpg"
-                      width={600}
-                      height={400}
-                      alt="The Stirling Club at Turnberry Place Las Vegas - luxury amenities and resort-style living"
-                      className="img-fluid"
-                    />
-                  </div>
-                </div>
-                <div className="col-12 col-md-6">
-                  <div className="text-content pt-3 pt-md-0">
-                    <p>
-                      The crown jewel of Turnberry Place is the recently renovated Stirling Club, an 80,000 square foot private club offering world-class amenities exclusively to residents. This luxurious facility includes:
-                    </p>
-                    <ul>
-                      <li>State-of-the-art fitness center</li>
-                      <li>Resort-style swimming pools (both indoor and outdoor)</li>
-                      <li>Tennis courts</li>
-                      <li>Spa and beauty services center</li>
-                      <li>Multiple dining venues and bars</li>
-                      <li>Business center with conference rooms</li>
-                      <li>Various lounges for socializing and relaxation</li>
-                    </ul>
-                    <p>
-                      The Stirling Club serves as the social and recreational hub of the Turnberry Place community, providing residents with a private oasis of luxury and convenience.
-                    </p>
-                    <Link href="/stirling-club" className="btn btn-custom" title="Learn more about The Stirling Club">
-                      Learn More About The Stirling Club
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Neighborhood Section Preview */}
-      <div className="card-content card-areas py-5">
-        <div className="container-fluid">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-sm-11 col-lg-10 col-xl-9">
-              <div className="py-4">
-                <h2 className="text-center mb-4">Turnberry Place Neighborhood and Area Profile</h2>
-                <div className="mb-4">
-                  <p>
-                    Turnberry Place stands as a pinnacle of luxury living in Las Vegas, offering an unparalleled blend of privacy, convenience, and access to world-class amenities. Situated just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts, this guard-gated, four-tower condominium complex redefines upscale urban living.
-                  </p>
-                  <h2>Prime Location and Accessibility</h2>
-                  <p>
-                    Turnberry Place&rsquo;s location at 2747&ndash;2877 Paradise Road positions it at the heart of Las Vegas&rsquo; most dynamic corridor. The property lies within a one-mile radius of over twenty Zagat-rated restaurants, including establishments at the Wynn, Encore, and Resorts World.
-                  </p>
-                  <p>
-                    The Strip&rsquo;s iconic attractions&mdash;such as the T-Mobile Arena (home of the Vegas Golden Knights) and Allegiant Stadium (home of the Las Vegas Raiders)&mdash;are mere minutes away, alongside the Las Vegas Convention Center and McCarran International Airport.
-                  </p>
-                </div>
-                <div className="text-center">
-                  <Link href="/neighborhood" className="btn btn-custom btn-lg" title="Explore Turnberry Place neighborhood">
-                    Explore Neighborhood
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Share Section Preview */}
-      <div className="card-content py-5">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-md-10 col-lg-8 text-center">
-              <h2 className="mb-4">Share Turnberry Place Las Vegas</h2>
-              
-              <p className="mb-4">
-                Know someone who would love to see these luxury condos? Share this property with friends and family.
-              </p>
-              <p className="mb-4">
-                Know someone who would love to see these luxury condos? Share this property with friends and family.
-              </p>
-              <div className="d-flex flex-wrap justify-content-center gap-3 mb-4">
-                <a
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary"
-                  title="Share on Facebook"
-                >
-                  Facebook
-                </a>
-                <a
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                    'Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale'
-                  )}&url=${encodeURIComponent(
-                    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-info"
-                  title="Share on Twitter"
-                >
-                  Twitter
-                </a>
-                <a
-                  href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(
-                    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
-                  )}&media=${encodeURIComponent(
-                    'https://photos.cribflyer-proxy.com/cdn-cgi/image/width=1200,height=630,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg'
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-danger"
-                  title="Share on Pinterest"
-                >
-                  Pinterest
-                </a>
-                <a
-                  href={`http://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-                    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary"
-                  title="Share on LinkedIn"
-                >
-                  LinkedIn
-                </a>
-              </div>
-              <Link href="/share" className="btn btn-custom btn-lg" title="Send to a friend">
-                Send to a Friend
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Available Condos, Floor Plans, Stirling Club, Neighborhood, Share sections - MOVED TO respective pages */}
     </>
   )
 }
