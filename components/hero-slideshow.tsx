@@ -53,29 +53,46 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
       <div className="container h-100 d-flex align-items-center justify-content-center">
         <div className="row w-100 justify-content-center">
           <div className="col-12 text-center hero-content position-relative" style={{ zIndex: 14 }}>
-            <h1 className="display-4 mb-4" style={{ 
+            <h1 className="mb-2" style={{ 
               fontFamily: 'Cinzel, serif',
               fontWeight: 600,
-              fontSize: '4rem',
+              fontSize: '4.5rem',
               letterSpacing: '0.05em',
               textTransform: 'uppercase',
               color: '#ffffff',
-              textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)'
+              textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)',
+              lineHeight: '1.2',
+              marginBottom: '0.5rem'
             }}>
-              Turnberry Place Las Vegas
+              TURNBERRY PLACE
             </h1>
+            <h2 className="mb-3" style={{ 
+              fontFamily: 'Cinzel, serif',
+              fontWeight: 600,
+              fontSize: '3.5rem',
+              letterSpacing: '0.05em',
+              textTransform: 'uppercase',
+              color: '#ffffff',
+              textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)',
+              lineHeight: '1.2',
+              marginBottom: '1rem'
+            }}>
+              LAS VEGAS
+            </h2>
             <div className="d-flex align-items-center justify-content-center mb-4" style={{ gap: '1rem' }}>
               <div style={{ flex: '1', maxWidth: '100px', height: '2px', backgroundColor: '#ffffff' }}></div>
               <h4 style={{ 
-                fontFamily: 'Cinzel, serif',
+                fontFamily: 'Questrial, sans-serif',
                 fontWeight: 400,
-                fontSize: '1.25rem',
+                fontSize: '1rem',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
                 color: '#ffffff',
                 textShadow: '1px 1px 4px rgba(0,0,0,0.6)',
                 margin: 0,
                 whiteSpace: 'nowrap'
               }}>
-                Las Vegas, NV
+                LAS VEGAS, NV
               </h4>
               <div style={{ flex: '1', maxWidth: '100px', height: '2px', backgroundColor: '#ffffff' }}></div>
             </div>
@@ -84,17 +101,20 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                 href="/available-condos" 
                 className="btn"
                 style={{ 
-                  fontSize: '1rem',
-                  fontWeight: 500,
+                  fontSize: '0.9rem',
+                  fontWeight: 400,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
                   padding: '0.75rem 2rem',
                   borderRadius: '4px',
-                  border: '1px solid rgba(255, 255, 255, 0.5)',
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                  border: '1px solid rgba(255, 255, 255, 1)',
+                  backgroundColor: 'rgba(0, 0, 0, 0.3)',
                   color: '#ffffff',
                   textDecoration: 'none',
                   display: 'inline-block',
                   transition: 'all 0.3s ease',
-                  backdropFilter: 'blur(4px)'
+                  backdropFilter: 'blur(4px)',
+                  fontFamily: 'Questrial, sans-serif'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.25)'
