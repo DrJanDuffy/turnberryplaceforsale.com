@@ -2,17 +2,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Questrial:wght@400;500;600&display=swap');
 
 :root {
+  /* Font Families - Matching Live Site */
   --default-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --headlines-font: 'Cinzel', serif;
   --headlines-font-weight: 500;
-  --body-font: 'Questrial', sans-serif;
+  --body-font: Questrial;
   --body-font-weight: 400;
-  --nav-font: 'Cinzel', serif;
+  --nav-font: Cinzel;
   --nav-font-weight: 500;
+  
+  /* Colors - Matching Live Site CSS Variables */
   --heading-color: #212529;
   --body-copy-color: #212529;
-  --nav-link-color: #ffffff;
-  --nav-bg-color: rgba(26, 26, 26, 1);
+  --body-copy-color-rgb: 33,37,41;
+  --nav-link-color: #212529;
+  --nav-link-color-rgb: 33,37,41;
+  --nav-bg-color: #fafafa;
+  --nav-bg-color-rgb: 250,250,250;
+  --body-link-color: #007bff;
+  --body-link-color-rgb: 0,123,255;
+  --btn-icon-color: #6c757d;
+  --btn-icon-color-rgb: 108,117,125;
+  --btn-text-color: #fafafa;
+  --btn-text-color-rgb: 250,250,250;
+  --section-bgcolor-odd: #ffffff;
+  --section-bgcolor-odd-rgb: 255,255,255;
+  --section-bgcolor-even: #fafafa;
+  --section-bgcolor-even-rgb: 250,250,250;
 }
 
 /* Body text and buttons use Questrial */
