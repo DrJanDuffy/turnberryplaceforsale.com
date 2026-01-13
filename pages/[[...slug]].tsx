@@ -95,60 +95,33 @@ function HomePageContent() {
       <HeroSlideshow photos={heroPhotos} />
       
       {/* Quick Intro Section */}
-      <div className="card-content card-price-features py-5" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
+      <div className="card-content card-price-features">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10 text-center">
-              <h2 className="mb-4" style={{ fontSize: '2.5rem', fontWeight: 600, lineHeight: 1.3 }}>
+              <h2 className="homepage-section">
                 Las Vegas' Premier Luxury High-Rise Community
               </h2>
-              <p className="lead mb-5" style={{ fontSize: '1.25rem', lineHeight: 1.7, color: '#495057', maxWidth: '800px', margin: '0 auto' }}>
+              <p className="lead homepage-lead">
                 Turnberry Place offers four luxury towers just one block from the Las Vegas Strip. Guard-gated community with exclusive access to The Stirling Club's 80,000 sq ft private facility.
               </p>
-              <div className="row mt-5 justify-content-center">
+              <div className="row justify-content-center">
                 <div className="col-md-4 mb-4 mb-md-0">
-                  <div className="p-4 bg-light rounded-lg h-100" style={{ transition: 'all 0.3s ease' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)'
-                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.boxShadow = 'none'
-                    }}
-                  >
-                    <div className="h3 text-primary mb-2" style={{ fontSize: '2.5rem', fontWeight: 700 }}>4 Towers</div>
-                    <div className="small text-muted" style={{ fontSize: '0.95rem' }}>Completed 2000-2005</div>
+                  <div className="stat-card bg-light">
+                    <div className="stat-value text-primary">4 Towers</div>
+                    <div className="stat-label text-muted">Completed 2000-2005</div>
                   </div>
                 </div>
                 <div className="col-md-4 mb-4 mb-md-0">
-                  <div className="p-4 bg-light rounded-lg h-100" style={{ transition: 'all 0.3s ease' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)'
-                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.boxShadow = 'none'
-                    }}
-                  >
-                    <div className="h3 text-primary mb-2" style={{ fontSize: '2.5rem', fontWeight: 700 }}>$800K - $10M+</div>
-                    <div className="small text-muted" style={{ fontSize: '0.95rem' }}>1-4 Bedroom Residences</div>
+                  <div className="stat-card bg-light">
+                    <div className="stat-value text-primary">$800K - $10M+</div>
+                    <div className="stat-label text-muted">1-4 Bedroom Residences</div>
                   </div>
                 </div>
                 <div className="col-md-4 mb-4 mb-md-0">
-                  <div className="p-4 bg-light rounded-lg h-100" style={{ transition: 'all 0.3s ease' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)'
-                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.1)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.boxShadow = 'none'
-                    }}
-                  >
-                    <div className="h3 text-primary mb-2" style={{ fontSize: '2.5rem', fontWeight: 700 }}>1 Block</div>
-                    <div className="small text-muted" style={{ fontSize: '0.95rem' }}>From Las Vegas Strip</div>
+                  <div className="stat-card bg-light">
+                    <div className="stat-value text-primary">1 Block</div>
+                    <div className="stat-label text-muted">From Las Vegas Strip</div>
                   </div>
                 </div>
               </div>
@@ -158,42 +131,33 @@ function HomePageContent() {
       </div>
 
       {/* Towers Comparison - Bullet Points - MOVED TO /towers page */}
-      <div className="card-content card-prop-description py-5 bg-light" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
+      <div className="card-content card-prop-description bg-light">
         <div className="container">
-          <div className="row">
-            <div className="col-12 col-lg-10 mx-auto">
-              <h2 className="text-center mb-5" style={{ fontSize: '2.5rem', fontWeight: 600, marginBottom: '3rem' }}>
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <h2 className="text-center homepage-section">
                 Four Distinct Luxury Towers
               </h2>
               <div className="row">
                 <div className="col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: '8px', transition: 'all 0.3s ease' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)'
-                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'
-                    }}
-                  >
+                  <div className="card h-100 border-0 shadow-sm feature-card">
                     <div className="card-body p-4">
-                      <h3 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600, color: '#333' }}>Tower 1 - Entry Level</h3>
+                      <h3>Tower 1 - Entry Level</h3>
                       <ul className="list-unstyled mb-0">
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           38 stories, completed 2000
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Starting from $800K
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Excellent value proposition
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Private elevator access
                         </li>
                       </ul>
@@ -201,33 +165,24 @@ function HomePageContent() {
                   </div>
                 </div>
                 <div className="col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: '8px', transition: 'all 0.3s ease' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)'
-                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'
-                    }}
-                  >
+                  <div className="card h-100 border-0 shadow-sm feature-card">
                     <div className="card-body p-4">
-                      <h3 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600, color: '#333' }}>Tower 2 - Enhanced Features</h3>
+                      <h3>Tower 2 - Enhanced Features</h3>
                       <ul className="list-unstyled mb-0">
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           45 stories, completed 2001
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Larger floor plans
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Floor-to-ceiling windows
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Premium finishes
                         </li>
                       </ul>
@@ -235,33 +190,24 @@ function HomePageContent() {
                   </div>
                 </div>
                 <div className="col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: '8px', transition: 'all 0.3s ease' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)'
-                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'
-                    }}
-                  >
+                  <div className="card h-100 border-0 shadow-sm feature-card">
                     <div className="card-body p-4">
-                      <h3 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600, color: '#333' }}>Tower 3 - Contemporary Design</h3>
+                      <h3>Tower 3 - Contemporary Design</h3>
                       <ul className="list-unstyled mb-0">
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           45 stories, completed 2002
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Modern aesthetic
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Spacious terraces
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Panoramic views
                         </li>
                       </ul>
@@ -269,33 +215,24 @@ function HomePageContent() {
                   </div>
                 </div>
                 <div className="col-md-6 mb-4">
-                  <div className="card h-100 border-0 shadow-sm" style={{ borderRadius: '8px', transition: 'all 0.3s ease' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)'
-                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)'
-                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)'
-                    }}
-                  >
+                  <div className="card h-100 border-0 shadow-sm feature-card">
                     <div className="card-body p-4">
-                      <h3 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600, color: '#333' }}>Tower 4 - Ultimate Luxury</h3>
+                      <h3>Tower 4 - Ultimate Luxury</h3>
                       <ul className="list-unstyled mb-0">
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           45 stories, completed 2005
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Most refined residences
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Exceptional finishes
                         </li>
-                        <li className="mb-2" style={{ fontSize: '1rem', lineHeight: 1.6 }}>
-                          <span className="text-success mr-2" style={{ fontSize: '1.2rem' }}>✓</span>
+                        <li>
+                          <span className="text-success check-icon">✓</span>
                           Premium pricing
                         </li>
                       </ul>
@@ -303,13 +240,8 @@ function HomePageContent() {
                   </div>
                 </div>
               </div>
-              <div className="text-center mt-5">
-                <Link href="/towers" className="btn btn-primary btn-lg" style={{ 
-                  padding: '0.875rem 2.5rem',
-                  fontSize: '1.1rem',
-                  borderRadius: '6px',
-                  fontWeight: 600
-                }}>
+              <div className="text-center">
+                <Link href="/towers" className="btn btn-primary btn-lg">
                   Learn More About Each Tower
                 </Link>
               </div>
@@ -319,21 +251,16 @@ function HomePageContent() {
       </div>
 
       {/* Amenities Section Preview */}
-      <div className="card-content card-amenities py-5" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
-        <div className="container pt-2">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-12">
-              <div className="pb-4 pb-sm-5 amenities-border" style={{ 
-                border: '2px solid #e9ecef',
-                borderRadius: '12px',
-                padding: '3rem 2rem',
-                backgroundColor: '#fff'
-              }}>
-                <div className="amenities-title mb-4">
-                  <h2 className="text-center mb-4" style={{ fontSize: '2.5rem', fontWeight: 600, marginBottom: '1.5rem' }}>
+      <div className="card-content card-amenities">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <div className="amenities-border">
+                <div className="amenities-title">
+                  <h2 className="text-center homepage-section">
                     World-Class Amenities and Lifestyle Benefits
                   </h2>
-                  <p className="text-center mb-4" style={{ fontSize: '1.1rem', lineHeight: 1.7, color: '#495057', maxWidth: '900px', margin: '0 auto 2rem' }}>
+                  <p className="text-center homepage-lead">
                     Turnberry Place residents enjoy exclusive access to The Stirling Club, an 80,000-square-foot private membership facility that provides world-class amenities without separate membership costs. This comprehensive amenity package, combined with the development's security, location, and quality, creates exceptional value that justifies the development's premium positioning.
                   </p>
                 </div>

@@ -65,6 +65,130 @@
   margin-top: 2.5rem;
 }
 
+/* Homepage Stat Cards */
+.stat-card {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-label {
+  font-size: 0.95rem;
+}
+
+/* Homepage Feature Cards */
+.feature-card {
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.feature-card ul li {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card .check-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+/* Homepage Section Headings */
+.homepage-section h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@media (max-width: 767.98px) {
+  .homepage-section h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Homepage Lead Text */
+.homepage-lead {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #495057;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 767.98px) {
+  .homepage-lead {
+    font-size: 1.1rem;
+  }
+}
+
+/* Homepage Button Styles */
+.btn-lg {
+  padding: 0.875rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* Amenities Border Box */
+.amenities-border {
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  background-color: #fff;
+}
+
+@media (max-width: 767.98px) {
+  .amenities-border {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Amenity Item */
+.amenity-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.amenity-icon {
+  flex-shrink: 0;
+  color: #28a745;
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+}
+
+.amenity-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
 /* Add top padding to pages that don't have hero header to account for fixed navbar */
 main .card-content:not(.card-top-header):first-of-type {
   padding-top: calc(var(--navbar-height, 80px) + 2rem) !important;
