@@ -52,10 +52,12 @@ export default function FloorPlansPage() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
-              <h1 className="text-center">Turnberry Place Las Vegas Floor Plans</h1>
-              <p className="lead text-center">
-                Explore the comprehensive floor plans available at Turnberry Place Las Vegas, featuring luxury high-rise condominiums ranging from one to four bedrooms. These detailed floor plans showcase the thoughtful design, spacious layouts, and premium features that define luxury living at Turnberry Place. As a Las Vegas real estate expert with over 30 years of experience, I can provide insights into how these floor plans accommodate various lifestyle needs and preferences.
-              </p>
+              <div className="page-header">
+                <h1>Turnberry Place Las Vegas Floor Plans</h1>
+                <p className="lead">
+                  Explore the comprehensive floor plans available at Turnberry Place Las Vegas, featuring luxury high-rise condominiums ranging from one to four bedrooms. These detailed floor plans showcase the thoughtful design, spacious layouts, and premium features that define luxury living at Turnberry Place. As a Las Vegas real estate expert with over 30 years of experience, I can provide insights into how these floor plans accommodate various lifestyle needs and preferences.
+                </p>
+              </div>
             </div>
           </div>
           <div className="row align-items-center justify-content-center">
@@ -105,7 +107,8 @@ export default function FloorPlansPage() {
           
           <div className="row">
             <div className="col-12 col-lg-10 mx-auto">
-              <h2>Understanding Turnberry Place Floor Plans</h2>
+              <div className="content-section">
+                <h2>Understanding Turnberry Place Floor Plans</h2>
               <p>
                 Turnberry Place floor plans are designed to maximize space, functionality, and luxury living. Each floor plan has been thoughtfully crafted to provide residents with comfortable, elegant living spaces that accommodate various lifestyle needs. Understanding the characteristics of different floor plans helps buyers identify residences that best meet their requirements for space, layout, and functionality.
               </p>
@@ -121,8 +124,10 @@ export default function FloorPlansPage() {
               <p>
                 All Turnberry Place floor plans include premium features and finishes that reflect the development's luxury positioning. These features include hardwood or premium tile flooring, granite or quartz countertops, high-end appliances, custom cabinetry, designer fixtures, and floor-to-ceiling windows. The floor plans are designed to showcase these premium features while maintaining functionality and livability. Understanding these features helps buyers appreciate the value and quality available in every Turnberry Place residence.
               </p>
+              </div>
 
-              <h2>One and Two Bedroom Floor Plans</h2>
+              <div className="content-section">
+                <h2>One and Two Bedroom Floor Plans</h2>
               <p>
                 Turnberry Place's one and two bedroom floor plans offer efficient, elegant living spaces perfect for professionals, couples, or those seeking a second home in Las Vegas. These floor plans range from approximately 1,200 to 2,500 square feet and provide all the amenities and features of larger residences in more compact, manageable spaces.
               </p>
@@ -134,8 +139,10 @@ export default function FloorPlansPage() {
               <p>
                 Two bedroom floor plans at Turnberry Place typically range from approximately 1,800 to 2,500 square feet and provide additional space for home offices, guest accommodations, or flexible living arrangements. These floor plans feature spacious living areas, well-designed kitchens, two bedrooms with ample closet space, and multiple bathrooms. Many two-bedroom residences feature private terraces and enhanced views, making them ideal for residents who want more space while maintaining the convenience and luxury of Turnberry Place living.
               </p>
+              </div>
 
-              <h2>Three and Four Bedroom Floor Plans</h2>
+              <div className="content-section">
+                <h2>Three and Four Bedroom Floor Plans</h2>
               <p>
                 Turnberry Place's three and four bedroom floor plans offer expansive living spaces designed for families, those who frequently entertain, or residents who require additional space for home offices, hobbies, or guest accommodations. These floor plans range from approximately 2,500 to over 5,000 square feet and provide the ultimate in luxury high-rise living.
               </p>
@@ -147,8 +154,10 @@ export default function FloorPlansPage() {
               <p>
                 Four bedroom and larger floor plans at Turnberry Place typically range from approximately 4,000 to over 8,000 square feet and represent the pinnacle of luxury living. These floor plans feature expansive living areas, formal dining rooms, gourmet kitchens, multiple bedrooms with walk-in closets, numerous bathrooms, and additional spaces for home offices, media rooms, or entertainment areas. Many larger residences feature multiple terraces, panoramic views, and premium finishes throughout. These floor plans are ideal for those seeking the ultimate in luxury high-rise living with maximum space and amenities.
               </p>
+              </div>
 
-              <h2>Penthouse and High-Floor Floor Plans</h2>
+              <div className="content-section">
+                <h2>Penthouse and High-Floor Floor Plans</h2>
               <p>
                 Turnberry Place's penthouse and high-floor residences offer the most exceptional floor plans in the development, featuring elevated ceilings, expansive layouts, and the most dramatic views available. These residences, typically located above the 30th floor, represent the ultimate in luxury living at Turnberry Place.
               </p>
@@ -160,8 +169,10 @@ export default function FloorPlansPage() {
               <p>
                 High-floor residences at Turnberry Place, typically located above the 20th floor, offer enhanced views, increased privacy, and elevated ceilings compared to lower-floor residences. These floor plans feature the same quality and finishes as other residences but benefit from the dramatic views and sense of elevation that come with higher floor levels. Understanding these advantages helps buyers appreciate the value and lifestyle benefits of high-floor residences.
               </p>
+              </div>
 
-              <h2>Selecting the Right Floor Plan</h2>
+              <div className="content-section">
+                <h2>Selecting the Right Floor Plan</h2>
               <p>
                 Selecting the right floor plan at Turnberry Place requires understanding your lifestyle needs, space requirements, and preferences for layout and functionality. Working with an experienced real estate professional who understands Turnberry Place floor plans can help you identify the perfect residence that meets your needs while fitting your budget.
               </p>
@@ -177,17 +188,20 @@ export default function FloorPlansPage() {
               <p>
                 Considering view and orientation involves understanding how different floor plans and orientations provide access to the views you value most. Factors to consider include whether you prefer Strip views, mountain views, city views, or a combination, and how floor level and orientation affect view quality. Understanding these view characteristics helps you identify floor plans that provide the views you desire.
               </p>
+              </div>
 
-              <h2>Contact Dr. Jan Duffy for Floor Plan Information</h2>
-              <p>
-                As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place floor plans, I can provide comprehensive information about available floor plans, their characteristics, and how they accommodate various lifestyle needs. My expertise in luxury high-rise condominiums, combined with my understanding of Turnberry Place's unique floor plans, enables me to help buyers identify the perfect residence that meets their needs and preferences.
-              </p>
-              <p>
-                Whether you're interested in one-bedroom efficiency, two-bedroom flexibility, three-bedroom space, or four-bedroom luxury, I can provide detailed information about available floor plans, their features, and how they compare to help you make informed decisions. My goal is to help you find the perfect Turnberry Place residence that meets your space requirements, lifestyle needs, and budget while providing exceptional value and luxury living.
-              </p>
-              <p className="mt-4">
-                <strong>Ready to explore Turnberry Place floor plans?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to discuss available floor plans, schedule a private showing, and learn how different floor plans can accommodate your lifestyle needs. With my extensive knowledge of Turnberry Place floor plans, I can help you find the perfect residence that exceeds your expectations.
-              </p>
+              <div className="content-section">
+                <h2>Contact Dr. Jan Duffy for Floor Plan Information</h2>
+                <p>
+                  As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place floor plans, I can provide comprehensive information about available floor plans, their characteristics, and how they accommodate various lifestyle needs. My expertise in luxury high-rise condominiums, combined with my understanding of Turnberry Place's unique floor plans, enables me to help buyers identify the perfect residence that meets their needs and preferences.
+                </p>
+                <p>
+                  Whether you're interested in one-bedroom efficiency, two-bedroom flexibility, three-bedroom space, or four-bedroom luxury, I can provide detailed information about available floor plans, their features, and how they compare to help you make informed decisions. My goal is to help you find the perfect Turnberry Place residence that meets your space requirements, lifestyle needs, and budget while providing exceptional value and luxury living.
+                </p>
+                <p>
+                  <strong>Ready to explore Turnberry Place floor plans?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to discuss available floor plans, schedule a private showing, and learn how different floor plans can accommodate your lifestyle needs. With my extensive knowledge of Turnberry Place floor plans, I can help you find the perfect residence that exceeds your expectations.
+                </p>
+              </div>
             </div>
           </div>
         </div>

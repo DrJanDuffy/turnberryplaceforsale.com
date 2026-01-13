@@ -25,12 +25,15 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
-              <h1 className="text-center">The Stirling Club: Exclusive Luxury at Your Doorstep</h1>
-              <p className="lead text-center">
-                The Stirling Club stands as the crown jewel of Turnberry Place, an 80,000-square-foot private membership facility exclusively for residents. This recently renovated world-class facility represents one of the most comprehensive private club amenities available in any Las Vegas condominium development. As a Las Vegas real estate expert with over 30 years of experience, I can attest that The Stirling Club's amenities rival the best private clubs worldwide, creating exceptional value for Turnberry Place residents.
-              </p>
+              <div className="page-header">
+                <h1>The Stirling Club: Exclusive Luxury at Your Doorstep</h1>
+                <p className="lead">
+                  The Stirling Club stands as the crown jewel of Turnberry Place, an 80,000-square-foot private membership facility exclusively for residents. This recently renovated world-class facility represents one of the most comprehensive private club amenities available in any Las Vegas condominium development. As a Las Vegas real estate expert with over 30 years of experience, I can attest that The Stirling Club's amenities rival the best private clubs worldwide, creating exceptional value for Turnberry Place residents.
+                </p>
+              </div>
 
-              <div className="row justify-content-center">
+              <div className="content-section">
+                <div className="row justify-content-center">
                 <div className="col-12 col-xl-10">
                   <div className="row align-items-center">
                     <div className="col-12 col-md-6">
@@ -54,8 +57,9 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
                   </div>
                 </div>
               </div>
+              </div>
 
-              <div className="mt-5">
+              <div className="content-section">
                 <h2>Comprehensive Facility Overview</h2>
                 <p>
                   The Stirling Club's 80,000 square feet include state-of-the-art fitness center with personal training and group classes, resort-style indoor and outdoor pools with cabanas, professionally maintained clay tennis and pickleball courts, full-service spa with treatment rooms, multiple dining venues and bars, business center with conference rooms, and social lounges with entertainment spaces.
@@ -63,7 +67,9 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
                 <p>
                   The club serves as the social and recreational heart of Turnberry Place, offering fitness classes, tennis clinics, social events, and private event hosting. Facilities can be reserved for private gatherings, celebrations, and business functions.
                 </p>
+              </div>
 
+              <div className="content-section">
                 <h2>Recent Renovations and Modern Enhancements</h2>
                 <p>
                   The Stirling Club's recent renovations have enhanced its facilities, ensuring that they remain state-of-the-art and competitive with the best private clubs in Las Vegas and beyond. These renovations reflect the commitment to maintaining excellence and providing residents with facilities that meet the highest standards of luxury and quality.
@@ -80,7 +86,9 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
                 <p>
                   The dining venues and social spaces have been modernized with updated decor, improved layouts, and enhanced technology infrastructure. These renovations create more sophisticated and comfortable environments for dining, socializing, and entertaining. The modernized spaces reflect contemporary design trends while maintaining the elegance and luxury that define The Stirling Club, ensuring that residents enjoy facilities that are both timeless and current.
                 </p>
+              </div>
 
+              <div className="content-section">
                 <h2>Value Proposition of The Stirling Club</h2>
                 <p>
                   The Stirling Club's comprehensive amenities create exceptional value for Turnberry Place residents. If residents were to purchase separate memberships for the amenities available through The Stirling Club, the annual costs would exceed tens of thousands of dollars. Understanding this value proposition helps buyers appreciate the development's pricing structure and investment potential.
@@ -97,7 +105,9 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
                 <p>
                   The Stirling Club's exclusive nature, available only to Turnberry Place residents, creates a sense of exclusivity and prestige that enhances the overall living experience. The club's private membership model ensures that facilities remain uncrowded and provide personalized service, creating a true luxury experience. This exclusivity is difficult to replicate elsewhere and represents a significant value proposition for buyers who appreciate private club amenities and the prestige that comes with exclusive access.
                 </p>
+              </div>
 
+              <div className="content-section">
                 <h2>Contact Dr. Jan Duffy for Stirling Club Information</h2>
                 <p>
                   As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place and The Stirling Club, I can provide comprehensive information about the club's amenities, facilities, and value propositions. My expertise in luxury condominium developments, combined with my understanding of The Stirling Club's unique offerings, enables me to help buyers appreciate the exceptional value that this private club provides.
@@ -105,7 +115,7 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
                 <p>
                   Whether you're interested in The Stirling Club's fitness facilities, recreational amenities, dining venues, business facilities, or social spaces, I can provide detailed information about how these amenities enhance daily living and create exceptional value. My goal is to help you understand the comprehensive nature of The Stirling Club and how it contributes to Turnberry Place's reputation as Las Vegas's premier high-rise condominium community.
                 </p>
-                <p className="mt-4">
+                <p>
                   <strong>Ready to experience The Stirling Club?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private tour of The Stirling Club and discuss how this exclusive private club can enhance your luxury lifestyle. With my extensive knowledge of The Stirling Club and Turnberry Place, I can help you appreciate the exceptional value and lifestyle benefits that this world-class facility provides.
                 </p>
               </div>

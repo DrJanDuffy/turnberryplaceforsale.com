@@ -30,10 +30,14 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
-              <h1 className="text-center">Available Las Vegas Condos at Turnberry Place</h1>
-              <p className="lead text-center">
-                Browse available luxury condominiums for sale at Turnberry Place Las Vegas, featuring one to four bedroom residences ranging from approximately $800,000 to over $10 million. Each available residence offers premium finishes, stunning views of the Las Vegas Strip or surrounding mountains, and exclusive access to The Stirling Club's world-class amenities. As a Las Vegas real estate expert with over 30 years of experience, I can provide comprehensive information about available properties and help you find the perfect Turnberry Place residence.
-              </p>
+              <div className="page-header">
+                <h1>Available Las Vegas Condos at Turnberry Place</h1>
+                <p className="lead">
+                  Browse available luxury condominiums for sale at Turnberry Place Las Vegas, featuring one to four bedroom residences ranging from approximately $800,000 to over $10 million. Each available residence offers premium finishes, stunning views of the Las Vegas Strip or surrounding mountains, and exclusive access to The Stirling Club's world-class amenities. As a Las Vegas real estate expert with over 30 years of experience, I can provide comprehensive information about available properties and help you find the perfect Turnberry Place residence.
+                </p>
+              </div>
+
+              <div className="content-section">
               <div className="widget-wrapper">
                 <Script
                   src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
@@ -61,21 +65,24 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
                   Call/Text (702) 222-1988
                 </a>
               </div>
+              </div>
             </div>
           </div>
           
-          <div className="row mt-5">
+          <div className="row">
             <div className="col-12 col-lg-10 mx-auto">
-              <h2>Available Turnberry Place Condominiums</h2>
-              <p>
-                Browse available luxury condominiums at Turnberry Place, featuring 1-4 bedroom residences from $800K to over $10M. Each property includes premium finishes, stunning views, and exclusive access to The Stirling Club's world-class amenities.
-              </p>
-              <p>
-                The RealScout widget above displays current available properties with real-time information. Use the filters to find residences that match your preferences by price, size, or tower.
-              </p>
-              <p className="mt-4">
-                <strong>Ready to view available condos?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private showing or discuss available properties.
-              </p>
+              <div className="content-section">
+                <h2>Available Turnberry Place Condominiums</h2>
+                <p>
+                  Browse available luxury condominiums at Turnberry Place, featuring 1-4 bedroom residences from $800K to over $10M. Each property includes premium finishes, stunning views, and exclusive access to The Stirling Club's world-class amenities.
+                </p>
+                <p>
+                  The RealScout widget above displays current available properties with real-time information. Use the filters to find residences that match your preferences by price, size, or tower.
+                </p>
+                <p>
+                  <strong>Ready to view available condos?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private showing or discuss available properties.
+                </p>
+              </div>
             </div>
           </div>
         </div>
