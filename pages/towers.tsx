@@ -2,9 +2,12 @@ import { GetStaticPropsResult } from "next"
 import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { TowerSection } from "components/tower-section"
+import { QuickSearchWidget } from "components/quick-search-widget"
+import { FeaturedListingCard } from "components/featured-listing-card"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import Link from "next/link"
 
 const towers = [
   {
@@ -241,6 +244,90 @@ export default function TowersPage({ menus }: TowersPageProps) {
                 <p className="mt-4">
                   <strong>Ready to explore Turnberry Place towers?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private showing or discuss your luxury condominium needs. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you find the perfect tower residence that exceeds your expectations.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Search Widget */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-8">
+              <QuickSearchWidget />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Listings by Tower */}
+      <div className="card-content py-5 bg-white">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h2 className="text-center mb-4">Featured Listings by Tower</h2>
+              <p className="text-center mb-5 text-muted">Explore available residences across all four Turnberry Place towers</p>
+              <div className="row">
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953239/photo.jpg"
+                    title="Tower 1, Unit 1203"
+                    price="$950,000"
+                    beds={1}
+                    baths={1}
+                    sqft={1350}
+                    views="City Views"
+                    tower="Tower 1"
+                    unit="Unit 1203"
+                  />
+                </div>
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953237/photo.jpg"
+                    title="Tower 2, Unit 1501"
+                    price="$1,250,000"
+                    beds={2}
+                    baths={2}
+                    sqft={1850}
+                    views="Strip Views"
+                    tower="Tower 2"
+                    unit="Unit 1501"
+                    featured={true}
+                  />
+                </div>
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953238/photo.jpg"
+                    title="Tower 3, Unit 2205"
+                    price="$2,100,000"
+                    beds={3}
+                    baths={3}
+                    sqft={2400}
+                    views="Mountain Views"
+                    tower="Tower 3"
+                    unit="Unit 2205"
+                  />
+                </div>
+                <div className="col-md-6 col-lg-3 mb-4">
+                  <FeaturedListingCard
+                    image="https://photos.cribflyer-proxy.com/cdn-cgi/image/width=800,height=600,fit=crop,rotate=0,format=auto,quality=85/4616/60013/2953240/photo.jpg"
+                    title="Tower 4, Unit 3501"
+                    price="$4,500,000"
+                    beds={4}
+                    baths={4}
+                    sqft={3800}
+                    views="Panoramic Views"
+                    tower="Tower 4"
+                    unit="Unit 3501"
+                    featured={true}
+                  />
+                </div>
+              </div>
+              <div className="text-center mt-4">
+                <Link href="/available-condos" className="btn btn-primary btn-lg">
+                  View All Available Condos
+                </Link>
               </div>
             </div>
           </div>

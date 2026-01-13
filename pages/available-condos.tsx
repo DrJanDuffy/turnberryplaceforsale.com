@@ -4,6 +4,8 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { QuickSearchWidget } from "components/quick-search-widget"
+import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 import Script from "next/script"
 import Link from "next/link"
 
@@ -21,6 +23,18 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
         />
       </Head>
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
+      
+      {/* Quick Search Widget */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-8">
+              <QuickSearchWidget />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="card-content card-embed-widget py-5">
         <div className="container">
           <div className="row justify-content-center">

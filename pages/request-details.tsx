@@ -5,6 +5,8 @@ import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
 import { ContactForm } from "components/contact-form"
+import { ClientTestimonials } from "components/client-testimonials"
+import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 import Image from "next/image"
 
 interface RequestDetailsPageProps extends LayoutProps {}
@@ -161,6 +163,23 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
               <p>
                 For immediate assistance, you can also call or text me directly at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> or contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>. I'm here to help you discover the exceptional quality and lifestyle that Turnberry Place offers and find the perfect luxury residence that meets your needs and exceeds your expectations.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Client Testimonials Section */}
+      <ClientTestimonials />
+
+      {/* VIP Newsletter Signup */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-8 col-lg-6">
+              <VIPNewsletterSignup 
+                title="Stay Updated on Turnberry Place"
+                subtitle="Join our VIP list to receive exclusive listings, pricing updates, and market insights"
+              />
             </div>
           </div>
         </div>

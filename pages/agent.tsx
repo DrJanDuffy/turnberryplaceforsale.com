@@ -6,6 +6,9 @@ import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
 import { AgentBioModal } from "components/agent-bio-modal"
 import { ContactMessageModal } from "components/contact-message-modal"
+import { PowerOfNumbers } from "components/power-of-numbers"
+import { ClientTestimonials } from "components/client-testimonials"
+import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 import Image from "next/image"
 
 interface AgentPageProps extends LayoutProps {}
@@ -193,6 +196,26 @@ export default function AgentPage({ menus }: AgentPageProps) {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Power of Numbers Section */}
+      <PowerOfNumbers />
+
+      {/* Client Testimonials Section */}
+      <ClientTestimonials />
+
+      {/* VIP Newsletter Signup */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-8 col-lg-6">
+              <VIPNewsletterSignup 
+                title="Stay Connected with Dr. Jan Duffy"
+                subtitle="Join our VIP list to receive exclusive Turnberry Place listings, market updates, and luxury real estate insights"
+              />
             </div>
           </div>
         </div>
