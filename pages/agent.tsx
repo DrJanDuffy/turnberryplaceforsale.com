@@ -10,6 +10,7 @@ import { PowerOfNumbers } from "components/power-of-numbers"
 import { ClientTestimonials } from "components/client-testimonials"
 import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 import Image from "next/image"
+import Script from "next/script"
 
 interface AgentPageProps extends LayoutProps {}
 
@@ -195,6 +196,42 @@ export default function AgentPage({ menus }: AgentPageProps) {
                     <strong>Ready to work with a Las Vegas luxury real estate expert?</strong> Call or text Dr. Jan Duffy at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> or contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>. With over 30 years of experience and deep knowledge of Turnberry Place and the Las Vegas luxury market, Dr. Duffy can help you achieve your real estate goals with confidence and expertise.
                   </p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Recent Sold Listings Section */}
+      <div className="card-content py-5 bg-light">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <div className="page-header text-center mb-4">
+                <h2>Recent Sold Listings</h2>
+                <p className="lead">
+                  View my recent successful transactions and closed sales. These listings demonstrate my track record of helping clients achieve their real estate goals in Las Vegas.
+                </p>
+              </div>
+              <div className="widget-wrapper">
+                <Script
+                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+                  type="module"
+                  strategy="lazyOnload"
+                />
+                <style jsx>{`
+                  realscout-your-listings {
+                    --rs-listing-divider-color: rgb(101, 141, 172);
+                    width: 100%;
+                  }
+                `}</style>
+                {/* @ts-ignore - Custom web component */}
+                <realscout-your-listings 
+                  agent-encoded-id="QWdlbnQtMjI1MDUw" 
+                  sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
+                  listing-status="For Sale,Sold" 
+                  property-types="SFR"
+                ></realscout-your-listings>
               </div>
             </div>
           </div>
