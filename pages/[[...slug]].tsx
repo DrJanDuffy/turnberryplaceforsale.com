@@ -655,7 +655,7 @@ function HomePageContent() {
       <InTheMedia />
 
       {/* VIP Newsletter Signup */}
-      <div className="card-content py-5 bg-light">
+      <div className="card-content py-5 bg-light" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-md-8 col-lg-6">
@@ -673,18 +673,38 @@ function HomePageContent() {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",
+          position: 'relative',
+          paddingTop: '5rem',
+          paddingBottom: '5rem'
         }}
       >
-        <div className="container-fluid">
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          zIndex: 1
+        }}></div>
+        <div className="container-fluid position-relative" style={{ zIndex: 2 }}>
           <div className="row align-items-center justify-content-center">
             <div className="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6 text-center px-sm-2">
-              <div className="contact-form-box p-4">
-                <div className="mt-0 mt-md-2 d-flex align-items-center justify-content-center">
-                  <div className="w-10 horiz-line d-none d-sm-block"></div>
-                  <h2 className="my-0 mx-2 heading-color" id="contact-label">
+              <div className="contact-form-box p-4 p-md-5 shadow-lg" style={{
+                backgroundColor: 'rgba(255,255,255,0.98)',
+                borderRadius: '12px',
+                backdropFilter: 'blur(10px)'
+              }}>
+                <div className="mt-0 mt-md-2 mb-4 d-flex align-items-center justify-content-center">
+                  <div className="w-10 horiz-line d-none d-sm-block" style={{ height: '2px', backgroundColor: '#007bff' }}></div>
+                  <h2 className="my-0 mx-3" id="contact-label" style={{ 
+                    fontSize: '2rem',
+                    fontWeight: 600,
+                    color: '#333'
+                  }}>
                     Turnberry Place Request Pricing & Details
                   </h2>
-                  <div className="w-10 horiz-line d-none d-sm-block"></div>
+                  <div className="w-10 horiz-line d-none d-sm-block" style={{ height: '2px', backgroundColor: '#007bff' }}></div>
                 </div>
                 <ContactForm title="Turnberry Place Request Pricing & Details" />
               </div>
@@ -694,46 +714,104 @@ function HomePageContent() {
       </div>
 
       {/* Agent Section */}
-      <div className="card-content card-agent py-5">
-        <div className="container-fluid">
+      <div className="card-content card-agent py-5" style={{ paddingTop: '4rem', paddingBottom: '4rem', backgroundColor: '#f8f9fa' }}>
+        <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12">
-              <div className="row justify-content-center">
-                <div className="py-2 col-12 text-center">
-                  <h2>Dr. Jan Duffy, REALTOR</h2>
-                  <div className="my-1">
-                    The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
-                    <br /> License: S.0197614.LLC
-                  </div>
-                </div>
-                <div className="col-12 py-2 d-flex align-items-center justify-content-center">
-                  <Image
-                    className="img-fluid agent-photo"
-                    src="https://assets.cribflyer-proxy.com/cdn-cgi/image/width=500,fit=contain,rotate=0,format=auto,quality=100/4616/2/2953539/asset.jpg"
-                    alt="Dr. Jan Duffy, Las Vegas real estate expert specializing in Turnberry Place luxury condos"
-                    width={225}
-                    height={225}
-                  />
-                </div>
-                <div className="col-12 text-center py-2">
-                  <div className="py-2 d-flex flex-column flex-lg-row align-items-center justify-content-center" style={{ gap: "5px" }}>
-                    <div className="mx-2">
-                      <span className="">Call/Text:</span>{" "}
-                      <a href="tel:7022221988" title="Call or text Dr. Jan Duffy">
-                        (702) 222-1988
-                      </a>
+            <div className="col-12 col-lg-10">
+              <div className="card border-0 shadow-lg" style={{ borderRadius: '12px', overflow: 'hidden' }}>
+                <div className="card-body p-4 p-md-5">
+                  <div className="row align-items-center">
+                    <div className="col-12 col-md-4 text-center mb-4 mb-md-0">
+                      <Image
+                        className="img-fluid agent-photo rounded-circle"
+                        src="https://assets.cribflyer-proxy.com/cdn-cgi/image/width=500,fit=contain,rotate=0,format=auto,quality=100/4616/2/2953539/asset.jpg"
+                        alt="Dr. Jan Duffy, Las Vegas real estate expert specializing in Turnberry Place luxury condos"
+                        width={225}
+                        height={225}
+                        style={{
+                          border: '4px solid #007bff',
+                          boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                        }}
+                      />
                     </div>
-                    <div className="mx-2">
-                      <span className="">Office:</span>{" "}
-                      <a href="tel:7025001955" title="Berkshire Hathaway office">
-                        (702) 500-1955
-                      </a>
+                    <div className="col-12 col-md-8 text-center text-md-left">
+                      <h2 className="mb-3" style={{ fontSize: '2.25rem', fontWeight: 600, color: '#333' }}>
+                        Dr. Jan Duffy, REALTOR
+                      </h2>
+                      <p className="mb-3" style={{ fontSize: '1.1rem', color: '#495057', lineHeight: 1.6 }}>
+                        The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
+                      </p>
+                      <p className="mb-4 small text-muted">
+                        License: S.0197614.LLC
+                      </p>
+                      <div className="d-flex flex-column flex-md-row align-items-center justify-content-md-start gap-3">
+                        <div>
+                          <span className="font-weight-bold">Call/Text:</span>{" "}
+                          <a 
+                            href="tel:7022221988" 
+                            title="Call or text Dr. Jan Duffy"
+                            style={{
+                              fontSize: '1.25rem',
+                              fontWeight: 600,
+                              color: '#007bff',
+                              textDecoration: 'none'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.textDecoration = 'underline'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.textDecoration = 'none'
+                            }}
+                          >
+                            (702) 222-1988
+                          </a>
+                        </div>
+                        <div>
+                          <span className="font-weight-bold">Office:</span>{" "}
+                          <a 
+                            href="tel:7025001955" 
+                            title="Berkshire Hathaway office"
+                            style={{
+                              fontSize: '1.1rem',
+                              color: '#007bff',
+                              textDecoration: 'none'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.textDecoration = 'underline'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.textDecoration = 'none'
+                            }}
+                          >
+                            (702) 500-1955
+                          </a>
+                        </div>
+                      </div>
+                      <div className="mt-4">
+                        <Link 
+                          href="/agent" 
+                          className="btn btn-primary"
+                          title="View Dr. Jan Duffy's bio"
+                          style={{
+                            padding: '0.75rem 1.5rem',
+                            fontSize: '1rem',
+                            borderRadius: '6px',
+                            fontWeight: 600,
+                            transition: 'all 0.3s ease'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-2px)'
+                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,123,255,0.3)'
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)'
+                            e.currentTarget.style.boxShadow = 'none'
+                          }}
+                        >
+                          View Full Profile
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                  <div className="py-2">
-                    <Link href="/agent" className="btn btn-custom" title="View Dr. Jan Duffy's bio">
-                      View Bio
-                    </Link>
                   </div>
                 </div>
               </div>

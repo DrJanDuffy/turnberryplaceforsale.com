@@ -72,7 +72,7 @@ export function QuickSearchWidget() {
             </div>
 
             <div className="col-12 mb-3">
-              <label htmlFor="qs-tower" className="form-label small font-weight-bold">
+              <label htmlFor="qs-tower" className="form-label small font-weight-bold" style={{ color: '#495057', marginBottom: '0.5rem' }}>
                 Select a Tower
               </label>
               <select
@@ -80,6 +80,21 @@ export function QuickSearchWidget() {
                 className="form-control"
                 value={tower}
                 onChange={(e) => setTower(e.target.value)}
+                style={{
+                  borderRadius: '6px',
+                  border: '1px solid #ddd',
+                  padding: '0.75rem',
+                  fontSize: '0.95rem',
+                  transition: 'all 0.2s ease'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = '#007bff'
+                  e.currentTarget.style.boxShadow = '0 0 0 0.2rem rgba(0, 123, 255, 0.25)'
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = '#ddd'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
               >
                 <option value="">All Towers</option>
                 <option value="tower1">Tower 1</option>
@@ -90,7 +105,7 @@ export function QuickSearchWidget() {
             </div>
 
             <div className="col-12 col-md-6 mb-3">
-              <label htmlFor="qs-min-price" className="form-label small font-weight-bold">
+              <label htmlFor="qs-min-price" className="form-label small font-weight-bold" style={{ color: '#495057', marginBottom: '0.5rem' }}>
                 Minimum Price
               </label>
               <select
@@ -98,6 +113,21 @@ export function QuickSearchWidget() {
                 className="form-control"
                 value={minPrice}
                 onChange={(e) => setMinPrice(e.target.value)}
+                style={{
+                  borderRadius: '6px',
+                  border: '1px solid #ddd',
+                  padding: '0.75rem',
+                  fontSize: '0.95rem',
+                  transition: 'all 0.2s ease'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = '#007bff'
+                  e.currentTarget.style.boxShadow = '0 0 0 0.2rem rgba(0, 123, 255, 0.25)'
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = '#ddd'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
               >
                 <option value="">No Minimum</option>
                 <option value="800000">$800,000</option>
@@ -110,7 +140,7 @@ export function QuickSearchWidget() {
             </div>
 
             <div className="col-12 col-md-6 mb-3">
-              <label htmlFor="qs-max-price" className="form-label small font-weight-bold">
+              <label htmlFor="qs-max-price" className="form-label small font-weight-bold" style={{ color: '#495057', marginBottom: '0.5rem' }}>
                 Maximum Price
               </label>
               <select
@@ -118,6 +148,21 @@ export function QuickSearchWidget() {
                 className="form-control"
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(e.target.value)}
+                style={{
+                  borderRadius: '6px',
+                  border: '1px solid #ddd',
+                  padding: '0.75rem',
+                  fontSize: '0.95rem',
+                  transition: 'all 0.2s ease'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = '#007bff'
+                  e.currentTarget.style.boxShadow = '0 0 0 0.2rem rgba(0, 123, 255, 0.25)'
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = '#ddd'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
               >
                 <option value="">No Maximum</option>
                 <option value="1500000">$1,500,000</option>
@@ -130,7 +175,7 @@ export function QuickSearchWidget() {
             </div>
 
             <div className="col-12 col-md-6 mb-3">
-              <label htmlFor="qs-beds" className="form-label small font-weight-bold">
+              <label htmlFor="qs-beds" className="form-label small font-weight-bold" style={{ color: '#495057', marginBottom: '0.5rem' }}>
                 Beds
               </label>
               <select
@@ -138,6 +183,21 @@ export function QuickSearchWidget() {
                 className="form-control"
                 value={beds}
                 onChange={(e) => setBeds(e.target.value)}
+                style={{
+                  borderRadius: '6px',
+                  border: '1px solid #ddd',
+                  padding: '0.75rem',
+                  fontSize: '0.95rem',
+                  transition: 'all 0.2s ease'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = '#007bff'
+                  e.currentTarget.style.boxShadow = '0 0 0 0.2rem rgba(0, 123, 255, 0.25)'
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = '#ddd'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
               >
                 <option value="">Any</option>
                 <option value="1">1+</option>
@@ -148,7 +208,7 @@ export function QuickSearchWidget() {
             </div>
 
             <div className="col-12 col-md-6 mb-3">
-              <label htmlFor="qs-baths" className="form-label small font-weight-bold">
+              <label htmlFor="qs-baths" className="form-label small font-weight-bold" style={{ color: '#495057', marginBottom: '0.5rem' }}>
                 Baths
               </label>
               <select
@@ -156,6 +216,21 @@ export function QuickSearchWidget() {
                 className="form-control"
                 value={baths}
                 onChange={(e) => setBaths(e.target.value)}
+                style={{
+                  borderRadius: '6px',
+                  border: '1px solid #ddd',
+                  padding: '0.75rem',
+                  fontSize: '0.95rem',
+                  transition: 'all 0.2s ease'
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = '#007bff'
+                  e.currentTarget.style.boxShadow = '0 0 0 0.2rem rgba(0, 123, 255, 0.25)'
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = '#ddd'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
               >
                 <option value="">Any</option>
                 <option value="1">1+</option>
