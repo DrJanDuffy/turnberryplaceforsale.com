@@ -231,7 +231,7 @@ export default function AgentPage({ menus }: AgentPageProps) {
                   sort-order="STATUS_AND_SIGNIFICANT_CHANGE" 
                   listing-status="For Sale,Sold" 
                   property-types="SFR"
-                ></realscout-your-listings>
+                />
               </div>
             </div>
           </div>
