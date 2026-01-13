@@ -7,17 +7,17 @@
 
 /* Add top padding to pages that don't have hero header to account for fixed navbar */
 main .card-content:not(.card-top-header):first-of-type {
-  padding-top: calc(var(--navbar-height, 120px) + 2rem) !important;
+  padding-top: calc(var(--navbar-height, 80px) + 2rem) !important;
 }
 
 /* Ensure hero header accounts for navbar */
 .card-top-header {
-  margin-top: var(--navbar-height, 120px);
+  margin-top: var(--navbar-height, 80px);
 }
 
 /* Override for pages that start with hero (home page) */
 main .card-top-header:first-of-type {
-  margin-top: var(--navbar-height, 120px);
+  margin-top: var(--navbar-height, 80px);
 }
 
 /* Desktop-specific adjustments */
@@ -45,14 +45,14 @@ main .card-top-header:first-of-type {
   background-color: var(--nav-bg-color, rgba(26, 26, 26, 1));
   border-bottom: 1px solid var(--nav-border-bottom, rgba(0, 0, 0, 0.15));
   width: 100%;
-  min-height: 100px;
-  padding: 0.75rem 0;
+  min-height: auto;
+  padding: 0.5rem 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-top-nav .container-fluid {
-  min-height: 100px;
-  padding: 0.75rem 0;
+  min-height: auto;
+  padding: 0.5rem 0;
   display: flex;
   align-items: center;
 }
@@ -88,10 +88,10 @@ main .card-top-header:first-of-type {
 
 .card-top-nav .agent-photo {
   border-radius: 50%;
-  height: 75px;
-  width: 75px;
-  max-height: 75px;
-  max-width: 75px;
+  height: 60px;
+  width: 60px;
+  max-height: 60px;
+  max-width: 60px;
   object-fit: cover;
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
@@ -105,25 +105,26 @@ main .card-top-header:first-of-type {
 
 .card-top-nav .agent-text {
   padding-left: 0;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 0.8rem;
+  line-height: 1.4;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-width: 0;
   flex: 1;
-  gap: 2px;
+  gap: 1px;
 }
 
 .card-top-nav .agent-text .agent-name {
   font-weight: 600;
   margin-bottom: 0;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #fff;
   letter-spacing: 0.01em;
+  line-height: 1.2;
 }
 
 /* Desktop agent text styling */
@@ -169,16 +170,17 @@ main .card-top-header:first-of-type {
 }
 
 .card-top-nav .agent-text .agent-phone {
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .card-top-nav .agent-text .agent-phone a {
   color: #fff;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
   transition: opacity 0.2s ease;
+  line-height: 1.2;
 }
 
 .card-top-nav .agent-text .agent-phone a:hover {
@@ -193,8 +195,9 @@ main .card-top-header:first-of-type {
 }
 
 .card-top-nav .row {
-  min-height: 100px;
+  min-height: auto;
   align-items: center;
+  margin: 0;
 }
 
 .card-top-nav .nav-wrapper {
@@ -202,7 +205,7 @@ main .card-top-header:first-of-type {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  min-height: 75px;
+  min-height: auto;
   gap: 0.25rem;
   width: 100%;
   padding-left: 1rem;
@@ -248,18 +251,20 @@ main .card-top-header:first-of-type {
 /* Responsive navbar height adjustments */
 @media (max-width: 991.98px) {
   .card-top-nav {
-    min-height: 90px;
+    min-height: auto;
+    padding: 0.4rem 0;
   }
   
   .card-top-nav .container-fluid {
-    min-height: 90px;
+    min-height: auto;
+    padding: 0.4rem 0;
   }
   
   .card-top-nav .agent-photo {
-    height: 65px;
-    width: 65px;
-    max-height: 65px;
-    max-width: 65px;
+    height: 50px;
+    width: 50px;
+    max-height: 50px;
+    max-width: 50px;
   }
   
   .card-top-nav .agent-photo-wrapper {
@@ -282,18 +287,20 @@ main .card-top-header:first-of-type {
 
 @media (max-width: 767.98px) {
   .card-top-nav {
-    min-height: 80px;
+    min-height: auto;
+    padding: 0.35rem 0;
   }
   
   .card-top-nav .container-fluid {
-    min-height: 80px;
+    min-height: auto;
+    padding: 0.35rem 0;
   }
   
   .card-top-nav .agent-photo {
-    height: 55px;
-    width: 55px;
-    max-height: 55px;
-    max-width: 55px;
+    height: 45px;
+    width: 45px;
+    max-height: 45px;
+    max-width: 45px;
   }
   
   .card-top-nav .agent-photo-wrapper {
@@ -301,11 +308,11 @@ main .card-top-header:first-of-type {
   }
   
   .card-top-nav .row {
-    min-height: 80px;
+    min-height: auto;
   }
   
   .card-top-nav .nav-wrapper {
-    min-height: 55px;
+    min-height: auto;
   }
   
   .card-top-nav .agent-text {
@@ -324,22 +331,24 @@ main .card-top-header:first-of-type {
 
 @media (max-width: 575.98px) {
   .card-top-nav {
-    min-height: 75px;
+    min-height: auto;
+    padding: 0.3rem 0;
   }
   
   .card-top-nav .container-fluid {
-    min-height: 75px;
+    min-height: auto;
+    padding: 0.3rem 0;
   }
   
   .card-top-nav .row {
-    min-height: 75px;
+    min-height: auto;
   }
   
   .card-top-nav .agent-photo {
-    height: 50px;
-    width: 50px;
-    max-height: 50px;
-    max-width: 50px;
+    height: 40px;
+    width: 40px;
+    max-height: 40px;
+    max-width: 40px;
   }
   
   .card-top-nav .agent-photo-wrapper {
@@ -383,6 +392,7 @@ main .card-top-header:first-of-type {
   margin-top: 0;
   display: flex;
   flex-direction: column;
+  padding-top: 0;
 }
 
 .card-top-header::after {
