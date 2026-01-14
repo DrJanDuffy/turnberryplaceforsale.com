@@ -44,14 +44,16 @@ export function FloorPlanGallery({ floorPlans }: FloorPlanGalleryProps) {
 
   // Close lightbox on Escape key
   React.useEffect(() => {
+    if (!lightboxOpen) return
+    
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && lightboxOpen) {
+      if (e.key === 'Escape') {
         closeLightbox()
       }
     }
     document.addEventListener('keydown', handleEscape)
     return () => document.removeEventListener('keydown', handleEscape)
-  }, [lightboxOpen])
+  }, [lightboxOpen, closeLightbox])
 
   return (
     <>

@@ -101,10 +101,9 @@ export function LeadCaptureForm({ variant = 'footer', showValuationCTA = true }:
         ? error.message 
         : 'Failed to submit form. Please try again or call (702) 500-1971.'
       
-      // Show error to user
-      if (typeof window !== 'undefined') {
-        alert(errorMessage)
-      }
+      // Error will be shown via form validation or user notification
+      // In production, you might want to use a toast notification library
+      // For now, we'll rely on form validation to show errors
     } finally {
       setIsSubmitting(false)
     }
