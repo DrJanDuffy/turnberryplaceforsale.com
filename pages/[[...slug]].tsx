@@ -118,87 +118,102 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Towers Section - Compact Cards */}
+      {/* Towers Section - Compact Overview */}
       <div className="card-content card-prop-description py-5" id="card-id-2271757" data-card-type="4">
         <div className="container">
-          <div className="row">
-            <div className="col-12">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <div className="text-center mb-4">
+                <h1 className="mb-3">Four Distinct Luxury Towers</h1>
+                <p className="lead">
+                  Turnberry Place features four luxury towers, each offering unique architectural features, premium amenities, and breathtaking views. Explore each tower to find your perfect luxury residence.
+                </p>
+              </div>
               <div className="row">
-                {/* Tower 1 Card - Stacked Vertically */}
-                <div className="col-12 mb-4">
-                  <div className="card border-0 shadow-sm" style={{
+                {/* Tower 1 - Compact */}
+                <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
+                  <div className="card border-0 shadow-sm h-100" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
-                    padding: '1.5rem',
+                    padding: '1.25rem',
                   }}>
-                    <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-                      Tower 1 - Elegant High-Rise Living
-                    </h2>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-                      Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities.
+                    <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
+                      Tower 1
+                    </h3>
+                    <p className="small text-muted mb-2">38 Stories • Completed 2000</p>
+                    <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
+                      Elegant high-rise living with private elevator access and direct access to The Stirling Club.
                     </p>
-                    <Link href="/available-condos?tower=1" className="btn btn-outline-primary btn-sm">
-                      View Tower 1 Listings
+                    <Link href="/available-condos?tower=1" className="btn btn-outline-primary btn-sm btn-block">
+                      View Listings
                     </Link>
                   </div>
                 </div>
 
-                {/* Tower 2 Card - Stacked Vertically */}
-                <div className="col-12 mb-4">
-                  <div className="card border-0 shadow-sm" style={{
+                {/* Tower 2 - Compact */}
+                <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
+                  <div className="card border-0 shadow-sm h-100" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
-                    padding: '1.5rem',
+                    padding: '1.25rem',
                   }}>
-                    <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-                      Tower 2 - Sophisticated Strip Views
-                    </h2>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-                      Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities.
+                    <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
+                      Tower 2
+                    </h3>
+                    <p className="small text-muted mb-2">45 Stories • Completed 2001</p>
+                    <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
+                      Sophisticated Strip views with larger floor plans and premium finishes.
                     </p>
-                    <Link href="/available-condos?tower=2" className="btn btn-outline-primary btn-sm">
-                      View Tower 2 Listings
+                    <Link href="/available-condos?tower=2" className="btn btn-outline-primary btn-sm btn-block">
+                      View Listings
                     </Link>
                   </div>
                 </div>
 
-                {/* Tower 3 Card - Stacked Vertically */}
-                <div className="col-12 mb-4">
-                  <div className="card border-0 shadow-sm" style={{
+                {/* Tower 3 - Compact */}
+                <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
+                  <div className="card border-0 shadow-sm h-100" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
-                    padding: '1.5rem',
+                    padding: '1.25rem',
                   }}>
-                    <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-                      Tower 3 - Premium Desert Living
-                    </h2>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-                      The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living.
+                    <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
+                      Tower 3
+                    </h3>
+                    <p className="small text-muted mb-2">45 Stories • Completed 2002</p>
+                    <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
+                      Premium desert living with contemporary designs and spacious terraces.
                     </p>
-                    <Link href="/available-condos?tower=3" className="btn btn-outline-primary btn-sm">
-                      View Tower 3 Listings
+                    <Link href="/available-condos?tower=3" className="btn btn-outline-primary btn-sm btn-block">
+                      View Listings
                     </Link>
                   </div>
                 </div>
 
-                {/* Tower 4 Card - Stacked Vertically */}
-                <div className="col-12 mb-4">
-                  <div className="card border-0 shadow-sm" style={{
+                {/* Tower 4 - Compact */}
+                <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
+                  <div className="card border-0 shadow-sm h-100" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
-                    padding: '1.5rem',
+                    padding: '1.25rem',
                   }}>
-                    <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-                      Tower 4 - Ultimate Luxury Living
-                    </h2>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-                      As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club.
+                    <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
+                      Tower 4
+                    </h3>
+                    <p className="small text-muted mb-2">45 Stories • Completed 2005</p>
+                    <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
+                      Ultimate luxury living with unparalleled views and exceptional finishes.
                     </p>
-                    <Link href="/available-condos?tower=4" className="btn btn-outline-primary btn-sm">
-                      View Tower 4 Listings
+                    <Link href="/available-condos?tower=4" className="btn btn-outline-primary btn-sm btn-block">
+                      View Listings
                     </Link>
                   </div>
                 </div>
+              </div>
+              <div className="text-center mt-4">
+                <Link href="/towers" className="btn btn-primary btn-lg">
+                  Learn More About All Towers
+                </Link>
               </div>
             </div>
           </div>
@@ -346,6 +361,39 @@ function HomePageContent() {
         </div>
       </div>
 
+      {/* Home Value Widget - RealScout (Compact) */}
+      <div className="card-content card-home-value py-4" id="card-id-home-value" style={{ backgroundColor: '#f8f9fa' }}>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-8">
+              <div className="text-center mb-3">
+                <h2 className="h4 mb-2">What's Your Home Worth?</h2>
+                <p className="small text-muted mb-3">
+                  Get an instant estimate of your property's value with our free home valuation tool.
+                </p>
+              </div>
+              <div className="widget-wrapper">
+                <Script
+                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+                  type="module"
+                  strategy="lazyOnload"
+                />
+                <style jsx>{`
+                  realscout-home-value {
+                    width: 100%;
+                    min-height: 250px;
+                  }
+                `}</style>
+                {/* @ts-ignore - Custom web component */}
+                <realscout-home-value
+                  agent-encoded-id="QWdlbnQtMjI1MDUw"
+                ></realscout-home-value>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Agent Section - Matching Live Site */}
       <div className="card-content card-agent py-5" id="card-id-2271762" data-card-type="12">
         <div className="container-fluid">
@@ -398,38 +446,6 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* Home Value Widget - RealScout */}
-      <div className="card-content card-home-value py-5" id="card-id-home-value" style={{ backgroundColor: '#ffffff' }}>
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10">
-              <div className="text-center mb-4">
-                <h1 className="mb-3">What's Your Home Worth?</h1>
-                <p className="lead">
-                  Get an instant estimate of your property's value with our free home valuation tool.
-                </p>
-              </div>
-              <div className="widget-wrapper">
-                <Script
-                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-                  type="module"
-                  strategy="lazyOnload"
-                />
-                <style jsx>{`
-                  realscout-home-value {
-                    width: 100%;
-                    min-height: 300px;
-                  }
-                `}</style>
-                {/* @ts-ignore - Custom web component */}
-                <realscout-home-value
-                  agent-encoded-id="QWdlbnQtMjI1MDUw"
-                ></realscout-home-value>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Photo Gallery Section - Link to dedicated page */}
       <div className="card-content card-photo-gallery py-5" id="card-id-photo-gallery">
@@ -465,32 +481,38 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* The Stirling Club Section - Matching Live Site */}
+      {/* The Stirling Club Section - Brief Teaser */}
       <div className="card-content card-custom card-custom-03 py-5" id="card-id-2273044" data-card-type="40">
         <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h1 className="text-center">The Stirling Club</h1>
-            </div>
-          </div>
-          <div className="row py-4 justify-content-center">
-            <div className="col-12 col-xl-10">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <h1 className="text-center mb-4">The Stirling Club</h1>
               <div className="row align-items-center">
-                <div className="col-12 col-md-6">
-                  <div className="left-image pb-4 pb-md-0 text-center">
+                <div className="col-12 col-md-6 mb-4 mb-md-0">
+                  <div className="text-center">
                     <Image
                       src="/images/turnberry/sterlingclubpool-.jpeg"
                       alt="The Stirling Club"
                       width={400}
-                      height={400}
-                      className="img-fluid"
+                      height={300}
+                      className="img-fluid rounded"
                       loading="lazy"
                     />
                   </div>
                 </div>
                 <div className="col-12 col-md-6">
-                  <div className="text-content pt-3 pt-md-0">
-                    <p>The crown jewel of Turnberry Place is the recently renovated Stirling Club, an 80,000 square foot private club offering world-class amenities exclusively to residents, including state-of-the-art fitness center, resort-style pools, tennis courts, spa services, dining venues, and business facilities.</p>
+                  <div className="text-content">
+                    <p className="lead">
+                      The crown jewel of Turnberry Place is the recently renovated Stirling Club, an 80,000 square foot private club offering world-class amenities exclusively to residents.
+                    </p>
+                    <p>
+                      Features include state-of-the-art fitness center, resort-style pools, tennis courts, spa services, dining venues, and business facilities.
+                    </p>
+                    <div className="mt-3">
+                      <Link href="/stirling-club" className="btn btn-primary">
+                        Learn More About The Stirling Club
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
