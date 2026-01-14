@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import { DrupalMenuLinkContent } from "next-drupal"
 import classNames from "classnames"
 import Image from "next/image"
+import { Menu, X } from "lucide-react"
 
 import { LocaleSwitcher } from "components/locale-switcher"
 import Link from "next/link"
@@ -149,42 +150,18 @@ export function Navbar({ links, ...props }: NavbarProps) {
                 </Link>
               </div>
             </div>
-            <a
-              className="ml-auto pr-2 d-inline d-lg-none nav-mobile cursor-pointer align-items-center"
+            <button
+              className="ml-auto pr-2 d-inline d-lg-none nav-mobile cursor-pointer align-items-center bg-transparent border-0 text-white"
               aria-label="Toggle mobile navigation"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              type="button"
             >
-              <svg
-                height="40"
-                width="40"
-                aria-hidden="true"
-                focusable="false"
-                className={classNames("burger-icon", mobileMenuOpen && "d-none")}
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-                />
-              </svg>
-              <svg
-                height="40"
-                width="40"
-                aria-hidden="true"
-                focusable="false"
-                className={classNames("x-icon", !mobileMenuOpen && "d-none")}
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M207.6 256l107.72-107.72c6.23-6.23 6.23-16.34 0-22.58l-25.03-25.03c-6.23-6.23-16.34-6.23-22.58 0L160 208.4 52.28 100.68c-6.23-6.23-16.34-6.23-22.58 0L4.68 125.7c-6.23 6.23-6.23 16.34 0 22.58L112.4 256 4.68 363.72c-6.23 6.23-6.23 16.34 0 22.58l25.03 25.03c6.23 6.23 16.34 6.23 22.58 0L160 303.6l107.72 107.72c6.23 6.23 16.34 6.23 22.58 0l25.03-25.03c6.23-6.23 6.23-16.34 0-22.58L207.6 256z"
-                />
-              </svg>
-            </a>
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
         </div>
       </div>

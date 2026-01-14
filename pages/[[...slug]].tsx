@@ -21,6 +21,7 @@ import { ContactForm } from "components/contact-form"
 import { JsonLdSchema } from "components/json-ld-schema"
 import { StickyCTA } from "components/sticky-cta"
 import { DynamicUnitCount } from "components/dynamic-unit-count"
+import { PropertyGrid } from "components/property-grid"
 import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 // Components moved to other pages:
 // WhyWorkWithUs, ClientTestimonials, PowerOfNumbers, InTheMedia → /agent page
@@ -170,156 +171,59 @@ function HomePageContent() {
         </div>
       </section>
 
-      {/* Towers Section - Compact Overview */}
+      {/* Towers Section - Using Property Grid Component */}
       <section className="card-content card-prop-description py-5" id="card-id-2271757" data-card-type="4" aria-label="Turnberry Place Towers">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10">
-              <div className="text-center mb-4">
-                <h1 className="mb-3">Four Distinct Luxury Towers</h1>
-                <p className="lead">
-                  Turnberry Place features four luxury towers, each offering unique architectural features, premium amenities, and breathtaking views. Explore each tower to find your perfect luxury residence.
-                </p>
-              </div>
-              <div className="row">
-                {/* Tower 1 - Compact with Image */}
-                <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div className="card border-0 shadow-sm h-100" style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '4px',
-                    overflow: 'hidden',
-                  }}>
-                    <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
-                      <Image
-                        src={homepagePhotos.tower1}
-                        alt="Turnberry Place Tower 1 - Elegant High-Rise Living"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        style={{ objectFit: 'cover' }}
-                        loading="lazy"
-                        quality={85}
-                      />
-                    </div>
-                    <div style={{ padding: '1.25rem' }}>
-                      <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
-                        Tower 1
-                      </h3>
-                      <p className="small text-muted mb-2">38 Stories • Completed 2000</p>
-                      <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
-                        Elegant high-rise living with private elevator access and direct access to The Stirling Club.
-                      </p>
-                      <Link href="/available-condos?tower=1" className="btn btn-outline-primary btn-sm btn-block">
-                        View Listings
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Tower 2 - Compact with Image */}
-                <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div className="card border-0 shadow-sm h-100" style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '4px',
-                    overflow: 'hidden',
-                  }}>
-                    <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
-                      <Image
-                        src={homepagePhotos.tower2}
-                        alt="Turnberry Place Tower 2 - Sophisticated Strip Views"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        style={{ objectFit: 'cover' }}
-                        loading="lazy"
-                        quality={85}
-                      />
-                    </div>
-                    <div style={{ padding: '1.25rem' }}>
-                      <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
-                        Tower 2
-                      </h3>
-                      <p className="small text-muted mb-2">45 Stories • Completed 2001</p>
-                      <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
-                        Sophisticated Strip views with larger floor plans and premium finishes.
-                      </p>
-                      <Link href="/available-condos?tower=2" className="btn btn-outline-primary btn-sm btn-block">
-                        View Listings
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Tower 3 - Compact with Image */}
-                <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div className="card border-0 shadow-sm h-100" style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '4px',
-                    overflow: 'hidden',
-                  }}>
-                    <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
-                      <Image
-                        src={homepagePhotos.tower3}
-                        alt="Turnberry Place Tower 3 - Premium Desert Living"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        style={{ objectFit: 'cover' }}
-                        loading="lazy"
-                        quality={85}
-                      />
-                    </div>
-                    <div style={{ padding: '1.25rem' }}>
-                      <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
-                        Tower 3
-                      </h3>
-                      <p className="small text-muted mb-2">45 Stories • Completed 2002</p>
-                      <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
-                        Premium desert living with contemporary designs and spacious terraces.
-                      </p>
-                      <Link href="/available-condos?tower=3" className="btn btn-outline-primary btn-sm btn-block">
-                        View Listings
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Tower 4 - Compact with Image */}
-                <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
-                  <div className="card border-0 shadow-sm h-100" style={{
-                    backgroundColor: '#ffffff',
-                    borderRadius: '4px',
-                    overflow: 'hidden',
-                  }}>
-                    <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
-                      <Image
-                        src={homepagePhotos.tower4}
-                        alt="Turnberry Place Tower 4 - Ultimate Luxury Living"
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        style={{ objectFit: 'cover' }}
-                        loading="lazy"
-                        quality={85}
-                      />
-                    </div>
-                    <div style={{ padding: '1.25rem' }}>
-                      <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
-                        Tower 4
-                      </h3>
-                      <p className="small text-muted mb-2">45 Stories • Completed 2005</p>
-                      <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
-                        Ultimate luxury living with unparalleled views and exceptional finishes.
-                      </p>
-                      <Link href="/available-condos?tower=4" className="btn btn-outline-primary btn-sm btn-block">
-                        View Listings
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center mt-4">
-                <Link href="/towers" className="btn btn-primary btn-lg">
-                  Learn More About All Towers
-                </Link>
-              </div>
-            </div>
+          <PropertyGrid
+            title="Four Distinct Luxury Towers"
+            subtitle="Turnberry Place features four luxury towers, each offering unique architectural features, premium amenities, and breathtaking views. Explore each tower to find your perfect luxury residence."
+            properties={[
+              {
+                id: 'tower-1',
+                title: 'Tower 1',
+                image: homepagePhotos.tower1,
+                yearCompleted: 2000,
+                storyCount: 38,
+                description: 'Elegant high-rise living with private elevator access and direct access to The Stirling Club.',
+                href: '/available-condos?tower=1',
+                alt: 'Turnberry Place Tower 1 - Elegant High-Rise Living',
+              },
+              {
+                id: 'tower-2',
+                title: 'Tower 2',
+                image: homepagePhotos.tower2,
+                yearCompleted: 2001,
+                storyCount: 45,
+                description: 'Sophisticated Strip views with larger floor plans and premium finishes.',
+                href: '/available-condos?tower=2',
+                alt: 'Turnberry Place Tower 2 - Sophisticated Strip Views',
+              },
+              {
+                id: 'tower-3',
+                title: 'Tower 3',
+                image: homepagePhotos.tower3,
+                yearCompleted: 2002,
+                storyCount: 45,
+                description: 'Premium desert living with contemporary designs and spacious terraces.',
+                href: '/available-condos?tower=3',
+                alt: 'Turnberry Place Tower 3 - Premium Desert Living',
+              },
+              {
+                id: 'tower-4',
+                title: 'Tower 4',
+                image: homepagePhotos.tower4,
+                yearCompleted: 2005,
+                storyCount: 45,
+                description: 'Ultimate luxury living with unparalleled views and exceptional finishes.',
+                href: '/available-condos?tower=4',
+                alt: 'Turnberry Place Tower 4 - Ultimate Luxury Living',
+              },
+            ]}
+          />
+          <div className="text-center mt-6">
+            <Link href="/towers" className="btn btn-primary btn-lg">
+              Learn More About All Towers
+            </Link>
           </div>
         </div>
       </section>

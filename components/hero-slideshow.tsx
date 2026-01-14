@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { DynamicUnitCount } from "components/dynamic-unit-count"
+import { ArrowRight, Phone } from "lucide-react"
 
 interface HeroSlideshowProps {
   photos: string[]
