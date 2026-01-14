@@ -51,11 +51,16 @@ export function PropertyGrid({ properties, title, subtitle }: PropertyGridProps)
 
 function PropertyCard({ property }: { property: PropertyCard }) {
   return (
-    <div className="card border-0 shadow-sm h-100" style={{
-      backgroundColor: '#ffffff',
-      borderRadius: '4px',
-      overflow: 'hidden',
-    }}>
+    <div 
+      className="card border-0 shadow-sm h-100 property-card-hover" 
+      style={{
+        backgroundColor: '#ffffff',
+        borderRadius: '4px',
+        overflow: 'hidden',
+        transition: 'all 0.3s ease',
+        cursor: 'pointer',
+      }}
+    >
       {/* Image */}
       <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
         <Image
