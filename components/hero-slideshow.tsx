@@ -11,6 +11,21 @@ interface HeroSlideshowProps {
 export function HeroSlideshow({ photos }: HeroSlideshowProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set<number>())
+
+  // Preload all images to prevent black screens
+  useEffect(() => {
+    photos.forEach((photo, index) => {
+      const img = document.createElement('img')
+      img.src = photo
+      img.onload = () => {
+        setLoadedImages((prev) => new Set(prev).add(index))
+      }
+      img.onerror = () => {
+        console.warn(`Failed to load hero image ${index + 1}: ${photo}`)
+      }
+    })
+  }, [photos])
 
   useEffect(() => {
     if (isPaused) return
@@ -27,25 +42,62 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
     setTimeout(() => setIsPaused(false), 10000)
   }
 
+  // Individual brightness adjustments per photo
+  const getBrightnessFilter = (index: number) => {
+    // Photo 6 (index 5) needs more brightness
+    if (index === 5) {
+      return "brightness(1.3) contrast(1.1)"
+    }
+    // Photos 2 and 3 (indices 1 and 2) - ensure they're visible
+    if (index === 1 || index === 2) {
+      return "brightness(1.2) contrast(1.1)"
+    }
+    // Default brightness for other photos
+    return "brightness(1.1) contrast(1.05)"
+  }
+
   return (
     <header className="card-top-header relative h-screen min-h-[500px] w-full">
       {/* Slideshow */}
       <div className="slick-slideshow absolute inset-0 z-0">
-        {photos.map((photo, index) => (
-          <div
-            key={index}
-            className={`slide absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
-            style={{
-              backgroundImage: `url(${photo})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              filter: "brightness(1.1) contrast(1.05)", // Brighten images slightly
-            }}
-          />
-        ))}
+        {photos.map((photo, index) => {
+          const isLoaded = loadedImages.has(index)
+          const isCurrent = index === currentSlide
+          
+          return (
+            <div
+              key={index}
+              className={`slide absolute inset-0 transition-opacity duration-1000 ${
+                isCurrent ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
+              style={{
+                backgroundImage: isLoaded ? `url(${photo})` : 'none',
+                backgroundColor: isLoaded ? 'transparent' : '#1a1a1a', // Fallback color while loading
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                filter: getBrightnessFilter(index), // Individual brightness per photo
+                transition: isLoaded ? 'opacity 1s ease-in-out, filter 0.3s ease' : 'opacity 1s ease-in-out',
+              }}
+            >
+              {/* Show loading state for images that haven't loaded yet */}
+              {!isLoaded && isCurrent && (
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: '#1a1a1a',
+                  color: '#ffffff',
+                  fontSize: '0.875rem',
+                }}>
+                  Loading image...
+                </div>
+              )}
+            </div>
+          )
+        })}
       </div>
 
       {/* Overlay - Reduced opacity for brighter images */}
