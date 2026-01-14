@@ -1039,6 +1039,22 @@ main .card-top-header:first-of-type {
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4px);
+  /* Button-specific styles */
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+/* Focus state for keyboard navigation */
+.thumbnails-bar .photo-thumbnail:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+.thumbnails-bar .photo-thumbnail:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 
 .thumbnails-bar .photo-thumbnail img {
@@ -1058,6 +1074,11 @@ main .card-top-header:first-of-type {
   transform: scale(1.15);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.thumbnails-bar .photo-thumbnail.selected:focus {
+  outline: 2px solid rgba(255, 255, 255, 1);
+  outline-offset: 2px;
 }
 
 /* Price Features - Matching Live Site */
