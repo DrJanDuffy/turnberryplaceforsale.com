@@ -30,17 +30,17 @@ export function FloorPlanGallery({ floorPlans }: FloorPlanGalleryProps) {
     ? floorPlans
     : floorPlans.filter(plan => plan.category === selectedCategory)
 
-  const openLightbox = (plan: FloorPlan) => {
+  const openLightbox = useCallback((plan: FloorPlan) => {
     setSelectedPlan(plan)
     setLightboxOpen(true)
     document.body.style.overflow = 'hidden'
-  }
+  }, [])
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setLightboxOpen(false)
     setSelectedPlan(null)
     document.body.style.overflow = ''
-  }
+  }, [])
 
   // Close lightbox on Escape key
   React.useEffect(() => {
