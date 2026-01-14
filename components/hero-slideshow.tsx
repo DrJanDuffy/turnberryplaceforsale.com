@@ -42,13 +42,14 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
+              filter: "brightness(1.1) contrast(1.05)", // Brighten images slightly
             }}
           />
         ))}
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-35 z-10" />
+      {/* Overlay - Reduced opacity for brighter images */}
+      <div className="absolute inset-0 bg-black opacity-15 z-10" />
 
       {/* Hero Content */}
       <div className="container h-100 d-flex align-items-center justify-content-center">
