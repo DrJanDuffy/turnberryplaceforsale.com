@@ -95,7 +95,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
               <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center" style={{ gap: '0.75rem' }}>
                 <Link 
                   href="/available-condos" 
-                  className="btn btn-light btn-lg px-4 py-2"
+                  className="btn btn-light btn-lg px-6 py-3 d-flex align-items-center"
                   style={{
                     fontFamily: 'Cinzel, serif',
                     fontWeight: 500,
@@ -103,13 +103,15 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                     letterSpacing: '0.5px',
                     borderRadius: '4px',
                     boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                    gap: '0.5rem',
                   }}
                 >
-                  View Current Listings
+                  View Listings
+                  <ArrowRight className="w-4 h-4" style={{ flexShrink: 0 }} />
                 </Link>
                 <Link 
                   href="/request-details" 
-                  className="btn btn-outline-light btn-lg px-4 py-2"
+                  className="btn btn-outline-light btn-lg px-6 py-3 d-flex align-items-center"
                   style={{
                     fontFamily: 'Cinzel, serif',
                     fontWeight: 500,
@@ -117,9 +119,11 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                     letterSpacing: '0.5px',
                     borderRadius: '4px',
                     borderWidth: '2px',
+                    gap: '0.5rem',
                   }}
                 >
-                  See Available Condos
+                  Request Details
+                  <Phone className="w-4 h-4" style={{ flexShrink: 0 }} />
                 </Link>
               </div>
               <p className="text-white mb-0" style={{ 

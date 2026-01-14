@@ -77,13 +77,13 @@ function PropertyCard({ property }: { property: PropertyCard }) {
 
         {/* Meta Info */}
         <div className="mb-2">
-          <p className="small text-muted mb-1">
-            <Layers className="d-inline w-3 h-3 mr-1" style={{ verticalAlign: 'middle' }} />
-            {property.storyCount} Stories
+          <p className="small text-muted mb-1 d-flex align-items-center">
+            <Layers className="w-3 h-3 mr-1" style={{ flexShrink: 0 }} />
+            <span>{property.storyCount} Stories</span>
           </p>
-          <p className="small text-muted mb-2">
-            <Calendar className="d-inline w-3 h-3 mr-1" style={{ verticalAlign: 'middle' }} />
-            Completed {property.yearCompleted}
+          <p className="small text-muted mb-2 d-flex align-items-center">
+            <Calendar className="w-3 h-3 mr-1" style={{ flexShrink: 0 }} />
+            <span>Completed {property.yearCompleted}</span>
           </p>
         </div>
         
