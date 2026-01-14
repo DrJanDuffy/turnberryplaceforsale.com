@@ -38,21 +38,21 @@ export function Meta({ title, tags }: MetaProps) {
         })
       ) : (
         <>
-          <title>{title || "Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale"}</title>
+          <title>{title || "Turnberry Place Las Vegas Condos For Sale | $800K-$10M+ | Dr. Jan Duffy"}</title>
           <meta
             key="description"
             name="description"
-            content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. 4 luxury towers from $800K-$10M+ with Strip views & exclusive Stirling Club access. Call/text 702-222-1988"
+            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-222-1964"
           />
           <meta
             key="og_title"
             property="og:title"
-            content={title || "Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale"}
+            content={title || "Turnberry Place Las Vegas Condos For Sale | $800K-$10M+ | Dr. Jan Duffy"}
           />
           <meta
             key="og_description"
             property="og:description"
-            content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. 4 luxury towers from $800K-$10M+ with Strip views & exclusive Stirling Club access. Call/text 702-222-1988"
+            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-222-1964"
           />
           <meta
             key="og_url"
@@ -93,12 +93,12 @@ export function Meta({ title, tags }: MetaProps) {
           <meta
             key="twitter_title"
             name="twitter:title"
-            content={title || "Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale"}
+            content={title || "Turnberry Place Las Vegas Condos For Sale | $800K-$10M+ | Dr. Jan Duffy"}
           />
           <meta
             key="twitter_description"
             name="twitter:description"
-            content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. 4 luxury towers from $800K-$10M+ with Strip views & exclusive Stirling Club access. Call/text 702-222-1988"
+            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-222-1964"
           />
           <meta
             key="twitter_image"

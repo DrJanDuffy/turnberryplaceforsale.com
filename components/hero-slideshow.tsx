@@ -73,7 +73,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
               </h4>
               <div className="w-10 horiz-line" style={{ flex: '1', maxWidth: '100px', height: '2px', backgroundColor: '#ffffff' }}></div>
             </div>
-            <div className="mt-4 d-flex align-items-center justify-content-center">
+            <div className="mt-4 d-flex flex-column align-items-center justify-content-center" style={{ gap: '1rem' }}>
               <div className="p-2 status-banner" style={{
                 border: '1px solid rgba(255, 255, 255, 1)',
                 borderRadius: '4px',
@@ -91,6 +91,43 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                   Units for Sale
                 </h4>
               </div>
+              <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center" style={{ gap: '0.75rem' }}>
+                <Link 
+                  href="/available-condos" 
+                  className="btn btn-light btn-lg px-4 py-2"
+                  style={{
+                    fontFamily: 'Cinzel, serif',
+                    fontWeight: 500,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    borderRadius: '4px',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                  }}
+                >
+                  View Current Listings
+                </Link>
+                <Link 
+                  href="/request-details" 
+                  className="btn btn-outline-light btn-lg px-4 py-2"
+                  style={{
+                    fontFamily: 'Cinzel, serif',
+                    fontWeight: 500,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    borderRadius: '4px',
+                    borderWidth: '2px',
+                  }}
+                >
+                  See Available Condos
+                </Link>
+              </div>
+              <p className="text-white mb-0" style={{ 
+                fontSize: '0.875rem', 
+                textShadow: '1px 1px 4px rgba(0,0,0,0.6)',
+                fontStyle: 'italic',
+              }}>
+                Updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })} 2025
+              </p>
             </div>
           </div>
         </div>
@@ -115,7 +152,9 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
               sizes="100px"
               style={{ objectFit: 'cover' }}
               loading={index === 0 ? 'eager' : 'lazy'}
-              quality={75}
+              quality={60}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
             />
           </div>
         ))}

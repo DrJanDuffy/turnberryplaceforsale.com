@@ -48,7 +48,7 @@ export function AgentBioModal({ agentId = '14435' }: AgentBioModalProps) {
               <p className="mb-2">
                 The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
               </p>
-              <p className="mb-3">0197614 NV</p>
+              <p className="mb-3">S.0197614.LLC</p>
               <Image
                 className="img-fluid agent-photo rounded-circle mb-3"
                 src="/images/turnberry/asset-1.jpg"
@@ -57,7 +57,7 @@ export function AgentBioModal({ agentId = '14435' }: AgentBioModalProps) {
                 height={200}
               />
               <p className="mb-3">
-                <strong>Mobile:</strong> <a href="tel:7022221988">(702) 222-1988</a>
+                <strong>Mobile:</strong> <a href="tel:7022221964">(702) 222-1964</a>
               </p>
             </div>
 
@@ -76,7 +76,7 @@ export function AgentBioModal({ agentId = '14435' }: AgentBioModalProps) {
               </p>
               <p className="mt-4">
                 <strong>For expert guidance in Turnberry Place real estate, contact Dr. Jan Duffy:</strong><br />
-                Phone: <a href="tel:7022221988">(702) 222-1988</a><br />
+                Phone: <a href="tel:7022221964">(702) 222-1964</a><br />
                 Email: <a href="mailto:jan@lasvegas55plushomes.com">jan@lasvegas55plushomes.com</a>
               </p>
             </div>

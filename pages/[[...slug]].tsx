@@ -42,11 +42,11 @@ export default function NodePage({ node, menus }: NodePageProps) {
   if (node.id === 'home' && node.type === 'node--landing_page') {
     return (
       <Layout menus={menus}>
-        <Meta title="Turnberry Place Las Vegas | Luxury High-Rise Condos For Sale" />
+        <Meta title="Turnberry Place Las Vegas Condos For Sale | $800K-$10M+ | Dr. Jan Duffy" />
         <Head>
           <meta
             name="description"
-            content="Discover luxury high-rise condos for sale at Turnberry Place Las Vegas. 4 luxury towers from $800K-$10M+ with Strip views & exclusive Stirling Club access. Call/text 702-222-1988"
+            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-222-1964"
           />
           {/* Preload first hero image for faster LCP */}
           <link
@@ -106,6 +106,9 @@ function HomePageContent() {
               <h1 className="mb-1">Turnberry Place Las Vegas</h1>
               <p>Las Vegas, NV 89109</p>
               <h3>4 Luxury Towers from $800,000 to $10M+</h3>
+              <p className="text-muted mt-2" style={{ fontSize: '0.9rem' }}>
+                Updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })} 2025
+              </p>
             </div>
           </div>
         </div>
@@ -127,9 +130,12 @@ function HomePageContent() {
                     <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
                       Tower 1 - Elegant High-Rise Living
                     </h2>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>
                       Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities.
                     </p>
+                    <Link href="/available-condos?tower=1" className="btn btn-outline-primary btn-sm">
+                      View Tower 1 Listings
+                    </Link>
                   </div>
                 </div>
 
@@ -143,9 +149,12 @@ function HomePageContent() {
                     <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
                       Tower 2 - Sophisticated Strip Views
                     </h2>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>
                       Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities.
                     </p>
+                    <Link href="/available-condos?tower=2" className="btn btn-outline-primary btn-sm">
+                      View Tower 2 Listings
+                    </Link>
                   </div>
                 </div>
 
@@ -159,9 +168,12 @@ function HomePageContent() {
                     <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
                       Tower 3 - Premium Desert Living
                     </h2>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>
                       The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living.
                     </p>
+                    <Link href="/available-condos?tower=3" className="btn btn-outline-primary btn-sm">
+                      View Tower 3 Listings
+                    </Link>
                   </div>
                 </div>
 
@@ -175,9 +187,12 @@ function HomePageContent() {
                     <h2 className="mb-3" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
                       Tower 4 - Ultimate Luxury Living
                     </h2>
-                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: 0 }}>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '1rem' }}>
                       As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club.
                     </p>
+                    <Link href="/available-condos?tower=4" className="btn btn-outline-primary btn-sm">
+                      View Tower 4 Listings
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -239,10 +254,10 @@ function HomePageContent() {
                 </div>
                 <div className="text-center pb-4">
                   <p className="none-scheduled mb-4">
-                    No open houses scheduled
+                    Schedule a Private Showing
                   </p>
-                  <Link className="btn btn-custom btn-lg" href="/request-details" title="Request Showing">
-                    Request Showing
+                  <Link className="btn btn-custom btn-lg" href="/request-details" title="Schedule Private Showing">
+                    Schedule Private Showing
                   </Link>
                 </div>
               </div>
@@ -289,7 +304,7 @@ function HomePageContent() {
                   <h1>Dr. Jan Duffy, REALTOR</h1>
                   <div className="my-1">
                     The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
-                    <br /> 0197614 NV
+                    <br /> S.0197614.LLC
                   </div>
                 </div>
                 <div className="col-12 py-2 d-flex align-items-center justify-content-center">
@@ -305,10 +320,10 @@ function HomePageContent() {
                 <div className="col-12 text-center py-2">
                   <div className="py-2 d-flex flex-column flex-lg-row align-items-center justify-content-center" style={{ gap: '5px' }}>
                     <div className="mx-2" itemScope itemType="https://schema.org/LocalBusiness">
-                      <span>Mobile:</span> <a href="tel:7022221988" title="Phone cell">(702) 222-1988</a>
+                      <span>Mobile:</span> <a href="tel:7022221964" title="Phone cell">(702) 222-1964</a>
                     </div>
                     <div className="mx-2" itemScope itemType="https://schema.org/LocalBusiness">
-                      <span>Office:</span> <a href="tel:7022221988" title="Phone office">(702) 222-1988</a>
+                      <span>Office:</span> <a href="tel:7025001955" title="Phone office">(702) 500-1955</a>
                     </div>
                   </div>
                   <div className="py-2">
@@ -325,6 +340,7 @@ function HomePageContent() {
                     width={225}
                     height={225}
                     loading="lazy"
+                    quality={85}
                   />
                 </div>
               </div>

@@ -30,7 +30,7 @@ export function JsonLdSchema({
     description:
       'Las Vegas real estate expert specializing in luxury high-rise condos at Turnberry Place. Licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties.',
     url: baseUrl,
-    telephone: ['+17025001955', '+17022221988'],
+    telephone: ['+17025001955', '+17022221964'],
     email: 'jan@lasvegas55plushomes.com',
     identifier: {
       '@type': 'PropertyValue',
@@ -128,9 +128,58 @@ export function JsonLdSchema({
   // Always include LocalBusiness/RealEstateAgent schema
   schemas.push(localBusinessSchema)
 
+  // FAQ schema for home page
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is Turnberry Place Las Vegas?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Turnberry Place is a luxury high-rise condominium community in Las Vegas featuring 4 towers with 1-4 bedroom residences, Strip views, and exclusive access to The Stirling Club private amenities.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the price range for condos at Turnberry Place?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Turnberry Place condos range from $800,000 to $10,000,000+ depending on tower, floor plan, and views.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What amenities are available at Turnberry Place?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Turnberry Place residents enjoy exclusive access to The Stirling Club, featuring pools, fitness center, tennis courts, spa, dining, and concierge services. The community is gated with 24-hour security.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How many towers are at Turnberry Place?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Turnberry Place consists of 4 luxury towers: Tower 1 (38 stories, completed 2000), Tower 2 (45 stories, completed 2001), Tower 3 (45 stories, completed 2002), and Tower 4 (45 stories, completed 2005).',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How can I schedule a showing at Turnberry Place?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'You can schedule a private showing by calling Dr. Jan Duffy at (702) 222-1964 or by requesting details through our online form.',
+        },
+      },
+    ],
+  }
+
   // Add property schema for home page
   if (type === 'home') {
     schemas.push(propertySchema)
+    schemas.push(faqSchema)
   }
 
   return (

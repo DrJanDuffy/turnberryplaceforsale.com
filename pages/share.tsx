@@ -70,7 +70,7 @@ export default function SharePage({ menus }: SharePageProps) {
         <title>Share - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Share Turnberry Place Las Vegas luxury condos with friends. Social media sharing & send-to-friend form. Call/text 702-222-1988"
+          content="Share Turnberry Place Las Vegas luxury condos with friends. Social media sharing & send-to-friend form. Call/text 702-222-1964"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -325,7 +325,7 @@ export default function SharePage({ menus }: SharePageProps) {
                 Whether you're sharing Turnberry Place with others or have received a share and want to learn more, I'm available to provide the information and support you need. My goal is to help everyone discover the exceptional quality and lifestyle that Turnberry Place offers and find the perfect luxury residence that meets their needs.
               </p>
               <p className="mt-4">
-                <strong>Have questions about Turnberry Place?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> or contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>. I'm here to provide comprehensive information about Turnberry Place and help you or those you've shared with explore this exceptional luxury community.
+                <strong>Have questions about Turnberry Place?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> or contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>. I'm here to provide comprehensive information about Turnberry Place and help you or those you've shared with explore this exceptional luxury community.
               </p>
             </div>
           </div>

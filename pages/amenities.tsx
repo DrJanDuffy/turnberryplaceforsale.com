@@ -31,7 +31,7 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
         <title>Amenities - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Turnberry Place amenities: Gated community, pools, gym, tennis courts, spa, secure building, city & mountain views. Call/text 702-222-1988"
+          content="Turnberry Place amenities: Gated community, pools, gym, tennis courts, spa, secure building, city & mountain views. Call/text 702-222-1964"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -207,7 +207,7 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
                   Whether you're interested in The Stirling Club's exclusive facilities, the development's security systems, recreational amenities, or service offerings, I can provide detailed information about how these amenities enhance daily living and create exceptional value. My goal is to help you understand the comprehensive nature of Turnberry Place's amenities and how they contribute to the development's reputation as Las Vegas's premier high-rise condominium community.
                 </p>
                 <p>
-                  <strong>Ready to learn more about Turnberry Place amenities?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a tour of The Stirling Club and discuss how Turnberry Place's comprehensive amenities can enhance your luxury lifestyle. With my extensive knowledge of Turnberry Place and its amenities, I can help you appreciate the exceptional value that these facilities provide.
+                  <strong>Ready to learn more about Turnberry Place amenities?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to schedule a tour of The Stirling Club and discuss how Turnberry Place's comprehensive amenities can enhance your luxury lifestyle. With my extensive knowledge of Turnberry Place and its amenities, I can help you appreciate the exceptional value that these facilities provide.
                 </p>
               </div>
             </div>

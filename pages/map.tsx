@@ -34,7 +34,7 @@ export default function MapPage({ menus }: MapPageProps) {
         <title>Map & Nearby Places - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Turnberry Place location map: 2747-2877 Paradise Road, Las Vegas NV 89109. Nearby schools, parks, restaurants, coffee shops & more. Call/text 702-222-1988"
+          content="Turnberry Place location map: 2747-2877 Paradise Road, Las Vegas NV 89109. Nearby schools, parks, restaurants, coffee shops & more. Call/text 702-222-1964"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -275,7 +275,7 @@ export default function MapPage({ menus }: MapPageProps) {
                 Whether you're interested in the location's proximity to the Strip, nearby dining and entertainment options, or how the location supports your specific lifestyle, I'm here to provide detailed information and expert guidance. My goal is to help you understand the comprehensive location advantages that Turnberry Place offers and how they enhance the overall value proposition of luxury living at this exceptional development.
               </p>
               <p className="mt-4">
-                <strong>Ready to explore Turnberry Place's location?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to discuss the location's advantages, schedule a visit, or learn more about nearby amenities and services. With my extensive knowledge of Turnberry Place and the Las Vegas area, I can help you appreciate the exceptional location advantages that make Turnberry Place one of Las Vegas's most desirable luxury communities.
+                <strong>Ready to explore Turnberry Place's location?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to discuss the location's advantages, schedule a visit, or learn more about nearby amenities and services. With my extensive knowledge of Turnberry Place and the Las Vegas area, I can help you appreciate the exceptional location advantages that make Turnberry Place one of Las Vegas's most desirable luxury communities.
               </p>
             </div>
           </div>

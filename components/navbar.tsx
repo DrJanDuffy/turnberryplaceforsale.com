@@ -108,7 +108,7 @@ export function Navbar({ links, ...props }: NavbarProps) {
                   The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
                 </div>
                 <div className="agent-phone">
-                  <a href="tel:7022221988" title="Call or text Dr. Jan Duffy">(702) 222-1988</a>
+                  <a href="tel:7022221964" title="Call or text Dr. Jan Duffy">(702) 222-1964</a>
                 </div>
               </div>
             </div>

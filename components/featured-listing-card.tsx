@@ -132,7 +132,7 @@ export function FeaturedListingCard({
               View Details
             </Link>
             <a
-              href="tel:7022221988"
+              href="tel:7022221964"
               className="btn btn-outline-primary btn-sm"
               onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).gtag) {

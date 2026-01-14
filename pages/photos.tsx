@@ -70,7 +70,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         <title>Photo Gallery - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="View luxury condo photos at Turnberry Place Las Vegas. See interior & exterior images of 1-4 bedroom residences with Strip views. Call/text 702-222-1988"
+          content="View luxury condo photos at Turnberry Place Las Vegas. See interior & exterior images of 1-4 bedroom residences with Strip views. Call/text 702-222-1964"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -200,7 +200,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                 These professional photographs showcase Turnberry Place's luxury residences, premium finishes, and world-class amenities. View interior spaces, exterior architecture, and The Stirling Club facilities.
               </p>
               <p className="mt-4">
-                <strong>Ready to see Turnberry Place in person?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private showing.
+                <strong>Ready to see Turnberry Place in person?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to schedule a private showing.
               </p>
             </div>
           </div>

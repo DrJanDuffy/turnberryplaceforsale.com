@@ -77,7 +77,7 @@ export default function TowersPage({ menus }: TowersPageProps) {
         <title>Towers - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Explore Turnberry Place's 4 luxury towers: Tower 1 (38 stories), Tower 2-4 (45 stories). Completed 2000-2005, featuring Strip views & Stirling Club access. Call/text 702-222-1988"
+          content="Explore Turnberry Place's 4 luxury towers: Tower 1 (38 stories), Tower 2-4 (45 stories). Completed 2000-2005, featuring Strip views & Stirling Club access. Call/text 702-222-1964"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -219,7 +219,7 @@ export default function TowersPage({ menus }: TowersPageProps) {
                   Each tower offers unique value: Tower 1 provides excellent entry-level pricing, Tower 2-3 feature enhanced amenities and larger floor plans, and Tower 4 represents ultimate luxury. All towers share prime location, exclusive Stirling Club access, and comprehensive security.
                 </p>
                 <p>
-                  <strong>Ready to explore Turnberry Place towers?</strong> Call or text me at <a href="tel:7022221988" className="text-decoration-underline">(702) 222-1988</a> to schedule a private showing or discuss your luxury condominium needs.
+                  <strong>Ready to explore Turnberry Place towers?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to schedule a private showing or discuss your luxury condominium needs.
                 </p>
               </div>
             </div>

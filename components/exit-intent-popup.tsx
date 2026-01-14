@@ -78,11 +78,11 @@ export function ExitIntentPopup() {
         </p>
         <div className="d-flex flex-column gap-2">
           <a 
-            href="tel:7022221988" 
+            href="tel:7022221964" 
             className="btn btn-primary btn-lg font-weight-bold"
             onClick={() => handleCTAClick('phone')}
           >
-            📞 Call (702) 222-1988
+            📞 Call (702) 222-1964
           </a>
           <Link 
             href="/request-details" 
