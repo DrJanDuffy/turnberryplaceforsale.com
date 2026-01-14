@@ -49,11 +49,32 @@ export default function NodePage({ node, menus }: NodePageProps) {
             name="description"
             content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-500-1971"
           />
-          {/* Preload first hero image for faster LCP */}
+          <meta name="keywords" content="Turnberry Place Las Vegas, luxury condos Las Vegas, high-rise condos, Las Vegas Strip condos, Turnberry Place for sale, luxury real estate Las Vegas, condos near Strip, Stirling Club, Paradise Road condos, Dr. Jan Duffy" />
+          <meta name="author" content="Dr. Jan Duffy, REALTOR" />
+          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+          <meta name="googlebot" content="index, follow" />
+          <meta name="geo.region" content="US-NV" />
+          <meta name="geo.placename" content="Las Vegas" />
+          <meta name="geo.position" content="36.1447;-115.1541" />
+          <meta name="ICBM" content="36.1447, -115.1541" />
+          <link rel="canonical" href="https://www.turnberryplaceforsale.com/" />
+          
+          {/* Performance optimizations */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link rel="dns-prefetch" href="https://em.realscout.com" />
+          
+          {/* Preload critical resources for faster LCP */}
           <link
             rel="preload"
             as="image"
             href="/images/turnberry/Turnberry_Place_For_Sale.jpg"
+            fetchPriority="high"
+          />
+          <link
+            rel="preload"
+            as="image"
+            href="/images/turnberry/asset-1.jpg"
           />
         </Head>
         <JsonLdSchema type="home" propertyPrice="$800,000 - $10,000,000+" />
@@ -100,26 +121,30 @@ function HomePageContent() {
       <HeroSlideshow photos={heroPhotos} />
       
       {/* Price & Features Section - Combined like live site */}
-      <div className="card-content card-price-features py-5" id="card-id-2271756" data-card-type="3">
+      <section className="card-content card-price-features py-5" id="card-id-2271756" data-card-type="3" itemScope itemType="https://schema.org/Residence">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 text-center">
-              <h1 className="mb-1">Turnberry Place Las Vegas</h1>
-              <p>Las Vegas, NV 89109</p>
-              <h3>4 Luxury Towers from $800,000 to $10M+</h3>
+              <h1 className="mb-1" itemProp="name">Turnberry Place Las Vegas</h1>
+              <p itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+                <span itemProp="addressLocality">Las Vegas</span>, <span itemProp="addressRegion">NV</span> <span itemProp="postalCode">89109</span>
+              </p>
+              <h2 className="h3 mb-3">4 Luxury Towers from $800,000 to $10M+</h2>
               <p className="mt-2 mb-1" style={{ fontSize: '1.1rem', fontWeight: 500 }}>
                 Only <DynamicUnitCount defaultCount={12} /> Units Available Now
               </p>
               <p className="text-muted" style={{ fontSize: '0.9rem' }}>
-                Updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                <time dateTime={new Date().toISOString()}>
+                  Updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                </time>
               </p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Towers Section - Compact Overview */}
-      <div className="card-content card-prop-description py-5" id="card-id-2271757" data-card-type="4">
+      <section className="card-content card-prop-description py-5" id="card-id-2271757" data-card-type="4" aria-label="Turnberry Place Towers">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
@@ -218,10 +243,10 @@ function HomePageContent() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* RealScout Office Listings Widget - Featured Listings */}
-      <div className="card-content card-realscout-listings py-5" id="card-id-realscout-listings" style={{ backgroundColor: '#f8f9fa' }}>
+      <section className="card-content card-realscout-listings py-5" id="card-id-realscout-listings" style={{ backgroundColor: '#f8f9fa' }} aria-label="Available Turnberry Place Condos">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-11">
@@ -266,10 +291,10 @@ function HomePageContent() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Amenities Section - Matching Live Site */}
-      <div className="card-content card-amenities py-5" id="card-id-2271758" data-card-type="5">
+      <section className="card-content card-amenities py-5" id="card-id-2271758" data-card-type="5" aria-label="Turnberry Place Amenities">
         <div className="container pt-2">
           <div className="row align-items-center justify-content-center">
             <div className="col-12">
@@ -295,7 +320,7 @@ function HomePageContent() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Open House Section - Matching Live Site */}
       <div className="card-content card-open-house py-5" id="card-id-2271761" data-card-type="8" style={{
