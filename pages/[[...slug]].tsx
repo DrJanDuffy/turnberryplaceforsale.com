@@ -20,7 +20,6 @@ import { HeroSlideshow } from "components/hero-slideshow"
 import { ContactForm } from "components/contact-form"
 import { JsonLdSchema } from "components/json-ld-schema"
 import { StickyCTA } from "components/sticky-cta"
-import { ExitIntentPopup } from "components/exit-intent-popup"
 import { DynamicUnitCount } from "components/dynamic-unit-count"
 import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 // Components moved to other pages:
@@ -145,7 +144,6 @@ function HomePageContent() {
   return (
     <>
       <StickyCTA />
-      <ExitIntentPopup />
       {/* Hero Section with Slideshow */}
       <HeroSlideshow photos={heroPhotos} />
       
