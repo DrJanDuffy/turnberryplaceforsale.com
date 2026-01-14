@@ -6,23 +6,7 @@ interface FooterProps {
   links: DrupalMenuLinkContent[]
 }
 
-const footerLinks = [
-  { href: "/", title: "Home" },
-  { href: "/price-features", title: "Price & Features" },
-  { href: "/towers", title: "Towers" },
-  { href: "/amenities", title: "Amenities" },
-  { href: "/photos", title: "Photos" },
-  { href: "/map", title: "Map" },
-  { href: "/open-house", title: "Open House" },
-  { href: "/request-details", title: "Request Details" },
-  { href: "/agent", title: "Agent" },
-  { href: "/available-condos", title: "Available Condos" },
-  { href: "/floor-plans", title: "Floor Plans" },
-  { href: "/share", title: "Share" },
-  { href: "/stirling-club", title: "Stirling Club" },
-  { href: "/neighborhood", title: "Neighborhood" },
-]
-
+// Single source of truth for all site navigation links
 const allPages = [
   { href: "/", title: "Home" },
   { href: "/available-condos", title: "Available Condos" },
@@ -39,6 +23,9 @@ const allPages = [
   { href: "/agent", title: "Agent" },
   { href: "/share", title: "Share" },
 ]
+
+// Footer links - use same array to avoid duplication
+const footerLinks = allPages
 
 export function Footer({ links }: FooterProps) {
   return (

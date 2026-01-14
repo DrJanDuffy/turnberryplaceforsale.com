@@ -70,9 +70,24 @@ export function LeadCaptureForm({ variant = 'footer', showValuationCTA = true }:
     }
 
     try {
-      // Here you would send the data to your API/CRM
-      // For now, we'll simulate an API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // Send data to API endpoint
+      const response = await fetch('/api/leads/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        const errorMessage = errorData.details 
+          ? Object.values(errorData.details).filter(Boolean).join(', ')
+          : errorData.error || 'Failed to submit form'
+        throw new Error(errorMessage)
+      }
+
+      const result = await response.json()
       
       setSubmitted(true)
       reset()
@@ -82,6 +97,14 @@ export function LeadCaptureForm({ variant = 'footer', showValuationCTA = true }:
       }, 5000)
     } catch (error) {
       console.error('Form submission error:', error)
+      const errorMessage = error instanceof Error 
+        ? error.message 
+        : 'Failed to submit form. Please try again or call (702) 500-1971.'
+      
+      // Show error to user
+      if (typeof window !== 'undefined') {
+        alert(errorMessage)
+      }
     } finally {
       setIsSubmitting(false)
     }
