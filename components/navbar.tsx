@@ -107,8 +107,13 @@ export function Navbar({ links, ...props }: NavbarProps) {
                 <div className="d-none d-lg-block agent-company">
                   The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
                 </div>
-                <div className="agent-phone">
+                <div className="agent-phone d-flex flex-column flex-sm-row align-items-start align-items-sm-center" style={{ gap: '0.5rem', flexWrap: 'wrap' }}>
                   <a href="tel:7022221964" title="Call or text Dr. Jan Duffy">(702) 222-1964</a>
+                  <span className="d-none d-sm-inline">|</span>
+                  <a href="tel:7025001971" title="Office phone">(702) 500-1971</a>
+                </div>
+                <div className="agent-address d-none d-md-block font-size-80 mt-1" style={{ fontSize: '0.75rem', opacity: 0.9 }}>
+                  2827 Paradise Rd, Las Vegas, NV 89109
                 </div>
               </div>
             </div>
