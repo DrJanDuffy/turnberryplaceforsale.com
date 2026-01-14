@@ -60,8 +60,8 @@ export default function AgentPage({ menus }: AgentPageProps) {
                     </div>
                     <div className="mx-2">
                       <span className="">Office:</span>{" "}
-                      <a href="tel:7025001955" title="Berkshire Hathaway office">
-                        (702) 500-1955
+                      <a href="tel:7025001971" title="Berkshire Hathaway office">
+                        (702) 500-1971
                       </a>
                     </div>
                   </div>
@@ -193,7 +193,7 @@ export default function AgentPage({ menus }: AgentPageProps) {
                     To discuss your real estate needs, schedule a property showing, or learn more about Turnberry Place and the Las Vegas luxury market, contact Dr. Jan Duffy today. Her expertise, dedication, and personalized service ensure that you receive the guidance and support you need to make informed decisions and complete successful transactions.
                   </p>
                   <p className="mt-4">
-                    <strong>Ready to work with a Las Vegas luxury real estate expert?</strong> Call or text Dr. Jan Duffy at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> or contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>. With over 30 years of experience and deep knowledge of Turnberry Place and the Las Vegas luxury market, Dr. Duffy can help you achieve your real estate goals with confidence and expertise.
+                    <strong>Ready to work with a Las Vegas luxury real estate expert?</strong> Call or text Dr. Jan Duffy at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> or contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a>. With over 30 years of experience and deep knowledge of Turnberry Place and the Las Vegas luxury market, Dr. Duffy can help you achieve your real estate goals with confidence and expertise.
                   </p>
                 </div>
               </div>

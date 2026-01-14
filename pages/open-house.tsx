@@ -73,7 +73,7 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
               </p>
               <h3>Scheduling Your Private Showing</h3>
               <p>
-                Scheduling a private showing is simple and convenient. You can request a showing through our online form, call or text me directly at (702) 222-1964, or contact the office at (702) 500-1955. I'll work with you to find a time that fits your schedule and coordinate access to the properties you're interested in viewing. Whether you're visiting from out of town or are a local resident, I can accommodate your scheduling needs to ensure you have the opportunity to experience Turnberry Place's luxury living firsthand.
+                Scheduling a private showing is simple and convenient. You can request a showing through our online form, call or text me directly at (702) 222-1964, or contact the office at (702) 500-1971. I'll work with you to find a time that fits your schedule and coordinate access to the properties you're interested in viewing. Whether you're visiting from out of town or are a local resident, I can accommodate your scheduling needs to ensure you have the opportunity to experience Turnberry Place's luxury living firsthand.
               </p>
               <h3>What to Expect During Your Showing</h3>
               <p>
@@ -152,7 +152,7 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
                 Whether you're interested in a specific residence, want to explore multiple options, or are just beginning your search for luxury living in Las Vegas, I'm here to help. My goal is to provide you with the information, guidance, and support you need to make informed decisions about Turnberry Place and find the perfect residence that meets your needs and exceeds your expectations.
               </p>
               <p className="mt-4">
-                <strong>Schedule your private showing today!</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a>, contact the office at <a href="tel:7025001955" className="text-decoration-underline">(702) 500-1955</a>, or <Link href="/request-details" className="text-decoration-underline">request a showing online</Link>. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can provide you with an exceptional showing experience that helps you discover the perfect luxury residence.
+                <strong>Schedule your private showing today!</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a>, contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a>, or <Link href="/request-details" className="text-decoration-underline">request a showing online</Link>. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can provide you with an exceptional showing experience that helps you discover the perfect luxury residence.
               </p>
             </div>
           </div>

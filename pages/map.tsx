@@ -15,7 +15,7 @@ export default function MapPage({ menus }: MapPageProps) {
   const [activeTab, setActiveTab] = useState("map")
   const mapKey = "AIzaSyDSF9E67HCf0-pecnANALPYA-donlDhIww"
   const baseUrl = "https://www.google.com/maps/embed/v1/"
-  const streetAddress = "Turnberry Place Las Vegas, Las Vegas, NV 89109"
+  const streetAddress = "2827 Paradise Rd, Las Vegas, NV 89109"
   const propertyZip = "89109"
   const mapZoom = 15
 
@@ -34,7 +34,7 @@ export default function MapPage({ menus }: MapPageProps) {
         <title>Map & Nearby Places - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Turnberry Place location map: 2747-2877 Paradise Road, Las Vegas NV 89109. Nearby schools, parks, restaurants, coffee shops & more. Call/text 702-222-1964"
+          content="Turnberry Place location map: 2827 Paradise Rd, Las Vegas NV 89109. Nearby schools, parks, restaurants, coffee shops & more. Call/text 702-222-1964"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -44,7 +44,7 @@ export default function MapPage({ menus }: MapPageProps) {
             <div className="col-12">
               <h1 className="text-center d-none d-md-block mb-4">Turnberry Place Las Vegas: Map & Nearby Places</h1>
               <p className="lead text-center mb-4 d-none d-md-block">
-                Explore Turnberry Place's prime location at 2747-2877 Paradise Road, Las Vegas, NV 89109, just one block from the Las Vegas Strip. Use the interactive map below to discover nearby schools, parks, restaurants, coffee shops, and other amenities that make this location ideal for luxury living.
+                Explore Turnberry Place's prime location at 2827 Paradise Rd, Las Vegas, NV 89109, just one block from the Las Vegas Strip. Use the interactive map below to discover nearby schools, parks, restaurants, coffee shops, and other amenities that make this location ideal for luxury living.
               </p>
               <div className="map-controls d-none d-md-block">
                 <ul className="nav nav-pills justify-content-center">
@@ -158,11 +158,11 @@ export default function MapPage({ menus }: MapPageProps) {
             <div className="col-12 col-lg-10 mx-auto">
               <h2>Turnberry Place Location and Address</h2>
               <p>
-                Turnberry Place is located at 2747-2877 Paradise Road, Las Vegas, NV 89109, positioning it at the heart of Las Vegas's most dynamic and desirable corridor. This prime location, just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts, provides residents with immediate access to world-class amenities, entertainment, dining, and business centers while maintaining the privacy and security that luxury living requires. Understanding this location and its advantages helps buyers appreciate the exceptional value that Turnberry Place offers.
+                Turnberry Place is located at 2827 Paradise Rd, Las Vegas, NV 89109, positioning it at the heart of Las Vegas's most dynamic and desirable corridor. This prime location, just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts, provides residents with immediate access to world-class amenities, entertainment, dining, and business centers while maintaining the privacy and security that luxury living requires. Understanding this location and its advantages helps buyers appreciate the exceptional value that Turnberry Place offers.
               </p>
               <h3>Exact Location and Directions</h3>
               <p>
-                Turnberry Place's exact location at 2747-2877 Paradise Road places it in the Paradise neighborhood, one of Las Vegas's most prestigious areas. The development is easily accessible from major highways, including Interstate 15 and the Las Vegas Beltway, providing convenient access to the broader metropolitan area. The development's guard-gated entrance on Paradise Road provides controlled access while maintaining convenience for residents and authorized visitors. Understanding the exact location and directions helps visitors and potential buyers find Turnberry Place easily and appreciate its accessibility.
+                Turnberry Place's exact location at 2827 Paradise Rd places it in the Paradise neighborhood, one of Las Vegas's most prestigious areas. The development is easily accessible from major highways, including Interstate 15 and the Las Vegas Beltway, providing convenient access to the broader metropolitan area. The development's guard-gated entrance on Paradise Road provides controlled access while maintaining convenience for residents and authorized visitors. Understanding the exact location and directions helps visitors and potential buyers find Turnberry Place easily and appreciate its accessibility.
               </p>
               <h3>Proximity to Las Vegas Strip</h3>
               <p>

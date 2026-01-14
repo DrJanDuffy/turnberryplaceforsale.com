@@ -16,7 +16,7 @@ interface JsonLdSchemaProps {
 export function JsonLdSchema({
   type = 'home',
   propertyName = 'Turnberry Place Las Vegas',
-  propertyAddress = '2747-2877 Paradise Road, Las Vegas, NV 89109',
+  propertyAddress = '2827 Paradise Rd, Las Vegas, NV 89109',
   propertyPrice,
 }: JsonLdSchemaProps) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
@@ -30,7 +30,7 @@ export function JsonLdSchema({
     description:
       'Las Vegas real estate expert specializing in luxury high-rise condos at Turnberry Place. Licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties.',
     url: baseUrl,
-    telephone: ['+17025001955', '+17022221964'],
+    telephone: ['+17025001971', '+17022221964'],
     email: 'jan@lasvegas55plushomes.com',
     identifier: {
       '@type': 'PropertyValue',

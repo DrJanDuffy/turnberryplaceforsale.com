@@ -323,7 +323,7 @@ function HomePageContent() {
                       <span>Mobile:</span> <a href="tel:7022221964" title="Phone cell">(702) 222-1964</a>
                     </div>
                     <div className="mx-2" itemScope itemType="https://schema.org/LocalBusiness">
-                      <span>Office:</span> <a href="tel:7025001955" title="Phone office">(702) 500-1955</a>
+                      <span>Office:</span> <a href="tel:7025001971" title="Phone office">(702) 500-1971</a>
                     </div>
                   </div>
                   <div className="py-2">
