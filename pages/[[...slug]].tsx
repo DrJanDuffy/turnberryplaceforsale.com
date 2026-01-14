@@ -542,11 +542,12 @@ function HomePageContent() {
                     className="img-fluid company-logo"
                     src="/images/turnberry/asset-19.jpg"
                     alt="The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties Logo"
-                    width={225}
-                    height={225}
+                    width={250}
+                    height={100}
                     loading="lazy"
                     quality={85}
-                    sizes="(max-width: 768px) 225px, 225px"
+                    sizes="(max-width: 768px) 200px, 250px"
+                    style={{ maxHeight: '100px', objectFit: 'contain' }}
                   />
                 </div>
               </div>

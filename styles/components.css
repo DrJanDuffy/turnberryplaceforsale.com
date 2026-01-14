@@ -372,13 +372,13 @@ main .card-top-header:first-of-type {
   border-bottom: 1px solid var(--nav-border-bottom, rgba(0, 0, 0, 0.15));
   width: 100%;
   min-height: auto;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-top-nav .container-fluid {
   min-height: auto;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
   display: flex;
   align-items: center;
 }
@@ -426,17 +426,17 @@ main .card-top-header:first-of-type {
 
 .card-top-nav .agent-photo {
   border-radius: 50%;
-  height: 60px;
-  width: 60px;
-  max-height: 60px;
-  max-width: 60px;
+  height: 55px;
+  width: 55px;
+  max-height: 55px;
+  max-width: 55px;
   object-fit: cover;
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .card-top-nav .agent-photo-wrapper {
   flex-shrink: 0;
-  margin-right: 14px;
+  margin-right: 12px;
   display: flex;
   align-items: center;
 }
@@ -444,78 +444,84 @@ main .card-top-header:first-of-type {
 .card-top-nav .agent-text {
   padding-left: 0;
   font-size: 0.8rem;
-  line-height: 1.4;
+  line-height: 1.2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-width: 0;
   flex: 1;
-  gap: 1px;
+  gap: 0;
 }
 
 .card-top-nav .agent-text .agent-name {
   font-weight: 600;
   margin-bottom: 0;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #fff;
   letter-spacing: 0.02em;
-  line-height: 1.2;
+  line-height: 1.15;
   text-transform: uppercase;
 }
 
 /* Desktop agent text styling */
 @media (min-width: 992px) {
   .card-top-nav .agent-text {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 1.2;
   }
   
   .card-top-nav .agent-text .agent-name {
-    font-size: 1rem;
-    margin-bottom: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+    line-height: 1.15;
   }
   
   .card-top-nav .agent-text .agent-company {
-    font-size: 0.8rem;
-    line-height: 1.3;
-    margin-bottom: 3px;
+    font-size: 0.75rem;
+    line-height: 1.15;
+    margin-bottom: 2px;
   }
 }
 
 @media (min-width: 1200px) {
   .card-top-nav .agent-text {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.2;
   }
   
   .card-top-nav .agent-text .agent-name {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
+    line-height: 1.15;
   }
   
   .card-top-nav .agent-text .agent-company {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    line-height: 1.15;
   }
 }
 
 .card-top-nav .agent-text .agent-company {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   opacity: 0.85;
   margin-bottom: 0;
-  line-height: 1.3;
+  line-height: 1.15;
   white-space: normal;
   word-wrap: break-word;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .card-top-nav .agent-text .agent-phone {
-  margin-top: 1px;
+  margin-top: 0;
+  line-height: 1.2;
 }
 
 .card-top-nav .agent-text .agent-phone a {
   color: #fff;
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   white-space: nowrap;
   transition: opacity 0.2s ease;
@@ -679,10 +685,10 @@ main .card-top-header:first-of-type {
   }
   
   .card-top-nav .agent-photo {
-    height: 50px;
-    width: 50px;
-    max-height: 50px;
-    max-width: 50px;
+    height: 45px;
+    width: 45px;
+    max-height: 45px;
+    max-width: 45px;
   }
   
   .card-top-nav .agent-photo-wrapper {
@@ -1724,17 +1730,17 @@ main .card-top-header:first-of-type {
 }
 
 .card-site-footer img.footer-team-logo {
-  max-width: var(--logo-max-width, 300px);
+  max-width: var(--logo-max-width, 250px);
   width: 100%;
   height: auto;
-  max-height: var(--logo-max-height, 125px);
+  max-height: var(--logo-max-height, 100px);
   filter: invert(var(--invert-logo-colors, 0));
   object-fit: contain;
 }
 
 .card-site-footer img.footer-wl-logo {
-  max-height: 100px;
-  max-width: 300px;
+  max-height: 80px;
+  max-width: 250px;
   width: 100%;
   height: auto;
   filter: invert(var(--invert-logo-colors, 0));

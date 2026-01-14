@@ -97,9 +97,11 @@ export function Navbar({ links, ...props }: NavbarProps) {
                 <Image
                   src="/images/turnberry/asset-1.jpg"
                   className="agent-photo"
-                  width={75}
-                  height={75}
+                  width={60}
+                  height={60}
                   alt="Dr. Jan Duffy"
+                  quality={90}
+                  sizes="60px"
                 />
               </div>
               <div className="agent-text">
