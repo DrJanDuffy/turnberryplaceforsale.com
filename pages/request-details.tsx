@@ -1,169 +1,293 @@
 import { GetStaticPropsResult } from "next"
 import Head from "next/head"
+import Image from "next/image"
+import Link from "next/link"
+import React, { useEffect, useMemo, useState } from "react"
+import { CalendarDays, CheckCircle2, Phone } from "lucide-react"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
-import { ContactForm } from "components/contact-form"
+import { LeadCaptureForm } from "components/lead-capture-form"
 // ClientTestimonials and VIPNewsletterSignup available on homepage and /agent page
-import Image from "next/image"
 
 interface RequestDetailsPageProps extends LayoutProps {}
 
 export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
+  const calendlyUrl = "https://calendly.com/drjanduffy/1-home-tour-30-mins"
+  const officePhoneDisplay = "(702) 500-1971"
+  const officePhoneTel = "+17025001971"
+  const propertyAddress = "2827 Paradise Rd, Las Vegas, NV 89109"
+
+  const heroImage = "/images/turnberry/19738766_web1_copy_2827-Paradise-15.jpg-FULL.webp"
+  const agentPhoto = "/images/turnberry/asset-1.jpg"
+  const bhhsLogo = "/images/turnberry/asset-19.jpg"
+
+  const [showCalendly, setShowCalendly] = useState(false)
+
+  const realEstateListingSchema = useMemo(() => {
+    return {
+      "@context": "https://schema.org",
+      "@type": "RealEstateListing",
+      name: "Request Turnberry Place Pricing & Details",
+      url: "https://www.turnberryplaceforsale.com/request-details",
+      description:
+        "Request pricing and details for Turnberry Place Las Vegas luxury high-rise condos from $800K to $10M+. Schedule a private tour or call the office for immediate help.",
+      dateModified: new Date().toISOString(),
+      priceRange: "$800,000 - $10,000,000+",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: propertyAddress,
+        addressLocality: "Las Vegas",
+        addressRegion: "NV",
+        postalCode: "89109",
+        addressCountry: "US",
+      },
+      broker: {
+        "@type": "RealEstateAgent",
+        name: "Dr. Jan Duffy, REALTOR",
+        telephone: officePhoneTel,
+        identifier: {
+          "@type": "PropertyValue",
+          name: "Nevada Real Estate License",
+          value: "S.0197614.LLC",
+        },
+        memberOf: {
+          "@type": "Organization",
+          name: "Berkshire Hathaway HomeServices Nevada Properties",
+        },
+      },
+    }
+  }, [officePhoneTel, propertyAddress])
+
+  // Optional reveal animations (respects reduced motion)
+  useEffect(() => {
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    if (prefersReducedMotion) return
+
+    const els = Array.from(document.querySelectorAll("[data-reveal]"))
+    if (!("IntersectionObserver" in window) || els.length === 0) return
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            ;(e.target as HTMLElement).classList.add("is-revealed")
+            obs.unobserve(e.target)
+          }
+        })
+      },
+      { threshold: 0.18 }
+    )
+
+    els.forEach((el) => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <Layout menus={menus}>
-      <Meta title="Request Details - Turnberry Place Las Vegas" />
+      <Meta title="Request Turnberry Place Pricing & Details | Schedule a Private Tour" />
       <Head>
-        <title>Request Details - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Request pricing and details for luxury condos at Turnberry Place Las Vegas. Get information on 1-4 bedroom residences from $800K-$10M+. Call 702-500-1971"
+          content="Request Turnberry Place pricing and details. Schedule a private tour or call the office at (702) 500-1971. Luxury high-rise condos from $800K to $10M+."
+        />
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateListingSchema) }}
         />
       </Head>
       <JsonLdSchema type="property" />
-      <div 
-        className="card-content card-contact-form" 
-        style={{
-          backgroundImage: "url(/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg)",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center center",
-          backgroundSize: "cover",
-        }}
-      >
-        <div className="container-fluid">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6 text-center px-sm-2">
-              <div className="contact-form-box p-4">
-                <div className="mt-0 mt-md-2 d-flex align-items-center justify-content-center">
-                  <div className="w-10 horiz-line d-none d-sm-block"></div>
-                  <h1 className="my-0 mx-2 heading-color" id="contact-label">
-                    Turnberry Place Request Pricing & Details
-                  </h1>
-                  <div className="w-10 horiz-line d-none d-sm-block"></div>
+      <div className="card-content request-details-page">
+        {/* HERO */}
+        <section className="request-details-hero" aria-label="Request pricing and details hero">
+          <div className="request-details-hero-media" aria-hidden="true">
+            <Image
+              src={heroImage}
+              alt="Turnberry Place Las Vegas luxury condo interior"
+              fill
+              priority
+              sizes="100vw"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div className="request-details-hero-overlay" aria-hidden="true" />
+
+          <div className="container request-details-hero-inner">
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-10 text-center">
+                <div className="request-details-eyebrow" data-reveal>
+                  <span className="request-details-pill">Request Details</span>
+                  <span className="request-details-sep" aria-hidden="true">
+                    •
+                  </span>
+                  <span>Turnberry Place • Las Vegas</span>
                 </div>
-                <ContactForm title="Turnberry Place Request Pricing & Details" />
+
+                <h1 className="request-details-hero-title" data-reveal>
+                  Request Pricing & Details
+                </h1>
+                <p className="request-details-hero-subtitle" data-reveal>
+                  Get current pricing, availability, and the best values by tower — plus a simple
+                  next step to tour Turnberry Place.
+                </p>
+
+                <div className="request-details-hero-ctas" data-reveal>
+                  <a
+                    className="btn btn-primary btn-lg request-details-btn-gold"
+                    href={calendlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <CalendarDays aria-hidden="true" className="mr-2" />
+                    Schedule Private Tour
+                  </a>
+                  <a className="btn btn-outline-light btn-lg" href={`tel:${officePhoneTel}`}>
+                    <Phone aria-hidden="true" className="mr-2" />
+                    Call {officePhoneDisplay}
+                  </a>
+                  <Link href="/available-condos" className="btn btn-outline-light btn-lg">
+                    View Listings
+                  </Link>
+                </div>
+
+                <div className="request-details-scroll" aria-hidden="true">
+                  <div className="request-details-scroll-line" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      
-      <div className="card-content py-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-lg-10 mx-auto">
-              <h2>Request Turnberry Place Pricing and Detailed Information</h2>
-              <p>
-                Use the form above to request comprehensive pricing and detailed information about Turnberry Place Las Vegas luxury high-rise condominiums. Whether you're interested in a specific residence, exploring your options, or seeking general information about Turnberry Place, I'm here to provide you with the detailed information you need to make informed decisions. As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place, I can provide comprehensive information about pricing, availability, features, amenities, and investment potential.
-              </p>
-              <h3>What Information You'll Receive</h3>
-              <p>
-                When you request details through the form above, you'll receive comprehensive information about Turnberry Place residences, including current pricing, available properties, floor plans, features, amenities, and market conditions. I'll also provide information about The Stirling Club, security features, location advantages, and lifestyle benefits that make Turnberry Place desirable. This comprehensive information helps you understand the full value proposition of Turnberry Place living and make informed decisions about whether these luxury residences meet your needs and preferences.
-              </p>
-              <h3>Personalized Response</h3>
-              <p>
-                Your request will receive a personalized response tailored to your specific interests and needs. Whether you're interested in a particular price range, size, view, or tower, I'll provide information that's relevant to your situation. This personalized approach ensures that you receive the most useful information for your specific circumstances, helping you make informed decisions about Turnberry Place residences without being overwhelmed by irrelevant details.
-              </p>
-              <h3>Follow-Up Communication</h3>
-              <p>
-                After you submit your request, I'll follow up to answer any questions you have, provide additional information, and help you move forward with your Turnberry Place exploration. Whether you're ready to schedule a private showing, need more information about specific residences, or want to discuss financing options, I'm here to help. This ongoing communication ensures that you have all the support you need throughout your Turnberry Place journey.
-              </p>
+        </section>
 
-              <h2>Understanding Turnberry Place Pricing</h2>
-              <p>
-                Turnberry Place pricing reflects the development's luxury positioning, prime location, comprehensive amenities, and exceptional quality. Understanding pricing factors helps you appreciate the value proposition and make informed decisions about which residences align with your budget and goals. Pricing varies by tower, floor level, size, view quality, and finishes, creating opportunities for buyers at various price points.
-              </p>
-              <h3>Pricing Factors and Value Drivers</h3>
-              <p>
-                Turnberry Place pricing is influenced by several factors, including tower (Tower 1 offers entry-level pricing, while Tower 4 commands premium prices), floor level (higher floors typically command higher prices due to enhanced views), size (larger residences command higher prices), view quality (Strip views, mountain views, and panoramic vistas affect pricing), and finishes (premium finishes and custom details justify higher prices). Understanding these factors helps you identify residences that offer the best value for your budget and preferences.
-              </p>
-              <h3>Price Ranges by Residence Type</h3>
-              <p>
-                Turnberry Place residences are available at various price points: one-bedroom residences typically range from approximately $800,000 to $1.5 million, two-bedroom residences from $1.2 million to $3.5 million, three-bedroom residences from $2 million to $5 million, and four-bedroom residences from $3.5 million to $8 million. Penthouses and high-floor residences command prices from $5 million to over $10 million. Understanding these price ranges helps you identify residences that align with your budget and provides context for evaluating value propositions.
-              </p>
-              <h3>Investment Considerations</h3>
-              <p>
-                When requesting pricing information, consider not only purchase prices but also HOA fees, property taxes, insurance costs, and potential appreciation. Understanding these total costs helps you evaluate the complete investment picture and make informed decisions about whether Turnberry Place residences align with your financial goals. I can provide detailed information about these costs and help you understand the complete financial picture of Turnberry Place ownership.
-              </p>
+        {/* CONVERSION SECTION */}
+        <section className="request-details-section" aria-label="Request details form">
+          <div className="container">
+            <div className="row align-items-start">
+              <div className="col-12 col-lg-5 mb-4 mb-lg-0" data-reveal>
+                <div className="request-details-trust-card">
+                  <div className="request-details-agent-top">
+                    <div className="request-details-agent-photo">
+                      <Image
+                        src={agentPhoto}
+                        alt="Dr. Jan Duffy"
+                        width={120}
+                        height={120}
+                        style={{ borderRadius: "999px" }}
+                      />
+                    </div>
+                    <div>
+                      <div className="request-details-agent-name">Dr. Jan Duffy</div>
+                      <div className="request-details-agent-sub">
+                        Berkshire Hathaway HomeServices Nevada Properties
+                      </div>
+                      <div className="request-details-agent-license">License #S.0197614.LLC</div>
+                      <div className="request-details-agent-phone">
+                        <a href={`tel:${officePhoneTel}`}>{officePhoneDisplay}</a>
+                      </div>
+                    </div>
+                  </div>
 
-              <h2>Available Residences and Inventory</h2>
-              <p>
-                Turnberry Place's available inventory changes regularly as properties are sold and new listings come to market. When you request details, I'll provide current information about available residences that match your interests, including pricing, features, views, and availability. This current information helps you understand what's available now and identify opportunities that align with your preferences and timeline.
-              </p>
-              <h3>Current Listings and Availability</h3>
-              <p>
-                I maintain current information about Turnberry Place listings and availability, enabling me to provide you with up-to-date information about what's available when you request details. This current information includes pricing, features, views, floor levels, and any special circumstances that might affect availability or pricing. Having current information helps you make timely decisions and take advantage of opportunities as they arise.
-              </p>
-              <h3>Off-Market and Pre-Listing Opportunities</h3>
-              <p>
-                In addition to current listings, I may have information about off-market opportunities or properties that are coming to market soon. These opportunities can provide advantages for buyers who are ready to move quickly or who want to explore options before they're widely available. When you request details, I'll share information about these opportunities if they align with your interests and timeline.
-              </p>
-              <h3>New Construction and Future Opportunities</h3>
-              <p>
-                While Turnberry Place is an established development, I can provide information about resale opportunities and any future development plans that might affect the community. Understanding both current availability and future opportunities helps you make informed decisions about timing and strategy for your Turnberry Place purchase.
-              </p>
+                  <div className="request-details-trust-bullets">
+                    <div className="request-details-bullet">
+                      <CheckCircle2 aria-hidden="true" /> Price guidance by tower & view
+                    </div>
+                    <div className="request-details-bullet">
+                      <CheckCircle2 aria-hidden="true" /> Best current values in your budget
+                    </div>
+                    <div className="request-details-bullet">
+                      <CheckCircle2 aria-hidden="true" /> Tour scheduling link included
+                    </div>
+                  </div>
 
-              <h2>Detailed Property Information</h2>
-              <p>
-                When you request details, I'll provide comprehensive information about Turnberry Place residences, including floor plans, features, finishes, views, and amenities. This detailed information helps you understand what each residence offers and how it compares to other options, enabling you to make informed decisions about which properties best meet your needs and preferences.
-              </p>
-              <h3>Floor Plans and Layouts</h3>
-              <p>
-                Detailed floor plan information helps you understand residence layouts, space utilization, and how properties function for daily living and entertaining. I can provide floor plans, room dimensions, and layout descriptions that help you visualize how you would use and enjoy different residences. This information is particularly valuable for understanding how residences accommodate your lifestyle needs and preferences.
-              </p>
-              <h3>Features and Finishes</h3>
-              <p>
-                Detailed information about features and finishes helps you understand the quality and sophistication available in Turnberry Place residences. I can provide information about flooring materials, countertops, appliances, cabinetry, fixtures, and other features that define luxury living. This information helps you assess the quality and value of different residences and understand how finishes contribute to the overall living experience.
-              </p>
-              <h3>Views and Orientations</h3>
-              <p>
-                Detailed information about views and orientations helps you understand what vistas are available from different residences and how views affect the living experience. I can provide information about Strip views, mountain views, city views, and how floor level and orientation affect view quality. This information helps you identify residences that offer the views you value most and understand how views contribute to the overall value proposition.
-              </p>
+                  <div className="request-details-bhhs">
+                    <Image
+                      src={bhhsLogo}
+                      alt="Berkshire Hathaway HomeServices Nevada Properties"
+                      width={260}
+                      height={120}
+                      style={{ height: "auto" }}
+                    />
+                  </div>
 
-              <h2>Financing and Purchase Information</h2>
-              <p>
-                When you request details, I can also provide information about financing options, purchase processes, and other aspects of acquiring a Turnberry Place residence. This information helps you understand the complete picture of Turnberry Place ownership and prepares you to move forward when you're ready.
-              </p>
-              <h3>Financing Options</h3>
-              <p>
-                I can provide information about financing options for Turnberry Place residences, including conventional loans, jumbo loans, and cash purchase considerations. Understanding financing options helps you evaluate affordability and plan for your Turnberry Place purchase. I can also connect you with lenders who specialize in luxury condominium financing if you need assistance with financing arrangements.
-              </p>
-              <h3>Purchase Process</h3>
-              <p>
-                Information about the purchase process helps you understand what to expect when buying a Turnberry Place residence, including offer processes, inspections, appraisals, and closing procedures. Understanding the purchase process helps you prepare for your transaction and ensures that you're ready to move forward when you find the perfect residence. I'll guide you through every step of the process to ensure a smooth and successful transaction.
-              </p>
-              <h3>Timeline and Next Steps</h3>
-              <p>
-                When you request details, I can also discuss timelines and next steps based on your situation and goals. Whether you're ready to move forward immediately, need time to consider your options, or are planning for a future purchase, I can provide guidance about appropriate timelines and help you plan your next steps. This planning helps ensure that you move forward at a pace that's comfortable for you while taking advantage of opportunities as they arise.
-              </p>
+                  <div className="small text-muted mt-2">
+                    Address: <span className="text-decoration-underline">{propertyAddress}</span>
+                  </div>
+                </div>
+              </div>
 
-              <h2>Why Request Details from Dr. Jan Duffy</h2>
-              <p>
-                Requesting details from me provides you with access to comprehensive information, expert guidance, and personalized service that helps you make informed decisions about Turnberry Place. My 30+ years of experience, deep knowledge of Turnberry Place, and commitment to client success ensure that you receive the information and support you need throughout your Turnberry Place journey.
-              </p>
-              <h3>Expert Knowledge and Experience</h3>
-              <p>
-                My 30+ years of experience in Las Vegas real estate, combined with my deep knowledge of Turnberry Place, enables me to provide comprehensive information and expert guidance that helps you make informed decisions. I understand not only the physical characteristics of Turnberry Place residences but also market conditions, pricing trends, investment potential, and lifestyle benefits that affect your decision-making. This expertise ensures that you receive accurate, relevant, and valuable information.
-              </p>
-              <h3>Personalized Service and Attention</h3>
-              <p>
-                When you request details, you'll receive personalized service and attention that reflects my commitment to understanding your unique needs and providing information that's relevant to your situation. I take time to listen, ask questions, and develop a comprehensive understanding of what you're seeking, ensuring that the information I provide aligns with your interests and goals. This personalized approach ensures that you receive the most useful information for your specific circumstances.
-              </p>
-              <h3>Ongoing Support and Guidance</h3>
-              <p>
-                Requesting details is just the beginning of our relationship. I'm committed to providing ongoing support and guidance throughout your Turnberry Place journey, whether you're exploring options, ready to make an offer, or need assistance with any aspect of your purchase. This ongoing support ensures that you have the information and assistance you need at every stage of the process.
-              </p>
+              <div className="col-12 col-lg-7" data-reveal>
+                <div className="request-details-form-panel">
+                  <h2 className="request-details-h2 mb-2">Send a Quick Request</h2>
+                  <p className="request-details-copy mb-4">
+                    Tell us what you’re looking for (tower, view, budget). We’ll respond with
+                    pricing, availability, and next steps.
+                  </p>
+                  <LeadCaptureForm variant="footer" showValuationCTA={false} />
+                </div>
+              </div>
+            </div>
 
-              <h2>Submit Your Request Today</h2>
-              <p>
-                Ready to learn more about Turnberry Place? Submit your request using the form above, and I'll provide you with comprehensive information about pricing, availability, features, and lifestyle benefits. Whether you're ready to move forward or just beginning your exploration, I'm here to provide the information and guidance you need to make informed decisions about Turnberry Place luxury living.
-              </p>
-              <p>
-                For immediate assistance, contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a>. I'm here to help you discover the exceptional quality and lifestyle that Turnberry Place offers and find the perfect luxury residence that meets your needs and exceeds your expectations.
-              </p>
+            {/* Lazy Calendly Embed */}
+            <div className="row mt-4">
+              <div className="col-12" data-reveal>
+                <div className="request-details-calendly">
+                  <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-2">
+                    <div>
+                      <h3 className="request-details-h3 mb-1">Prefer to book instantly?</h3>
+                      <div className="request-details-copy mb-0">
+                        Click to load the booking calendar (loads only when requested).
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      className="btn btn-primary request-details-btn-gold"
+                      onClick={() => setShowCalendly((v) => !v)}
+                      aria-expanded={showCalendly}
+                    >
+                      {showCalendly ? "Hide Calendar" : "Pick a Time"}
+                    </button>
+                  </div>
+
+                  {showCalendly && (
+                    <div className="request-details-calendly-frame mt-3">
+                      <iframe
+                        title="Schedule a private tour - Calendly"
+                        src={`${calendlyUrl}?hide_gdpr_banner=1`}
+                        width="100%"
+                        height="760"
+                        style={{ border: 0 }}
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+
+                  <div className="small text-muted mt-2">
+                    Or call the office at <a href={`tel:${officePhoneTel}`}>{officePhoneDisplay}</a>.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
+
+        {/* MOBILE STICKY CTA (page scoped) */}
+        <div className="request-details-mobile-cta" role="region" aria-label="Quick actions">
+          <a className="request-details-mobile-cta-btn" href={`tel:${officePhoneTel}`}>
+            Call
+          </a>
+          <a
+            className="request-details-mobile-cta-btn request-details-mobile-cta-btn-gold"
+            href={calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Schedule
+          </a>
         </div>
       </div>
 
