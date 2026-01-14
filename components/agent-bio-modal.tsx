@@ -57,7 +57,7 @@ export function AgentBioModal({ agentId = '14435' }: AgentBioModalProps) {
                 height={200}
               />
               <p className="mb-3">
-                <strong>Mobile:</strong> <a href="tel:7022221964">(702) 222-1964</a>
+                <strong>Office:</strong> <a href="tel:7025001971">(702) 500-1971</a>
               </p>
             </div>
 
@@ -76,7 +76,7 @@ export function AgentBioModal({ agentId = '14435' }: AgentBioModalProps) {
               </p>
               <p className="mt-4">
                 <strong>For expert guidance in Turnberry Place real estate, contact Dr. Jan Duffy:</strong><br />
-                Phone: <a href="tel:7022221964">(702) 222-1964</a><br />
+                Phone: <a href="tel:7025001971">(702) 500-1971</a><br />
                 Email: <a href="mailto:jan@lasvegas55plushomes.com">jan@lasvegas55plushomes.com</a>
               </p>
             </div>
