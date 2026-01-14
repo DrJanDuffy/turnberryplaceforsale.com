@@ -105,13 +105,42 @@ export default function NodePage({ node, menus }: NodePageProps) {
 
 // Home page content component
 function HomePageContent() {
-  // Hero photos - using local images from public/images/turnberry
+  // Hero photos - using local images from public/images/turnberry (optimized)
   const heroPhotos = [
     "/images/turnberry/Turnberry_Place_For_Sale.jpg",
     "/images/turnberry/Turnberry Tower Nice Vew.jpg",
     "/images/turnberry/Turnberry Tower South View.jpeg",
     "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
+    "/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg",
+    "/images/turnberry/Turnberry_Towers_Las_Vegas_Monorail.jpg",
+    "/images/turnberry/sterlingclubpool-.jpeg",
   ]
+  
+  // Additional homepage photos for various sections
+  const homepagePhotos = {
+    tower1: "/images/turnberry/Turnberry_Place_For_Sale.jpg",
+    tower2: "/images/turnberry/Turnberry Tower Nice Vew.jpg",
+    tower3: "/images/turnberry/Turnberry Tower South View.jpeg",
+    tower4: "/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg",
+    stirlingClub: [
+      "/images/turnberry/sterlingclubpool-.jpeg",
+      "/images/turnberry/StirlingClub_CigarBar_View1.jpg",
+      "/images/turnberry/SterlingClubDinning.avif",
+      "/images/turnberry/SterlingClubWhiteRoses.jpg",
+    ],
+    interior: [
+      "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
+      "/images/turnberry/photo-2.jpg",
+      "/images/turnberry/photo-3.jpg",
+      "/images/turnberry/photo-4.jpg",
+      "/images/turnberry/photo-5.jpg",
+    ],
+    exterior: [
+      "/images/turnberry/Turnberry-Place-May-21-2010.jpeg",
+      "/images/turnberry/Turnberry_Towers_Las_Vegas_Monorail.jpg",
+      "/images/turnberry/2777paradise2802-149.jpg",
+    ],
+  }
 
   return (
     <>
@@ -155,83 +184,135 @@ function HomePageContent() {
                 </p>
               </div>
               <div className="row">
-                {/* Tower 1 - Compact */}
+                {/* Tower 1 - Compact with Image */}
                 <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
                   <div className="card border-0 shadow-sm h-100" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
-                    padding: '1.25rem',
+                    overflow: 'hidden',
                   }}>
-                    <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
-                      Tower 1
-                    </h3>
-                    <p className="small text-muted mb-2">38 Stories • Completed 2000</p>
-                    <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
-                      Elegant high-rise living with private elevator access and direct access to The Stirling Club.
-                    </p>
-                    <Link href="/available-condos?tower=1" className="btn btn-outline-primary btn-sm btn-block">
-                      View Listings
-                    </Link>
+                    <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
+                      <Image
+                        src={homepagePhotos.tower1}
+                        alt="Turnberry Place Tower 1 - Elegant High-Rise Living"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        style={{ objectFit: 'cover' }}
+                        loading="lazy"
+                        quality={85}
+                      />
+                    </div>
+                    <div style={{ padding: '1.25rem' }}>
+                      <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
+                        Tower 1
+                      </h3>
+                      <p className="small text-muted mb-2">38 Stories • Completed 2000</p>
+                      <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
+                        Elegant high-rise living with private elevator access and direct access to The Stirling Club.
+                      </p>
+                      <Link href="/available-condos?tower=1" className="btn btn-outline-primary btn-sm btn-block">
+                        View Listings
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
-                {/* Tower 2 - Compact */}
+                {/* Tower 2 - Compact with Image */}
                 <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
                   <div className="card border-0 shadow-sm h-100" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
-                    padding: '1.25rem',
+                    overflow: 'hidden',
                   }}>
-                    <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
-                      Tower 2
-                    </h3>
-                    <p className="small text-muted mb-2">45 Stories • Completed 2001</p>
-                    <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
-                      Sophisticated Strip views with larger floor plans and premium finishes.
-                    </p>
-                    <Link href="/available-condos?tower=2" className="btn btn-outline-primary btn-sm btn-block">
-                      View Listings
-                    </Link>
+                    <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
+                      <Image
+                        src={homepagePhotos.tower2}
+                        alt="Turnberry Place Tower 2 - Sophisticated Strip Views"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        style={{ objectFit: 'cover' }}
+                        loading="lazy"
+                        quality={85}
+                      />
+                    </div>
+                    <div style={{ padding: '1.25rem' }}>
+                      <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
+                        Tower 2
+                      </h3>
+                      <p className="small text-muted mb-2">45 Stories • Completed 2001</p>
+                      <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
+                        Sophisticated Strip views with larger floor plans and premium finishes.
+                      </p>
+                      <Link href="/available-condos?tower=2" className="btn btn-outline-primary btn-sm btn-block">
+                        View Listings
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
-                {/* Tower 3 - Compact */}
+                {/* Tower 3 - Compact with Image */}
                 <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
                   <div className="card border-0 shadow-sm h-100" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
-                    padding: '1.25rem',
+                    overflow: 'hidden',
                   }}>
-                    <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
-                      Tower 3
-                    </h3>
-                    <p className="small text-muted mb-2">45 Stories • Completed 2002</p>
-                    <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
-                      Premium desert living with contemporary designs and spacious terraces.
-                    </p>
-                    <Link href="/available-condos?tower=3" className="btn btn-outline-primary btn-sm btn-block">
-                      View Listings
-                    </Link>
+                    <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
+                      <Image
+                        src={homepagePhotos.tower3}
+                        alt="Turnberry Place Tower 3 - Premium Desert Living"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        style={{ objectFit: 'cover' }}
+                        loading="lazy"
+                        quality={85}
+                      />
+                    </div>
+                    <div style={{ padding: '1.25rem' }}>
+                      <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
+                        Tower 3
+                      </h3>
+                      <p className="small text-muted mb-2">45 Stories • Completed 2002</p>
+                      <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
+                        Premium desert living with contemporary designs and spacious terraces.
+                      </p>
+                      <Link href="/available-condos?tower=3" className="btn btn-outline-primary btn-sm btn-block">
+                        View Listings
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
-                {/* Tower 4 - Compact */}
+                {/* Tower 4 - Compact with Image */}
                 <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
                   <div className="card border-0 shadow-sm h-100" style={{
                     backgroundColor: '#ffffff',
                     borderRadius: '4px',
-                    padding: '1.25rem',
+                    overflow: 'hidden',
                   }}>
-                    <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
-                      Tower 4
-                    </h3>
-                    <p className="small text-muted mb-2">45 Stories • Completed 2005</p>
-                    <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
-                      Ultimate luxury living with unparalleled views and exceptional finishes.
-                    </p>
-                    <Link href="/available-condos?tower=4" className="btn btn-outline-primary btn-sm btn-block">
-                      View Listings
-                    </Link>
+                    <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
+                      <Image
+                        src={homepagePhotos.tower4}
+                        alt="Turnberry Place Tower 4 - Ultimate Luxury Living"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        style={{ objectFit: 'cover' }}
+                        loading="lazy"
+                        quality={85}
+                      />
+                    </div>
+                    <div style={{ padding: '1.25rem' }}>
+                      <h3 className="h5 mb-2" style={{ fontWeight: 600 }}>
+                        Tower 4
+                      </h3>
+                      <p className="small text-muted mb-2">45 Stories • Completed 2005</p>
+                      <p style={{ fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1rem' }}>
+                        Ultimate luxury living with unparalleled views and exceptional finishes.
+                      </p>
+                      <Link href="/available-condos?tower=4" className="btn btn-outline-primary btn-sm btn-block">
+                        View Listings
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -436,10 +517,12 @@ function HomePageContent() {
                   <Image
                     className="img-fluid agent-photo"
                     src="/images/turnberry/asset-1.jpg"
-                    alt="Photo of Dr. Jan Duffy, REALTOR"
+                    alt="Photo of Dr. Jan Duffy, REALTOR - Turnberry Place Las Vegas Specialist"
                     width={225}
                     height={225}
                     loading="lazy"
+                    quality={90}
+                    sizes="(max-width: 768px) 225px, 225px"
                   />
                 </div>
                 <div className="col-12 text-center py-2">
@@ -463,6 +546,7 @@ function HomePageContent() {
                     height={225}
                     loading="lazy"
                     quality={85}
+                    sizes="(max-width: 768px) 225px, 225px"
                   />
                 </div>
               </div>
@@ -472,13 +556,55 @@ function HomePageContent() {
       </div>
 
 
-      {/* Photo Gallery Section - Link to dedicated page */}
-      <div className="card-content card-photo-gallery py-5" id="card-id-photo-gallery">
+      {/* Photo Gallery Section - Featured Images */}
+      <section className="card-content card-photo-gallery py-5" id="card-id-photo-gallery" aria-label="Turnberry Place Photo Gallery">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12 text-center">
-              <h1 className="mb-4">Photo Gallery</h1>
-              <div className="py-4">
+            <div className="col-12 col-lg-10">
+              <div className="text-center mb-4">
+                <h1 className="mb-3">Photo Gallery</h1>
+                <p className="lead">
+                  Explore stunning images of Turnberry Place luxury condominiums, amenities, and Las Vegas Strip views.
+                </p>
+              </div>
+              
+              {/* Featured Photo Grid */}
+              <div className="row g-3 mb-4">
+                {homepagePhotos.interior.slice(0, 3).map((photo, index) => (
+                  <div key={index} className="col-12 col-md-4">
+                    <div style={{ position: 'relative', width: '100%', height: '250px', borderRadius: '8px', overflow: 'hidden' }}>
+                      <Image
+                        src={photo}
+                        alt={`Turnberry Place interior view ${index + 1}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                        style={{ objectFit: 'cover' }}
+                        loading="lazy"
+                        quality={85}
+                        className="hover-zoom"
+                      />
+                    </div>
+                  </div>
+                ))}
+                {homepagePhotos.exterior.slice(0, 3).map((photo, index) => (
+                  <div key={`ext-${index}`} className="col-12 col-md-4">
+                    <div style={{ position: 'relative', width: '100%', height: '250px', borderRadius: '8px', overflow: 'hidden' }}>
+                      <Image
+                        src={photo}
+                        alt={`Turnberry Place exterior view ${index + 1}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                        style={{ objectFit: 'cover' }}
+                        loading="lazy"
+                        quality={85}
+                        className="hover-zoom"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="text-center py-4">
                 <Link href="/photos" className="btn btn-primary btn-lg">
                   View All Photos
                 </Link>
@@ -486,7 +612,7 @@ function HomePageContent() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Floor Plans Section - Link to dedicated page */}
       <div className="card-content card-floor-plans py-5" id="card-id-2281722" data-card-type="34">
@@ -506,22 +632,24 @@ function HomePageContent() {
         </div>
       </div>
 
-      {/* The Stirling Club Section - Brief Teaser */}
-      <div className="card-content card-custom card-custom-03 py-5" id="card-id-2273044" data-card-type="40">
+      {/* The Stirling Club Section - Brief Teaser with Photo Gallery */}
+      <section className="card-content card-custom card-custom-03 py-5" id="card-id-2273044" data-card-type="40" aria-label="The Stirling Club">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
               <h1 className="text-center mb-4">The Stirling Club</h1>
-              <div className="row align-items-center">
+              <div className="row align-items-center mb-4">
                 <div className="col-12 col-md-6 mb-4 mb-md-0">
                   <div className="text-center">
                     <Image
-                      src="/images/turnberry/sterlingclubpool-.jpeg"
-                      alt="The Stirling Club"
-                      width={400}
-                      height={300}
-                      className="img-fluid rounded"
+                      src={homepagePhotos.stirlingClub[0]}
+                      alt="The Stirling Club pool and resort-style amenities at Turnberry Place"
+                      width={500}
+                      height={375}
+                      className="img-fluid rounded shadow-sm"
                       loading="lazy"
+                      quality={85}
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
                 </div>
@@ -541,10 +669,30 @@ function HomePageContent() {
                   </div>
                 </div>
               </div>
+              
+              {/* Stirling Club Photo Gallery */}
+              <div className="row g-3 mt-3">
+                {homepagePhotos.stirlingClub.slice(1, 4).map((photo, index) => (
+                  <div key={index} className="col-12 col-md-4">
+                    <div style={{ position: 'relative', width: '100%', height: '200px', borderRadius: '8px', overflow: 'hidden' }}>
+                      <Image
+                        src={photo}
+                        alt={`The Stirling Club amenities ${index + 2} - Turnberry Place`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                        style={{ objectFit: 'cover' }}
+                        loading="lazy"
+                        quality={80}
+                        className="hover-zoom"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Turnberry Place Neighborhood Section - Link to dedicated page */}
       <div className="card-content card-areas py-5" id="card-id-2282239" data-card-type="42">

@@ -28,6 +28,26 @@
   color: #6c757d;
 }
 
+/* Image Optimization Styles */
+.hover-zoom {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+/* Photo Gallery Grid Optimization */
+.card-photo-gallery img {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-photo-gallery img:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
 /* Standardized Formatting System */
 /* Consistent section spacing */
 .card-content {
