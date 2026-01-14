@@ -94,12 +94,12 @@ export function ContactForm({ title = "Request Pricing & Details", onSubmit }: C
 
   if (submitted) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-        <h3 className="text-2xl font-bold text-green-800 mb-2">THANKS!</h3>
-        <p className="text-green-700 mb-4">Your message was sent. We'll be in touch soon.</p>
+      <div className="alert alert-success text-center" role="alert">
+        <h3 className="h4 mb-2">THANKS!</h3>
+        <p className="mb-3">Your message was sent. We'll be in touch soon.</p>
         <button
           onClick={() => setSubmitted(false)}
-          className="text-green-600 hover:text-green-800 underline"
+          className="btn btn-outline-success btn-sm"
         >
           Send another
         </button>
@@ -108,102 +108,97 @@ export function ContactForm({ title = "Request Pricing & Details", onSubmit }: C
   }
 
   return (
-    <section className="py-12 md:py-20 bg-gray-50">
-      <div className="container px-6 mx-auto max-w-2xl">
-        <h2 className="text-3xl font-bold text-center mb-8 md:text-4xl">
-          {title}
-        </h2>
-        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
-          <div className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Your name
-              </label>
-              <input
-                type="text"
-                id="name"
-                required
-                value={formData.name}
-                onChange={(e) => {
-                  setFormData({ ...formData, name: e.target.value })
-                  if (errors.name) setErrors({ ...errors, name: '' })
-                }}
-                className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                  errors.name ? 'border-red-500' : 'border-gray-300'
-                }`}
-              />
-              {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+    <div className="mt-3 mt-md-4">
+      <form onSubmit={handleSubmit}>
+        <div className="row">
+          <div className="col-12 mb-3">
+            <label htmlFor="name" className="form-label">
+              Your name <span className="text-danger">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              required
+              value={formData.name}
+              onChange={(e) => {
+                setFormData({ ...formData, name: e.target.value })
+                if (errors.name) setErrors({ ...errors, name: '' })
+              }}
+              className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+            />
+            {errors.name && <div className="invalid-feedback d-block">{errors.name}</div>}
+          </div>
+          <div className="col-12 mb-3">
+            <label htmlFor="email" className="form-label">
+              Email <span className="text-danger">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              required
+              value={formData.email}
+              onChange={(e) => {
+                setFormData({ ...formData, email: e.target.value })
+                if (errors.email) setErrors({ ...errors, email: '' })
+              }}
+              className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+            />
+            {errors.email && <div className="invalid-feedback d-block">{errors.email}</div>}
+          </div>
+          <div className="col-12 mb-3">
+            <label htmlFor="phone" className="form-label">
+              Phone
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="(702) 555-1234"
+              value={formData.phone}
+              onChange={(e) => {
+                const formatted = formatPhoneNumber(e.target.value)
+                setFormData({ ...formData, phone: formatted })
+                if (errors.phone) setErrors({ ...errors, phone: '' })
+              }}
+              maxLength={14}
+              className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
+            />
+            {errors.phone && <div className="invalid-feedback d-block">{errors.phone}</div>}
+          </div>
+          <div className="col-12 mb-3">
+            <label htmlFor="message" className="form-label">
+              Message <span className="text-danger">*</span>
+            </label>
+            <textarea
+              id="message"
+              rows={5}
+              required
+              value={formData.message}
+              onChange={(e) => {
+                setFormData({ ...formData, message: e.target.value })
+                if (errors.message) setErrors({ ...errors, message: '' })
+              }}
+              className={`form-control ${errors.message ? 'is-invalid' : ''}`}
+            />
+            {errors.message && <div className="invalid-feedback d-block">{errors.message}</div>}
+          </div>
+          {errors.submit && (
+            <div className="col-12 mb-3">
+              <div className="alert alert-danger" role="alert">
+                {errors.submit}
+              </div>
             </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                required
-                value={formData.email}
-                onChange={(e) => {
-                  setFormData({ ...formData, email: e.target.value })
-                  if (errors.email) setErrors({ ...errors, email: '' })
-                }}
-                className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
-                }`}
-              />
-              {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
-            </div>
-            <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                Phone
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                placeholder="(702) 555-1234"
-                value={formData.phone}
-                onChange={(e) => {
-                  const formatted = formatPhoneNumber(e.target.value)
-                  setFormData({ ...formData, phone: formatted })
-                  if (errors.phone) setErrors({ ...errors, phone: '' })
-                }}
-                maxLength={14}
-                className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                  errors.phone ? 'border-red-500' : 'border-gray-300'
-                }`}
-              />
-              {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={5}
-                required
-                value={formData.message}
-                onChange={(e) => {
-                  setFormData({ ...formData, message: e.target.value })
-                  if (errors.message) setErrors({ ...errors, message: '' })
-                }}
-                className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                  errors.message ? 'border-red-500' : 'border-gray-300'
-                }`}
-              />
-              {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
-            </div>
-            {errors.submit && <p className="mb-4 text-sm text-red-600">{errors.submit}</p>}
+          )}
+          <div className="col-12">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn btn-primary btn-lg w-100"
             >
               {isSubmitting ? 'Submitting...' : 'Request Pricing & Details'}
             </button>
           </div>
-        </form>
-      </div>
-    </section>
+        </div>
+      </form>
+    </div>
   )
 }

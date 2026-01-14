@@ -107,7 +107,7 @@ function HomePageContent() {
               <p>Las Vegas, NV 89109</p>
               <h3>4 Luxury Towers from $800,000 to $10M+</h3>
               <p className="text-muted mt-2" style={{ fontSize: '0.9rem' }}>
-                Updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })} 2025
+                Updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
               </p>
             </div>
           </div>

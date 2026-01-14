@@ -126,7 +126,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                 textShadow: '1px 1px 4px rgba(0,0,0,0.6)',
                 fontStyle: 'italic',
               }}>
-                Updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })} 2025
+                Updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
               </p>
             </div>
           </div>
