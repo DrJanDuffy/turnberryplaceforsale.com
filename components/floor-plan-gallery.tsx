@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import Image from 'next/image'
 import { X, ZoomIn } from 'lucide-react'
 
