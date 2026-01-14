@@ -148,7 +148,7 @@ function HomePageContent() {
       <HeroSlideshow photos={heroPhotos} />
       
       {/* Price & Features Section - Combined like live site */}
-      <section className="card-content card-price-features py-5" id="card-id-2271756" data-card-type="3" itemScope itemType="https://schema.org/Residence">
+      <section className="card-content card-price-features py-5" id="card-id-2271756" data-card-type="3" itemScope itemType="https://schema.org/Residence" aria-label="Turnberry Place Pricing">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 text-center">
@@ -325,7 +325,7 @@ function HomePageContent() {
       </section>
 
       {/* RealScout Office Listings Widget - Featured Listings */}
-      <section className="card-content card-realscout-listings py-5" id="card-id-realscout-listings" style={{ backgroundColor: '#f8f9fa' }} aria-label="Available Turnberry Place Condos">
+      <section className="card-content card-realscout-listings py-5" id="card-id-realscout-listings" aria-label="Available Turnberry Place Condos">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-11">
@@ -402,15 +402,15 @@ function HomePageContent() {
       </section>
 
       {/* Open House Section - Matching Live Site */}
-      <div className="card-content card-open-house py-5" id="card-id-2271761" data-card-type="8" style={{
+      <section className="card-content card-open-house py-5" id="card-id-2271761" data-card-type="8" aria-label="Schedule Private Showing" style={{
         backgroundImage: "url(/images/turnberry/Turnberry Tower Nice Vew.jpg)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
         backgroundSize: "cover",
       }}>
-        <div className="container-fluid">
+        <div className="container">
           <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-7 text-center py-5 px-0">
+            <div className="col-12 col-sm-11 col-md-10 col-lg-9 col-xl-7 text-center py-5">
               <div className="open-house-box p-2 p-md-4 shadow" style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.95)',
                 borderRadius: '4px',
@@ -435,18 +435,18 @@ function HomePageContent() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Contact Form Section - Matching Live Site */}
-      <div className="card-content card-contact-form py-5" id="card-id-2271763" data-card-type="11" style={{
+      <section className="card-content card-contact-form py-5" id="card-id-2271763" data-card-type="11" aria-label="Request Pricing and Details" style={{
         backgroundImage: "url(/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
         backgroundSize: "cover",
       }}>
-        <div className="container-fluid">
+        <div className="container">
           <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6 text-center px-sm-2">
+            <div className="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6 text-center">
               <div className="contact-form-box p-4" style={{
                 backgroundColor: 'rgba(255,255,255,0.95)',
                 borderRadius: '4px',
@@ -463,10 +463,10 @@ function HomePageContent() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Home Value Widget - RealScout (Compact) */}
-      <div className="card-content card-home-value py-4" id="card-id-home-value" style={{ backgroundColor: '#f8f9fa' }}>
+      <section className="card-content card-home-value py-5" id="card-id-home-value" aria-label="Home Value Estimate">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-8">
@@ -496,11 +496,11 @@ function HomePageContent() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Agent Section - Matching Live Site */}
-      <div className="card-content card-agent py-5" id="card-id-2271762" data-card-type="12">
-        <div className="container-fluid">
+      <section className="card-content card-agent py-5" id="card-id-2271762" data-card-type="12" aria-label="Dr. Jan Duffy, REALTOR">
+        <div className="container">
           <div className="row justify-content-center">
             <div className="col-12">
               <div className="row justify-content-center">
@@ -552,8 +552,7 @@ function HomePageContent() {
             </div>
           </div>
         </div>
-      </div>
-
+      </section>
 
       {/* Photo Gallery Section - Featured Images */}
       <section className="card-content card-photo-gallery py-5" id="card-id-photo-gallery" aria-label="Turnberry Place Photo Gallery">
@@ -614,8 +613,8 @@ function HomePageContent() {
       </section>
 
       {/* Floor Plans Section - Link to dedicated page */}
-      <div className="card-content card-floor-plans py-5" id="card-id-2281722" data-card-type="34">
-        <div className="container-fluid">
+      <section className="card-content card-floor-plans py-5" id="card-id-2281722" data-card-type="34" aria-label="Floor Plans">
+        <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-12 col-lg-11 col-xl-10 text-center">
               <h1 className="text-center mb-4">
@@ -629,7 +628,7 @@ function HomePageContent() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* The Stirling Club Section - Brief Teaser with Photo Gallery */}
       <section className="card-content card-custom card-custom-03 py-5" id="card-id-2273044" data-card-type="40" aria-label="The Stirling Club">
@@ -694,8 +693,8 @@ function HomePageContent() {
       </section>
 
       {/* Turnberry Place Neighborhood Section - Link to dedicated page */}
-      <div className="card-content card-areas py-5" id="card-id-2282239" data-card-type="42">
-        <div className="container-fluid">
+      <section className="card-content card-areas py-5" id="card-id-2282239" data-card-type="42" aria-label="Turnberry Place Neighborhood">
+        <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-12 col-sm-11 col-lg-10 col-xl-9">
               <div className="py-4">
@@ -712,7 +711,7 @@ function HomePageContent() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

@@ -2131,14 +2131,34 @@ a.no-underline:hover { text-decoration: none; }
 a.text-underline { text-decoration: underline !important; }
 
 /* Card content alternating backgrounds (luxury black from live site) */
-.card-content:not(.modal):nth-child(odd), 
-.card-content:nth-child(odd) .amenities-title {
+/* Only apply to sections without explicit background colors */
+.card-content:not(.modal):not([style*="background"]):nth-of-type(odd) {
     background-color: var(--section-bgcolor-odd, #1a1a1a);
 }
 
-.card-content:not(.modal):nth-child(even), 
-.card-content:nth-child(even) .amenities-title {
+.card-content:not(.modal):not([style*="background"]):nth-of-type(even) {
     background-color: var(--section-bgcolor-even, #0d0d0d);
+}
+
+/* Ensure sections with background images have overlay for readability */
+.card-content[style*="backgroundImage"] {
+    position: relative;
+}
+
+.card-content[style*="backgroundImage"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+.card-content[style*="backgroundImage"] > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* Button custom styles from live site */
