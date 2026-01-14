@@ -17,7 +17,7 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
         <title>Price & Features - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Turnberry Place Las Vegas luxury condos: 4 towers from $800,000 to $10M+. Las Vegas, NV 89109. Call/text 702-222-1964 for pricing details"
+          content="Turnberry Place Las Vegas luxury condos: 4 towers from $800,000 to $10M+. Las Vegas, NV 89109. Call 702-500-1971 for pricing details"
         />
       </Head>
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
@@ -148,7 +148,7 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
                 Whether you're interested in entry-level pricing in Tower 1, mid-range residences in Towers 2 and 3, or premium penthouses in Tower 4, I can provide detailed information about available properties, pricing trends, and the unique features that justify the investment. My goal is to help you find the perfect Turnberry Place residence that meets your needs, preferences, and budget while representing a sound investment in Las Vegas luxury real estate.
               </p>
                 <p>
-                  <strong>Ready to explore Turnberry Place pricing and features?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to discuss available residences, current pricing, and the value propositions that make Turnberry Place an exceptional investment opportunity. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you find the perfect residence that exceeds your expectations while fitting your budget.
+                  <strong>Ready to explore Turnberry Place pricing and features?</strong> Contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a> to discuss available residences, current pricing, and the value propositions that make Turnberry Place an exceptional investment opportunity. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you find the perfect residence that exceeds your expectations while fitting your budget.
                 </p>
               </div>
             </div>

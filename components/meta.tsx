@@ -42,7 +42,7 @@ export function Meta({ title, tags }: MetaProps) {
           <meta
             key="description"
             name="description"
-            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-222-1964"
+            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-500-1971"
           />
           <meta
             key="og_title"
@@ -52,7 +52,7 @@ export function Meta({ title, tags }: MetaProps) {
           <meta
             key="og_description"
             property="og:description"
-            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-222-1964"
+            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-500-1971"
           />
           <meta
             key="og_url"
@@ -98,7 +98,7 @@ export function Meta({ title, tags }: MetaProps) {
           <meta
             key="twitter_description"
             name="twitter:description"
-            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-222-1964"
+            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-500-1971"
           />
           <meta
             key="twitter_image"

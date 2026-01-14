@@ -86,7 +86,7 @@ export function ContactForm({ title = "Request Pricing & Details", onSubmit }: C
         setErrors({})
       }, 5000)
     } catch (error) {
-      setErrors({ submit: 'Failed to submit form. Please try again or call (702) 222-1964.' })
+      setErrors({ submit: 'Failed to submit form. Please try again or call (702) 500-1971.' })
     } finally {
       setIsSubmitting(false)
     }

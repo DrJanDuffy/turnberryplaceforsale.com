@@ -27,7 +27,7 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
         <title>Neighborhood - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Turnberry Place neighborhood: One block from Las Vegas Strip, near Wynn/Encore. 20+ Zagat restaurants, T-Mobile Arena, Allegiant Stadium nearby. Call/text 702-222-1964"
+          content="Turnberry Place neighborhood: One block from Las Vegas Strip, near Wynn/Encore. 20+ Zagat restaurants, T-Mobile Arena, Allegiant Stadium nearby. Call 702-500-1971"
         />
       </Head>
       <JsonLdSchema type="property" />

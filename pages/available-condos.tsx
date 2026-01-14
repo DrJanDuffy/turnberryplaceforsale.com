@@ -18,7 +18,7 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
         <title>Available Las Vegas Condos - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Browse available luxury condos for sale at Turnberry Place Las Vegas. 1-4 bedroom residences from $800K-$10M+ with Strip views. Call/text 702-222-1964"
+          content="Browse available luxury condos for sale at Turnberry Place Las Vegas. 1-4 bedroom residences from $800K-$10M+ with Strip views. Call 702-500-1971"
         />
       </Head>
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
@@ -102,8 +102,8 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
               </div>
               <div className="text-center mt-4">
                 <p className="mb-3">Interested in viewing these luxury condos?</p>
-                <a href="tel:7022221964" className="btn btn-custom btn-lg" title="Call or text 702-222-1964">
-                  Call/Text (702) 222-1964
+                <a href="tel:7025001971" className="btn btn-custom btn-lg" title="Call 702-500-1971">
+                  Call (702) 500-1971
                 </a>
               </div>
               </div>
@@ -121,7 +121,7 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
                   The RealScout widget above displays current available properties with real-time information. Use the filters to find residences that match your preferences by price, size, or tower.
                 </p>
                 <p>
-                  <strong>Ready to view available condos?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to schedule a private showing or discuss available properties.
+                  <strong>Ready to view available condos?</strong> Contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a> to schedule a private showing or discuss available properties.
                 </p>
               </div>
             </div>

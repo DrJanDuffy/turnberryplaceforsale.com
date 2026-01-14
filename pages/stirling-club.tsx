@@ -17,7 +17,7 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
         <title>The Stirling Club - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="The Stirling Club: 80,000 sq ft private club exclusively for Turnberry Place residents. Fitness center, pools, tennis, spa, dining & more. Call/text 702-222-1964"
+          content="The Stirling Club: 80,000 sq ft private club exclusively for Turnberry Place residents. Fitness center, pools, tennis, spa, dining & more. Call 702-500-1971"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -116,7 +116,7 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
                   Whether you're interested in The Stirling Club's fitness facilities, recreational amenities, dining venues, business facilities, or social spaces, I can provide detailed information about how these amenities enhance daily living and create exceptional value. My goal is to help you understand the comprehensive nature of The Stirling Club and how it contributes to Turnberry Place's reputation as Las Vegas's premier high-rise condominium community.
                 </p>
                 <p>
-                  <strong>Ready to experience The Stirling Club?</strong> Call or text me at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> to schedule a private tour of The Stirling Club and discuss how this exclusive private club can enhance your luxury lifestyle. With my extensive knowledge of The Stirling Club and Turnberry Place, I can help you appreciate the exceptional value and lifestyle benefits that this world-class facility provides.
+                  <strong>Ready to experience The Stirling Club?</strong> Contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a> to schedule a private tour of The Stirling Club and discuss how this exclusive private club can enhance your luxury lifestyle. With my extensive knowledge of The Stirling Club and Turnberry Place, I can help you appreciate the exceptional value and lifestyle benefits that this world-class facility provides.
                 </p>
               </div>
             </div>

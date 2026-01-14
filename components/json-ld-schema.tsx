@@ -30,7 +30,7 @@ export function JsonLdSchema({
     description:
       'Las Vegas real estate expert specializing in luxury high-rise condos at Turnberry Place. Licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties.',
     url: baseUrl,
-    telephone: ['+17025001971', '+17022221964'],
+    telephone: ['+17025001971'],
     email: 'jan@lasvegas55plushomes.com',
     identifier: {
       '@type': 'PropertyValue',
@@ -170,7 +170,7 @@ export function JsonLdSchema({
         name: 'How can I schedule a showing at Turnberry Place?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'You can schedule a private showing by calling Dr. Jan Duffy at (702) 222-1964 or by requesting details through our online form.',
+          text: 'You can schedule a private showing by calling the office at (702) 500-1971 or by requesting details through our online form.',
         },
       },
     ],

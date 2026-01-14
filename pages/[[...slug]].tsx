@@ -46,7 +46,7 @@ export default function NodePage({ node, menus }: NodePageProps) {
         <Head>
           <meta
             name="description"
-            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-222-1964"
+            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-500-1971"
           />
           {/* Preload first hero image for faster LCP */}
           <link
@@ -319,9 +319,6 @@ function HomePageContent() {
                 </div>
                 <div className="col-12 text-center py-2">
                   <div className="py-2 d-flex flex-column flex-lg-row align-items-center justify-content-center" style={{ gap: '5px' }}>
-                    <div className="mx-2" itemScope itemType="https://schema.org/LocalBusiness">
-                      <span>Mobile:</span> <a href="tel:7022221964" title="Phone cell">(702) 222-1964</a>
-                    </div>
                     <div className="mx-2" itemScope itemType="https://schema.org/LocalBusiness">
                       <span>Office:</span> <a href="tel:7025001971" title="Phone office">(702) 500-1971</a>
                     </div>

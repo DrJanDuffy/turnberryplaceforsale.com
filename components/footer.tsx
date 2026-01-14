@@ -112,10 +112,6 @@ export function Footer({ links }: FooterProps) {
             <div className="px-2 px-md-3 mb-2 mb-md-0">The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties</div>
             <div className="px-2 px-md-3 mb-2 mb-md-0">License: S.0197614.LLC</div>
             <div className="px-2 px-md-3 mb-2 mb-md-0">
-              <a href="tel:7022221964" className="footer-phone-link" title="Call or text Dr. Jan Duffy">
-                (702) 222-1964
-              </a>
-              <span className="mx-2">|</span>
               <a href="tel:7025001971" className="footer-phone-link" title="Office phone">
                 (702) 500-1971
               </a>
@@ -172,7 +168,7 @@ export function Footer({ links }: FooterProps) {
               </Link>
             </div>
             <div className="mt-3 font-size-80 text-muted">
-              Turnberry Place Las Vegas | 2827 Paradise Rd, Las Vegas, NV 89109 | Dr. Jan Duffy | <a href="tel:7022221964" className="footer-phone-link">702-222-1964</a> | <a href="tel:7025001971" className="footer-phone-link">702-500-1971</a>
+              Turnberry Place Las Vegas | 2827 Paradise Rd, Las Vegas, NV 89109 | Dr. Jan Duffy | <a href="tel:7025001971" className="footer-phone-link">702-500-1971</a>
             </div>
           </div>
         </div>

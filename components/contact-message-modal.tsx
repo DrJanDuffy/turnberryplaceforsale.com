@@ -11,7 +11,7 @@ interface ContactMessageModalProps {
 
 export function ContactMessageModal({
   agentName = 'Dr. Jan Duffy, REALTOR',
-  agentPhone = '(702) 222-1964',
+  agentPhone = '(702) 500-1971',
   agentLicense = 'S.0197614.LLC',
   companyName = 'The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties'
 }: ContactMessageModalProps) {

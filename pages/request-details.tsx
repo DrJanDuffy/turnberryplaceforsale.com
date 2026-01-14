@@ -18,7 +18,7 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
         <title>Request Details - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Request pricing and details for luxury condos at Turnberry Place Las Vegas. Get information on 1-4 bedroom residences from $800K-$10M+. Call/text 702-222-1964"
+          content="Request pricing and details for luxury condos at Turnberry Place Las Vegas. Get information on 1-4 bedroom residences from $800K-$10M+. Call 702-500-1971"
         />
       </Head>
       <JsonLdSchema type="property" />
@@ -160,7 +160,7 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
                 Ready to learn more about Turnberry Place? Submit your request using the form above, and I'll provide you with comprehensive information about pricing, availability, features, and lifestyle benefits. Whether you're ready to move forward or just beginning your exploration, I'm here to provide the information and guidance you need to make informed decisions about Turnberry Place luxury living.
               </p>
               <p>
-                For immediate assistance, you can also call or text me directly at <a href="tel:7022221964" className="text-decoration-underline">(702) 222-1964</a> or contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a>. I'm here to help you discover the exceptional quality and lifestyle that Turnberry Place offers and find the perfect luxury residence that meets your needs and exceeds your expectations.
+                For immediate assistance, contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a>. I'm here to help you discover the exceptional quality and lifestyle that Turnberry Place offers and find the perfect luxury residence that meets your needs and exceeds your expectations.
               </p>
             </div>
           </div>
