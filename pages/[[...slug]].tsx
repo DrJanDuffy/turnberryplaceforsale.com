@@ -110,8 +110,8 @@ function HomePageContent() {
   // Hero photos - using local images from public/images/turnberry (optimized)
   const heroPhotos = [
     "/images/turnberry/Turnberry_Place_For_Sale.jpg",
-    "/images/turnberry/Turnberry Tower Nice Vew.jpg",
-    "/images/turnberry/Turnberry Tower South View.jpeg",
+    "/images/turnberry/StirlingClub_CigarBar_View1.jpg", // Stirling Club - Cigar Bar
+    "/images/turnberry/SterlingClubDinning.avif", // Stirling Club - Dining Room
     "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
     "/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg",
     "/images/turnberry/Turnberry_Towers_Las_Vegas_Monorail.jpg",
