@@ -59,7 +59,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
   return (
     <header className="card-top-header relative h-screen min-h-[500px] w-full">
       {/* Slideshow */}
-      <div className="slick-slideshow absolute inset-0 z-0">
+      <div className="slick-slideshow absolute inset-0 z-0" aria-label="Hero image slideshow">
         {photos.map((photo, index) => {
           const isLoaded = loadedImages.has(index)
           const isCurrent = index === currentSlide
@@ -79,6 +79,9 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                 filter: getBrightnessFilter(index), // Individual brightness per photo
                 transition: isLoaded ? 'opacity 1s ease-in-out, filter 0.3s ease' : 'opacity 1s ease-in-out',
               }}
+              aria-hidden={!isCurrent}
+              role="img"
+              aria-label={isCurrent ? `Hero slide ${index + 1} of ${photos.length}: Turnberry Place Las Vegas` : undefined}
             >
               {/* Show loading state for images that haven't loaded yet */}
               {!isLoaded && isCurrent && (
@@ -194,14 +197,23 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
       {/* Thumbnails Bar */}
       <div className="thumbnails-bar d-flex align-items-center justify-content-center">
         {photos.map((photo, index) => (
-          <div
+          <button
             key={index}
+            type="button"
             className={`photo-thumbnail photo-${index + 1} ${index === currentSlide ? "selected" : ""}`}
             data-idx={index + 1}
             onClick={() => goToSlide(index)}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            style={{ cursor: 'pointer', position: 'relative', width: '100px', height: '60px', overflow: 'hidden' }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                goToSlide(index)
+              }
+            }}
+            aria-label={`View slide ${index + 1} of ${photos.length}`}
+            aria-pressed={index === currentSlide}
+            style={{ cursor: 'pointer', position: 'relative', width: '100px', height: '60px', overflow: 'hidden', border: 'none', background: 'transparent', padding: 0 }}
           >
             <Image
               src={photo}
@@ -214,7 +226,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
               placeholder="blur"
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
             />
-          </div>
+          </button>
         ))}
         <Link href="/photos" className="ml-2" style={{ display: 'flex', alignItems: 'center', padding: '0.5rem' }}>
           <div style={{ 
