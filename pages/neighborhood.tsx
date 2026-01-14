@@ -4,6 +4,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { NeighborhoodSection } from "components/neighborhood-section"
 // QuickSearchWidget, FeaturedListingCard, VIPNewsletterSignup available on homepage
 import Image from "next/image"
 import Link from "next/link"
@@ -40,6 +41,15 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
                 <p className="lead">
                   Turnberry Place stands as a pinnacle of luxury living in Las Vegas, offering an unparalleled blend of privacy, convenience, and access to world-class amenities. Situated just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts, this guard-gated, four-tower condominium complex redefines upscale urban living with its strategic location and meticulously curated environment.
                 </p>
+              </div>
+
+              {/* Neighborhood Section with Map and Highlights */}
+              <div className="content-section mb-5">
+                <NeighborhoodSection
+                  description="Turnberry Place stands as a pinnacle of luxury living in Las Vegas, offering an unparalleled blend of privacy, convenience, and access to world-class amenities. Situated just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts, this guard-gated, four-tower condominium complex redefines upscale urban living with its strategic location and meticulously curated environment."
+                  mapPlaceholder={true}
+                  showNearbyHighlights={true}
+                />
               </div>
 
               <div className="content-section">

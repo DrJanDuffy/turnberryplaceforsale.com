@@ -45,13 +45,13 @@ export default function NodePage({ node, menus }: NodePageProps) {
   if (node.id === 'home' && node.type === 'node--landing_page') {
     return (
       <Layout menus={menus}>
-        <Meta title="Turnberry Place Las Vegas Condos For Sale | $800K-$10M+ | Dr. Jan Duffy" />
+        <Meta title="Luxury Real Estate Las Vegas | Turnberry Place For Sale | $800K-$10M+ | Dr. Jan Duffy" />
         <Head>
           <meta
             name="description"
-            content="Search Turnberry Place luxury high-rise condos near Las Vegas Strip. 4 towers, Stirling Club amenities, 24/7 security. Current listings from $800K-$10M+. Call 702-500-1971"
+            content="Luxury Real Estate Las Vegas: Turnberry Place high-rise condos for sale. 4 luxury towers, Stirling Club amenities, 24/7 security. Current listings $800K-$10M+. Near Las Vegas Strip. Expert agent Dr. Jan Duffy. Call 702-500-1971"
           />
-          <meta name="keywords" content="Turnberry Place Las Vegas, luxury condos Las Vegas, high-rise condos, Las Vegas Strip condos, Turnberry Place for sale, luxury real estate Las Vegas, condos near Strip, Stirling Club, Paradise Road condos, Dr. Jan Duffy" />
+          <meta name="keywords" content="luxury real estate Las Vegas, Turnberry Place for sale, luxury condos Las Vegas, high-rise condos Las Vegas, luxury real estate agent Las Vegas, Las Vegas Strip condos, luxury homes Las Vegas, Turnberry Place condos, luxury high-rise Las Vegas, Dr. Jan Duffy realtor" />
           <meta name="author" content="Dr. Jan Duffy, REALTOR" />
           <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
           <meta name="googlebot" content="index, follow" />

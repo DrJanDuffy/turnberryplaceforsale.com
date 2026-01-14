@@ -1,15 +1,33 @@
 /* Custom Fonts - Simplified to 2 font families */
+/* Luxury Font Stack: Playfair Display (serif headings) + Inter (sans-serif body) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Legacy fonts for backward compatibility */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Questrial:wght@400;500;600&display=swap');
 
 :root {
-  /* Font Families - Matching Live Site */
+  /* Luxury Font Families - High-End Aesthetic */
   --default-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --headlines-font: 'Cinzel', serif;
-  --headlines-font-weight: 500;
-  --body-font: Questrial;
+  --headlines-font: 'Playfair Display', serif; /* Serif for headings - luxury aesthetic */
+  --headlines-font-weight: 600;
+  --body-font: 'Inter', sans-serif; /* Clean sans-serif for body text */
   --body-font-weight: 400;
-  --nav-font: Cinzel;
-  --nav-font-weight: 500;
+  --nav-font: 'Playfair Display', serif; /* Match headings for navigation */
+  --nav-font-weight: 600;
+  
+  /* Legacy fonts for backward compatibility */
+  --legacy-headlines-font: 'Cinzel', serif;
+  --legacy-body-font: 'Questrial', sans-serif;
+  
+  /* Luxury Color Palette: Deep Navy, Slate, Gold Accents */
+  --luxury-navy: #0a1929; /* Deep Navy */
+  --luxury-navy-rgb: 10, 25, 41;
+  --luxury-slate: #1a2332; /* Slate */
+  --luxury-slate-rgb: 26, 35, 50;
+  --luxury-gold: #d4af37; /* Gold accent */
+  --luxury-gold-rgb: 212, 175, 55;
+  --luxury-gold-light: #f4e4a6; /* Light gold for highlights */
+  --luxury-gold-dark: #b8941f; /* Dark gold for hover states */
   
   /* Colors - Matching Live Site CSS Variables (luxury black theme) */
   --heading-color: #ffffff;
@@ -19,8 +37,8 @@
   --nav-link-color-rgb: 255,255,255;
   --nav-bg-color: #1a1a1a;
   --nav-bg-color-rgb: 26,26,26;
-  --body-link-color: #007bff;
-  --body-link-color-rgb: 0,123,255;
+  --body-link-color: var(--luxury-gold); /* Use gold for links */
+  --body-link-color-rgb: var(--luxury-gold-rgb);
   --btn-icon-color: #6c757d;
   --btn-icon-color-rgb: 108,117,125;
   --btn-text-color: #fafafa;
@@ -29,28 +47,34 @@
   --section-bgcolor-odd-rgb: 26,26,26;
   --section-bgcolor-even: #0d0d0d;
   --section-bgcolor-even-rgb: 13,13,13;
+  
+  /* Gold accent for primary buttons and CTAs */
+  --primary-accent: var(--luxury-gold);
+  --primary-accent-hover: var(--luxury-gold-dark);
 }
 
-/* Body text and buttons use Questrial */
+/* Body text uses Inter (clean sans-serif) */
 body, .body-font {
-  font-family: var(--body-font);
+  font-family: var(--body-font), var(--legacy-body-font), sans-serif;
   font-weight: var(--body-font-weight);
+  letter-spacing: -0.01em; /* Slight letter-spacing for Inter */
 }
 
-/* Headings use Cinzel */
+/* Headings use Playfair Display (serif - luxury aesthetic) */
 h1, h2, h3, h4, h5, h6, .headlines-font {
-  font-family: var(--headlines-font);
+  font-family: var(--headlines-font), var(--legacy-headlines-font), serif;
   font-weight: var(--headlines-font-weight);
+  letter-spacing: 0.02em; /* Elegant spacing for serif headings */
 }
 
-/* Buttons use Questrial (same as body) */
+/* Buttons use Inter (same as body) */
 button, .btn, .buttons-font {
-  font-family: var(--body-font);
-  font-weight: var(--body-font-weight);
+  font-family: var(--body-font), var(--legacy-body-font), sans-serif;
+  font-weight: 500; /* Slightly bolder for buttons */
 }
 
-/* Navigation uses Cinzel (same as headings) */
+/* Navigation uses Playfair Display (same as headings) */
 a.nav-link, .nav-font {
-  font-family: var(--nav-font);
+  font-family: var(--nav-font), var(--legacy-headlines-font), serif;
   font-weight: var(--nav-font-weight);
 }
