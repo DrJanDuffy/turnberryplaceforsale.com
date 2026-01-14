@@ -23,6 +23,8 @@ import { StickyCTA } from "components/sticky-cta"
 import { DynamicUnitCount } from "components/dynamic-unit-count"
 import { PropertyGrid } from "components/property-grid"
 import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
+import { LuxuryAmenitiesGrid } from "components/luxury-amenities-grid"
+import { LeadCaptureForm } from "components/lead-capture-form"
 // Components moved to other pages:
 // WhyWorkWithUs, ClientTestimonials, PowerOfNumbers, InTheMedia → /agent page
 import { FeaturedListingCard } from "components/featured-listing-card"
@@ -276,34 +278,8 @@ function HomePageContent() {
         </div>
       </section>
 
-      {/* Amenities Section - Matching Live Site */}
-      <section className="card-content card-amenities py-5" id="card-id-2271758" data-card-type="5" aria-label="Turnberry Place Amenities">
-        <div className="container pt-2">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-12">
-              <div className="pb-4 pb-sm-5 amenities-border">
-                <div className="amenities-title">
-                  <h1 className="text-center">Amenities</h1>
-                </div>
-                <div className="row pt-2 pt-sm-4 pl-3 pl-sm-5">
-                  {["Gated Community", "City View", "Secure Building", "Gym", "Tennis Courts", "Spa", "Swimming Pool", "Workout Room", "Mountains", "Private Patio"].map((amenity, index) => (
-                    <div key={index} className="col-6 col-lg-4 py-2 d-flex align-items-center">
-                      <div className="mr-2 pb-1">
-                        <span className="icon-custom">
-                          <svg height="15" width="15" aria-hidden="true" focusable="false" className="d-inline" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path fill="currentColor" d="M413.505 91.951L133.49 371.966l-98.995-98.995c-4.686-4.686-12.284-4.686-16.971 0L6.211 284.284c-4.686 4.686-4.686 12.284 0 16.971l118.794 118.794c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-11.314-11.314c-4.686-4.686-12.284-4.686-16.97 0z"/>
-                          </svg>
-                        </span>
-                      </div>
-                      <span className="amenity-name">{amenity}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Luxury Amenities Section */}
+      <LuxuryAmenitiesGrid />
 
       {/* Open House Section - Matching Live Site */}
       <section className="card-content card-open-house py-5" id="card-id-2271761" data-card-type="8" aria-label="Schedule Private Showing" style={{
@@ -362,7 +338,7 @@ function HomePageContent() {
                   </h1>
                   <div className="w-10 horiz-line d-none d-sm-block" style={{ flex: '1', maxWidth: '100px', height: '1px', backgroundColor: 'rgba(181,152,90,1)' }}></div>
                 </div>
-                <ContactForm title="Turnberry Place Request Pricing & Details" />
+                <LeadCaptureForm variant="footer" showValuationCTA={true} />
               </div>
             </div>
           </div>

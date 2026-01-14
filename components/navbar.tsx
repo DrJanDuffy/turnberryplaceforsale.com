@@ -77,6 +77,29 @@ export function Navbar({ links, ...props }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
+  // Close mobile menu on Escape key
+  React.useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
+  }, [mobileMenuOpen])
+
+  // Prevent body scroll when mobile menu is open
+  React.useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
+
   const isActive = (href: string, children?: NavItem[]) => {
     if (asPath === href) return true
     if (children) {
@@ -152,14 +175,15 @@ export function Navbar({ links, ...props }: NavbarProps) {
             </div>
             <button
               className="ml-auto pr-2 d-inline d-lg-none nav-mobile cursor-pointer align-items-center bg-transparent border-0 text-white"
-              aria-label="Toggle mobile navigation"
+              aria-label={mobileMenuOpen ? "Close mobile navigation" : "Open mobile navigation"}
+              aria-expanded={mobileMenuOpen}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6" aria-hidden="true" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-6 h-6" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -175,6 +199,9 @@ export function Navbar({ links, ...props }: NavbarProps) {
               setMobileMenuOpen(false)
             }
           }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
         >
           <nav 
             role="navigation" 
@@ -190,6 +217,11 @@ export function Navbar({ links, ...props }: NavbarProps) {
                     className="nav-mobile-link"
                     title={link.title}
                     onClick={() => setMobileMenuOpen(false)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setMobileMenuOpen(false)
+                      }
+                    }}
                   >
                     {link.title}
                   </Link>
@@ -202,6 +234,11 @@ export function Navbar({ links, ...props }: NavbarProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      setMobileMenuOpen(false)
+                    }
+                  }}
                 >
                   Español
                 </Link>

@@ -107,7 +107,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                   }}
                 >
                   View Listings
-                  <ArrowRight className="w-4 h-4" style={{ flexShrink: 0 }} />
+                  <ArrowRight className="w-4 h-4" style={{ flexShrink: 0 }} aria-hidden="true" />
                 </Link>
                 <Link 
                   href="/request-details" 
@@ -123,7 +123,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                   }}
                 >
                   Request Details
-                  <Phone className="w-4 h-4" style={{ flexShrink: 0 }} />
+                  <Phone className="w-4 h-4" style={{ flexShrink: 0 }} aria-hidden="true" />
                 </Link>
               </div>
               <p className="text-white mb-0" style={{ 

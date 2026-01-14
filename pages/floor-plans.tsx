@@ -5,37 +5,105 @@ import { useState, useEffect } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
-import Image from "next/image"
-import classNames from "classnames"
+import { FloorPlanGallery, FloorPlan } from "components/floor-plan-gallery"
 
-const floorPlans = [
-  "Turnberry Place Floor Plan A",
-  "Turnberry Place Floor Plan B",
-  "Turnberry Place Floor Plan C",
-  "Turnberry Place Floor Plan D",
-  "Turnberry Place Floor Plan E",
-  "Turnberry Place Floor Plan ER",
-  "Turnberry Place Floor Plan F",
-  "Turnberry Place Floor Plan G",
-  "Turnberry Place Floor Plan H",
+// Floor plan data with categories
+const floorPlanData: FloorPlan[] = [
+  {
+    id: 'plan-a',
+    name: 'Turnberry Place Floor Plan A',
+    category: '1-Bedroom',
+    image: '/images/floor-plans/turnberry-place-floor-plan-a.png',
+    alt: 'Turnberry Place Floor Plan A - 1 Bedroom',
+    sqft: '1,200',
+    beds: 1,
+    baths: 1,
+  },
+  {
+    id: 'plan-b',
+    name: 'Turnberry Place Floor Plan B',
+    category: '2-Bedroom',
+    image: '/images/floor-plans/turnberry-place-floor-plan-b.png',
+    alt: 'Turnberry Place Floor Plan B - 2 Bedroom',
+    sqft: '1,800',
+    beds: 2,
+    baths: 2,
+  },
+  {
+    id: 'plan-c',
+    name: 'Turnberry Place Floor Plan C',
+    category: '2-Bedroom',
+    image: '/images/floor-plans/turnberry-place-floor-plan-c.png',
+    alt: 'Turnberry Place Floor Plan C - 2 Bedroom',
+    sqft: '2,000',
+    beds: 2,
+    baths: 2,
+  },
+  {
+    id: 'plan-d',
+    name: 'Turnberry Place Floor Plan D',
+    category: '3-Bedroom',
+    image: '/images/floor-plans/turnberry-place-floor-plan-d.png',
+    alt: 'Turnberry Place Floor Plan D - 3 Bedroom',
+    sqft: '2,500',
+    beds: 3,
+    baths: 2,
+  },
+  {
+    id: 'plan-e',
+    name: 'Turnberry Place Floor Plan E',
+    category: '3-Bedroom',
+    image: '/images/floor-plans/turnberry-place-floor-plan-e.png',
+    alt: 'Turnberry Place Floor Plan E - 3 Bedroom',
+    sqft: '3,000',
+    beds: 3,
+    baths: 3,
+  },
+  {
+    id: 'plan-er',
+    name: 'Turnberry Place Floor Plan ER',
+    category: '3-Bedroom',
+    image: '/images/floor-plans/turnberry-place-floor-plan-er.png',
+    alt: 'Turnberry Place Floor Plan ER - 3 Bedroom',
+    sqft: '3,200',
+    beds: 3,
+    baths: 3,
+  },
+  {
+    id: 'plan-f',
+    name: 'Turnberry Place Floor Plan F',
+    category: '4-Bedroom',
+    image: '/images/floor-plans/turnberry-place-floor-plan-f.png',
+    alt: 'Turnberry Place Floor Plan F - 4 Bedroom',
+    sqft: '4,000',
+    beds: 4,
+    baths: 3,
+  },
+  {
+    id: 'plan-g',
+    name: 'Turnberry Place Floor Plan G',
+    category: '4-Bedroom',
+    image: '/images/floor-plans/turnberry-place-floor-plan-g.png',
+    alt: 'Turnberry Place Floor Plan G - 4 Bedroom',
+    sqft: '4,500',
+    beds: 4,
+    baths: 4,
+  },
+  {
+    id: 'plan-h',
+    name: 'Turnberry Place Floor Plan H',
+    category: 'Penthouse',
+    image: '/images/floor-plans/turnberry-place-floor-plan-h.png',
+    alt: 'Turnberry Place Floor Plan H - Penthouse',
+    sqft: '8,000+',
+    beds: 4,
+    baths: 4,
+  },
 ]
 
 export default function FloorPlansPage() {
   // Use empty menus for client component - layout handles gracefully
   const menus = { main: [], footer: [] }
-  const [activeTab, setActiveTab] = useState(0)
-  
-  const floorPlanImages = [
-    "/images/turnberry/turnberry-place-floor-plan-a.png",
-    "/images/turnberry/turnberry-place-floor-plan-b.png",
-    "/images/turnberry/turnberry-place-floor-plan-c.png",
-    "/images/turnberry/turnberry-place-floor-plan-d.png",
-    "/images/turnberry/turnberry-place-floor-plan-e.png",
-    "/images/turnberry/turnberry-place-floor-plan-er.png",
-    "/images/turnberry/turnberry-place-floor-plan-f.png",
-    "/images/turnberry/turnberry-place-floor-plan-g.png",
-    "/images/turnberry/turnberry-place-floor-plan-h.png",
-  ]
 
   return (
     <Layout menus={menus}>
@@ -60,55 +128,9 @@ export default function FloorPlansPage() {
               </div>
             </div>
           </div>
-          <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-lg-11 col-xl-10 text-center">
-              <div className="py-4">
-                <ul className="nav nav-tabs justify-content-center floor-plan-tabs" id="fpTabs" role="tablist">
-                  {floorPlans.map((plan, index) => (
-                    <li key={index} className="nav-item">
-                      <button
-                        className={classNames("nav-link floor-plan-tab", activeTab === index && "active")}
-                        id={`fp-tab-${59361 + index}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setActiveTab(index);
-                        }}
-                        role="tab"
-                        aria-controls={`fp-${59361 + index}`}
-                        aria-selected={activeTab === index}
-                        type="button"
-                      >
-                        {plan}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-                <div className={classNames("tab-content p-4", floorPlans.length === 1 && "just-one")} id="myTabContent">
-                  {floorPlans.map((plan, index) => (
-                    <div
-                      key={index}
-                      className={classNames(
-                        "tab-pane fade",
-                        activeTab === index && "show active"
-                      )}
-                      style={{ display: activeTab === index ? 'block' : 'none' }}
-                      id={`fp-${59361 + index}`}
-                      role="tabpanel"
-                      aria-labelledby={`fp-tab-${59361 + index}`}
-                    >
-                      <div className="text-center fp-image">
-                        <Image
-                          src={floorPlanImages[index]}
-                          width={800}
-                          height={600}
-                          alt={plan}
-                          className="img-thumbnail cursor-pointer"
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+          <div className="row">
+            <div className="col-12">
+              <FloorPlanGallery floorPlans={floorPlanData} />
             </div>
           </div>
           

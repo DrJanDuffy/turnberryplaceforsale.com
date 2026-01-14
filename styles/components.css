@@ -58,9 +58,8 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
 }
 
-.property-card-hover:hover .card img {
+.property-card-hover:hover .property-card-image {
   transform: scale(1.05);
-  transition: transform 0.3s ease;
 }
 
 /* Standardized Formatting System */
@@ -369,10 +368,21 @@ main .card-top-header:first-of-type {
     padding-right: 0;
   }
   
-  /* Desktop container adjustments */
-  .container,
+  /* Desktop container adjustments - ensure centered */
+  .container {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
   .container-fluid {
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 
@@ -401,8 +411,8 @@ main .card-top-header:first-of-type {
 /* Desktop navbar container */
 @media (min-width: 992px) {
   .card-top-nav .container-fluid {
-    padding-left: 0;
-    padding-right: 0.75rem;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   
   .card-top-nav .row {
@@ -951,6 +961,8 @@ main .card-top-header:first-of-type {
   justify-content: center;
   padding-top: 0;
   padding-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card-top-header .container .row {
@@ -2202,6 +2214,7 @@ a.text-underline { text-decoration: underline !important; }
     padding-left: 0;
     padding-right: 0;
     overflow-x: hidden;
+    width: 100%;
 }
 
 .card-content > div {
@@ -2370,7 +2383,7 @@ img.highlight-border {
 
 .contact-modal .modal-agent-photo {
     margin-top: -55px;
-    margin-left: 5px;
+    margin-left: 0;
 }
 
 @media screen and (max-width: 575px) {
@@ -2441,7 +2454,7 @@ img.highlight-border {
 .agent-bio-modal .modal-agent-photo, 
 .agent-testimonials-modal .modal-agent-photo {
     margin-top: -55px;
-    margin-left: 5px;
+    margin-left: 0;
 }
 
 @media only screen and (max-width: 500px) {
@@ -2552,7 +2565,7 @@ img.highlight-border {
 
 .virtual-open-house-modal .modal-agent-photo {
     margin-top: -55px;
-    margin-left: 5px;
+    margin-left: 0;
 }
 
 @media screen and (max-width: 575px) {
