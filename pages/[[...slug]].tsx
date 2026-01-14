@@ -28,6 +28,7 @@ import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 import { FeaturedListingCard } from "components/featured-listing-card"
 import Image from "next/image"
 import Link from "next/link"
+import Script from "next/script"
 
 const RESOURCE_TYPES = ["node--page", "node--landing_page", "node--article"]
 
@@ -106,7 +107,10 @@ function HomePageContent() {
               <h1 className="mb-1">Turnberry Place Las Vegas</h1>
               <p>Las Vegas, NV 89109</p>
               <h3>4 Luxury Towers from $800,000 to $10M+</h3>
-              <p className="text-muted mt-2" style={{ fontSize: '0.9rem' }}>
+              <p className="mt-2 mb-1" style={{ fontSize: '1.1rem', fontWeight: 500 }}>
+                Only <DynamicUnitCount defaultCount={12} /> Units Available Now
+              </p>
+              <p className="text-muted" style={{ fontSize: '0.9rem' }}>
                 Updated {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
               </p>
             </div>
@@ -195,6 +199,54 @@ function HomePageContent() {
                     </Link>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* RealScout Office Listings Widget - Featured Listings */}
+      <div className="card-content card-realscout-listings py-5" id="card-id-realscout-listings" style={{ backgroundColor: '#f8f9fa' }}>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-11">
+              <div className="text-center mb-4">
+                <h1 className="mb-3">Available Turnberry Place Condos</h1>
+                <p className="lead">
+                  Browse current listings with real-time availability, pricing, and property details. Use the filters to find your perfect luxury residence.
+                </p>
+              </div>
+              <div className="widget-wrapper">
+                <Script
+                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+                  type="module"
+                  strategy="lazyOnload"
+                />
+                <style jsx>{`
+                  realscout-office-listings {
+                    --rs-listing-divider-color: #0e64c8;
+                    width: 100%;
+                    min-height: 400px;
+                  }
+                `}</style>
+                {/* @ts-ignore - Custom web component */}
+                <realscout-office-listings
+                  agent-encoded-id="QWdlbnQtMjI1MDUw"
+                  sort-order="NEWEST"
+                  listing-status="For Sale"
+                  property-types=",TC,LAL"
+                  price-min="500000"
+                  price-max="16000000"
+                ></realscout-office-listings>
+              </div>
+              <div className="text-center mt-4">
+                <p className="mb-3">Interested in viewing these luxury condos?</p>
+                <Link href="/available-condos" className="btn btn-primary btn-lg mr-2">
+                  View All Listings
+                </Link>
+                <a href="tel:7025001971" className="btn btn-outline-primary btn-lg" title="Call 702-500-1971">
+                  Call (702) 500-1971
+                </a>
               </div>
             </div>
           </div>
@@ -340,6 +392,39 @@ function HomePageContent() {
                     quality={85}
                   />
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Home Value Widget - RealScout */}
+      <div className="card-content card-home-value py-5" id="card-id-home-value" style={{ backgroundColor: '#ffffff' }}>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
+              <div className="text-center mb-4">
+                <h1 className="mb-3">What's Your Home Worth?</h1>
+                <p className="lead">
+                  Get an instant estimate of your property's value with our free home valuation tool.
+                </p>
+              </div>
+              <div className="widget-wrapper">
+                <Script
+                  src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+                  type="module"
+                  strategy="lazyOnload"
+                />
+                <style jsx>{`
+                  realscout-home-value {
+                    width: 100%;
+                    min-height: 300px;
+                  }
+                `}</style>
+                {/* @ts-ignore - Custom web component */}
+                <realscout-home-value
+                  agent-encoded-id="QWdlbnQtMjI1MDUw"
+                ></realscout-home-value>
               </div>
             </div>
           </div>

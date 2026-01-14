@@ -5,6 +5,29 @@
   position: relative;
 }
 
+/* RealScout Widget Styling */
+.widget-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.widget-wrapper realscout-office-listings,
+.widget-wrapper realscout-home-value,
+.widget-wrapper realscout-your-listings {
+  display: block;
+  width: 100%;
+}
+
+/* Loading state for widgets */
+.widget-wrapper:empty::before {
+  content: 'Loading...';
+  display: block;
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}
+
 /* Standardized Formatting System */
 /* Consistent section spacing */
 .card-content {
