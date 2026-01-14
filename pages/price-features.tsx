@@ -1,159 +1,614 @@
 import { GetStaticPropsResult } from "next"
 import Head from "next/head"
+import Image from "next/image"
+import Link from "next/link"
+import React, { useEffect, useMemo, useState } from "react"
+import {
+  Building2,
+  CalendarDays,
+  CheckCircle2,
+  ChevronDown,
+  MapPin,
+  Shield,
+} from "lucide-react"
+
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
-// QuickSearchWidget and VIPNewsletterSignup available on homepage
-import { FormattedSection } from "components/formatted-section"
+import { LeadCaptureForm } from "components/lead-capture-form"
 
 interface PriceFeaturesPageProps extends LayoutProps {}
 
 export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
+  const calendlyUrl = "https://calendly.com/drjanduffy/1-home-tour-30-mins"
+  const officePhoneDisplay = "(702) 500-1971"
+  const officePhoneTel = "+17025001971"
+  const propertyAddress = "2827 Paradise Rd, Las Vegas, NV 89109"
+
+  const heroImage = "/images/turnberry/19738766_web1_2827-Paradise-17.jpg-FULL.webp"
+  const towersBg = "/images/turnberry/Turnberry_Towers_Las_Vegas_Monorail.jpg"
+  const lifestyleEntry = "/images/turnberry/photo-3.jpg"
+  const lifestyleElevated = "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg"
+  const lifestylePenthouse = "/images/turnberry/Turnberry_edited.jpg"
+  const agentPhoto = "/images/turnberry/asset-1.jpg"
+  const bhhsLogo = "/images/turnberry/asset-19.jpg"
+
+  const [openAccordion, setOpenAccordion] = useState<
+    "financing" | "hoa" | "tax" | "included" | null
+  >("hoa")
+
+  const realEstateListingSchema = useMemo(() => {
+    return {
+      "@context": "https://schema.org",
+      "@type": "RealEstateListing",
+      name: "Turnberry Place Las Vegas Pricing & Features",
+      url: "https://www.turnberryplaceforsale.com/price-features",
+      description:
+        "Turnberry Place Las Vegas pricing and features for luxury high-rise condos from $800K to $10M+. Four towers, Stirling Club amenities, guard-gated security, and Strip-adjacent location.",
+      dateModified: new Date().toISOString(),
+      priceRange: "$800,000 - $10,000,000+",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: propertyAddress,
+        addressLocality: "Las Vegas",
+        addressRegion: "NV",
+        postalCode: "89109",
+        addressCountry: "US",
+      },
+      broker: {
+        "@type": "RealEstateAgent",
+        name: "Dr. Jan Duffy, REALTOR",
+        telephone: officePhoneTel,
+        identifier: {
+          "@type": "PropertyValue",
+          name: "Nevada Real Estate License",
+          value: "S.0197614.LLC",
+        },
+        memberOf: {
+          "@type": "Organization",
+          name: "Berkshire Hathaway HomeServices Nevada Properties",
+        },
+      },
+    }
+  }, [officePhoneTel, propertyAddress])
+
+  // Reveal animations (respects reduced motion)
+  useEffect(() => {
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    if (prefersReducedMotion) return
+
+    const els = Array.from(document.querySelectorAll("[data-reveal]"))
+    if (!("IntersectionObserver" in window) || els.length === 0) return
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            ;(e.target as HTMLElement).classList.add("is-revealed")
+            obs.unobserve(e.target)
+          }
+        })
+      },
+      { threshold: 0.18 }
+    )
+
+    els.forEach((el) => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <Layout menus={menus}>
-      <Meta title="Price & Features - Turnberry Place Las Vegas" />
+      <Meta title="Turnberry Place Las Vegas Pricing | $800K-$10M Luxury Condos" />
       <Head>
-        <title>Price & Features - Turnberry Place Las Vegas</title>
         <meta
           name="description"
-          content="Turnberry Place Las Vegas luxury condos: 4 towers from $800,000 to $10M+. Las Vegas, NV 89109. Call 702-500-1971 for pricing details"
+          content="Turnberry Place Las Vegas pricing: luxury high-rise condos from $800K to $10M+. Four towers, Stirling Club amenities, and guard-gated security one block from the Strip. Call 702-500-1971."
+        />
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateListingSchema) }}
         />
       </Head>
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
       
-      {/* Quick Search Widget - Available on homepage and /available-condos */}
+      <div className="card-content card-price-features price-features-page">
+        {/* HERO */}
+        <section className="price-features-hero" aria-label="Turnberry Place pricing hero">
+          <div className="price-features-hero-media" aria-hidden="true">
+            <Image
+              src={heroImage}
+              alt="Turnberry Place Las Vegas luxury high-rise condos"
+              fill
+              priority
+              sizes="100vw"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div className="price-features-hero-overlay" aria-hidden="true" />
 
-      <div className="card-content card-price-features">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10">
-              <div className="page-header">
-                <h1>Turnberry Place Las Vegas: Pricing & Premium Features</h1>
-                <p className="lead">
-                  Located at 2827 Paradise Rd, Las Vegas, NV 89109, Turnberry Place offers luxury high-rise condominiums ranging from $800,000 to over $10 million across four distinctive towers. As a Las Vegas real estate expert with over 30 years of experience, I can provide comprehensive insights into Turnberry Place pricing, features, and value propositions that help buyers make informed investment decisions.
+          <div className="container price-features-hero-inner">
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-10 text-center">
+                <div className="price-features-eyebrow" data-reveal>
+                  <span className="price-features-pill">Pricing</span>
+                  <span className="price-features-sep" aria-hidden="true">
+                    •
+                  </span>
+                  <span>Four Towers. One Block from the Strip.</span>
+                </div>
+
+                <h1 className="price-features-hero-title" data-reveal>
+                  Turnberry Place Pricing & Features
+                </h1>
+                <p className="price-features-hero-subtitle" data-reveal>
+                  Luxury high-rise condos from <strong>$800K</strong> to{" "}
+                  <strong>$10M+</strong> at{" "}
+                  <span className="text-decoration-underline">{propertyAddress}</span>.
                 </p>
-              </div>
 
-              <div className="content-section">
-                <h2>Pricing Overview: Four Luxury Towers</h2>
-              <p>
-                Turnberry Place offers residences from $800K to over $10M across four towers (completed 2000-2005), ranging from 1,200 to over 8,000 square feet. Pricing varies by tower, floor level, view quality, and unit size.
-              </p>
-              <p>
-                <strong>Tower 1:</strong> Entry-level pricing starting around $800K for 1-bedroom units, $1.2M-$2.5M for 2-bedroom, $2M-$4M for 3-bedroom.
-              </p>
-              <p>
-                <strong>Towers 2 & 3:</strong> Mid-range pricing from $1.2M for 1-bedroom, $1.8M-$3.5M for 2-bedroom, $2.5M-$5M for 3-bedroom, $4M-$7M for 4-bedroom.
-              </p>
-              <p>
-                <strong>Tower 4:</strong> Premium pricing from $1.5M for 1-bedroom, $2.5M-$4.5M for 2-bedroom, $3.5M-$6.5M for 3-bedroom, $5M-$8M for 4-bedroom. Penthouses above 30th floor: $6M-$10M+.
-              </p>
-              </div>
+                <div className="price-features-hero-ctas" data-reveal>
+                  <a
+                    className="btn btn-primary btn-lg price-features-btn-gold"
+                    href={calendlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Schedule a private tour on Calendly"
+                  >
+                    <CalendarDays aria-hidden="true" className="mr-2" />
+                    Schedule Private Tour
+                  </a>
+                  <a
+                    className="btn btn-outline-light btn-lg"
+                    href={`tel:${officePhoneTel}`}
+                    aria-label={`Call the office at ${officePhoneDisplay}`}
+                  >
+                    Call {officePhoneDisplay}
+                  </a>
+                </div>
 
-              <div className="content-section">
-                <h2>Key Features That Drive Value</h2>
-              <p>
-                Turnberry Place's pricing reflects premium features including exclusive Stirling Club access (80,000 sq ft private facility), prime location one block from the Strip, comprehensive security (guard-gated, 24-hour security, video surveillance), and premium interior finishes (hardwood/tile flooring, granite/quartz countertops, high-end appliances, custom cabinetry, floor-to-ceiling windows).
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Residence Features by Price Range</h2>
-              <p>
-                <strong>$800K-$2M:</strong> 1-2 bedrooms, 1,200-2,500 sqft, premium finishes, private balconies, full Stirling Club access.
-              </p>
-              <p>
-                <strong>$2M-$5M:</strong> 2-3 bedrooms, 2,000-4,000 sqft, enhanced finishes, larger terraces, premium appliances.
-              </p>
-              <p>
-                <strong>$5M-$10M+:</strong> 3-4+ bedrooms, 4,000-8,000+ sqft, exceptional finishes, penthouses with 12ft ceilings, multiple terraces, panoramic views.
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Value Propositions</h2>
-              <p>
-                Turnberry Place's pricing reflects not only the physical features of the residences but also the intangible value of location, amenities, security, and lifestyle. Understanding these value propositions helps buyers appreciate the development's pricing structure and make informed investment decisions. The development's established reputation, prime location, and comprehensive amenities create strong demand that supports premium pricing and appreciation potential.
-              </p>
-              <h3>Location Value and Appreciation Potential</h3>
-              <p>
-                Turnberry Place's location just one block from the Las Vegas Strip creates exceptional value that supports premium pricing and strong appreciation potential. The development's proximity to world-class restaurants, entertainment venues, shopping, and business centers ensures that it remains desirable regardless of market conditions. Limited inventory, combined with strong demand from both domestic and international buyers, creates favorable conditions for price appreciation. The development's established reputation and ongoing improvements to amenities further support long-term value.
-              </p>
-              <h3>Exclusive Amenities and Lifestyle Value</h3>
-              <p>
-                The Stirling Club's exclusive amenities provide lifestyle value that significantly enhances Turnberry Place's value proposition. Access to world-class fitness facilities, pools, tennis courts, spa services, dining venues, and business facilities eliminates the need for separate club memberships and creates a true luxury lifestyle experience. The club's exclusive nature ensures that it remains uncrowded and provides personalized service, creating a sense of exclusivity and privilege that enhances the overall living experience and justifies premium pricing.
-              </p>
-              <h3>Security and Privacy Value</h3>
-              <p>
-                Turnberry Place's comprehensive security systems and privacy features provide value that is essential for luxury living but difficult to quantify. The development's guard-gated entrance, 24-hour security, video surveillance, keycard access, and private elevator access create peace of mind that is invaluable for high-profile residents and anyone who values security and privacy. The development's raised elevation and strategic positioning minimize street noise while providing a sense of seclusion, creating a tranquil environment despite the proximity to the Strip.
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Market Position and Competitive Pricing</h2>
-              <p>
-                Turnberry Place's pricing positions it competitively within the Las Vegas luxury condominium market, offering exceptional value compared to other high-rise developments. The development's combination of location, amenities, security, and established reputation creates a unique value proposition that justifies premium pricing while remaining competitive with other luxury developments. Understanding Turnberry Place's market position helps buyers appreciate the value they receive at various price points.
-              </p>
-              <h3>Comparison to Other Las Vegas Luxury Developments</h3>
-              <p>
-                Compared to other luxury high-rise developments in Las Vegas, Turnberry Place offers exceptional value at every price point. The development's exclusive access to The Stirling Club, prime location near the Strip, and comprehensive security features create advantages that other developments cannot match. While some newer developments may offer more contemporary finishes, Turnberry Place's established reputation, proven quality, and comprehensive amenities provide value that newer developments cannot immediately replicate. This combination of factors creates a compelling value proposition that supports the development's pricing structure.
-              </p>
-              <h3>Price Per Square Foot Analysis</h3>
-              <p>
-                Turnberry Place's price per square foot varies by tower, floor level, view quality, and unit features, typically ranging from approximately $600 to $1,200 per square foot. Tower 1 residences generally offer the lowest price per square foot, providing excellent value for buyers seeking entry into the development. Towers 2 and 3 command premium price per square foot due to larger floor plans and enhanced features, while Tower 4's penthouses represent the highest price per square foot, reflecting their exceptional features and views. Understanding price per square foot helps buyers compare value across different residences and towers.
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Financing and Purchase Considerations</h2>
-              <p>
-                Understanding financing options and purchase considerations helps buyers navigate the Turnberry Place purchase process effectively. The development's luxury positioning, combined with its established reputation and strong market position, creates favorable conditions for financing. Working with experienced real estate professionals who understand luxury condominium financing and the Las Vegas market ensures that buyers can secure favorable terms and complete purchases efficiently.
-              </p>
-              <h3>Financing Options for Luxury Condominiums</h3>
-              <p>
-                Financing for Turnberry Place residences is available through various lenders who specialize in luxury condominium loans. Conventional financing is available for qualified buyers, with loan amounts typically up to $3 million or more depending on the lender and buyer qualifications. Jumbo loans are available for higher-priced residences, with terms and rates that reflect the luxury nature of the properties. Cash purchases are common in the luxury market, providing buyers with negotiating advantages and faster closing times. Working with lenders experienced in luxury condominium financing ensures that buyers receive competitive rates and favorable terms.
-              </p>
-              <h3>HOA Fees and Monthly Expenses</h3>
-              <p>
-                Turnberry Place homeowners association (HOA) fees cover maintenance of common areas, security services, insurance, and access to The Stirling Club amenities. HOA fees vary by tower and unit size, typically ranging from approximately $800 to $2,500 per month depending on the residence. These fees are competitive with other luxury developments and represent excellent value given the comprehensive amenities and services provided. Understanding HOA fees and monthly expenses helps buyers budget accurately and appreciate the value provided by these fees.
-              </p>
-              <h3>Property Taxes and Insurance Considerations</h3>
-              <p>
-                Property taxes for Turnberry Place residences are based on assessed values and Nevada's property tax structure. Nevada's property tax rates are generally favorable compared to other states, providing an advantage for buyers. Insurance costs reflect the luxury nature of the residences and the comprehensive coverage required for high-value properties. Working with insurance professionals experienced in luxury condominium coverage ensures that buyers receive appropriate protection at competitive rates. Understanding these costs helps buyers budget accurately and make informed purchase decisions.
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Why Turnberry Place Pricing Represents Value</h2>
-              <p>
-                Turnberry Place's pricing structure reflects the exceptional value provided by the development's location, amenities, security, and lifestyle features. While prices may seem premium compared to other Las Vegas condominiums, the comprehensive value proposition justifies the investment. The development's established reputation, prime location, exclusive amenities, and strong appreciation potential create a compelling investment opportunity that appeals to both owner-occupants and investors seeking luxury real estate in Las Vegas.
-              </p>
-              <h3>Comprehensive Value Beyond Square Footage</h3>
-              <p>
-                Turnberry Place's value extends far beyond the square footage of individual residences, encompassing location advantages, exclusive amenities, security features, and lifestyle benefits that are difficult to quantify but essential for luxury living. The development's proximity to the Strip, combined with exclusive access to The Stirling Club, creates a lifestyle experience that cannot be replicated elsewhere. The comprehensive security systems, privacy features, and concierge services provide peace of mind and convenience that enhance daily living. These intangible values, combined with the physical features of the residences, create exceptional value that justifies the development's pricing structure.
-              </p>
-              <h3>Long-Term Investment Potential</h3>
-              <p>
-                Turnberry Place's established reputation, prime location, and comprehensive amenities create strong long-term investment potential that supports premium pricing. The development's limited inventory, combined with strong demand from both domestic and international buyers, creates favorable conditions for price appreciation. The ongoing improvements to The Stirling Club and common areas ensure that the development remains competitive and desirable. The development's proven track record of value appreciation, combined with its unique value propositions, creates a compelling investment opportunity for buyers seeking luxury real estate in Las Vegas.
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Contact Dr. Jan Duffy for Pricing Information</h2>
-              <p>
-                As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place, I can provide comprehensive information about current pricing, available residences, market conditions, and value propositions. My expertise in luxury high-rise condominiums, combined with my understanding of the Las Vegas market, enables me to help buyers identify the best value propositions within their budget range and make informed investment decisions.
-              </p>
-              <p>
-                Whether you're interested in entry-level pricing in Tower 1, mid-range residences in Towers 2 and 3, or premium penthouses in Tower 4, I can provide detailed information about available properties, pricing trends, and the unique features that justify the investment. My goal is to help you find the perfect Turnberry Place residence that meets your needs, preferences, and budget while representing a sound investment in Las Vegas luxury real estate.
-              </p>
-                <p>
-                  <strong>Ready to explore Turnberry Place pricing and features?</strong> Contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a> to discuss available residences, current pricing, and the value propositions that make Turnberry Place an exceptional investment opportunity. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can help you find the perfect residence that exceeds your expectations while fitting your budget.
-                </p>
+                <div className="price-features-scroll" aria-hidden="true">
+                  <div className="price-features-scroll-line" />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* TOWERS PRICING GRID */}
+        <section className="price-features-section" aria-label="Tower pricing grid">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-10 text-center">
+                <h2 className="price-features-h2" data-reveal>
+                  Tower Pricing Overview
+                </h2>
+                <p className="price-features-lead" data-reveal>
+                  Pricing varies by tower, view, floor, and finish level. A helpful guide is{" "}
+                  <strong>$600–$1,200 / sq ft</strong> across Turnberry Place.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className="price-features-tower-grid"
+              style={{
+                backgroundImage: `url(${towersBg})`,
+              }}
+            >
+              <div className="price-features-tower-grid-overlay" aria-hidden="true" />
+
+              <div className="price-features-tower-cards">
+                {[
+                  {
+                    tower: "Tower 1",
+                    range: "$800K – $4M",
+                    beds: "1–3 beds",
+                    sqft: "1,200–3,500+ sq ft",
+                    ppsf: "$600–$900 / sq ft",
+                    href: "/towers",
+                  },
+                  {
+                    tower: "Tower 2",
+                    range: "$1.2M – $7M",
+                    beds: "1–4 beds",
+                    sqft: "1,500–5,500+ sq ft",
+                    ppsf: "$700–$1,000 / sq ft",
+                    href: "/towers",
+                  },
+                  {
+                    tower: "Tower 3",
+                    range: "$1.2M – $7M",
+                    beds: "1–4 beds",
+                    sqft: "1,500–5,500+ sq ft",
+                    ppsf: "$700–$1,000 / sq ft",
+                    href: "/towers",
+                  },
+                  {
+                    tower: "Tower 4",
+                    range: "$1.5M – $10M+",
+                    beds: "1–4 beds + Penthouses",
+                    sqft: "2,000–8,000+ sq ft",
+                    ppsf: "$800–$1,200 / sq ft",
+                    href: "/towers",
+                  },
+                ].map((t, idx) => (
+                  <div className="price-features-tower-card" key={idx} data-reveal>
+                    <div className="price-features-tower-card-top">
+                      <div className="price-features-tower-icon" aria-hidden="true">
+                        <Building2 />
+                      </div>
+                      <div>
+                        <div className="price-features-tower-name">{t.tower}</div>
+                        <div className="price-features-tower-range">{t.range}</div>
+                      </div>
+                    </div>
+                    <div className="price-features-tower-meta">
+                      <div>{t.beds}</div>
+                      <div>{t.sqft}</div>
+                      <div className="price-features-ppsf">{t.ppsf}</div>
+                    </div>
+                    <div className="mt-3">
+                      <Link href={t.href} className="btn btn-outline-light btn-sm">
+                        View Tower Details
+                        <ChevronDown aria-hidden="true" className="ml-2" />
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* LIFESTYLE TIERS */}
+        <section className="price-features-section" aria-label="Lifestyle tiers">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-10 text-center">
+                <h2 className="price-features-h2" data-reveal>
+                  Residence Features by Price Tier
+                </h2>
+                <p className="price-features-lead" data-reveal>
+                  Buyers aren’t just buying square footage — they’re buying lifestyle.
+                </p>
+              </div>
+            </div>
+
+            {/* Tier 1 */}
+            <div className="price-features-tier" data-reveal>
+              <div className="price-features-tier-media">
+                <Image
+                  src={lifestyleEntry}
+                  alt="Modern condo lifestyle at Turnberry Place"
+                  fill
+                  sizes="(max-width: 991px) 100vw, 50vw"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className="price-features-tier-body">
+                <div className="price-features-tier-kicker">The Sophisticated Entry</div>
+                <h3 className="price-features-h3">$800K – $2M</h3>
+                <p className="price-features-copy">
+                  Your first step into Strip-adjacent luxury — premium finishes, private terraces, and
+                  access to The Stirling Club.
+                </p>
+                <ul className="price-features-iconlist">
+                  <li>
+                    <CheckCircle2 aria-hidden="true" /> 1–2 bedrooms
+                  </li>
+                  <li>
+                    <CheckCircle2 aria-hidden="true" /> Approx. 1,200–2,500 sq ft
+                  </li>
+                  <li>
+                    <CheckCircle2 aria-hidden="true" /> Private balcony/terrace
+                  </li>
+                </ul>
+                <div className="price-features-tier-cta">
+                  <Link href="/available-condos" className="btn btn-primary price-features-btn-gold">
+                    Explore Available Units
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Tier 2 */}
+            <div className="price-features-tier price-features-tier-reverse" data-reveal>
+              <div className="price-features-tier-media">
+                <Image
+                  src={lifestyleElevated}
+                  alt="Luxury interior with floor-to-ceiling windows"
+                  fill
+                  sizes="(max-width: 991px) 100vw, 50vw"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className="price-features-tier-body">
+                <div className="price-features-tier-kicker">The Elevated Address</div>
+                <h3 className="price-features-h3">$2M – $5M</h3>
+                <p className="price-features-copy">
+                  Space to breathe, views to remember — larger terraces, upgraded finishes, and an
+                  entertaining-ready layout.
+                </p>
+                <ul className="price-features-iconlist">
+                  <li>
+                    <CheckCircle2 aria-hidden="true" /> 2–3 bedrooms
+                  </li>
+                  <li>
+                    <CheckCircle2 aria-hidden="true" /> Approx. 2,000–4,000 sq ft
+                  </li>
+                  <li>
+                    <CheckCircle2 aria-hidden="true" /> Premium appliances & finishes
+                  </li>
+                </ul>
+                <div className="price-features-tier-cta">
+                  <a
+                    className="btn btn-primary price-features-btn-gold"
+                    href={calendlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Schedule Private Tour
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Tier 3 */}
+            <div className="price-features-tier price-features-tier-full" data-reveal>
+              <div className="price-features-tier-full-media" aria-hidden="true">
+                <Image
+                  src={lifestylePenthouse}
+                  alt="Penthouse lifestyle with panoramic views"
+                  fill
+                  sizes="100vw"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className="price-features-tier-full-overlay" aria-hidden="true" />
+              <div className="price-features-tier-full-body">
+                <div className="price-features-tier-kicker">The Penthouse Collection</div>
+                <h3 className="price-features-h3">$5M – $10M+</h3>
+                <p className="price-features-copy">
+                  Above it all — dramatic views, multiple terraces, expansive layouts, and the most
+                  refined finishes in the community.
+                </p>
+                <div className="price-features-tier-cta">
+                  <Link href="/request-details" className="btn btn-primary price-features-btn-gold btn-lg">
+                    Request Penthouse Portfolio
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* WHY TURNBERRY */}
+        <section className="price-features-section" aria-label="Why Turnberry">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-10 text-center">
+                <h2 className="price-features-h2" data-reveal>
+                  Why Turnberry Place
+                </h2>
+                <p className="price-features-lead" data-reveal>
+                  A fast, scannable snapshot of what supports premium pricing — in under 3 seconds.
+                </p>
+              </div>
+            </div>
+
+            <div className="row">
+              {[
+                {
+                  icon: MapPin,
+                  stat: "1 Block",
+                  title: "Location",
+                  copy: "Walk to world-class dining, shows, and entertainment near the Strip.",
+                },
+                {
+                  icon: Building2,
+                  stat: "80,000 sq ft",
+                  title: "Lifestyle",
+                  copy: "Private club amenities: pools, spa, tennis, dining, and more.",
+                },
+                {
+                  icon: Shield,
+                  stat: "24/7",
+                  title: "Security",
+                  copy: "Guard-gated entry, surveillance, and privacy-focused access.",
+                },
+              ].map((c, idx) => (
+                <div className="col-12 col-md-4 mb-4" key={idx} data-reveal>
+                  <div className="price-features-why-card">
+                    <div className="price-features-why-icon" aria-hidden="true">
+                      <c.icon />
+                    </div>
+                    <div className="price-features-why-stat">{c.stat}</div>
+                    <div className="price-features-why-title">{c.title}</div>
+                    <div className="price-features-why-copy">{c.copy}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* INVESTMENT DETAILS ACCORDION */}
+        <section className="price-features-section" aria-label="Investment details accordion">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-10">
+                <h2 className="price-features-h2 text-center" data-reveal>
+                  Investment Details
+                </h2>
+
+                <div className="price-features-accordion" data-reveal>
+                  {[
+                    {
+                      key: "financing" as const,
+                      title: "Financing Options",
+                      summary: "Conventional and jumbo loans available; cash offers common.",
+                      body: (
+                        <>
+                          <p className="mb-0">
+                            Conventional financing is available for qualified buyers, and jumbo loan
+                            options can support higher-priced residences. Cash purchases are common
+                            in luxury transactions and can enable faster, cleaner closings.
+                          </p>
+                        </>
+                      ),
+                    },
+                    {
+                      key: "hoa" as const,
+                      title: "Monthly HOA Fees",
+                      summary: "$800–$2,500/mo depending on unit size and tower.",
+                      body: (
+                        <>
+                          <p className="mb-0">
+                            HOA dues typically range from <strong>$800 to $2,500 per month</strong>,
+                            depending on unit size and tower. These often include security, building
+                            operations, maintenance of common areas, and access to key amenities.
+                          </p>
+                        </>
+                      ),
+                    },
+                    {
+                      key: "tax" as const,
+                      title: "Nevada Tax Advantages",
+                      summary: "No state income tax and favorable property tax structure.",
+                      body: (
+                        <>
+                          <p className="mb-0">
+                            Nevada offers <strong>no state income tax</strong> and a generally
+                            favorable property tax structure compared to many states, which can be
+                            attractive for buyers relocating from higher-tax markets.
+                          </p>
+                        </>
+                      ),
+                    },
+                    {
+                      key: "included" as const,
+                      title: "What’s Included",
+                      summary: "Security, club amenities, and services that support the lifestyle.",
+                      body: (
+                        <ul className="mb-0">
+                          <li>Guard-gated entry and 24/7 security presence</li>
+                          <li>Stirling Club lifestyle amenities</li>
+                          <li>Concierge-style services and building operations</li>
+                        </ul>
+                      ),
+                    },
+                  ].map((item) => {
+                    const isOpen = openAccordion === item.key
+                    return (
+                      <div className="price-features-accordion-item" key={item.key}>
+                        <button
+                          type="button"
+                          className="price-features-accordion-trigger"
+                          aria-expanded={isOpen}
+                          onClick={() =>
+                            setOpenAccordion((prev) => (prev === item.key ? null : item.key))
+                          }
+                        >
+                          <div>
+                            <div className="price-features-accordion-title">{item.title}</div>
+                            <div className="price-features-accordion-summary">{item.summary}</div>
+                          </div>
+                          <ChevronDown
+                            aria-hidden="true"
+                            className={`price-features-accordion-chevron ${isOpen ? "open" : ""}`}
+                          />
+                        </button>
+                        {isOpen && (
+                          <div className="price-features-accordion-panel">{item.body}</div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA / NEXT STEP */}
+        <section className="price-features-cta" aria-label="Schedule a private tour">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-12 col-lg-5 mb-4 mb-lg-0" data-reveal>
+                <div className="price-features-agent-card">
+                  <div className="price-features-agent-photo">
+                    <Image
+                      src={agentPhoto}
+                      alt="Dr. Jan Duffy"
+                      width={420}
+                      height={520}
+                      style={{ width: "100%", height: "auto" }}
+                    />
+                  </div>
+                  <div className="price-features-agent-body">
+                    <div className="price-features-agent-name">Dr. Jan Duffy</div>
+                    <div className="price-features-agent-sub">
+                      Berkshire Hathaway HomeServices Nevada Properties
+                    </div>
+                    <div className="price-features-agent-license">License #S.0197614.LLC</div>
+                    <div className="price-features-agent-phone">
+                      <a href={`tel:${officePhoneTel}`}>{officePhoneDisplay}</a>
+                    </div>
+                    <div className="price-features-agent-logos">
+                      <Image
+                        src={bhhsLogo}
+                        alt="Berkshire Hathaway HomeServices Nevada Properties"
+                        width={260}
+                        height={120}
+                        style={{ height: "auto" }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-12 col-lg-7" data-reveal>
+                <div className="price-features-cta-panel">
+                  <h2 className="price-features-h2 mb-2">Your Next Step</h2>
+                  <p className="price-features-copy mb-4">
+                    Want a short list of the best values in your budget range? Schedule a private
+                    tour or request pricing and details.
+                  </p>
+
+                  <div className="d-flex flex-column flex-md-row gap-2 mb-4">
+                    <a
+                      className="btn btn-primary btn-lg price-features-btn-gold"
+                      href={calendlyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <CalendarDays aria-hidden="true" className="mr-2" />
+                      Schedule Private Tour (30 mins)
+                    </a>
+                    <a className="btn btn-outline-light btn-lg" href={`tel:${officePhoneTel}`}>
+                      Call {officePhoneDisplay}
+                    </a>
+                  </div>
+
+                  <div className="price-features-form-wrap">
+                    <LeadCaptureForm variant="footer" showValuationCTA={false} />
+                  </div>
+
+                  <div className="mt-3 small text-muted">
+                    Prefer to browse first?{" "}
+                    <Link href="/available-condos">View current listings</Link>.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* VIP Newsletter Signup - Available on homepage */}
