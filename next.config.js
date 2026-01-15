@@ -42,6 +42,22 @@ module.exports = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Encourage long CDN caching for optimized images.
+    minimumCacheTTL: 31536000,
+  },
+  async headers() {
+    return [
+      {
+        // Strong caching for locally hosted gallery images
+        source: '/images/turnberry/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ]
   },
   async rewrites() {
     return [

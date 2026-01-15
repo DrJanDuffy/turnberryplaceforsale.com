@@ -7,7 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ChevronDown } from "lucide-react"
 import "photoswipe/style.css"
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 
 type GalleryCategory = "Residences" | "Stirling Club" | "Views" | "Amenities"
 type GalleryFilter = "All" | GalleryCategory
@@ -312,6 +312,79 @@ const galleryItems: GalleryItem[] = [
   },
 ]
 
+function MasonryTileMedia({
+  item,
+  eager,
+  sizes,
+}: {
+  item: GalleryItem
+  eager: boolean
+  sizes: string
+}) {
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const [shouldLoad, setShouldLoad] = useState(eager)
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    if (eager) {
+      setShouldLoad(true)
+      return
+    }
+    if (shouldLoad) return
+    if (typeof window === "undefined") return
+
+    // If IntersectionObserver isn't supported, fall back to mounting immediately.
+    if (!("IntersectionObserver" in window)) {
+      setShouldLoad(true)
+      return
+    }
+
+    const el = containerRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShouldLoad(true)
+          observer.disconnect()
+        }
+      },
+      {
+        // Start loading a bit before the tile scrolls into view.
+        rootMargin: "600px 0px",
+        threshold: 0.01,
+      }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [eager, shouldLoad])
+
+  return (
+    <div ref={containerRef} className="photos-masonry-media">
+      {!shouldLoad ? (
+        <div className="photos-skeleton" aria-hidden="true" />
+      ) : (
+        <>
+          {!isLoaded ? <div className="photos-skeleton" aria-hidden="true" /> : null}
+          <Image
+            src={item.src}
+            alt={item.alt}
+            fill
+            sizes={sizes}
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
+            quality={85}
+            priority={eager}
+            className={isLoaded ? "photos-masonry-img is-loaded" : "photos-masonry-img"}
+            onLoadingComplete={() => setIsLoaded(true)}
+          />
+        </>
+      )}
+    </div>
+  )
+}
+
 interface PhotosPageProps extends LayoutProps {}
 
 export default function PhotosPage({ menus }: PhotosPageProps) {
@@ -370,14 +443,15 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         await raf()
       }
 
-      const galleryEl = document.querySelector("#photos-masonry")
+      const gallerySelector = "#photos-masonry"
+      const galleryEl = document.querySelector(gallerySelector)
       if (!galleryEl || cancelled) return
 
       const PhotoSwipeLightbox = (await import("photoswipe/lightbox")).default
       if (cancelled) return
 
       lightbox = new PhotoSwipeLightbox({
-        gallery: galleryEl,
+        gallery: gallerySelector,
         children: "a[data-pswp-item]",
         pswpModule: () => import("photoswipe"),
         showHideAnimationType: "fade",
@@ -415,6 +489,8 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           appendTo: "root",
           onInit: (el: HTMLElement, pswp: any) => {
             el.className = "pswp__lux-caption"
+            el.setAttribute("role", "note")
+            el.setAttribute("aria-label", "Photo caption")
 
             const render = () => {
               const idx = pswp.currIndex ?? 0
@@ -437,6 +513,8 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           appendTo: "bar",
           onInit: (el: HTMLElement, pswp: any) => {
             el.className = "pswp__lux-counter"
+            el.setAttribute("role", "status")
+            el.setAttribute("aria-live", "polite")
             const render = () => {
               const idx = (pswp.currIndex ?? 0) + 1
               el.textContent = `${idx} of ${filteredItems.length}`
@@ -561,6 +639,9 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
               fill
               priority
               sizes="100vw"
+              quality={85}
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
               className="photos-hero-img"
             />
           </div>
@@ -631,7 +712,12 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                 className={isFading ? "photos-masonry is-fading" : "photos-masonry"}
                 aria-live="polite"
               >
-                {filteredItems.map((item) => (
+                {filteredItems.map((item, index) => {
+                  const eager = index < 4
+                  const sizes =
+                    "(max-width: 575px) 100vw, (max-width: 991px) 50vw, 25vw"
+
+                  return (
                   <a
                     key={item.id}
                     href={item.full}
@@ -644,16 +730,15 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                     className="photos-masonry-item"
                     aria-label={item.title}
                   >
-                    <div className="photos-masonry-card" style={{ height: item.height }}>
-                      <Image
-                        src={item.src}
-                        alt={item.alt}
-                        fill
-                        sizes="(max-width: 575px) 100vw, (max-width: 991px) 50vw, 25vw"
-                        placeholder="blur"
-                        blurDataURL={BLUR_DATA_URL}
-                        className="photos-masonry-img"
-                      />
+                    <div
+                      className="photos-masonry-card"
+                      style={{
+                        height: item.height,
+                        // Provides extra layout stability across browsers and prevents CLS.
+                        aspectRatio: `${item.pswpWidth}/${item.pswpHeight}`,
+                      }}
+                    >
+                      <MasonryTileMedia item={item} eager={eager} sizes={sizes} />
                       <div className="photos-masonry-overlay" aria-hidden="true">
                         <div className="photos-masonry-caption">
                           <div className="photos-masonry-title">{item.title}</div>
@@ -664,7 +749,8 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                       </div>
                     </div>
                   </a>
-                    ))}
+                  )
+                })}
               </div>
             </div>
           </div>
