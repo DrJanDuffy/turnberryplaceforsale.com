@@ -5,6 +5,7 @@ import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
 import Image from "next/image"
 import Link from "next/link"
+import { ChevronDown } from "lucide-react"
 
 // Photos using local images from public/images/turnberry
 const photos = [
@@ -62,21 +63,51 @@ const photoFullSize = [
 interface PhotosPageProps extends LayoutProps {}
 
 export default function PhotosPage({ menus }: PhotosPageProps) {
+  const heroImage = "/images/turnberry/Turnberry_Place_For_Sale.jpg"
+  const photoCount = photos.length
+
   return (
     <Layout menus={menus}>
       <Meta
         title="Photo Gallery - Turnberry Place Las Vegas"
         description="Photo gallery of Turnberry Place luxury high-rise condos near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos & Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+        ogImage="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg"
+        ogImageAlt="Turnberry Place Las Vegas luxury high-rise photo gallery"
       />
       <JsonLdSchema type="property" />
-      <div className="card-content card-photos">
+      <div className="card-content card-photos photos-page">
+        {/* HERO */}
+        <section className="photos-hero" aria-label="Turnberry Place photo gallery hero">
+          <div className="photos-hero-media" aria-hidden="true">
+            <Image
+              src={heroImage}
+              alt="Turnberry Place Las Vegas luxury high-rise condos"
+              fill
+              priority
+              sizes="100vw"
+              className="photos-hero-img"
+            />
+          </div>
+          <div className="photos-hero-overlay" aria-hidden="true" />
+          <div className="container photos-hero-inner">
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-10 text-center">
+                <h1 className="photos-hero-title">Experience Turnberry Place</h1>
+                <p className="photos-hero-subtitle">
+                  {photoCount} Images of Las Vegas Luxury Living
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="photos-hero-scroll" aria-hidden="true">
+            <ChevronDown className="photos-hero-chevron" />
+          </div>
+        </section>
+
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
-              <h1 className="text-center">Turnberry Place Las Vegas Photo Gallery</h1>
-              <p className="lead text-center">
-                Explore stunning photography showcasing Turnberry Place Las Vegas luxury high-rise condominiums. These professional images capture the elegance, sophistication, and exceptional quality that define Las Vegas's premier high-rise community. As a Las Vegas real estate expert with over 30 years of experience, I can provide context and insights about the features and amenities visible in these photographs.
-              </p>
+              {/* Intro intentionally minimal for luxury/editorial aesthetic */}
             </div>
           </div>
           <div className="row">
