@@ -1,5 +1,4 @@
 import { GetStaticPropsResult } from "next"
-import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
@@ -13,14 +12,10 @@ interface AvailableCondosPageProps extends LayoutProps {}
 export default function AvailableCondosPage({ menus }: AvailableCondosPageProps) {
   return (
     <Layout menus={menus}>
-      <Meta title="Available Las Vegas Condos - Turnberry Place Las Vegas" />
-      <Head>
-        <title>Available Las Vegas Condos - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="Browse available luxury condos for sale at Turnberry Place Las Vegas. 1-4 bedroom residences from $800K-$10M+ with Strip views. Call 702-500-1971"
-        />
-      </Head>
+      <Meta
+        title="Available Las Vegas Condos - Turnberry Place Las Vegas"
+        description="Browse available Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
       
       {/* Quick Search Widget - Keep on this page as it's relevant */}

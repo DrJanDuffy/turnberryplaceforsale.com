@@ -1,7 +1,6 @@
 'use client'
 
 import { GetStaticPropsResult } from "next"
-import Head from "next/head"
 import { useState } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
@@ -29,14 +28,10 @@ export default function MapPage({ menus }: MapPageProps) {
 
   return (
     <Layout menus={menus}>
-      <Meta title="Map & Nearby Places - Turnberry Place Las Vegas" />
-      <Head>
-        <title>Map & Nearby Places - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="Turnberry Place location map: 2827 Paradise Rd, Las Vegas NV 89109. Nearby schools, parks, restaurants, coffee shops & more. Call 702-500-1971"
-        />
-      </Head>
+      <Meta
+        title="Map & Nearby Places - Turnberry Place Las Vegas"
+        description="Turnberry Place location map near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="property" />
       <div className="card-content card-map pt-0 pt-md-5">
         <div className="container-fluid px-0 mx-0">

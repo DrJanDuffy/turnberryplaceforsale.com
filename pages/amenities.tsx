@@ -1,5 +1,4 @@
 import { GetStaticPropsResult } from "next"
-import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { AmenitiesGrid } from "components/amenities-grid"
 import { getMenus } from "lib/get-menus"
@@ -26,14 +25,10 @@ interface AmenitiesPageProps extends LayoutProps {}
 export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
   return (
     <Layout menus={menus}>
-      <Meta title="Amenities - Turnberry Place Las Vegas" />
-      <Head>
-        <title>Amenities - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="Turnberry Place amenities: Gated community, pools, gym, tennis courts, spa, secure building, city & mountain views. Call 702-500-1971"
-        />
-      </Head>
+      <Meta
+        title="Amenities - Turnberry Place Las Vegas"
+        description="Turnberry Place amenities: gated luxury high-rise living near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="property" />
       <div className="card-content card-amenities">
         <div className="container">

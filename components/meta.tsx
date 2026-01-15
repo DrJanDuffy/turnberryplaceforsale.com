@@ -5,15 +5,56 @@ import { DrupalMetatag } from "types/drupal"
 
 interface MetaProps {
   title?: string
+  description?: string
+  keywords?: string
   path?: string
   tags?: DrupalMetatag[]
 }
 
-export function Meta({ title, tags }: MetaProps) {
+const PRIMARY_KEYWORD_1 = "Turnberry Towers Las Vegas High Rise Condos"
+const PRIMARY_KEYWORD_2 = "Las Vegas Strip High Rise Condos for Sale"
+
+function withSuffix(base: string, suffix: string) {
+  if (!base) return suffix
+  const normalizedBase = base.toLowerCase()
+  const normalizedSuffix = suffix.toLowerCase()
+  if (normalizedBase.includes(normalizedSuffix)) return base
+  return `${base} | ${suffix}`
+}
+
+export function Meta({ title, description, keywords, tags }: MetaProps) {
   const router = useRouter()
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.turnberryplaceforsale.com"
   const canonicalUrl = `${baseUrl}${router.asPath !== "/" ? router.asPath : ""}`
+
+  // Brand-forward defaults, but reinforce the two primary keyword themes sitewide.
+  const defaultTitle = withSuffix(
+    "Turnberry Place Las Vegas High Rise Condos",
+    PRIMARY_KEYWORD_2
+  )
+  const effectiveTitle = title ? withSuffix(title, PRIMARY_KEYWORD_2) : defaultTitle
+
+  // Keep this succinct and natural; avoid stuffing while still including the exact phrases.
+  const defaultDescription =
+    "Turnberry Place luxury high-rise condos near the Las Vegas Strip. " +
+    `${PRIMARY_KEYWORD_1} & ${PRIMARY_KEYWORD_2}. ` +
+    "Call 702-500-1971."
+  const effectiveDescription = description || defaultDescription
+
+  // Note: meta keywords are not used by Google, but we keep them for completeness and other crawlers/tools.
+  const defaultKeywords = [
+    PRIMARY_KEYWORD_1,
+    PRIMARY_KEYWORD_2,
+    "Turnberry Place for sale",
+    "Turnberry Place condos",
+    "Las Vegas high-rise condos",
+    "luxury condos Las Vegas",
+    "Las Vegas Strip condos",
+    "Stirling Club",
+    "Dr. Jan Duffy REALTOR",
+  ].join(", ")
+  const effectiveKeywords = keywords || defaultKeywords
 
   return (
     <Head>
@@ -39,32 +80,32 @@ export function Meta({ title, tags }: MetaProps) {
       ) : (
         <>
           {/* Primary SEO Title - Optimized for Luxury Real Estate */}
-          <title>{title || "Luxury Real Estate Las Vegas | Turnberry Place For Sale | $800K-$10M+ | Dr. Jan Duffy"}</title>
+          <title>{effectiveTitle}</title>
           
           {/* Enhanced Meta Description with Luxury Keywords */}
           <meta
             key="description"
             name="description"
-            content="Luxury Real Estate Las Vegas: Turnberry Place high-rise condos for sale. 4 luxury towers, Stirling Club amenities, 24/7 security. Current listings $800K-$10M+. Near Las Vegas Strip. Expert agent Dr. Jan Duffy. Call 702-500-1971"
+            content={effectiveDescription}
           />
           
           {/* Keywords for Luxury Real Estate */}
           <meta
             key="keywords"
             name="keywords"
-            content="luxury real estate Las Vegas, Turnberry Place for sale, luxury condos Las Vegas, high-rise condos Las Vegas, luxury real estate agent Las Vegas, Las Vegas Strip condos, luxury homes Las Vegas, Turnberry Place condos, luxury high-rise Las Vegas, Dr. Jan Duffy realtor"
+            content={effectiveKeywords}
           />
           
           {/* Open Graph Tags - Optimized for Social Sharing */}
           <meta
             key="og_title"
             property="og:title"
-            content={title || "Luxury Real Estate Las Vegas | Turnberry Place For Sale | $800K-$10M+"}
+            content={effectiveTitle}
           />
           <meta
             key="og_description"
             property="og:description"
-            content="Discover Turnberry Place: Las Vegas' premier luxury high-rise condominium community. 4 towers, exclusive Stirling Club access, Strip views. Listings from $800K-$10M+. Expert representation by Dr. Jan Duffy."
+            content={effectiveDescription}
           />
           <meta
             key="og_url"
@@ -118,12 +159,12 @@ export function Meta({ title, tags }: MetaProps) {
           <meta
             key="twitter_title"
             name="twitter:title"
-            content={title || "Luxury Real Estate Las Vegas | Turnberry Place For Sale"}
+            content={effectiveTitle}
           />
           <meta
             key="twitter_description"
             name="twitter:description"
-            content="Turnberry Place: Las Vegas' premier luxury high-rise condos. 4 towers, Stirling Club, Strip views. $800K-$10M+. Expert agent Dr. Jan Duffy."
+            content={effectiveDescription}
           />
           <meta
             key="twitter_image"

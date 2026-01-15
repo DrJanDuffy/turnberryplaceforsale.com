@@ -1,6 +1,5 @@
 'use client'
 
-import Head from "next/head"
 import { useState, useEffect } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { Meta } from "components/meta"
@@ -107,14 +106,10 @@ export default function FloorPlansPage() {
 
   return (
     <Layout menus={menus}>
-      <Meta title="Floor Plans - Turnberry Place Las Vegas" />
-      <Head>
-        <title>Floor Plans - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="View Turnberry Place Las Vegas floor plans: 1-4 bedroom luxury condo layouts from $800K-$10M+. See detailed floor plans for all 4 towers. Call 702-500-1971"
-        />
-      </Head>
+      <Meta
+        title="Floor Plans - Turnberry Place Las Vegas"
+        description="Turnberry Place floor plans: luxury high-rise condo layouts near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="property" />
       <div className="card-content card-floor-plans">
         <div className="container">

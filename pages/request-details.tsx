@@ -90,12 +90,11 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
 
   return (
     <Layout menus={menus}>
-      <Meta title="Request Turnberry Place Pricing & Details | Schedule a Private Tour" />
+      <Meta
+        title="Request Turnberry Place Pricing & Details | Schedule a Private Tour"
+        description="Request pricing and details for Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call (702) 500-1971."
+      />
       <Head>
-        <meta
-          name="description"
-          content="Request Turnberry Place pricing and details. Schedule a private tour or call the office at (702) 500-1971. Luxury high-rise condos from $800K to $10M+."
-        />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

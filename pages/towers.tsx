@@ -1,5 +1,4 @@
 import { GetStaticPropsResult } from "next"
-import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { TowerSection } from "components/tower-section"
 // QuickSearchWidget and FeaturedListingCard available on homepage and /available-condos
@@ -72,14 +71,10 @@ interface TowersPageProps extends LayoutProps {}
 export default function TowersPage({ menus }: TowersPageProps) {
   return (
     <Layout menus={menus}>
-      <Meta title="Towers - Turnberry Place Las Vegas" />
-      <Head>
-        <title>Towers - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="Explore Turnberry Place's 4 luxury towers: Tower 1 (38 stories), Tower 2-4 (45 stories). Completed 2000-2005, featuring Strip views & Stirling Club access. Call 702-500-1971"
-        />
-      </Head>
+      <Meta
+        title="Towers - Turnberry Place Las Vegas"
+        description="Explore Turnberry Place’s four towers (2000–2005) near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos and Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="property" />
       <div className="card-content card-prop-description">
         <div className="container">

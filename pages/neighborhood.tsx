@@ -1,5 +1,4 @@
 import { GetStaticPropsResult } from "next"
-import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
@@ -23,14 +22,10 @@ const neighborhoodImages = [
 export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
   return (
     <Layout menus={menus}>
-      <Meta title="Neighborhood - Turnberry Place Las Vegas" />
-      <Head>
-        <title>Neighborhood - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="Turnberry Place neighborhood: One block from Las Vegas Strip, near Wynn/Encore. 20+ Zagat restaurants, T-Mobile Arena, Allegiant Stadium nearby. Call 702-500-1971"
-        />
-      </Head>
+      <Meta
+        title="Neighborhood - Turnberry Place Las Vegas"
+        description="Turnberry Place neighborhood guide near the Las Vegas Strip (by Wynn/Encore). Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="property" />
       <div className="card-content card-areas">
         <div className="container">

@@ -45,13 +45,22 @@ export default function NodePage({ node, menus }: NodePageProps) {
   if (node.id === 'home' && node.type === 'node--landing_page') {
     return (
       <Layout menus={menus}>
-        <Meta title="Luxury Real Estate Las Vegas | Turnberry Place For Sale | $800K-$10M+ | Dr. Jan Duffy" />
+        <Meta
+          title="Turnberry Place Las Vegas High Rise Condos | Luxury Living Near the Strip"
+          description="Turnberry Place luxury high-rise condos near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos & Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+          keywords="Turnberry Towers Las Vegas High Rise Condos, Las Vegas Strip High Rise Condos for Sale, Turnberry Place for sale, Turnberry Place condos, Las Vegas high-rise condos, luxury condos Las Vegas, Las Vegas Strip condos, Stirling Club, Dr. Jan Duffy REALTOR"
+        />
         <Head>
           <meta
+            key="description"
             name="description"
-            content="Luxury Real Estate Las Vegas: Turnberry Place high-rise condos for sale. 4 luxury towers, Stirling Club amenities, 24/7 security. Current listings $800K-$10M+. Near Las Vegas Strip. Expert agent Dr. Jan Duffy. Call 702-500-1971"
+            content="Turnberry Place luxury high-rise condos near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos & Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
           />
-          <meta name="keywords" content="luxury real estate Las Vegas, Turnberry Place for sale, luxury condos Las Vegas, high-rise condos Las Vegas, luxury real estate agent Las Vegas, Las Vegas Strip condos, luxury homes Las Vegas, Turnberry Place condos, luxury high-rise Las Vegas, Dr. Jan Duffy realtor" />
+          <meta
+            key="keywords"
+            name="keywords"
+            content="Turnberry Towers Las Vegas High Rise Condos, Las Vegas Strip High Rise Condos for Sale, Turnberry Place for sale, Turnberry Place condos, Las Vegas high-rise condos, luxury condos Las Vegas, Las Vegas Strip condos, Stirling Club, Dr. Jan Duffy REALTOR"
+          />
           <meta name="author" content="Dr. Jan Duffy, REALTOR" />
           <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
           <meta name="googlebot" content="index, follow" />

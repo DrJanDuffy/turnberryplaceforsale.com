@@ -1,5 +1,4 @@
 import { GetStaticPropsResult } from "next"
-import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
@@ -11,14 +10,10 @@ interface OpenHousePageProps extends LayoutProps {}
 export default function OpenHousePage({ menus }: OpenHousePageProps) {
   return (
     <Layout menus={menus}>
-      <Meta title="Open House - Turnberry Place Las Vegas" />
-      <Head>
-        <title>Open House - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="Schedule a private showing at Turnberry Place Las Vegas luxury condos. Schedule a private showing. Call 702-500-1971 to request a showing"
-        />
-      </Head>
+      <Meta
+        title="Open House - Turnberry Place Las Vegas"
+        description="Open house and private showing info for Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="property" />
       <div
         className="card-content card-open-house"

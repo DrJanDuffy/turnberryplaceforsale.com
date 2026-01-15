@@ -1,5 +1,4 @@
 import { GetStaticPropsResult } from "next"
-import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
@@ -17,14 +16,10 @@ interface AgentPageProps extends LayoutProps {}
 export default function AgentPage({ menus }: AgentPageProps) {
   return (
     <Layout menus={menus}>
-      <Meta title="Dr. Jan Duffy, REALTOR - Turnberry Place Las Vegas" />
-      <Head>
-        <title>Dr. Jan Duffy, REALTOR - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="Dr. Jan Duffy specializes in luxury high-rise condos at Turnberry Place Las Vegas. Licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices. Call 702-500-1971"
-        />
-      </Head>
+      <Meta
+        title="Dr. Jan Duffy, REALTOR - Turnberry Place Las Vegas"
+        description="Dr. Jan Duffy specializes in Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="agent" />
       <div className="card-content card-agent">
         <div className="container">

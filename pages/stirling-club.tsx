@@ -1,5 +1,4 @@
 import { GetStaticPropsResult } from "next"
-import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
@@ -12,14 +11,10 @@ interface StirlingClubPageProps extends LayoutProps {}
 export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
   return (
     <Layout menus={menus}>
-      <Meta title="The Stirling Club - Turnberry Place Las Vegas" />
-      <Head>
-        <title>The Stirling Club - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="The Stirling Club: 80,000 sq ft private club exclusively for Turnberry Place residents. Fitness center, pools, tennis, spa, dining & more. Call 702-500-1971"
-        />
-      </Head>
+      <Meta
+        title="The Stirling Club - Turnberry Place Las Vegas"
+        description="The Stirling Club: private amenities for Turnberry Place residents near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="property" />
       <div className="card-content card-custom card-custom-03">
         <div className="container">

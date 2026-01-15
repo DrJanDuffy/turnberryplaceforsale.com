@@ -1,7 +1,6 @@
 'use client'
 
 import { GetStaticPropsResult } from "next"
-import Head from "next/head"
 import { useState } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
@@ -65,14 +64,10 @@ export default function SharePage({ menus }: SharePageProps) {
 
   return (
     <Layout menus={menus}>
-      <Meta title="Share - Turnberry Place Las Vegas" />
-      <Head>
-        <title>Share - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="Share Turnberry Place Las Vegas luxury condos with friends. Social media sharing & send-to-friend form. Call 702-500-1971"
-        />
-      </Head>
+      <Meta
+        title="Share - Turnberry Place Las Vegas"
+        description="Share Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="property" />
       <div className="card-content py-5">
         <div className="container">

@@ -104,10 +104,6 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
     <Layout menus={menus}>
       <Meta title="Turnberry Place Las Vegas Pricing | $800K-$10M Luxury Condos" />
       <Head>
-        <meta
-          name="description"
-          content="Turnberry Place Las Vegas pricing: luxury high-rise condos from $800K to $10M+. Four towers, Stirling Club amenities, and guard-gated security one block from the Strip. Call 702-500-1971."
-        />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

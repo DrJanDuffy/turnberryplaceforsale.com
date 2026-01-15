@@ -1,5 +1,4 @@
 import { GetStaticPropsResult } from "next"
-import Head from "next/head"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
@@ -65,14 +64,10 @@ interface PhotosPageProps extends LayoutProps {}
 export default function PhotosPage({ menus }: PhotosPageProps) {
   return (
     <Layout menus={menus}>
-      <Meta title="Photo Gallery - Turnberry Place Las Vegas" />
-      <Head>
-        <title>Photo Gallery - Turnberry Place Las Vegas</title>
-        <meta
-          name="description"
-          content="View luxury condo photos at Turnberry Place Las Vegas. See interior & exterior images of 1-4 bedroom residences with Strip views. Call 702-500-1971"
-        />
-      </Head>
+      <Meta
+        title="Photo Gallery - Turnberry Place Las Vegas"
+        description="Photo gallery of Turnberry Place luxury high-rise condos near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos & Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+      />
       <JsonLdSchema type="property" />
       <div className="card-content card-photos">
         <div className="container">
