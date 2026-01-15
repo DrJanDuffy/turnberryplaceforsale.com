@@ -7,6 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ChevronDown } from "lucide-react"
 import "photoswipe/style.css"
+import { useEffect, useMemo, useState } from "react"
 
 type GalleryCategory = "Residences" | "Stirling Club" | "Views" | "Amenities"
 type GalleryFilter = "All" | GalleryCategory
@@ -317,10 +318,10 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const heroImage = "/images/turnberry/Turnberry_Place_For_Sale.jpg"
   const photoCount = galleryItems.length
 
-  const [activeFilter, setActiveFilter] = React.useState<GalleryFilter>("All")
-  const [isFading, setIsFading] = React.useState(false)
+  const [activeFilter, setActiveFilter] = useState<GalleryFilter>("All")
+  const [isFading, setIsFading] = useState(false)
 
-  const counts = React.useMemo(() => {
+  const counts = useMemo(() => {
     const byCategory: Record<GalleryCategory, number> = {
       Residences: 0,
       "Stirling Club": 0,
@@ -333,19 +334,19 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
     return byCategory
   }, [])
 
-  const filteredItems = React.useMemo(() => {
+  const filteredItems = useMemo(() => {
     if (activeFilter === "All") return galleryItems
     return galleryItems.filter((i) => i.category === activeFilter)
   }, [activeFilter])
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsFading(true)
     const t = window.setTimeout(() => setIsFading(false), 160)
     return () => window.clearTimeout(t)
   }, [activeFilter])
 
   // Initialize PhotoSwipe for the currently displayed items (re-inits on filter change for thumb strip).
-  React.useEffect(() => {
+  useEffect(() => {
     let lightbox: any = null
     let destroyed = false
 
