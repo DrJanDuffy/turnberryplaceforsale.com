@@ -102,7 +102,11 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
 
   return (
     <Layout menus={menus}>
-      <Meta title="Turnberry Place Pricing & Features | $800K-$10M+" />
+      <Meta
+        title="Turnberry Place Pricing & Features | $800K-$10M+"
+        ogImage="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Towers_Las_Vegas_Monorail.jpg"
+        ogImageAlt="Turnberry Place towers near the Las Vegas Strip"
+      />
       <Head>
         <script
           type="application/ld+json"
