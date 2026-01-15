@@ -72,7 +72,7 @@ export default function TowersPage({ menus }: TowersPageProps) {
   return (
     <Layout menus={menus}>
       <Meta
-        title="Towers - Turnberry Place Las Vegas"
+        title="Turnberry Place Towers | Las Vegas High-Rise"
         description="Explore Turnberry Place’s four towers (2000–2005) near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos and Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
       />
       <JsonLdSchema type="property" />

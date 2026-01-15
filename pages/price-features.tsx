@@ -102,7 +102,7 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
 
   return (
     <Layout menus={menus}>
-      <Meta title="Turnberry Place Las Vegas Pricing | $800K-$10M Luxury Condos" />
+      <Meta title="Turnberry Place Pricing & Features | $800K-$10M+" />
       <Head>
         <script
           type="application/ld+json"

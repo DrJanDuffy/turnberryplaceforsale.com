@@ -7,6 +7,7 @@ interface MetaProps {
   title?: string
   description?: string
   keywords?: string
+  appendPrimaryKeyword2ToTitle?: boolean
   path?: string
   tags?: DrupalMetatag[]
 }
@@ -22,7 +23,13 @@ function withSuffix(base: string, suffix: string) {
   return `${base} | ${suffix}`
 }
 
-export function Meta({ title, description, keywords, tags }: MetaProps) {
+export function Meta({
+  title,
+  description,
+  keywords,
+  appendPrimaryKeyword2ToTitle = false,
+  tags,
+}: MetaProps) {
   const router = useRouter()
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.turnberryplaceforsale.com"
@@ -33,7 +40,11 @@ export function Meta({ title, description, keywords, tags }: MetaProps) {
     "Turnberry Place Las Vegas High Rise Condos",
     PRIMARY_KEYWORD_2
   )
-  const effectiveTitle = title ? withSuffix(title, PRIMARY_KEYWORD_2) : defaultTitle
+  // Avoid bloating every page title. By default:
+  // - If a page provides a custom title, use it as-is (unless explicitly asked to append).
+  // - If no title is provided, fall back to a keyword-reinforced default.
+  const effectiveTitle =
+    title && appendPrimaryKeyword2ToTitle ? withSuffix(title, PRIMARY_KEYWORD_2) : title || defaultTitle
 
   // Keep this succinct and natural; avoid stuffing while still including the exact phrases.
   const defaultDescription =

@@ -13,7 +13,7 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
   return (
     <Layout menus={menus}>
       <Meta
-        title="Available Las Vegas Condos - Turnberry Place Las Vegas"
+        title="Turnberry Place Condos for Sale | Las Vegas"
         description="Browse available Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
       />
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
