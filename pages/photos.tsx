@@ -487,8 +487,6 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const [pullProgress, setPullProgress] = useState(0)
   const [canReleaseRefresh, setCanReleaseRefresh] = useState(false)
   const canReleaseRefreshRef = useRef(false)
-  const [isMobile, setIsMobile] = useState(false)
-
   const [showViewAll, setShowViewAll] = useState(false)
   const viewAllSentinelRef = useRef<HTMLDivElement | null>(null)
 
@@ -496,19 +494,8 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const [toastVisible, setToastVisible] = useState(false)
   const viewedUniqueIdsRef = useRef<Set<string>>(new Set())
 
-  // Detect mobile viewport (Bootstrap xs/sm break)
-  useEffect(() => {
-    if (typeof window === "undefined") return
-    const mq = window.matchMedia("(max-width: 575.98px)")
-    const apply = () => setIsMobile(mq.matches)
-    apply()
-    mq.addEventListener?.("change", apply)
-    return () => mq.removeEventListener?.("change", apply)
-  }, [])
-
   // Mobile-only: enable page-level scroll snapping without affecting other routes.
   useEffect(() => {
-    if (!isMobile) return
     document.body.classList.add("photos-mobile-native")
     // Hide the global navbar on /photos mobile to keep the UI app-like.
     // We do this both visually and from the accessibility tree (inert/aria-hidden).
@@ -529,12 +516,11 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         ;(nav as any).inert = false
       }
     }
-  }, [isMobile])
+  }, [])
 
   // Mobile: pull-to-refresh (lightweight). Pull down at top, release to refresh.
   useEffect(() => {
     if (typeof window === "undefined") return
-    if (!isMobile) return
 
     let startY = 0
     let pulling = false
@@ -580,7 +566,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       window.removeEventListener("touchend", onTouchEnd)
       window.removeEventListener("touchcancel", onTouchEnd)
     }
-  }, [isMobile])
+  }, [])
 
   const counts = useMemo(() => {
     const byCategory: Record<GalleryCategory, number> = {
@@ -609,7 +595,6 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   // Mobile: track which tile is "active" while scrolling to update the sticky header counter.
   useEffect(() => {
     if (typeof window === "undefined") return
-    if (!isMobile) return
     if (!("IntersectionObserver" in window)) return
 
     const items = Array.from(
@@ -1014,9 +999,9 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       <JsonLdSchema type="property" />
       <div className="card-content card-photos photos-page">
         {/* Mobile-only sticky header */}
-        {isMobile && !isLightboxOpen ? (
+        {!isLightboxOpen ? (
           <div
-            className="photos-mobile-header"
+            className="photos-mobile-header d-sm-none"
             role="banner"
             aria-label="Gallery navigation"
           >
@@ -1080,9 +1065,9 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         ) : null}
 
         {/* Mobile floating action buttons */}
-        {isMobile && !isLightboxOpen ? (
+        {!isLightboxOpen ? (
           <div
-            className="photos-mobile-fabs"
+            className="photos-mobile-fabs d-sm-none"
             role="complementary"
             aria-label="Quick actions"
           >
