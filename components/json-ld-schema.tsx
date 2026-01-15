@@ -39,10 +39,10 @@ export function JsonLdSchema({
     },
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '7475 West Sahara Avenue',
+      streetAddress: '2827 Paradise Rd',
       addressLocality: 'Las Vegas',
       addressRegion: 'NV',
-      postalCode: '89117',
+      postalCode: '89109',
       addressCountry: 'US',
     },
     geo: {
