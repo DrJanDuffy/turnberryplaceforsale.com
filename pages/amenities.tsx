@@ -257,8 +257,8 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
                   <FeatureCard
                     title="Social Lounges"
                     subtitle="Meet • Unwind • Connect"
-                    imageSrc="/images/turnberry/CigarLounge.jpeg"
-                    imageAlt="Luxury lounge at The Stirling Club"
+                    imageSrc="/images/turnberry/optimized/StirlingClub_CigarBar_View1.optimized.jpg"
+                    imageAlt="Stirling Club lounge interior at Turnberry Place"
                     description="Comfortable spaces designed for connection and conversation."
                   />
                 </div>
