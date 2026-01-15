@@ -46,7 +46,7 @@ export default function NodePage({ node, menus }: NodePageProps) {
     return (
       <Layout menus={menus}>
         <Meta
-          title="Turnberry Place Las Vegas High Rise Condos | Luxury Living Near the Strip"
+          title="Turnberry Place High-Rise Condos | Near the Las Vegas Strip"
           description="Turnberry Place luxury high-rise condos near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos & Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
           keywords="Turnberry Towers Las Vegas High Rise Condos, Las Vegas Strip High Rise Condos for Sale, Turnberry Place for sale, Turnberry Place condos, Las Vegas high-rise condos, luxury condos Las Vegas, Las Vegas Strip condos, Stirling Club, Dr. Jan Duffy REALTOR"
         />
