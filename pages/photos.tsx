@@ -6,7 +6,7 @@ import { JsonLdSchema } from "components/json-ld-schema"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, Calendar, ChevronDown, Expand, Phone, X } from "lucide-react"
+import { ArrowLeft, Calendar, ChevronDown, Expand, Phone, Play, X } from "lucide-react"
 import "photoswipe/style.css"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useRouter } from "next/router"
@@ -14,8 +14,9 @@ import { useRouter } from "next/router"
 type GalleryCategory = "Residences" | "Stirling Club" | "Views" | "Amenities"
 type GalleryFilter = "All" | GalleryCategory
 
-type GalleryItem = {
+type ImageGalleryItem = {
   id: string
+  kind: "image"
   src: string
   full: string
   category: GalleryCategory
@@ -26,6 +27,24 @@ type GalleryItem = {
   pswpWidth: number
   pswpHeight: number
 }
+
+type VideoGalleryItem = {
+  id: string
+  kind: "video"
+  category: GalleryCategory
+  title: string
+  description?: string
+  // Poster shown in masonry; also used for schema thumbnailUrl
+  poster: string
+  // Hosted sources (MP4 required, WebM optional)
+  sources: { mp4: string; webm?: string }
+  // For layout stability + lightbox aspect ratio (usually 16:9)
+  height: string
+  pswpWidth: number
+  pswpHeight: number
+}
+
+type GalleryItem = ImageGalleryItem | VideoGalleryItem
 
 // Generic blur placeholder for string `src` images (lightweight blur-up).
 const BLUR_DATA_URL =
@@ -38,6 +57,7 @@ const BLUR_DATA_URL =
 const galleryItems: GalleryItem[] = [
   {
     id: "hero-exterior",
+    kind: "image",
     src: "/images/turnberry/Turnberry_Place_For_Sale.jpg",
     full: "/images/turnberry/Turnberry_Place_For_Sale.jpg",
     category: "Views",
@@ -50,6 +70,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "penthouse-strip-view",
+    kind: "image",
     src: "/images/turnberry/Turnberry Tower Nice Vew.jpg",
     full: "/images/turnberry/Turnberry Tower Nice Vew.jpg",
     category: "Views",
@@ -62,6 +83,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "tower-south-view",
+    kind: "image",
     src: "/images/turnberry/Turnberry Tower South View.jpeg",
     full: "/images/turnberry/Turnberry Tower South View.jpeg",
     category: "Views",
@@ -74,6 +96,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "residence-interior",
+    kind: "image",
     src: "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
     full: "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
     category: "Residences",
@@ -86,6 +109,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "stirling-pool",
+    kind: "image",
     src: "/images/turnberry/sterlingclubpool-.jpeg",
     full: "/images/turnberry/sterlingclubpool-.jpeg",
     category: "Stirling Club",
@@ -98,6 +122,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "stirling-cigar-bar",
+    kind: "image",
     src: "/images/turnberry/StirlingClub_CigarBar_View1.jpg",
     full: "/images/turnberry/StirlingClub_CigarBar_View1.jpg",
     category: "Stirling Club",
@@ -110,6 +135,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "stirling-dining",
+    kind: "image",
     src: "/images/turnberry/SterlingClubDinning.avif",
     full: "/images/turnberry/SterlingClubDinning.avif",
     category: "Stirling Club",
@@ -122,6 +148,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "stirling-spa-ambience",
+    kind: "image",
     src: "/images/turnberry/SterlingClubWhiteRoses.jpg",
     full: "/images/turnberry/SterlingClubWhiteRoses.jpg",
     category: "Stirling Club",
@@ -134,6 +161,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "stirling-pool-with-people",
+    kind: "image",
     src: "/images/turnberry/sterlingclubpoolwithpeople.jpeg",
     full: "/images/turnberry/sterlingclubpoolwithpeople.jpeg",
     category: "Stirling Club",
@@ -146,6 +174,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "stirling-lounge",
+    kind: "image",
     src: "/images/turnberry/CigarLounge.jpeg",
     full: "/images/turnberry/CigarLounge.jpeg",
     category: "Stirling Club",
@@ -158,6 +187,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "entry-drive",
+    kind: "image",
     src: "/images/turnberry/photo-2.jpg",
     full: "/images/turnberry/photo-2.jpg",
     category: "Amenities",
@@ -170,6 +200,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "exterior-approach",
+    kind: "image",
     src: "/images/turnberry/photo-3.jpg",
     full: "/images/turnberry/photo-3.jpg",
     category: "Amenities",
@@ -182,6 +213,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "arrival-courtyard",
+    kind: "image",
     src: "/images/turnberry/photo-4.jpg",
     full: "/images/turnberry/photo-4.jpg",
     category: "Amenities",
@@ -194,6 +226,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "clock-tower",
+    kind: "image",
     src: "/images/turnberry/photo-5.jpg",
     full: "/images/turnberry/photo-5.jpg",
     category: "Amenities",
@@ -206,6 +239,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "entry-wide",
+    kind: "image",
     src: "/images/turnberry/photo-6.jpg",
     full: "/images/turnberry/photo-6.jpg",
     category: "Amenities",
@@ -218,6 +252,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "porte-cochere",
+    kind: "image",
     src: "/images/turnberry/photo-7.jpg",
     full: "/images/turnberry/photo-7.jpg",
     category: "Amenities",
@@ -230,6 +265,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "entry-detail",
+    kind: "image",
     src: "/images/turnberry/photo-8.jpg",
     full: "/images/turnberry/photo-8.jpg",
     category: "Amenities",
@@ -242,6 +278,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "grand-lobby-stairs",
+    kind: "image",
     src: "/images/turnberry/photo-9.jpg",
     full: "/images/turnberry/photo-9.jpg",
     category: "Amenities",
@@ -254,6 +291,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "night-city",
+    kind: "image",
     src: "/images/turnberry/photo-21.jpg",
     full: "/images/turnberry/photo-21.jpg",
     category: "Views",
@@ -266,6 +304,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "day-exterior",
+    kind: "image",
     src: "/images/turnberry/photo-22.jpg",
     full: "/images/turnberry/photo-22.jpg",
     category: "Views",
@@ -278,6 +317,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "primary-exterior",
+    kind: "image",
     src: "/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg",
     full: "/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg",
     category: "Views",
@@ -290,6 +330,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "historic-photo",
+    kind: "image",
     src: "/images/turnberry/Turnberry-Place-May-21-2010.jpeg",
     full: "/images/turnberry/Turnberry-Place-May-21-2010.jpeg",
     category: "Views",
@@ -302,6 +343,7 @@ const galleryItems: GalleryItem[] = [
   },
   {
     id: "monorail",
+    kind: "image",
     src: "/images/turnberry/Turnberry_Towers_Las_Vegas_Monorail.jpg",
     full: "/images/turnberry/Turnberry_Towers_Las_Vegas_Monorail.jpg",
     category: "Views",
@@ -313,6 +355,56 @@ const galleryItems: GalleryItem[] = [
     pswpHeight: 1000,
   },
 ]
+
+// Optional videos (only included when URLs are configured so we never ship broken media).
+const videoItems: VideoGalleryItem[] = [
+  {
+    id: "video-drone-exterior",
+    kind: "video",
+    category: "Views",
+    title: "Drone Exterior Footage",
+    description: "Aerial view of Turnberry Place towers and grounds",
+    poster: "/images/turnberry/Turnberry_Place_For_Sale.jpg",
+    sources: {
+      mp4: process.env.NEXT_PUBLIC_TURNBERRY_DRONE_MP4 || "",
+      webm: process.env.NEXT_PUBLIC_TURNBERRY_DRONE_WEBM || "",
+    },
+    height: "18rem",
+    pswpWidth: 1920,
+    pswpHeight: 1080,
+  },
+  {
+    id: "video-virtual-tour",
+    kind: "video",
+    category: "Residences",
+    title: "Virtual Tour Walkthrough",
+    description: "Walkthrough tour of a luxury Turnberry Place residence",
+    poster:
+      "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
+    sources: {
+      mp4: process.env.NEXT_PUBLIC_TURNBERRY_TOUR_MP4 || "",
+      webm: process.env.NEXT_PUBLIC_TURNBERRY_TOUR_WEBM || "",
+    },
+    height: "22rem",
+    pswpWidth: 1920,
+    pswpHeight: 1080,
+  },
+  {
+    id: "video-stirling-club",
+    kind: "video",
+    category: "Stirling Club",
+    title: "Stirling Club Amenity Showcase",
+    description: "Private club amenities and resort-style atmosphere",
+    poster: "/images/turnberry/sterlingclubpool-.jpeg",
+    sources: {
+      mp4: process.env.NEXT_PUBLIC_STIRLING_CLUB_MP4 || "",
+      webm: process.env.NEXT_PUBLIC_STIRLING_CLUB_WEBM || "",
+    },
+    height: "16rem",
+    pswpWidth: 1920,
+    pswpHeight: 1080,
+  },
+].filter((v) => Boolean(v.sources.mp4))
 
 function MasonryTileMedia({
   item,
@@ -369,18 +461,33 @@ function MasonryTileMedia({
       ) : (
         <>
           {!isLoaded ? <div className="photos-skeleton" aria-hidden="true" /> : null}
-          <Image
-            src={item.src}
-            alt={item.alt}
-            fill
-            sizes={sizes}
-            placeholder="blur"
-            blurDataURL={BLUR_DATA_URL}
-            quality={85}
-            priority={eager}
-            className={isLoaded ? "photos-masonry-img is-loaded" : "photos-masonry-img"}
-            onLoadingComplete={() => setIsLoaded(true)}
-          />
+          {item.kind === "image" ? (
+            <Image
+              src={item.src}
+              alt={item.alt}
+              fill
+              sizes={sizes}
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              quality={85}
+              priority={eager}
+              className={isLoaded ? "photos-masonry-img is-loaded" : "photos-masonry-img"}
+              onLoadingComplete={() => setIsLoaded(true)}
+            />
+          ) : (
+            <Image
+              src={item.poster}
+              alt={`${item.title} video poster`}
+              fill
+              sizes={sizes}
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              quality={85}
+              priority={eager}
+              className={isLoaded ? "photos-masonry-img is-loaded" : "photos-masonry-img"}
+              onLoadingComplete={() => setIsLoaded(true)}
+            />
+          )}
         </>
       )}
     </div>
@@ -392,7 +499,8 @@ interface PhotosPageProps extends LayoutProps {}
 export default function PhotosPage({ menus }: PhotosPageProps) {
   const router = useRouter()
   const heroImage = "/images/turnberry/Turnberry_Place_For_Sale.jpg"
-  const photoCount = galleryItems.length
+  const allItems = useMemo(() => [...videoItems, ...galleryItems], [])
+  const photoCount = allItems.length
 
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL || "https://www.turnberryplaceforsale.com"
@@ -438,10 +546,13 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const photosMetaDescription =
     "Explore 23 professional photos of Turnberry Place luxury condos, Stirling Club amenities, and panoramic Las Vegas Strip views. Schedule a private tour."
 
-  const photosOgImages = galleryItems.slice(0, 5).map((img) => ({
-    url: `${baseUrl}${img.full}`,
-    alt: img.alt,
-  }))
+  const photosOgImages = allItems
+    .filter((i): i is ImageGalleryItem => i.kind === "image")
+    .slice(0, 5)
+    .map((img) => ({
+      url: `${baseUrl}${img.full}`,
+      alt: img.alt,
+    }))
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -468,11 +579,25 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
     name: "Turnberry Place Las Vegas Photo Gallery",
     description: photosMetaDescription,
     url: `${baseUrl}/photos`,
-    image: galleryItems.map((img) => ({
+    image: allItems
+      .filter((i): i is ImageGalleryItem => i.kind === "image")
+      .map((img) => ({
       "@type": "ImageObject",
       contentUrl: `${baseUrl}${img.full}`,
       name: img.title,
       description: img.description || img.alt,
+      author: {
+        "@type": "Person",
+        name: "Dr. Jan Duffy",
+      },
+    })),
+    // Include videos as parts of the gallery when configured
+    hasPart: videoItems.map((v) => ({
+      "@type": "VideoObject",
+      name: v.title,
+      description: v.description || v.title,
+      contentUrl: v.sources.mp4,
+      thumbnailUrl: `${baseUrl}${v.poster}`,
       author: {
         "@type": "Person",
         name: "Dr. Jan Duffy",
@@ -589,15 +714,15 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       Views: 0,
       Amenities: 0,
     }
-    galleryItems.forEach((i) => {
+    allItems.forEach((i) => {
       byCategory[i.category] += 1
     })
     return byCategory
   }, [])
 
   const filteredItems = useMemo(() => {
-    if (activeFilter === "All") return galleryItems
-    return galleryItems.filter((i) => i.category === activeFilter)
+    if (activeFilter === "All") return allItems
+    return allItems.filter((i) => i.category === activeFilter)
   }, [activeFilter])
 
   useEffect(() => {
@@ -964,6 +1089,85 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
             const item2 = filteredItems[idx2]
             if (item2) setSrAnnouncement(`Image ${idx2 + 1} of ${filteredItems.length}: ${item2.title}`)
           })
+
+          // Lazy-load and optionally autoplay videos on open/change
+          const isMobileViewport =
+            window.matchMedia && window.matchMedia("(max-width: 575.98px)").matches
+
+          const initVideoForCurrent = () => {
+            const container = pswp.currSlide?.container
+            if (!container) return
+            const video = container.querySelector("video") as HTMLVideoElement | null
+            if (!video) return
+
+            // Load sources lazily from data-src
+            const sources = Array.from(video.querySelectorAll("source")) as HTMLSourceElement[]
+            sources.forEach((s) => {
+              const ds = s.getAttribute("data-src")
+              if (ds && !s.src) s.src = ds
+            })
+            if (video.readyState === 0) {
+              try {
+                video.load()
+              } catch {
+                // ignore
+              }
+            }
+
+            // Desktop: autoplay muted, Mobile: tap to play (data-friendly)
+            if (!isMobileViewport) {
+              video.muted = true
+              video.playsInline = true
+              // Attempt autoplay (allowed because muted)
+              video.play().catch(() => {})
+            }
+
+            const actionHandler = (e: Event) => {
+              const target = e.target as HTMLElement | null
+              const btn = target?.closest?.("[data-video-action]") as HTMLElement | null
+              if (!btn) return
+              const action = btn.getAttribute("data-video-action")
+              if (!action) return
+              if (action === "unmute") {
+                video.muted = false
+                video.volume = 1
+                video.play().catch(() => {})
+              }
+              if (action === "pip") {
+                const anyVid = video as any
+                if (document.pictureInPictureElement) {
+                  ;(document as any).exitPictureInPicture?.().catch?.(() => {})
+                } else {
+                  anyVid.requestPictureInPicture?.().catch?.(() => {})
+                }
+              }
+              if (action === "fs") {
+                ;(video as any).requestFullscreen?.()
+              }
+            }
+
+            // Attach once per slide container
+            if (!(container as any).__tpVideoBound) {
+              container.addEventListener("click", actionHandler)
+              ;(container as any).__tpVideoBound = true
+            }
+          }
+
+          const stopAllVideos = () => {
+            const root = pswp.element || document
+            root.querySelectorAll("video").forEach((v) => {
+              try {
+                ;(v as HTMLVideoElement).pause()
+              } catch {}
+            })
+          }
+
+          stopAllVideos()
+          initVideoForCurrent()
+          pswp.on("change", () => {
+            stopAllVideos()
+            initVideoForCurrent()
+          })
         }
 
         // CTA toast after 5+ image views (once per session)
@@ -1288,17 +1492,37 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                   return (
                   <a
                     key={item.id}
-                    href={item.full}
+                    href={item.kind === "image" ? item.full : "#"}
                     data-pswp-item
                     data-gallery-index={index}
                     data-item-id={item.id}
                     data-pswp-width={item.pswpWidth}
                     data-pswp-height={item.pswpHeight}
+                    data-pswp-type={item.kind === "video" ? "html" : undefined}
+                    data-pswp-html={
+                      item.kind === "video"
+                        ? `<div class="pswp-video" role="group" aria-label="${item.title}">
+                            <video class="pswp-video-el" controls playsinline muted preload="none" poster="${item.poster}">
+                              <source data-src="${item.sources.webm || ""}" type="video/webm" />
+                              <source data-src="${item.sources.mp4}" type="video/mp4" />
+                            </video>
+                            <div class="pswp-video-actions" aria-label="Video controls">
+                              <button type="button" class="pswp-video-btn" data-video-action="unmute" aria-label="Unmute video">Unmute</button>
+                              <button type="button" class="pswp-video-btn" data-video-action="fs" aria-label="Fullscreen video">Fullscreen</button>
+                              <button type="button" class="pswp-video-btn" data-video-action="pip" aria-label="Picture in picture">PiP</button>
+                            </div>
+                          </div>`
+                        : undefined
+                    }
                     data-pswp-caption={`<strong>${item.title}</strong>${
                       item.description ? `<br/>${item.description}` : ""
                     }`}
                     className="photos-masonry-item"
-                    aria-label={`Open image in fullscreen viewer: ${item.title}`}
+                    aria-label={
+                      item.kind === "video"
+                        ? `Open video in fullscreen viewer: ${item.title}`
+                        : `Open image in fullscreen viewer: ${item.title}`
+                    }
                   >
                     <div
                       className="photos-masonry-card"
@@ -1309,6 +1533,11 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                       }}
                     >
                       <MasonryTileMedia item={item} eager={eager} sizes={sizes} />
+                      {item.kind === "video" ? (
+                        <div className="photos-video-play" aria-hidden="true">
+                          <Play className="photos-video-play-icon" />
+                        </div>
+                      ) : null}
                       <div className="photos-mobile-expand" aria-hidden="true">
                         <Expand className="photos-mobile-expand-icon" />
                       </div>
