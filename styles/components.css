@@ -3162,6 +3162,12 @@ main .card-top-header:first-of-type {
     overscroll-behavior-y: auto;
   }
 
+  /* Scroll snap on the page scroller (mobile only, and only when /photos adds the class) */
+  body.photos-mobile-native {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 56px; /* header + spacing */
+  }
+
   .photos-mobile-header {
     position: sticky;
     top: 0;
@@ -3240,8 +3246,6 @@ main .card-top-header:first-of-type {
   /* Mobile scroll snap vertical stack */
   .photos-masonry {
     column-count: 1;
-    scroll-snap-type: y proximity;
-    scroll-padding-top: 56px; /* header + spacing */
   }
 
   .photos-masonry-item {

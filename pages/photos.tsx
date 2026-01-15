@@ -484,6 +484,14 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const [isFading, setIsFading] = useState(false)
   const [mobileActiveIndex, setMobileActiveIndex] = useState(0)
 
+  // Mobile-only: enable page-level scroll snapping without affecting other routes.
+  useEffect(() => {
+    document.body.classList.add("photos-mobile-native")
+    return () => {
+      document.body.classList.remove("photos-mobile-native")
+    }
+  }, [])
+
   const counts = useMemo(() => {
     const byCategory: Record<GalleryCategory, number> = {
       Residences: 0,
