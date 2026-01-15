@@ -348,12 +348,36 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   // Initialize PhotoSwipe for the currently displayed items (re-inits on filter change for thumb strip).
   useEffect(() => {
     let lightbox: any = null
-    let destroyed = false
+    let cancelled = false
+
+    function raf(): Promise<void> {
+      return new Promise((resolve) => {
+        window.requestAnimationFrame(() => resolve())
+      })
+    }
 
     async function init() {
+      // Wait a tick (or two) for the masonry DOM to exist before initializing PhotoSwipe.
+      // If the gallery element isn't present, PhotoSwipe will throw "Element not found".
+      for (let i = 0; i < 20; i++) {
+        if (
+          document.querySelector("#photos-masonry") &&
+          document.querySelector("#photos-masonry a[data-pswp-item]")
+        ) {
+          break
+        }
+        // eslint-disable-next-line no-await-in-loop
+        await raf()
+      }
+
+      const galleryEl = document.querySelector("#photos-masonry")
+      if (!galleryEl || cancelled) return
+
       const PhotoSwipeLightbox = (await import("photoswipe/lightbox")).default
+      if (cancelled) return
+
       lightbox = new PhotoSwipeLightbox({
-        gallery: "#photos-masonry",
+        gallery: galleryEl,
         children: "a[data-pswp-item]",
         pswpModule: () => import("photoswipe"),
         showHideAnimationType: "fade",
@@ -363,8 +387,11 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       })
 
       lightbox.on("uiRegister", () => {
+        const pswp = lightbox.pswp
+        if (!pswp?.ui) return
+
         // Caption (title + optional description)
-        lightbox.pswp?.ui?.registerElement({
+        pswp.ui.registerElement({
           name: "luxCaption",
           order: 9,
           isButton: false,
@@ -386,7 +413,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         })
 
         // Counter: "3 of 23"
-        lightbox.pswp?.ui?.registerElement({
+        pswp.ui.registerElement({
           name: "luxCounter",
           order: 7,
           isButton: false,
@@ -403,7 +430,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         })
 
         // Share (copy link)
-        lightbox.pswp?.ui?.registerElement({
+        pswp.ui.registerElement({
           name: "luxShare",
           order: 5,
           isButton: true,
@@ -429,7 +456,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         })
 
         // Download button
-        lightbox.pswp?.ui?.registerElement({
+        pswp.ui.registerElement({
           name: "luxDownload",
           order: 6,
           isButton: true,
@@ -448,7 +475,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         })
 
         // Thumbnails strip (simple)
-        lightbox.pswp?.ui?.registerElement({
+        pswp.ui.registerElement({
           name: "luxThumbs",
           order: 10,
           isButton: false,
@@ -488,12 +515,8 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
     init()
 
     return () => {
-      destroyed = true
-      if (lightbox && !destroyed) {
-        lightbox.destroy()
-      } else if (lightbox) {
-        lightbox.destroy()
-      }
+      cancelled = true
+      if (lightbox) lightbox.destroy()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFilter, filteredItems.length])
