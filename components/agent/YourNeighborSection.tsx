@@ -48,8 +48,8 @@ export function YourNeighborSection() {
                 style={{ backgroundColor: GOLD }}
                 aria-hidden="true"
               />
-              <span className="font-semibold">Resident Address:</span>
-              <span className="text-white/80">2877 Paradise Rd, Las Vegas</span>
+              <span className="font-semibold">Turnberry Place:</span>
+              <span className="text-white/80">2827 Paradise Rd, Las Vegas</span>
             </div>
 
             <div className="mt-8 grid sm:grid-cols-2 gap-4">
@@ -90,7 +90,7 @@ export function YourNeighborSection() {
                 <div className="inline-flex items-center gap-2 rounded-full bg-black/50 px-4 py-2 border border-white/10">
                   <MapPin className="h-4 w-4" style={{ color: GOLD }} aria-hidden="true" />
                   <span className="text-white/90 text-sm">
-                    Turnberry Place • 2877 Paradise Rd • Las Vegas, NV 89109
+                    Turnberry Place • 2827 Paradise Rd • Las Vegas, NV 89109
                   </span>
                 </div>
               </div>

@@ -72,7 +72,7 @@ export function HeroSection() {
 
             <div className="mt-6 text-gray-300">
               <span className="font-semibold text-white">Location:</span>{" "}
-              <span>2877 Paradise Rd, Las Vegas, NV 89109</span>
+              <span>Turnberry Place • 2827 Paradise Rd, Las Vegas, NV 89109</span>
             </div>
 
             {/* Service tags */}
