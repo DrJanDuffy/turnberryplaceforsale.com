@@ -18,7 +18,7 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
       <div
         className="card-content card-open-house"
         style={{
-          backgroundImage: "url(/images/turnberry/Turnberry Tower Nice Vew.jpg)",
+          backgroundImage: "url(/images/turnberry/turnberry-tower-nice-view.jpg)",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",

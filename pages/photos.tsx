@@ -75,8 +75,8 @@ const galleryItems: GalleryItem[] = [
   {
     id: "penthouse-strip-view",
     kind: "image",
-    src: "/images/turnberry/Turnberry Tower Nice Vew.jpg",
-    full: "/images/turnberry/Turnberry Tower Nice Vew.jpg",
+    src: "/images/turnberry/turnberry-tower-nice-view.jpg",
+    full: "/images/turnberry/turnberry-tower-nice-view.jpg",
     category: "Views",
     title: "Panoramic Strip View",
     description: "Nighttime city lights and skyline from above",
@@ -88,8 +88,8 @@ const galleryItems: GalleryItem[] = [
   {
     id: "tower-south-view",
     kind: "image",
-    src: "/images/turnberry/Turnberry Tower South View.jpeg",
-    full: "/images/turnberry/Turnberry Tower South View.jpeg",
+    src: "/images/turnberry/turnberry-tower-south-view.jpeg",
+    full: "/images/turnberry/turnberry-tower-south-view.jpeg",
     category: "Views",
     title: "Tower & City Views",
     description: "Sunset tones across the Las Vegas skyline",

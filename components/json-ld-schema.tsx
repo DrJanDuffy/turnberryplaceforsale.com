@@ -119,7 +119,7 @@ export function JsonLdSchema({
     ],
     image: [
       'https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg',
-      'https://www.turnberryplaceforsale.com/images/turnberry/Turnberry Tower Nice Vew.jpg',
+      'https://www.turnberryplaceforsale.com/images/turnberry/turnberry-tower-nice-view.jpg',
     ],
   }
 

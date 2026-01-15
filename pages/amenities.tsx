@@ -377,7 +377,7 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
 
             <div className="amenities-view-card" data-reveal>
               <Image
-                src="/images/turnberry/Turnberry Tower South View.jpeg"
+                src="/images/turnberry/turnberry-tower-south-view.jpeg"
                 alt="Mountain and city views from Turnberry Place Las Vegas"
                 fill
                 className="object-cover amenities-view-img"

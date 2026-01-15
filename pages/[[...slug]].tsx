@@ -131,8 +131,8 @@ function HomePageContent() {
   // Additional homepage photos for various sections
   const homepagePhotos = {
     tower1: "/images/turnberry/Turnberry_Place_For_Sale.jpg",
-    tower2: "/images/turnberry/Turnberry Tower Nice Vew.jpg",
-    tower3: "/images/turnberry/Turnberry Tower South View.jpeg",
+    tower2: "/images/turnberry/turnberry-tower-nice-view.jpg",
+    tower3: "/images/turnberry/turnberry-tower-south-view.jpeg",
     tower4: "/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg",
     stirlingClub: [
       "/images/turnberry/sterlingclubpool-.jpeg",
@@ -292,7 +292,7 @@ function HomePageContent() {
 
       {/* Open House Section - Matching Live Site */}
       <section className="card-content card-open-house py-5" id="card-id-2271761" data-card-type="8" aria-label="Schedule Private Showing" style={{
-        backgroundImage: "url(/images/turnberry/Turnberry Tower Nice Vew.jpg)",
+        backgroundImage: "url(/images/turnberry/turnberry-tower-nice-view.jpg)",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
         backgroundSize: "cover",
