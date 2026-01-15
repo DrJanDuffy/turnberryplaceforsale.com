@@ -7,6 +7,8 @@ interface MetaProps {
   title?: string
   description?: string
   keywords?: string
+  ogImage?: string
+  ogImageAlt?: string
   appendPrimaryKeyword2ToTitle?: boolean
   path?: string
   tags?: DrupalMetatag[]
@@ -27,6 +29,8 @@ export function Meta({
   title,
   description,
   keywords,
+  ogImage,
+  ogImageAlt,
   appendPrimaryKeyword2ToTitle = false,
   tags,
 }: MetaProps) {
@@ -66,6 +70,13 @@ export function Meta({
     "Dr. Jan Duffy REALTOR",
   ].join(", ")
   const effectiveKeywords = keywords || defaultKeywords
+
+  const defaultOgImage =
+    "https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg"
+  const effectiveOgImage = ogImage || defaultOgImage
+  const effectiveOgImageAlt =
+    ogImageAlt ||
+    "Turnberry Place Las Vegas - Luxury High-Rise Condominiums with Panoramic Strip Views"
 
   return (
     <Head>
@@ -137,12 +148,12 @@ export function Meta({
           <meta
             key="og_image"
             property="og:image"
-            content="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg"
+            content={effectiveOgImage}
           />
           <meta
             key="og_image_alt"
             property="og:image:alt"
-            content="Turnberry Place Las Vegas - Luxury High-Rise Condominiums with Panoramic Strip Views"
+            content={effectiveOgImageAlt}
           />
           <meta key="og_image_width" property="og:image:width" content="1200" />
           <meta
@@ -180,12 +191,12 @@ export function Meta({
           <meta
             key="twitter_image"
             name="twitter:image"
-            content="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg"
+            content={effectiveOgImage}
           />
           <meta
             key="twitter_image_alt"
             name="twitter:image:alt"
-            content="Turnberry Place Las Vegas Luxury Condominiums"
+            content={effectiveOgImageAlt}
           />
           <meta
             key="twitter_site"

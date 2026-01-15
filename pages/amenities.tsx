@@ -122,6 +122,8 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
       <Meta
         title="Turnberry Place Amenities | Stirling Club Las Vegas"
         description="Turnberry Place amenities include the 80,000 sqft Stirling Club with pools, spa, fitness, tennis, and dining. Guard-gated luxury living near the Las Vegas Strip. Call 702-500-1971."
+        ogImage="https://www.turnberryplaceforsale.com/images/turnberry/sterlingclubpoolwithpeople.jpeg"
+        ogImageAlt="Resort-style pool at The Stirling Club at Turnberry Place Las Vegas"
       />
 
       <Head>
@@ -190,16 +192,16 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
 
         {/* QUICK AMENITIES GRID */}
         <section className="card-content card-amenities amenities-section" aria-label="Amenities overview">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-12 col-lg-10">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12 col-lg-10">
                 <div className="text-center mb-4">
                   <h2 className="amenities-h2">Comprehensive Amenities</h2>
                   <p className="amenities-lead">
                     Turnberry Place offers resort-style living with privacy, security, and
                     best-in-class resident services near the Las Vegas Strip.
                   </p>
-                </div>
+              </div>
 
                 <div className="amenities-grid">
                   {amenityIconGrid.map((item) => (
@@ -212,8 +214,8 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
                     </div>
                   ))}
                 </div>
+                </div>
               </div>
-            </div>
           </div>
         </section>
 
@@ -266,22 +268,22 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
                   isOpen={openAccordion === "stirling"}
                   onToggle={() => setOpenAccordion((v) => (v === "stirling" ? null : "stirling"))}
                 >
-                  <h3>State-of-the-Art Fitness Center</h3>
-                  <p>
+                <h3>State-of-the-Art Fitness Center</h3>
+                <p>
                     The Stirling Club's fitness center features state-of-the-art equipment from
                     leading manufacturers, including cardio machines, strength training equipment,
                     free weights, and functional training areas. The facility offers personal
                     training services, group fitness classes, and specialized programs tailored to
                     residents' fitness goals.
-                  </p>
-                  <h3>Resort-Style Swimming Pools</h3>
-                  <p>
+                </p>
+                <h3>Resort-Style Swimming Pools</h3>
+                <p>
                     The Stirling Club features both indoor and outdoor resort-style swimming pools
                     that provide year-round swimming opportunities. The outdoor pool area includes
                     cabanas, lounge areas, and a true resort-style environment.
-                  </p>
-                  <h3>Tennis and Pickleball Courts</h3>
-                  <p>
+                </p>
+                <h3>Tennis and Pickleball Courts</h3>
+                <p>
                     The Stirling Club includes clay tennis courts and pickleball courts that
                     provide residents with opportunities for recreational and competitive play.
                   </p>
