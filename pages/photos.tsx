@@ -361,7 +361,8 @@ const galleryItems: GalleryItem[] = [
 ]
 
 // Optional videos (only included when URLs are configured so we never ship broken media).
-const videoItems: VideoGalleryItem[] = [
+// NOTE: Keep the raw array separately from `.filter()` so TS preserves the `"video"` literal type.
+const videoItemsRaw: VideoGalleryItem[] = [
   {
     id: "video-drone-exterior",
     kind: "video",
@@ -408,7 +409,9 @@ const videoItems: VideoGalleryItem[] = [
     pswpWidth: 1920,
     pswpHeight: 1080,
   },
-].filter((v) => Boolean(v.sources?.mp4))
+]
+
+const videoItems = videoItemsRaw.filter((v) => Boolean(v.sources?.mp4))
 
 const vimeoVideoItems: VideoGalleryItem[] = (vimeoVideos as any[])
   .filter((v) => v?.vimeoId)
@@ -538,8 +541,11 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
     ]
     const curated = curatedIds
       .map((id) => galleryItems.find((g) => g.id === id))
-      .filter(Boolean) as GalleryItem[]
-    return curated.length ? curated : galleryItems.slice(0, 4)
+      .filter((g): g is ImageGalleryItem => Boolean(g) && g.kind === "image")
+    const fallback = galleryItems.filter(
+      (g): g is ImageGalleryItem => g.kind === "image"
+    )
+    return curated.length ? curated : fallback.slice(0, 4)
   }, [])
 
   const heroIndexRef = useRef(0)
