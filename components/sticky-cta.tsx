@@ -1,41 +1,31 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 export function StickyCTA() {
   const { asPath } = useRouter()
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    // Avoid double sticky bars on /request-details (that page has its own scoped mobile CTA).
-    if (asPath === '/request-details') return
-
-    const handleScroll = () => {
-      const shouldShow = window.scrollY > 300
-      if (shouldShow !== isVisible) {
-        setIsVisible(shouldShow)
-        // Track sticky CTA appearance
-        if (shouldShow && typeof window !== 'undefined' && (window as any).gtag) {
-          (window as any).gtag('event', 'sticky_cta_shown', {
-            event_category: 'engagement',
-            event_label: 'sticky_cta_appeared'
-          })
-        }
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [asPath, isVisible])
+  const isEnabled = asPath !== '/request-details'
 
   // Prevent the bar from covering content on mobile when it’s visible.
   useEffect(() => {
-    if (asPath === '/request-details') return
-    document.body.classList.toggle('has-sticky-cta', isVisible)
+    if (!isEnabled) return
+    document.body.classList.add('has-sticky-cta')
     return () => {
       document.body.classList.remove('has-sticky-cta')
     }
-  }, [asPath, isVisible])
+  }, [isEnabled])
+
+  // Track sticky CTA presence (once on mount) for analytics.
+  useEffect(() => {
+    if (!isEnabled) return
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'sticky_cta_shown', {
+        event_category: 'engagement',
+        event_label: 'sticky_cta_visible',
+      })
+    }
+  }, [isEnabled])
 
   const handleCTAClick = (type: string) => {
     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -46,8 +36,7 @@ export function StickyCTA() {
     }
   }
 
-  if (asPath === '/request-details') return null
-  if (!isVisible) return null
+  if (!isEnabled) return null
 
   const calendlyUrl =
     process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/drjanduffy/1-home-tour-30-mins'
