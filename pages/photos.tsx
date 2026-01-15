@@ -6,7 +6,7 @@ import { JsonLdSchema } from "components/json-ld-schema"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, Calendar, ChevronDown, Expand, Phone } from "lucide-react"
+import { ArrowLeft, Calendar, ChevronDown, Expand, Phone, X } from "lucide-react"
 import "photoswipe/style.css"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useRouter } from "next/router"
@@ -488,6 +488,13 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const [canReleaseRefresh, setCanReleaseRefresh] = useState(false)
   const canReleaseRefreshRef = useRef(false)
 
+  const [showViewAll, setShowViewAll] = useState(false)
+  const viewAllSentinelRef = useRef<HTMLDivElement | null>(null)
+
+  const galleryRef = useRef<HTMLDivElement | null>(null)
+  const [toastVisible, setToastVisible] = useState(false)
+  const viewedUniqueIdsRef = useRef<Set<string>>(new Set())
+
   // Mobile-only: enable page-level scroll snapping without affecting other routes.
   useEffect(() => {
     document.body.classList.add("photos-mobile-native")
@@ -618,6 +625,112 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
     items.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [activeFilter, filteredItems.length])
+
+  // Desktop+mobile: scroll reveal with IntersectionObserver (staggered by 100ms).
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    const reduce =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    const els = Array.from(
+      document.querySelectorAll<HTMLElement>("#photos-masonry a[data-gallery-index]")
+    )
+    if (!els.length) return
+
+    if (!("IntersectionObserver" in window) || reduce) {
+      els.forEach((el) => el.classList.add("is-inview"))
+      return
+    }
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue
+          const el = e.target as HTMLElement
+          const idx = Number(el.getAttribute("data-gallery-index") || "0")
+          el.style.setProperty("--reveal-delay", `${idx * 100}ms`)
+          el.classList.add("is-inview")
+          obs.unobserve(el)
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
+    )
+
+    els.forEach((el) => obs.observe(el))
+    return () => obs.disconnect()
+  }, [activeFilter, filteredItems.length])
+
+  // Floating "View All" button appears after scrolling past the hero.
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    if (!("IntersectionObserver" in window)) return
+    const sentinel = viewAllSentinelRef.current
+    if (!sentinel) return
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        setShowViewAll(!entry.isIntersecting)
+      },
+      { threshold: 0.01 }
+    )
+    obs.observe(sentinel)
+    return () => obs.disconnect()
+  }, [])
+
+  // Filter with FLIP animation (subtle) + staggered fade-in for new layout.
+  const setFilterWithFlip = (next: GalleryFilter) => {
+    if (next === activeFilter) return
+    if (typeof window === "undefined") {
+      setActiveFilter(next)
+      return
+    }
+
+    const reduce =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (reduce) {
+      setActiveFilter(next)
+      return
+    }
+
+    const before = new Map<string, DOMRect>()
+    document
+      .querySelectorAll<HTMLElement>("#photos-masonry a[data-item-id]")
+      .forEach((el) => {
+        const id = el.getAttribute("data-item-id") || ""
+        if (!id) return
+        before.set(id, el.getBoundingClientRect())
+      })
+
+    setActiveFilter(next)
+
+    window.requestAnimationFrame(() => {
+      document
+        .querySelectorAll<HTMLElement>("#photos-masonry a[data-item-id]")
+        .forEach((el) => {
+          const id = el.getAttribute("data-item-id") || ""
+          if (!id) return
+          const first = before.get(id)
+          const last = el.getBoundingClientRect()
+          if (!first) return
+
+          const dx = first.left - last.left
+          const dy = first.top - last.top
+          if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return
+
+          el.animate(
+            [
+              { transform: `translate(${dx}px, ${dy}px)` },
+              { transform: "translate(0px, 0px)" },
+            ],
+            { duration: 260, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" }
+          )
+        })
+    })
+  }
 
   // Initialize PhotoSwipe for the currently displayed items (re-inits on filter change for thumb strip).
   useEffect(() => {
@@ -817,6 +930,33 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           setMobileActiveIndex(pswp.currIndex ?? 0)
           pswp.on("change", () => setMobileActiveIndex(pswp.currIndex ?? 0))
         }
+
+        // CTA toast after 5+ image views (once per session)
+        try {
+          const already = window.sessionStorage.getItem("tp_photos_tour_toast_shown")
+          if (!already) {
+            const idx = pswp?.currIndex ?? 0
+            const item = filteredItems[idx]
+            if (item?.id) viewedUniqueIdsRef.current.add(item.id)
+          }
+          pswp?.on("change", () => {
+            try {
+              const already2 = window.sessionStorage.getItem("tp_photos_tour_toast_shown")
+              if (already2) return
+              const idx2 = pswp?.currIndex ?? 0
+              const item2 = filteredItems[idx2]
+              if (item2?.id) viewedUniqueIdsRef.current.add(item2.id)
+              if (viewedUniqueIdsRef.current.size >= 5) {
+                window.sessionStorage.setItem("tp_photos_tour_toast_shown", "1")
+                setToastVisible(true)
+              }
+            } catch {
+              // ignore
+            }
+          })
+        } catch {
+          // ignore
+        }
       })
       lightbox.on("close", () => {
         setIsLightboxOpen(false)
@@ -859,6 +999,9 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       />
       <JsonLdSchema type="property" />
       <div className="card-content card-photos photos-page">
+        {/* View-all sentinel (used for floating button visibility) */}
+        <div ref={viewAllSentinelRef} aria-hidden="true" style={{ height: 1 }} />
+
         {/* Mobile-only sticky header */}
         {!isLightboxOpen ? (
           <div
@@ -891,6 +1034,40 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           </div>
         ) : null}
 
+        {/* Category quick-jump dots (desktop) */}
+        <nav className="photos-jumpdots d-none d-md-flex" aria-label="Jump to category">
+          {(["All", "Residences", "Stirling Club", "Views", "Amenities"] as const).map((label) => {
+            const isActive = activeFilter === label
+            return (
+              <button
+                key={label}
+                type="button"
+                className={isActive ? "photos-jumpdot is-active" : "photos-jumpdot"}
+                onClick={() => {
+                  setFilterWithFlip(label as GalleryFilter)
+                  galleryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+                }}
+                aria-label={`Show ${label} photos`}
+              />
+            )
+          })}
+        </nav>
+
+        {/* Floating View All button */}
+        {showViewAll && activeFilter !== "All" ? (
+          <button
+            type="button"
+            className="photos-viewall"
+            onClick={() => {
+              setFilterWithFlip("All")
+              galleryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+            }}
+            aria-label="View all photos"
+          >
+            View All
+          </button>
+        ) : null}
+
         {/* Mobile floating action buttons */}
         {!isLightboxOpen ? (
           <div
@@ -917,6 +1094,36 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
             >
               <Calendar className="photos-fab-icon" aria-hidden="true" />
             </a>
+          </div>
+        ) : null}
+
+        {/* Subtle toast CTA (once per session) */}
+        {toastVisible ? (
+          <div className="photos-toast" role="status" aria-live="polite">
+            <div className="photos-toast-inner">
+              <div className="photos-toast-text">
+                Like what you see? <strong>Schedule a private tour.</strong>
+              </div>
+              <a
+                className="photos-toast-cta"
+                href={
+                  process.env.NEXT_PUBLIC_CALENDLY_URL ||
+                  "https://calendly.com/drjanduffy/1-home-tour-30-mins"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Schedule
+              </a>
+              <button
+                type="button"
+                className="photos-toast-close"
+                onClick={() => setToastVisible(false)}
+                aria-label="Dismiss"
+              >
+                <X className="photos-toast-close-icon" aria-hidden="true" />
+              </button>
+            </div>
           </div>
         ) : null}
 
@@ -994,7 +1201,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                           key={label}
                           type="button"
                           className={isActive ? "photos-tab is-active" : "photos-tab"}
-                          onClick={() => setActiveFilter(label as GalleryFilter)}
+                          onClick={() => setFilterWithFlip(label as GalleryFilter)}
                           role="tab"
                           aria-selected={isActive}
                         >
@@ -1022,6 +1229,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           </div>
               <div className="row">
             <div className="col-12 col-lg-10 mx-auto">
+              <div ref={galleryRef} aria-hidden="true" />
               <div
                 id="photos-masonry"
                 className={isFading ? "photos-masonry is-fading" : "photos-masonry"}
@@ -1038,6 +1246,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                     href={item.full}
                     data-pswp-item
                     data-gallery-index={index}
+                    data-item-id={item.id}
                     data-pswp-width={item.pswpWidth}
                     data-pswp-height={item.pswpHeight}
                     data-pswp-caption={`<strong>${item.title}</strong>${
