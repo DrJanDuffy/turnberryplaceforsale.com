@@ -486,6 +486,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const [pullProgress, setPullProgress] = useState(0)
   const [canReleaseRefresh, setCanReleaseRefresh] = useState(false)
+  const canReleaseRefreshRef = useRef(false)
 
   // Mobile-only: enable page-level scroll snapping without affecting other routes.
   useEffect(() => {
@@ -524,6 +525,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       pulling = true
       setPullProgress(0)
       setCanReleaseRefresh(false)
+      canReleaseRefreshRef.current = false
     }
 
     const onTouchMove = (e: TouchEvent) => {
@@ -533,15 +535,18 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       const dy = Math.max(0, y - startY)
       const progress = Math.min(1, dy / 110)
       setPullProgress(progress)
-      setCanReleaseRefresh(dy >= 110)
+      const can = dy >= 110
+      setCanReleaseRefresh(can)
+      canReleaseRefreshRef.current = can
     }
 
     const onTouchEnd = () => {
       if (!pulling) return
-      const shouldRefresh = canReleaseRefresh
+      const shouldRefresh = canReleaseRefreshRef.current
       pulling = false
       setPullProgress(0)
       setCanReleaseRefresh(false)
+      canReleaseRefreshRef.current = false
       if (shouldRefresh) window.location.reload()
     }
 
@@ -555,7 +560,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       window.removeEventListener("touchend", onTouchEnd)
       window.removeEventListener("touchcancel", onTouchEnd)
     }
-  }, [canReleaseRefresh])
+  }, [])
 
   const counts = useMemo(() => {
     const byCategory: Record<GalleryCategory, number> = {
@@ -650,7 +655,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         gallery: gallerySelector,
         children: "a[data-pswp-item]",
         pswpModule: () => import("photoswipe"),
-        showHideAnimationType: "fade",
+        showHideAnimationType: "zoom",
         bgOpacity: 0.92,
         preload: [1, 2],
         wheelToZoom: true,
