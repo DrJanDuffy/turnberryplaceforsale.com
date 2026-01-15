@@ -8,8 +8,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Calendar, ChevronDown, Expand, Phone, Play, X } from "lucide-react"
 import "photoswipe/style.css"
-import { useEffect, useMemo, useRef, useState } from "react"
+import { Fragment, useEffect, useMemo, useRef, useState } from "react"
 import { useRouter } from "next/router"
+import vimeoVideos from "../data/media/vimeo-videos.json"
 
 type GalleryCategory = "Residences" | "Stirling Club" | "Views" | "Amenities"
 type GalleryFilter = "All" | GalleryCategory
@@ -37,7 +38,10 @@ type VideoGalleryItem = {
   // Poster shown in masonry; also used for schema thumbnailUrl
   poster: string
   // Hosted sources (MP4 required, WebM optional)
-  sources: { mp4: string; webm?: string }
+  sources?: { mp4: string; webm?: string }
+  // Optional provider embed (Vimeo)
+  provider?: "vimeo"
+  vimeoId?: string
   // For layout stability + lightbox aspect ratio (usually 16:9)
   height: string
   pswpWidth: number
@@ -380,7 +384,7 @@ const videoItems: VideoGalleryItem[] = [
     title: "Virtual Tour Walkthrough",
     description: "Walkthrough tour of a luxury Turnberry Place residence",
     poster:
-      "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
+  "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
     sources: {
       mp4: process.env.NEXT_PUBLIC_TURNBERRY_TOUR_MP4 || "",
       webm: process.env.NEXT_PUBLIC_TURNBERRY_TOUR_WEBM || "",
@@ -404,7 +408,23 @@ const videoItems: VideoGalleryItem[] = [
     pswpWidth: 1920,
     pswpHeight: 1080,
   },
-].filter((v) => Boolean(v.sources.mp4))
+].filter((v) => Boolean(v.sources?.mp4))
+
+const vimeoVideoItems: VideoGalleryItem[] = (vimeoVideos as any[])
+  .filter((v) => v?.vimeoId)
+  .map((v) => ({
+    id: v.id || `vimeo-${v.vimeoId}`,
+    kind: "video" as const,
+    provider: "vimeo" as const,
+    vimeoId: String(v.vimeoId),
+    category: (v.category || "Views") as GalleryCategory,
+    title: v.title || "Turnberry Place Video",
+    description: v.description,
+    poster: v.poster || "/images/turnberry/Turnberry_Place_For_Sale.jpg",
+    height: "18rem",
+    pswpWidth: 1920,
+    pswpHeight: 1080,
+  }))
 
 function MasonryTileMedia({
   item,
@@ -499,7 +519,10 @@ interface PhotosPageProps extends LayoutProps {}
 export default function PhotosPage({ menus }: PhotosPageProps) {
   const router = useRouter()
   const heroImage = "/images/turnberry/Turnberry_Place_For_Sale.jpg"
-  const allItems = useMemo(() => [...videoItems, ...galleryItems], [])
+  const allItems = useMemo(
+    () => [...vimeoVideoItems, ...videoItems, ...galleryItems],
+    []
+  )
   const photoCount = allItems.length
 
   const baseUrl =
@@ -545,6 +568,11 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
 
   const photosMetaDescription =
     "Explore 23 professional photos of Turnberry Place luxury condos, Stirling Club amenities, and panoramic Las Vegas Strip views. Schedule a private tour."
+
+  const phoneHref = "tel:+17025001971"
+  const phoneDisplay = "(702) 500-1971"
+  const calendlyUrl =
+    process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/drjanduffy/1-home-tour-30-mins"
 
   const photosOgImages = allItems
     .filter((i): i is ImageGalleryItem => i.kind === "image")
@@ -592,11 +620,17 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       },
     })),
     // Include videos as parts of the gallery when configured
-    hasPart: videoItems.map((v) => ({
+    hasPart: allItems
+      .filter((i): i is VideoGalleryItem => i.kind === "video")
+      .map((v) => ({
       "@type": "VideoObject",
       name: v.title,
       description: v.description || v.title,
-      contentUrl: v.sources.mp4,
+      contentUrl: v.sources?.mp4,
+      embedUrl:
+        v.provider === "vimeo" && v.vimeoId
+          ? `https://player.vimeo.com/video/${v.vimeoId}`
+          : undefined,
       thumbnailUrl: `${baseUrl}${v.poster}`,
       author: {
         "@type": "Person",
@@ -620,6 +654,13 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const viewedUniqueIdsRef = useRef<Set<string>>(new Set())
   const [srAnnouncement, setSrAnnouncement] = useState("")
   const [isMobile, setIsMobile] = useState(false)
+  const [mobileFooterVisible, setMobileFooterVisible] = useState(true)
+
+  // Exit-intent (desktop only) lead capture
+  const [exitIntentOpen, setExitIntentOpen] = useState(false)
+  const [exitEmail, setExitEmail] = useState("")
+  const [exitSubmitting, setExitSubmitting] = useState(false)
+  const [exitSubmitted, setExitSubmitted] = useState<"idle" | "success" | "error">("idle")
 
   // Detect mobile viewport (Bootstrap xs breakpoint). Used ONLY for behavior, not rendering.
   useEffect(() => {
@@ -655,6 +696,87 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       }
     }
   }, [isMobile])
+
+  // Mobile-only: smart sticky footer (hide on scroll down, show on scroll up).
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    if (!isMobile) return
+    if (isLightboxOpen) return
+
+    const reduce =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (reduce) {
+      setMobileFooterVisible(true)
+      return
+    }
+
+    let lastY = window.scrollY
+    let ticking = false
+
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY
+        const delta = y - lastY
+        if (Math.abs(delta) > 10) {
+          if (delta > 0 && y > 80) setMobileFooterVisible(false)
+          if (delta < 0) setMobileFooterVisible(true)
+          lastY = y
+        }
+        ticking = false
+      })
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [isMobile, isLightboxOpen])
+
+  // Desktop-only: exit intent modal (once per session).
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    if (isMobile) return
+    if (exitIntentOpen) return
+
+    const already = window.sessionStorage.getItem("tp_photos_exit_intent_shown")
+    if (already) return
+
+    const onMouseOut = (e: MouseEvent) => {
+      // Leaving toward top edge
+      if (e.clientY > 0) return
+      const target = e.relatedTarget as Node | null
+      if (target) return
+      window.sessionStorage.setItem("tp_photos_exit_intent_shown", "1")
+      setExitIntentOpen(true)
+      setExitSubmitted("idle")
+    }
+
+    window.addEventListener("mouseout", onMouseOut)
+    return () => window.removeEventListener("mouseout", onMouseOut)
+  }, [isMobile, exitIntentOpen])
+
+  const submitExitIntent = async () => {
+    if (!exitEmail) return
+    setExitSubmitting(true)
+    setExitSubmitted("idle")
+    try {
+      const res = await fetch("/api/leads/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Gallery Visitor",
+          email: exitEmail,
+          message: "Exclusive listings request from /photos (exit intent)",
+        }),
+      })
+      if (!res.ok) throw new Error("Request failed")
+      setExitSubmitted("success")
+    } catch {
+      setExitSubmitted("error")
+    } finally {
+      setExitSubmitting(false)
+    }
+  }
 
   // Mobile: pull-to-refresh (lightweight). Pull down at top, release to refresh.
   useEffect(() => {
@@ -1052,7 +1174,8 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
               el.innerHTML = filteredItems
                 .map((item, i) => {
                   const active = i === current ? "is-active" : ""
-                  const thumbUrl = thumbUrlFor(item.src)
+                  const thumbSrc = item.kind === "image" ? item.src : item.poster
+                  const thumbUrl = thumbUrlFor(thumbSrc)
                   return `<button type="button" class="pswp__lux-thumb ${active}" data-idx="${i}" aria-label="${item.title}">
                     <img src="${thumbUrl}" alt="" loading="lazy" />
                   </button>`
@@ -1070,6 +1193,22 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
 
             pswp.on("change", render)
             render()
+          },
+        })
+
+        // Lightbox footer CTA (non-intrusive)
+        pswp.ui.registerElement({
+          name: "luxCta",
+          order: 11,
+          isButton: false,
+          appendTo: "root",
+          onInit: (el: HTMLElement) => {
+            el.className = "pswp__lux-cta"
+            el.setAttribute("role", "note")
+            el.setAttribute("aria-label", "Call to action")
+            el.innerHTML =
+              `Want to see this in person? ` +
+              `<a href="${phoneHref}" class="pswp__lux-cta-link">${phoneDisplay}</a>`
           },
         })
       })
@@ -1097,6 +1236,19 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           const initVideoForCurrent = () => {
             const container = pswp.currSlide?.container
             if (!container) return
+            const iframe = container.querySelector("iframe[data-src]") as HTMLIFrameElement | null
+            if (iframe) {
+              // Lazy-load Vimeo (or other embed) iframe src only when opened.
+              const isMobileViewport =
+                window.matchMedia && window.matchMedia("(max-width: 575.98px)").matches
+              const ds = iframe.getAttribute("data-src")
+              if (ds && !iframe.src) {
+                // Mobile: don't autoplay to reduce data usage
+                iframe.src = isMobileViewport ? ds.replace("autoplay=1", "autoplay=0") : ds
+              }
+              return
+            }
+
             const video = container.querySelector("video") as HTMLVideoElement | null
             if (!video) return
 
@@ -1244,10 +1396,10 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
 
         <div className="sr-only" role="status" aria-live="polite">
           Image gallery, {filteredItems.length} images.
-        </div>
+            </div>
         <div className="sr-only" role="status" aria-live="polite">
           {srAnnouncement}
-        </div>
+          </div>
         {/* Mobile-only sticky header */}
         {!isLightboxOpen ? (
           <div
@@ -1257,7 +1409,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           >
             <div
               className="photos-mobile-pullbar"
-              aria-hidden="true"
+                        aria-hidden="true"
               style={{ transform: `scaleX(${pullProgress})` }}
             />
             <button
@@ -1317,28 +1469,31 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         {/* Mobile floating action buttons */}
         {!isLightboxOpen ? (
           <div
-            className="photos-mobile-fabs photos-mobile-only"
-            role="complementary"
+            className={
+              mobileFooterVisible
+                ? "photos-mobile-footer photos-mobile-only is-visible"
+                : "photos-mobile-footer photos-mobile-only"
+            }
+            role="contentinfo"
             aria-label="Quick actions"
           >
             <a
-              className="photos-fab"
-              href="tel:+17025001971"
-              aria-label="Call (702) 500-1971"
+              className="photos-mobile-footer-call"
+              href={phoneHref}
+              aria-label={`Call ${phoneDisplay}`}
             >
-              <Phone className="photos-fab-icon" aria-hidden="true" />
+              <Phone className="photos-mobile-footer-icon" aria-hidden="true" />
+              <span>Call</span>
             </a>
             <a
-              className="photos-fab"
-              href={
-                process.env.NEXT_PUBLIC_CALENDLY_URL ||
-                "https://calendly.com/drjanduffy/1-home-tour-30-mins"
-              }
+              className="photos-mobile-footer-tour"
+              href={calendlyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Schedule a private tour on Calendly"
+              aria-label="Schedule a private tour"
             >
-              <Calendar className="photos-fab-icon" aria-hidden="true" />
+              <Calendar className="photos-mobile-footer-icon" aria-hidden="true" />
+              <span>Schedule Tour</span>
             </a>
           </div>
         ) : null}
@@ -1349,7 +1504,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
             <div className="photos-toast-inner">
               <div className="photos-toast-text">
                 Like what you see? <strong>Schedule a private tour.</strong>
-              </div>
+                </div>
               <a
                 className="photos-toast-cta"
                 href={
@@ -1369,7 +1524,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
               >
                 <X className="photos-toast-close-icon" aria-hidden="true" />
               </button>
-            </div>
+              </div>
           </div>
         ) : null}
 
@@ -1378,7 +1533,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           <div className="photos-hero-media" aria-hidden="true">
             {/* Active slide (LCP-focused) */}
             <div className="photos-hero-slide is-active">
-              <Image
+                        <Image
                 src={heroSlides[heroActive]?.src || heroImage}
                 alt={
                   heroSlides[heroActive]?.alt ||
@@ -1392,7 +1547,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                 blurDataURL={BLUR_DATA_URL}
                 className="photos-hero-img"
               />
-            </div>
+                    </div>
 
             {/* Fade-in slide (preloads next background) */}
             {heroFadeIn !== null ? (
@@ -1410,9 +1565,9 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                   blurDataURL={BLUR_DATA_URL}
                   className="photos-hero-img"
                 />
-              </div>
+                  </div>
             ) : null}
-          </div>
+              </div>
           <div className="photos-hero-overlay" aria-hidden="true" />
           <div className="container photos-hero-inner">
             <div className="row justify-content-center">
@@ -1421,7 +1576,27 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                 <p className="photos-hero-subtitle">
                   {photoCount} Images of Las Vegas Luxury Living
                 </p>
-              </div>
+                <div className="photos-hero-ctas" aria-label="Primary actions">
+                  <a
+                    href={calendlyUrl}
+                    className="photos-btn photos-btn-gold"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Schedule private tour"
+                    data-cta="photos-hero-schedule"
+                  >
+                    Schedule Private Tour
+                  </a>
+                  <a
+                    href={phoneHref}
+                    className="photos-btn photos-btn-outline"
+                    aria-label={`Call now ${phoneDisplay}`}
+                    data-cta="photos-hero-call"
+                  >
+                    Call Now: {phoneDisplay}
+                  </a>
+                </div>
+            </div>
             </div>
           </div>
           <div className="photos-hero-scroll" aria-hidden="true">
@@ -1442,7 +1617,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                     (label) => {
                       const count =
                         label === "All"
-                          ? galleryItems.length
+                          ? allItems.length
                           : counts[label as GalleryCategory]
                       const isActive = activeFilter === label
                       return (
@@ -1457,7 +1632,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                           <span className="photos-tab-label">{label}</span>
                           <span className="photos-tab-count" aria-hidden="true">
                             {count}
-                          </span>
+                  </span>
                         </button>
                       )
                     }
@@ -1473,9 +1648,9 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                     Launch Slideshow
                   </Link>
                 </div>
-              </div>
-            </div>
-          </div>
+                </div>
+                      </div>
+                  </div>
               <div className="row">
             <div className="col-12 col-lg-10 mx-auto">
               <div ref={galleryRef} aria-hidden="true" />
@@ -1489,10 +1664,21 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                   const sizes =
                     "(max-width: 575px) 100vw, (max-width: 991px) 50vw, 25vw"
 
+                  const insertMidCta = activeFilter === "All" && index === 7
+
+                  const vimeoEmbedUrl =
+                    item.kind === "video" && item.provider === "vimeo" && item.vimeoId
+                      ? `https://player.vimeo.com/video/${item.vimeoId}`
+                      : null
+
                   return (
+                  <Fragment key={item.id}>
                   <a
-                    key={item.id}
-                    href={item.kind === "image" ? item.full : "#"}
+                    href={
+                      item.kind === "image"
+                        ? item.full
+                        : vimeoEmbedUrl || item.sources?.mp4 || item.poster
+                    }
                     data-pswp-item
                     data-gallery-index={index}
                     data-item-id={item.id}
@@ -1501,17 +1687,36 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                     data-pswp-type={item.kind === "video" ? "html" : undefined}
                     data-pswp-html={
                       item.kind === "video"
-                        ? `<div class="pswp-video" role="group" aria-label="${item.title}">
-                            <video class="pswp-video-el" controls playsinline muted preload="none" poster="${item.poster}">
-                              <source data-src="${item.sources.webm || ""}" type="video/webm" />
-                              <source data-src="${item.sources.mp4}" type="video/mp4" />
-                            </video>
-                            <div class="pswp-video-actions" aria-label="Video controls">
-                              <button type="button" class="pswp-video-btn" data-video-action="unmute" aria-label="Unmute video">Unmute</button>
-                              <button type="button" class="pswp-video-btn" data-video-action="fs" aria-label="Fullscreen video">Fullscreen</button>
-                              <button type="button" class="pswp-video-btn" data-video-action="pip" aria-label="Picture in picture">PiP</button>
-                            </div>
-                          </div>`
+                        ? item.provider === "vimeo" && item.vimeoId
+                          ? `<div class="pswp-video" role="group" aria-label="${item.title}">
+                               <div class="pswp-video-embed" data-provider="vimeo">
+                                 <iframe
+                                   class="pswp-video-iframe"
+                                   title="${item.title}"
+                                   data-src="https://player.vimeo.com/video/${item.vimeoId}?autoplay=1&muted=1&autopause=1&dnt=1&transparent=0"
+                                   frameborder="0"
+                                   allow="autoplay; fullscreen; picture-in-picture"
+                                   allowfullscreen
+                                   loading="lazy"
+                                 ></iframe>
+                               </div>
+                               <div class="pswp-video-actions" aria-label="Video actions">
+                                 <a class="pswp-video-btn" href="https://vimeo.com/${item.vimeoId}" target="_blank" rel="noopener noreferrer" aria-label="Open on Vimeo">
+                                   Open on Vimeo
+                                 </a>
+                               </div>
+                             </div>`
+                          : `<div class="pswp-video" role="group" aria-label="${item.title}">
+                               <video class="pswp-video-el" controls playsinline muted preload="none" poster="${item.poster}">
+                                 <source data-src="${item.sources?.webm || ""}" type="video/webm" />
+                                 <source data-src="${item.sources?.mp4 || ""}" type="video/mp4" />
+                               </video>
+                               <div class="pswp-video-actions" aria-label="Video controls">
+                                 <button type="button" class="pswp-video-btn" data-video-action="unmute" aria-label="Unmute video">Unmute</button>
+                                 <button type="button" class="pswp-video-btn" data-video-action="fs" aria-label="Fullscreen video">Fullscreen</button>
+                                 <button type="button" class="pswp-video-btn" data-video-action="pip" aria-label="Picture in picture">PiP</button>
+                               </div>
+                             </div>`
                         : undefined
                     }
                     data-pswp-caption={`<strong>${item.title}</strong>${
@@ -1536,7 +1741,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                       {item.kind === "video" ? (
                         <div className="photos-video-play" aria-hidden="true">
                           <Play className="photos-video-play-icon" />
-                        </div>
+              </div>
                       ) : null}
                       <div className="photos-mobile-expand" aria-hidden="true">
                         <Expand className="photos-mobile-expand-icon" />
@@ -1551,6 +1756,37 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                       </div>
                     </div>
                   </a>
+                  {insertMidCta ? (
+                    <div className="photos-inline-cta" role="region" aria-label="Interested in Turnberry Place">
+                      <div className="photos-inline-cta-inner">
+                        <div className="photos-inline-cta-title">Interested in Turnberry Place?</div>
+                        <div className="photos-inline-cta-sub">
+                          Get current listings or schedule a private tour with Dr. Jan Duffy.
+                        </div>
+                        <div className="photos-inline-cta-actions">
+                          <Link
+                            href="/available-condos"
+                            className="photos-btn photos-btn-outline"
+                            aria-label="View available condos"
+                            data-cta="photos-mid-view-available"
+                          >
+                            View Available Condos
+                          </Link>
+                          <a
+                            href={calendlyUrl}
+                            className="photos-btn photos-btn-gold"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Schedule a tour"
+                            data-cta="photos-mid-schedule"
+                          >
+                            Schedule Tour
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+                  </Fragment>
                   )
                 })}
               </div>
@@ -1559,6 +1795,34 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           
           <div className="row mt-5">
             <div className="col-12 col-lg-10 mx-auto">
+              <section className="photos-post-cta" aria-label="Experience Turnberry Place">
+                <div className="photos-post-cta-inner">
+                  <div className="photos-post-cta-title">Experience Turnberry Place</div>
+                  <div className="photos-post-cta-sub">
+                    Schedule your private showing today.
+                  </div>
+                  <div className="photos-post-cta-actions">
+                    <a
+                      href={phoneHref}
+                      className="photos-btn photos-btn-outline"
+                      aria-label={`Call ${phoneDisplay}`}
+                      data-cta="photos-post-call"
+                    >
+                      Call: {phoneDisplay}
+                    </a>
+                    <a
+                      href={calendlyUrl}
+                      className="photos-btn photos-btn-gold"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Book online"
+                      data-cta="photos-post-book"
+                    >
+                      Book Online
+                    </a>
+                  </div>
+                </div>
+              </section>
               <h2>Turnberry Place Photo Gallery</h2>
               <p>
                 These professional photographs showcase Turnberry Place's luxury residences, premium finishes, and world-class amenities. View interior spaces, exterior architecture, and The Stirling Club facilities.
@@ -1591,6 +1855,61 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           <div id="after-gallery" />
         </div>
       </div>
+
+      {/* Desktop exit-intent modal */}
+      {exitIntentOpen ? (
+        <div className="photos-exit" role="dialog" aria-modal="true" aria-label="Exclusive listings signup">
+          <div className="photos-exit-overlay" onClick={() => setExitIntentOpen(false)} aria-hidden="true" />
+          <div className="photos-exit-card">
+            <button
+              type="button"
+              className="photos-exit-close"
+              onClick={() => setExitIntentOpen(false)}
+              aria-label="Close"
+            >
+              <X aria-hidden="true" />
+            </button>
+            <div className="photos-exit-title">Before you go…</div>
+            <div className="photos-exit-sub">
+              Get exclusive Turnberry Place listings.
+            </div>
+            <div className="photos-exit-form">
+              <label className="sr-only" htmlFor="photos-exit-email">
+                Email
+              </label>
+              <input
+                id="photos-exit-email"
+                className="photos-exit-input"
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                placeholder="Email address"
+                value={exitEmail}
+                onChange={(e) => setExitEmail(e.target.value)}
+              />
+              <button
+                type="button"
+                className="photos-btn photos-btn-gold"
+                onClick={submitExitIntent}
+                disabled={exitSubmitting || !exitEmail}
+                aria-label="Get updates"
+              >
+                {exitSubmitting ? "Sending…" : "Get Updates"}
+              </button>
+            </div>
+            {exitSubmitted === "success" ? (
+              <div className="photos-exit-msg is-success" role="status" aria-live="polite">
+                Thanks — we’ll send you new listings.
+              </div>
+            ) : null}
+            {exitSubmitted === "error" ? (
+              <div className="photos-exit-msg is-error" role="status" aria-live="polite">
+                Something went wrong. Please try again or call <a href={phoneHref}>{phoneDisplay}</a>.
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
     </Layout>
   )
 }
