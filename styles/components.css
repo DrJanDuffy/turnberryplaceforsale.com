@@ -3156,7 +3156,15 @@ main .card-top-header:first-of-type {
 /* ===============================
    Photos (Mobile-native UX)
    =============================== */
+/* Ensure mobile-only UI does not appear on desktop even if Bootstrap CSS changes */
+.photos-mobile-only {
+  display: none;
+}
 @media (max-width: 575.98px) {
+  .photos-mobile-only {
+    display: flex;
+  }
+
   .photos-page {
     /* Allow native pull-to-refresh; avoid blocking it */
     overscroll-behavior-y: auto;
