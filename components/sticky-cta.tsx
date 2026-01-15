@@ -1,12 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export function StickyCTA() {
+  const { asPath } = useRouter()
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    // Avoid double sticky bars on /request-details (that page has its own scoped mobile CTA).
+    if (asPath === '/request-details') return
+
     const handleScroll = () => {
       const shouldShow = window.scrollY > 300
       if (shouldShow !== isVisible) {
@@ -22,7 +26,16 @@ export function StickyCTA() {
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isVisible])
+  }, [asPath, isVisible])
+
+  // Prevent the bar from covering content on mobile when it’s visible.
+  useEffect(() => {
+    if (asPath === '/request-details') return
+    document.body.classList.toggle('has-sticky-cta', isVisible)
+    return () => {
+      document.body.classList.remove('has-sticky-cta')
+    }
+  }, [asPath, isVisible])
 
   const handleCTAClick = (type: string) => {
     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -33,7 +46,11 @@ export function StickyCTA() {
     }
   }
 
+  if (asPath === '/request-details') return null
   if (!isVisible) return null
+
+  const calendlyUrl =
+    process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/drjanduffy/1-home-tour-30-mins'
 
   return (
     <div className="sticky-cta-bar d-lg-none fixed-bottom bg-primary text-white p-3 shadow-lg z-50" role="banner" aria-label="Call to action">
@@ -41,7 +58,7 @@ export function StickyCTA() {
         <div className="row align-items-center no-gutters">
           <div className="col-7">
             <a 
-              href="tel:7025001971" 
+              href="tel:+17025001971" 
               className="text-white text-decoration-none d-flex align-items-center"
               onClick={() => handleCTAClick('phone')}
               aria-label="Call 702-500-1971"
@@ -53,14 +70,16 @@ export function StickyCTA() {
             </a>
           </div>
           <div className="col-5 text-right">
-            <Link 
-              href="/request-details" 
+            <a
+              href={calendlyUrl}
               className="btn btn-warning btn-sm font-weight-bold"
               onClick={() => handleCTAClick('tour')}
-              aria-label="Schedule a private tour"
+              aria-label="Schedule a private tour on Calendly"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Schedule Tour
-            </Link>
+              Schedule
+            </a>
           </div>
         </div>
       </div>

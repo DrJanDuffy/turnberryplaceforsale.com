@@ -2542,6 +2542,13 @@ main .card-top-header:first-of-type {
   animation: slideUp 0.3s ease-out;
 }
 
+/* Prevent the sticky CTA bar from covering content on small screens */
+@media (max-width: 991.98px) {
+  body.has-sticky-cta {
+    padding-bottom: 4.25rem;
+  }
+}
+
 @keyframes slideUp {
   from {
     transform: translateY(100%);

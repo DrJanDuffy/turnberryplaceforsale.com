@@ -3,6 +3,7 @@ import { DrupalMenuLinkContent } from "next-drupal"
 
 import { Navbar } from "components/navbar"
 import { Footer } from "components/footer"
+import { StickyCTA } from "components/sticky-cta"
 
 export interface LayoutProps {
   menus: {
@@ -39,6 +40,7 @@ export function Layout({ menus, children }: LayoutProps) {
       <main className="flex-1" style={{ paddingTop: 0, marginTop: 0 }}>
         {children}
       </main>
+      <StickyCTA />
       <Footer links={menus.footer} />
     </div>
   )

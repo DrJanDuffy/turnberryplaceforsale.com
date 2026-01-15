@@ -19,7 +19,6 @@ import { Meta } from "components/meta"
 import { HeroSlideshow } from "components/hero-slideshow"
 import { ContactForm } from "components/contact-form"
 import { JsonLdSchema } from "components/json-ld-schema"
-import { StickyCTA } from "components/sticky-cta"
 import { DynamicUnitCount } from "components/dynamic-unit-count"
 import { PropertyGrid } from "components/property-grid"
 import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
@@ -155,7 +154,6 @@ function HomePageContent() {
 
   return (
     <>
-      <StickyCTA />
       {/* Hero Section with Slideshow */}
       <HeroSlideshow photos={heroPhotos} />
       
