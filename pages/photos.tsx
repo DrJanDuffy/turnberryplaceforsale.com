@@ -390,6 +390,23 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         const pswp = lightbox.pswp
         if (!pswp?.ui) return
 
+        // Fullscreen toggle
+        pswp.ui.registerElement({
+          name: "luxFs",
+          order: 4,
+          isButton: true,
+          appendTo: "bar",
+          html: "Fullscreen",
+          onClick: () => {
+            const root = document.documentElement
+            if (!document.fullscreenElement) {
+              root.requestFullscreen?.()
+            } else {
+              document.exitFullscreen?.()
+            }
+          },
+        })
+
         // Caption (title + optional description)
         pswp.ui.registerElement({
           name: "luxCaption",
@@ -483,13 +500,17 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
           onInit: (el: HTMLElement, pswp: any) => {
             el.className = "pswp__lux-thumbs"
 
+            const thumbUrlFor = (src: string) =>
+              `/_next/image?url=${encodeURIComponent(src)}&w=96&q=70`
+
             const render = () => {
               const current = pswp.currIndex ?? 0
               el.innerHTML = filteredItems
                 .map((item, i) => {
                   const active = i === current ? "is-active" : ""
+                  const thumbUrl = thumbUrlFor(item.src)
                   return `<button type="button" class="pswp__lux-thumb ${active}" data-idx="${i}" aria-label="${item.title}">
-                    <img src="${item.src}" alt="" loading="lazy" />
+                    <img src="${thumbUrl}" alt="" loading="lazy" />
                   </button>`
                 })
                 .join("")
