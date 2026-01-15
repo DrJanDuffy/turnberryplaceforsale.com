@@ -28,10 +28,10 @@ export function JsonLdSchema({
     name: 'Dr. Jan Duffy, REALTOR',
     alternateName: 'The Turnberry Place Team',
     description:
-      'Las Vegas real estate expert specializing in luxury high-rise condos at Turnberry Place. Licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties.',
+      'Turnberry Place specialist and Las Vegas luxury high-rise condo REALTOR. Licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties.',
     url: baseUrl,
     telephone: ['+17025001971'],
-    email: 'jan@lasvegas55plushomes.com',
+    email: 'jan@turnberryplaceforsale.com',
     identifier: {
       '@type': 'PropertyValue',
       name: 'Nevada Real Estate License',
@@ -210,7 +210,7 @@ export function JsonLdSchema({
         name: 'Who is the real estate agent for Turnberry Place?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Dr. Jan Duffy, REALTOR, is the Turnberry Place specialist with over 30 years of experience in Las Vegas luxury real estate. Licensed as S.0197614.LLC with Berkshire Hathaway HomeServices Nevada Properties. Contact: (702) 500-1971.',
+          text: 'Dr. Jan Duffy, REALTOR, specializes in Turnberry Place and Las Vegas luxury high-rise condos. Licensed as S.0197614.LLC with Berkshire Hathaway HomeServices Nevada Properties. Contact: (702) 500-1971.',
         },
       },
     ],
