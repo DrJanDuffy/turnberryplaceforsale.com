@@ -491,10 +491,23 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   useEffect(() => {
     document.body.classList.add("photos-mobile-native")
     // Hide the global navbar on /photos mobile to keep the UI app-like.
+    // We do this both visually and from the accessibility tree (inert/aria-hidden).
     document.documentElement.style.setProperty("--navbar-height", "0px")
+    const nav = document.querySelector(".card-top-nav") as HTMLElement | null
+    const prevDisplay = nav?.style.display
+    if (nav) {
+      nav.style.display = "none"
+      nav.setAttribute("aria-hidden", "true")
+      ;(nav as any).inert = true
+    }
     return () => {
       document.body.classList.remove("photos-mobile-native")
       document.documentElement.style.removeProperty("--navbar-height")
+      if (nav) {
+        nav.style.display = prevDisplay || ""
+        nav.removeAttribute("aria-hidden")
+        ;(nav as any).inert = false
+      }
     }
   }, [])
 
