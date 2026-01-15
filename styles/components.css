@@ -3129,6 +3129,23 @@ main .card-top-header:first-of-type {
   inset: 0;
   z-index: 0;
 }
+
+/* Hero background slideshow layers (crossfade) */
+.photos-hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+.photos-hero-slide.is-active {
+  opacity: 1;
+}
+
+.photos-hero-slide.is-fade-in {
+  opacity: 1;
+}
+
 .photos-hero-img {
   object-fit: cover;
   transform: scale(1.06);

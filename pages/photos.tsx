@@ -3,6 +3,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronDown } from "lucide-react"
@@ -391,6 +392,92 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const heroImage = "/images/turnberry/Turnberry_Place_For_Sale.jpg"
   const photoCount = galleryItems.length
 
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://www.turnberryplaceforsale.com"
+
+  // Hero background slideshow (crossfade)
+  const heroSlides = useMemo(() => {
+    const curatedIds = [
+      "hero-exterior",
+      "penthouse-strip-view",
+      "stirling-pool",
+      "residence-interior",
+    ]
+    const curated = curatedIds
+      .map((id) => galleryItems.find((g) => g.id === id))
+      .filter(Boolean) as GalleryItem[]
+    return curated.length ? curated : galleryItems.slice(0, 4)
+  }, [])
+
+  const heroIndexRef = useRef(0)
+  const [heroActive, setHeroActive] = useState(0)
+  const [heroFadeIn, setHeroFadeIn] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (heroSlides.length <= 1) return
+
+    const fadeMs = 900
+    const intervalMs = 6500
+
+    const interval = window.setInterval(() => {
+      const current = heroIndexRef.current
+      const next = (current + 1) % heroSlides.length
+      setHeroFadeIn(next)
+      window.setTimeout(() => {
+        heroIndexRef.current = next
+        setHeroActive(next)
+        setHeroFadeIn(null)
+      }, fadeMs)
+    }, intervalMs)
+
+    return () => window.clearInterval(interval)
+  }, [heroSlides.length])
+
+  const photosMetaDescription =
+    "Explore 23 professional photos of Turnberry Place luxury condos, Stirling Club amenities, and panoramic Las Vegas Strip views. Schedule a private tour."
+
+  const photosOgImages = galleryItems.slice(0, 5).map((img) => ({
+    url: `${baseUrl}${img.full}`,
+    alt: img.alt,
+  }))
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Photos",
+        item: `${baseUrl}/photos`,
+      },
+    ],
+  }
+
+  const imageGallerySchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name: "Turnberry Place Las Vegas Photo Gallery",
+    description: photosMetaDescription,
+    url: `${baseUrl}/photos`,
+    image: galleryItems.map((img) => ({
+      "@type": "ImageObject",
+      contentUrl: `${baseUrl}${img.full}`,
+      name: img.title,
+      description: img.description || img.alt,
+      author: {
+        "@type": "Person",
+        name: "Dr. Jan Duffy",
+      },
+    })),
+  }
+
   const [activeFilter, setActiveFilter] = useState<GalleryFilter>("All")
   const [isFading, setIsFading] = useState(false)
 
@@ -622,28 +709,68 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
 
   return (
     <Layout menus={menus}>
+      <Head>
+        <script
+          key="photos_breadcrumb_schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema),
+          }}
+        />
+        <script
+          key="photos_image_gallery_schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(imageGallerySchema),
+          }}
+        />
+      </Head>
       <Meta
         title="Photo Gallery - Turnberry Place Las Vegas"
-        description="Photo gallery of Turnberry Place luxury high-rise condos near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos & Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
-        ogImage="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg"
-        ogImageAlt="Turnberry Place Las Vegas luxury high-rise photo gallery"
+        description={photosMetaDescription}
+        ogImages={photosOgImages}
       />
       <JsonLdSchema type="property" />
       <div className="card-content card-photos photos-page">
         {/* HERO */}
         <section className="photos-hero" aria-label="Turnberry Place photo gallery hero">
           <div className="photos-hero-media" aria-hidden="true">
-            <Image
-              src={heroImage}
-              alt="Turnberry Place Las Vegas luxury high-rise condos"
-              fill
-              priority
-              sizes="100vw"
-              quality={85}
-              placeholder="blur"
-              blurDataURL={BLUR_DATA_URL}
-              className="photos-hero-img"
-            />
+            {/* Active slide (LCP-focused) */}
+            <div className="photos-hero-slide is-active">
+              <Image
+                src={heroSlides[heroActive]?.src || heroImage}
+                alt={
+                  heroSlides[heroActive]?.alt ||
+                  "Turnberry Place Las Vegas luxury high-rise condos"
+                }
+                fill
+                priority
+                sizes="100vw"
+                quality={85}
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+                className="photos-hero-img"
+              />
+            </div>
+
+            {/* Fade-in slide (preloads next background) */}
+            {heroFadeIn !== null ? (
+              <div className="photos-hero-slide is-fade-in">
+                <Image
+                  src={heroSlides[heroFadeIn]?.src || heroImage}
+                  alt={
+                    heroSlides[heroFadeIn]?.alt ||
+                    "Turnberry Place Las Vegas luxury high-rise condos"
+                  }
+                  fill
+                  sizes="100vw"
+                  quality={85}
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
+                  className="photos-hero-img"
+                />
+              </div>
+            ) : null}
           </div>
           <div className="photos-hero-overlay" aria-hidden="true" />
           <div className="container photos-hero-inner">
@@ -761,6 +888,26 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
               <p>
                 These professional photographs showcase Turnberry Place's luxury residences, premium finishes, and world-class amenities. View interior spaces, exterior architecture, and The Stirling Club facilities.
               </p>
+              <h2 className="mt-5">Luxury Residences</h2>
+              <p>
+                Explore interiors, finishes, and open-concept living spaces inside Turnberry Place luxury condos.
+              </p>
+
+              <h2 className="mt-4">The Stirling Club</h2>
+              <p>
+                See resort-style amenities, private club spaces, dining, and wellness experiences available to residents.
+              </p>
+
+              <h2 className="mt-4">Panoramic Views</h2>
+              <p>
+                Discover Las Vegas Strip skyline views, city lights, and dramatic sunsets from high-floor residences.
+              </p>
+
+              <h2 className="mt-4">Community Amenities</h2>
+              <p>
+                Browse the guard-gated entry, arrival experience, and luxury common areas that define Turnberry Place.
+              </p>
+
               <p className="mt-4">
                 <strong>Ready to see Turnberry Place in person?</strong> Contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a> to schedule a private showing.
               </p>

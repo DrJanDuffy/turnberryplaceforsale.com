@@ -9,6 +9,7 @@ interface MetaProps {
   keywords?: string
   ogImage?: string
   ogImageAlt?: string
+  ogImages?: { url: string; alt?: string }[]
   appendPrimaryKeyword2ToTitle?: boolean
   path?: string
   tags?: DrupalMetatag[]
@@ -31,6 +32,7 @@ export function Meta({
   keywords,
   ogImage,
   ogImageAlt,
+  ogImages,
   appendPrimaryKeyword2ToTitle = false,
   tags,
 }: MetaProps) {
@@ -77,6 +79,11 @@ export function Meta({
   const effectiveOgImageAlt =
     ogImageAlt ||
     "Turnberry Place Las Vegas - Luxury High-Rise Condominiums with Panoramic Strip Views"
+
+  const effectiveOgImages =
+    ogImages?.length
+      ? ogImages
+      : [{ url: effectiveOgImage, alt: effectiveOgImageAlt }]
 
   return (
     <Head>
@@ -144,17 +151,13 @@ export function Meta({
             property="og:site_name"
             content="Turnberry Place Las Vegas | Luxury Real Estate"
           />
-          {/* High-Quality Social Sharing Image */}
-          <meta
-            key="og_image"
-            property="og:image"
-            content={effectiveOgImage}
-          />
-          <meta
-            key="og_image_alt"
-            property="og:image:alt"
-            content={effectiveOgImageAlt}
-          />
+          {/* Open Graph image(s) */}
+          {effectiveOgImages.map((img, idx) => (
+            <React.Fragment key={`og_img_${idx}`}>
+              <meta property="og:image" content={img.url} />
+              {img.alt ? <meta property="og:image:alt" content={img.alt} /> : null}
+            </React.Fragment>
+          ))}
           <meta key="og_image_width" property="og:image:width" content="1200" />
           <meta
             key="og_image_height"
@@ -191,12 +194,14 @@ export function Meta({
           <meta
             key="twitter_image"
             name="twitter:image"
-            content={effectiveOgImage}
+            content={effectiveOgImages[0]?.url || effectiveOgImage}
           />
           <meta
             key="twitter_image_alt"
             name="twitter:image:alt"
-            content={effectiveOgImageAlt}
+            content={
+              effectiveOgImages[0]?.alt || effectiveOgImageAlt
+            }
           />
           <meta
             key="twitter_site"
