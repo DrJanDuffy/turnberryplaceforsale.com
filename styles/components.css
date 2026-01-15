@@ -3168,6 +3168,14 @@ main .card-top-header:first-of-type {
     scroll-padding-top: 56px; /* header + spacing */
   }
 
+  /* Hide site navbar on /photos mobile (we provide our own slim header) */
+  body.photos-mobile-native .card-top-nav {
+    display: none !important;
+  }
+  body.photos-mobile-native .card-top-header {
+    margin-top: 0 !important;
+  }
+
   .photos-mobile-header {
     position: sticky;
     top: 0;
@@ -3181,6 +3189,16 @@ main .card-top-header:first-of-type {
     background: rgba(8, 12, 18, 0.82);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  }
+
+  .photos-mobile-pullbar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 2px;
+    width: 100%;
+    transform-origin: left center;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.95), rgba(244, 228, 166, 0.92));
   }
 
   .photos-mobile-back {

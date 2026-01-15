@@ -483,14 +483,66 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const [activeFilter, setActiveFilter] = useState<GalleryFilter>("All")
   const [isFading, setIsFading] = useState(false)
   const [mobileActiveIndex, setMobileActiveIndex] = useState(0)
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
+  const [pullProgress, setPullProgress] = useState(0)
+  const [canReleaseRefresh, setCanReleaseRefresh] = useState(false)
 
   // Mobile-only: enable page-level scroll snapping without affecting other routes.
   useEffect(() => {
     document.body.classList.add("photos-mobile-native")
+    // Hide the global navbar on /photos mobile to keep the UI app-like.
+    document.documentElement.style.setProperty("--navbar-height", "0px")
     return () => {
       document.body.classList.remove("photos-mobile-native")
+      document.documentElement.style.removeProperty("--navbar-height")
     }
   }, [])
+
+  // Mobile: pull-to-refresh (lightweight). Pull down at top, release to refresh.
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    let startY = 0
+    let pulling = false
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (window.scrollY > 0) return
+      startY = e.touches?.[0]?.clientY || 0
+      pulling = true
+      setPullProgress(0)
+      setCanReleaseRefresh(false)
+    }
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!pulling) return
+      if (window.scrollY > 0) return
+      const y = e.touches?.[0]?.clientY || 0
+      const dy = Math.max(0, y - startY)
+      const progress = Math.min(1, dy / 110)
+      setPullProgress(progress)
+      setCanReleaseRefresh(dy >= 110)
+    }
+
+    const onTouchEnd = () => {
+      if (!pulling) return
+      const shouldRefresh = canReleaseRefresh
+      pulling = false
+      setPullProgress(0)
+      setCanReleaseRefresh(false)
+      if (shouldRefresh) window.location.reload()
+    }
+
+    window.addEventListener("touchstart", onTouchStart, { passive: true })
+    window.addEventListener("touchmove", onTouchMove, { passive: true })
+    window.addEventListener("touchend", onTouchEnd)
+    window.addEventListener("touchcancel", onTouchEnd)
+    return () => {
+      window.removeEventListener("touchstart", onTouchStart)
+      window.removeEventListener("touchmove", onTouchMove)
+      window.removeEventListener("touchend", onTouchEnd)
+      window.removeEventListener("touchcancel", onTouchEnd)
+    }
+  }, [canReleaseRefresh])
 
   const counts = useMemo(() => {
     const byCategory: Record<GalleryCategory, number> = {
@@ -739,6 +791,19 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         })
       })
 
+      // Sync mobile counter with lightbox navigation (and hide our header/FABs while open).
+      lightbox.on("open", () => {
+        setIsLightboxOpen(true)
+        const pswp = lightbox.pswp
+        if (pswp) {
+          setMobileActiveIndex(pswp.currIndex ?? 0)
+          pswp.on("change", () => setMobileActiveIndex(pswp.currIndex ?? 0))
+        }
+      })
+      lightbox.on("close", () => {
+        setIsLightboxOpen(false)
+      })
+
       lightbox.init()
     }
 
@@ -777,46 +842,65 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       <JsonLdSchema type="property" />
       <div className="card-content card-photos photos-page">
         {/* Mobile-only sticky header */}
-        <div className="photos-mobile-header" role="banner" aria-label="Gallery navigation">
-          <button
-            type="button"
-            className="photos-mobile-back"
-            onClick={() => {
-              if (window.history.length > 1) router.back()
-              else router.push("/")
-            }}
-            aria-label="Go back"
+        {!isLightboxOpen ? (
+          <div
+            className="photos-mobile-header d-sm-none"
+            role="banner"
+            aria-label="Gallery navigation"
           >
-            <ArrowLeft className="photos-mobile-icon" aria-hidden="true" />
-          </button>
-          <div className="photos-mobile-title">Gallery</div>
-          <div className="photos-mobile-counter" aria-label="Image position">
-            {mobileActiveIndex + 1}/{filteredItems.length}
+            <div
+              className="photos-mobile-pullbar"
+              aria-hidden="true"
+              style={{ transform: `scaleX(${pullProgress})` }}
+            />
+            <button
+              type="button"
+              className="photos-mobile-back"
+              onClick={() => {
+                if (window.history.length > 1) router.back()
+                else router.push("/")
+              }}
+              aria-label="Go back"
+            >
+              <ArrowLeft className="photos-mobile-icon" aria-hidden="true" />
+            </button>
+            <div className="photos-mobile-title">
+              {canReleaseRefresh ? "Release to refresh" : "Gallery"}
+            </div>
+            <div className="photos-mobile-counter" aria-label="Image position">
+              {mobileActiveIndex + 1}/{filteredItems.length}
+            </div>
           </div>
-        </div>
+        ) : null}
 
         {/* Mobile floating action buttons */}
-        <div className="photos-mobile-fabs" role="complementary" aria-label="Quick actions">
-          <a
-            className="photos-fab"
-            href="tel:+17025001971"
-            aria-label="Call (702) 500-1971"
+        {!isLightboxOpen ? (
+          <div
+            className="photos-mobile-fabs d-sm-none"
+            role="complementary"
+            aria-label="Quick actions"
           >
-            <Phone className="photos-fab-icon" aria-hidden="true" />
-          </a>
-          <a
-            className="photos-fab"
-            href={
-              process.env.NEXT_PUBLIC_CALENDLY_URL ||
-              "https://calendly.com/drjanduffy/1-home-tour-30-mins"
-            }
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Schedule a private tour on Calendly"
-          >
-            <Calendar className="photos-fab-icon" aria-hidden="true" />
-          </a>
-        </div>
+            <a
+              className="photos-fab"
+              href="tel:+17025001971"
+              aria-label="Call (702) 500-1971"
+            >
+              <Phone className="photos-fab-icon" aria-hidden="true" />
+            </a>
+            <a
+              className="photos-fab"
+              href={
+                process.env.NEXT_PUBLIC_CALENDLY_URL ||
+                "https://calendly.com/drjanduffy/1-home-tour-30-mins"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Schedule a private tour on Calendly"
+            >
+              <Calendar className="photos-fab-icon" aria-hidden="true" />
+            </a>
+          </div>
+        ) : null}
 
         {/* HERO */}
         <section className="photos-hero" aria-label="Turnberry Place photo gallery hero">
