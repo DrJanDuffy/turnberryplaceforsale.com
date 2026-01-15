@@ -16,7 +16,6 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
-import { LeadCaptureForm } from "components/lead-capture-form"
 
 interface PriceFeaturesPageProps extends LayoutProps {}
 
@@ -596,8 +595,21 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
                     </a>
                   </div>
 
-                  <div className="price-features-form-wrap">
-                    <LeadCaptureForm variant="footer" showValuationCTA={false} />
+                  <div className="price-features-calendly" aria-label="Schedule a private tour">
+                    <div className="price-features-calendly-frame">
+                      <iframe
+                        title="Schedule a private tour - Calendly"
+                        src={`${calendlyUrl}?hide_gdpr_banner=1`}
+                        width="100%"
+                        height="760"
+                        style={{ border: 0 }}
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="small text-muted mt-2">
+                      Prefer to call?{" "}
+                      <a href={`tel:${officePhoneTel}`}>{officePhoneDisplay}</a>.
+                    </div>
                   </div>
 
                   <div className="mt-3 small text-muted">
