@@ -3202,6 +3202,238 @@ main .card-top-header:first-of-type {
   }
 }
 
+/* ===============================
+   Photos (Masonry + Filters + Lightbox UI)
+   Scoped to: .photos-page
+   =============================== */
+.photos-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.photos-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.photos-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(10, 25, 41, 0.35);
+  color: rgba(255, 255, 255, 0.86);
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+.photos-tab:hover {
+  transform: translateY(-1px);
+  border-color: rgba(212, 175, 55, 0.45);
+}
+.photos-tab.is-active {
+  background: linear-gradient(135deg, var(--luxury-gold, #d4af37), rgba(244, 228, 166, 0.92));
+  color: rgba(0, 0, 0, 0.92);
+  border-color: rgba(212, 175, 55, 0.55);
+}
+.photos-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  padding: 0 0.45rem;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.photos-tab.is-active .photos-tab-count {
+  background: rgba(0, 0, 0, 0.20);
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+.photos-slideshow-link {
+  color: rgba(244, 228, 166, 0.95);
+  text-decoration: underline;
+  font-weight: 800;
+}
+.photos-slideshow-link:hover {
+  filter: brightness(0.95);
+}
+
+/* Masonry via CSS columns (Pinterest-style) */
+.photos-masonry {
+  column-gap: 1rem;
+  column-count: 4;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+@media (max-width: 991.98px) {
+  .photos-masonry {
+    column-count: 2;
+  }
+}
+@media (max-width: 575.98px) {
+  .photos-masonry {
+    column-count: 1;
+  }
+}
+.photos-masonry.is-fading {
+  opacity: 0.55;
+  transform: translateY(6px);
+}
+
+.photos-masonry-item {
+  display: block;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+
+.photos-masonry-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+  transform: translateZ(0);
+}
+
+.photos-masonry-img {
+  object-fit: cover;
+  transition: transform 260ms ease, opacity 260ms ease;
+}
+
+.photos-masonry-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.80));
+  opacity: 0;
+  transition: opacity 220ms ease;
+  display: flex;
+  align-items: flex-end;
+}
+
+.photos-masonry-caption {
+  padding: 1rem;
+}
+
+.photos-masonry-title {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.photos-masonry-desc {
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+}
+
+.photos-masonry-card:hover .photos-masonry-img {
+  transform: scale(1.02);
+  opacity: 0.98;
+}
+.photos-masonry-card:hover .photos-masonry-overlay {
+  opacity: 1;
+}
+
+/* PhotoSwipe luxury UI */
+.pswp__bg {
+  background: rgba(0, 0, 0, 0.88) !important;
+  backdrop-filter: blur(10px);
+}
+
+.pswp__button {
+  color: rgba(244, 228, 166, 0.95) !important;
+}
+
+.pswp__lux-counter {
+  color: rgba(244, 228, 166, 0.95);
+  font-weight: 900;
+  margin-right: 0.5rem;
+}
+
+.pswp__lux-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.85rem;
+  padding: 0 1rem 4.4rem; /* leave room for thumb strip */
+  pointer-events: none;
+}
+.pswp__lux-title {
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+.pswp__lux-desc {
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 0.25rem;
+  max-width: 44rem;
+}
+
+.pswp__lux-thumbs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.6rem 0.6rem 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.78));
+}
+.pswp__lux-thumb {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  width: 64px;
+  height: 46px;
+  flex: 0 0 auto;
+}
+.pswp__lux-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.85;
+}
+.pswp__lux-thumb.is-active {
+  border-color: rgba(212, 175, 55, 0.75);
+}
+.pswp__lux-thumb.is-active img {
+  opacity: 1;
+}
+
+/* Share button “copied” feedback */
+.pswp__button--luxShare.is-copied::after {
+  content: "Copied";
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  color: rgba(244, 228, 166, 0.95);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
 /* Exit Intent Popup */
 .exit-intent-overlay {
   animation: fadeIn 0.3s ease-out;
