@@ -5,7 +5,8 @@ import { useRouter } from 'next/router'
 
 export function StickyCTA() {
   const { asPath } = useRouter()
-  const isEnabled = asPath !== '/request-details'
+  // Disable on pages with custom mobile-native CTAs
+  const isEnabled = asPath !== '/request-details' && asPath !== '/photos'
 
   // Prevent the bar from covering content on mobile when it’s visible.
   useEffect(() => {

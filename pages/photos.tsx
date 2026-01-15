@@ -6,9 +6,10 @@ import { JsonLdSchema } from "components/json-ld-schema"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronDown } from "lucide-react"
+import { ArrowLeft, Calendar, ChevronDown, Expand, Phone } from "lucide-react"
 import "photoswipe/style.css"
 import { useEffect, useMemo, useRef, useState } from "react"
+import { useRouter } from "next/router"
 
 type GalleryCategory = "Residences" | "Stirling Club" | "Views" | "Amenities"
 type GalleryFilter = "All" | GalleryCategory
@@ -389,6 +390,7 @@ function MasonryTileMedia({
 interface PhotosPageProps extends LayoutProps {}
 
 export default function PhotosPage({ menus }: PhotosPageProps) {
+  const router = useRouter()
   const heroImage = "/images/turnberry/Turnberry_Place_For_Sale.jpg"
   const photoCount = galleryItems.length
 
@@ -480,6 +482,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
 
   const [activeFilter, setActiveFilter] = useState<GalleryFilter>("All")
   const [isFading, setIsFading] = useState(false)
+  const [mobileActiveIndex, setMobileActiveIndex] = useState(0)
 
   const counts = useMemo(() => {
     const byCategory: Record<GalleryCategory, number> = {
@@ -504,6 +507,39 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
     const t = window.setTimeout(() => setIsFading(false), 160)
     return () => window.clearTimeout(t)
   }, [activeFilter])
+
+  // Mobile: track which tile is "active" while scrolling to update the sticky header counter.
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    if (!("IntersectionObserver" in window)) return
+
+    const items = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("#photos-masonry a[data-gallery-index]")
+    )
+    if (!items.length) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort(
+            (a, b) =>
+              (b.intersectionRatio || 0) - (a.intersectionRatio || 0)
+          )[0]
+        if (!visible?.target) return
+        const idxStr = (visible.target as HTMLElement).getAttribute("data-gallery-index")
+        const idx = idxStr ? Number(idxStr) : 0
+        if (!Number.isNaN(idx)) setMobileActiveIndex(idx)
+      },
+      {
+        root: null,
+        threshold: [0.55],
+      }
+    )
+
+    items.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [activeFilter, filteredItems.length])
 
   // Initialize PhotoSwipe for the currently displayed items (re-inits on filter change for thumb strip).
   useEffect(() => {
@@ -732,6 +768,48 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       />
       <JsonLdSchema type="property" />
       <div className="card-content card-photos photos-page">
+        {/* Mobile-only sticky header */}
+        <div className="photos-mobile-header" role="banner" aria-label="Gallery navigation">
+          <button
+            type="button"
+            className="photos-mobile-back"
+            onClick={() => {
+              if (window.history.length > 1) router.back()
+              else router.push("/")
+            }}
+            aria-label="Go back"
+          >
+            <ArrowLeft className="photos-mobile-icon" aria-hidden="true" />
+          </button>
+          <div className="photos-mobile-title">Gallery</div>
+          <div className="photos-mobile-counter" aria-label="Image position">
+            {mobileActiveIndex + 1}/{filteredItems.length}
+          </div>
+        </div>
+
+        {/* Mobile floating action buttons */}
+        <div className="photos-mobile-fabs" role="complementary" aria-label="Quick actions">
+          <a
+            className="photos-fab"
+            href="tel:+17025001971"
+            aria-label="Call (702) 500-1971"
+          >
+            <Phone className="photos-fab-icon" aria-hidden="true" />
+          </a>
+          <a
+            className="photos-fab"
+            href={
+              process.env.NEXT_PUBLIC_CALENDLY_URL ||
+              "https://calendly.com/drjanduffy/1-home-tour-30-mins"
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Schedule a private tour on Calendly"
+          >
+            <Calendar className="photos-fab-icon" aria-hidden="true" />
+          </a>
+        </div>
+
         {/* HERO */}
         <section className="photos-hero" aria-label="Turnberry Place photo gallery hero">
           <div className="photos-hero-media" aria-hidden="true">
@@ -849,6 +927,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                     key={item.id}
                     href={item.full}
                     data-pswp-item
+                    data-gallery-index={index}
                     data-pswp-width={item.pswpWidth}
                     data-pswp-height={item.pswpHeight}
                     data-pswp-caption={`<strong>${item.title}</strong>${
@@ -866,6 +945,9 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                       }}
                     >
                       <MasonryTileMedia item={item} eager={eager} sizes={sizes} />
+                      <div className="photos-mobile-expand" aria-hidden="true">
+                        <Expand className="photos-mobile-expand-icon" />
+                      </div>
                       <div className="photos-masonry-overlay" aria-hidden="true">
                         <div className="photos-masonry-caption">
                           <div className="photos-masonry-title">{item.title}</div>
