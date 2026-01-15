@@ -4,6 +4,7 @@
   "description": "Luxury real estate site built with Next.js, Drupal, Cursor AI, Vercel, and GitHub",
   "private": true,
   "license": "MIT",
+  "packageManager": "yarn@1.22.19",
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
