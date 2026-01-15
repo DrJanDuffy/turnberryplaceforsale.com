@@ -3202,8 +3202,8 @@ main .card-top-header:first-of-type {
   }
 
   .photos-mobile-back {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -3275,8 +3275,8 @@ main .card-top-header:first-of-type {
     position: absolute;
     right: 0.75rem;
     bottom: 0.75rem;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 999px;
     display: flex;
     align-items: center;
@@ -3301,6 +3301,79 @@ main .card-top-header:first-of-type {
   .photos-masonry-overlay {
     opacity: 0.35;
   }
+}
+
+/* Skip link + screen-reader utilities */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.5rem;
+  z-index: 1000;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(8, 12, 18, 0.9);
+  border: 2px solid rgba(212, 175, 55, 0.95);
+  color: rgba(244, 228, 166, 0.95);
+  text-decoration: none;
+  transform: translateY(-140%);
+  transition: transform 180ms ease-out;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Visible focus indicators (WCAG AA) */
+.photos-page a:focus-visible,
+.photos-page button:focus-visible,
+.photos-page [role="button"]:focus-visible,
+.pswp__button:focus-visible,
+.pswp__lux-thumb:focus-visible {
+  outline: 2px solid rgba(212, 175, 55, 0.95);
+  outline-offset: 2px;
+}
+
+/* Touch target guarantees for small controls */
+.photos-jumpdot {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+}
+.photos-jumpdot::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.10);
+  transition: transform 180ms ease-out, background 180ms ease-out, border-color 180ms ease-out;
+}
+.photos-jumpdot:hover::before {
+  transform: scale(1.12);
+}
+.photos-jumpdot.is-active::before {
+  background: rgba(212, 175, 55, 0.92);
+  border-color: rgba(212, 175, 55, 0.92);
+}
+
+.photos-toast-close {
+  width: 44px;
+  height: 44px;
 }
 .photos-hero-overlay {
   position: absolute;

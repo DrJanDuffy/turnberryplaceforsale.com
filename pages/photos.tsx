@@ -493,6 +493,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
   const galleryRef = useRef<HTMLDivElement | null>(null)
   const [toastVisible, setToastVisible] = useState(false)
   const viewedUniqueIdsRef = useRef<Set<string>>(new Set())
+  const [srAnnouncement, setSrAnnouncement] = useState("")
 
   // Mobile-only: enable page-level scroll snapping without affecting other routes.
   useEffect(() => {
@@ -613,7 +614,13 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         if (!visible?.target) return
         const idxStr = (visible.target as HTMLElement).getAttribute("data-gallery-index")
         const idx = idxStr ? Number(idxStr) : 0
-        if (!Number.isNaN(idx)) setMobileActiveIndex(idx)
+        if (!Number.isNaN(idx)) {
+          setMobileActiveIndex(idx)
+          const item = filteredItems[idx]
+          if (item) {
+            setSrAnnouncement(`Image ${idx + 1} of ${filteredItems.length}: ${item.title}`)
+          }
+        }
       },
       {
         root: null,
@@ -763,7 +770,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       const PhotoSwipeLightbox = (await import("photoswipe/lightbox")).default
       if (cancelled) return
 
-      lightbox = new PhotoSwipeLightbox({
+      const lightboxOptions: any = {
         gallery: gallerySelector,
         children: "a[data-pswp-item]",
         pswpModule: () => import("photoswipe"),
@@ -771,7 +778,14 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         bgOpacity: 0.92,
         preload: [1, 2],
         wheelToZoom: true,
-      })
+        // Accessibility / keyboard behavior
+        trapFocus: true,
+        returnFocus: true,
+        escKey: true,
+        arrowKeys: true,
+      }
+
+      lightbox = new PhotoSwipeLightbox(lightboxOptions)
 
       lightbox.on("uiRegister", () => {
         const pswp = lightbox.pswp
@@ -928,6 +942,14 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         if (pswp) {
           setMobileActiveIndex(pswp.currIndex ?? 0)
           pswp.on("change", () => setMobileActiveIndex(pswp.currIndex ?? 0))
+          const idx = pswp.currIndex ?? 0
+          const item = filteredItems[idx]
+          if (item) setSrAnnouncement(`Image ${idx + 1} of ${filteredItems.length}: ${item.title}`)
+          pswp.on("change", () => {
+            const idx2 = pswp.currIndex ?? 0
+            const item2 = filteredItems[idx2]
+            if (item2) setSrAnnouncement(`Image ${idx2 + 1} of ${filteredItems.length}: ${item2.title}`)
+          })
         }
 
         // CTA toast after 5+ image views (once per session)
@@ -998,6 +1020,16 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
       />
       <JsonLdSchema type="property" />
       <div className="card-content card-photos photos-page">
+        <a className="skip-link" href="#after-gallery">
+          Skip gallery
+        </a>
+
+        <div className="sr-only" role="status" aria-live="polite">
+          Image gallery, {filteredItems.length} images.
+        </div>
+        <div className="sr-only" role="status" aria-live="polite">
+          {srAnnouncement}
+        </div>
         {/* Mobile-only sticky header */}
         {!isLightboxOpen ? (
           <div
@@ -1252,7 +1284,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
                       item.description ? `<br/>${item.description}` : ""
                     }`}
                     className="photos-masonry-item"
-                    aria-label={item.title}
+                    aria-label={`Open image in fullscreen viewer: ${item.title}`}
                   >
                     <div
                       className="photos-masonry-card"
@@ -1313,6 +1345,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
               </p>
             </div>
           </div>
+          <div id="after-gallery" />
         </div>
       </div>
     </Layout>

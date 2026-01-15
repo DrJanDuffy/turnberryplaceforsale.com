@@ -153,6 +153,14 @@ export function Footer({ links }: FooterProps) {
               >
                 Privacy, Cookie & Web Accessibility Policy
               </Link>
+              <span className="mx-2" aria-hidden="true">|</span>
+              <Link
+                href="/accessibility"
+                className="footer-privacy-link"
+                title="Accessibility Statement"
+              >
+                Accessibility Statement
+              </Link>
             </div>
             <div className="mt-3 font-size-80 text-muted">
               Turnberry Place Las Vegas | 2827 Paradise Rd, Las Vegas, NV 89109 | Dr. Jan Duffy | <a href="tel:7025001971" className="footer-phone-link">702-500-1971</a>
