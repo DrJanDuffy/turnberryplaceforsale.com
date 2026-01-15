@@ -120,7 +120,7 @@ function HomePageContent() {
   // Hero photos - using local images from public/images/turnberry (optimized)
   const heroPhotos = [
     "/images/turnberry/Turnberry_Place_For_Sale.jpg",
-    "/images/turnberry/StirlingClub_CigarBar_View1.jpg", // Stirling Club - Cigar Bar
+    "/images/turnberry/optimized/StirlingClub_CigarBar_View1.optimized.jpg", // Stirling Club - Cigar Bar
     "/images/turnberry/SterlingClubDinning.avif", // Stirling Club - Dining Room
     "/images/turnberry/Las-Vegas-High-Rise-Condo-Living-Downtown-Las-Vegas-Turnberry-Place-Interior.jpg",
     "/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg",
@@ -136,7 +136,7 @@ function HomePageContent() {
     tower4: "/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg",
     stirlingClub: [
       "/images/turnberry/sterlingclubpool-.jpeg",
-      "/images/turnberry/StirlingClub_CigarBar_View1.jpg",
+      "/images/turnberry/optimized/StirlingClub_CigarBar_View1.optimized.jpg",
       "/images/turnberry/SterlingClubDinning.avif",
       "/images/turnberry/SterlingClubWhiteRoses.jpg",
     ],
@@ -148,7 +148,7 @@ function HomePageContent() {
       "/images/turnberry/photo-5.jpg",
     ],
     exterior: [
-      "/images/turnberry/Turnberry-Place-May-21-2010.jpeg",
+      "/images/turnberry/optimized/Turnberry-Place-May-21-2010.optimized.jpg",
       "/images/turnberry/Turnberry_Towers_Las_Vegas_Monorail.jpg",
       "/images/turnberry/2777paradise2802-149.jpg",
     ],

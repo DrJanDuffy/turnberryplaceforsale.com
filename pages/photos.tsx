@@ -127,8 +127,8 @@ const galleryItems: GalleryItem[] = [
   {
     id: "stirling-cigar-bar",
     kind: "image",
-    src: "/images/turnberry/StirlingClub_CigarBar_View1.jpg",
-    full: "/images/turnberry/StirlingClub_CigarBar_View1.jpg",
+    src: "/images/turnberry/optimized/StirlingClub_CigarBar_View1.optimized.jpg",
+    full: "/images/turnberry/optimized/StirlingClub_CigarBar_View1.optimized.jpg",
     category: "Stirling Club",
     title: "Stirling Club Cigar Lounge",
     description: "Leather seating and a refined club atmosphere",
@@ -335,8 +335,8 @@ const galleryItems: GalleryItem[] = [
   {
     id: "historic-photo",
     kind: "image",
-    src: "/images/turnberry/Turnberry-Place-May-21-2010.jpeg",
-    full: "/images/turnberry/Turnberry-Place-May-21-2010.jpeg",
+    src: "/images/turnberry/optimized/Turnberry-Place-May-21-2010.optimized.jpg",
+    full: "/images/turnberry/optimized/Turnberry-Place-May-21-2010.optimized.jpg",
     category: "Views",
     title: "Turnberry Place (Exterior)",
     description: "Classic exterior photo of the community",
