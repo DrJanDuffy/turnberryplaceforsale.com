@@ -12,10 +12,11 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/turnberry/Turnberry_Place_For_Sale.jpg"
-          alt="Turnberry Place Las Vegas luxury towers"
+          alt="Turnberry Place luxury high-rise condos with Las Vegas Strip views"
           fill
           priority
           sizes="100vw"
+          quality={85}
           className="object-cover opacity-30"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/95 to-gray-900/70" />

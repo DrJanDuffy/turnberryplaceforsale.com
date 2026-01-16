@@ -16,6 +16,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 
 interface PriceFeaturesPageProps extends LayoutProps {}
 
@@ -115,6 +116,7 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
         />
       </Head>
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
+      <BreadcrumbSchema items={[{ name: 'Price & Features', url: 'https://www.turnberryplaceforsale.com/price-features' }]} />
       
       <div className="card-content card-price-features price-features-page">
         {/* HERO */}

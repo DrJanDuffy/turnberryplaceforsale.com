@@ -3,6 +3,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 // ClientTestimonials and VIPNewsletterSignup available on homepage and /agent page
 import Image from "next/image"
 
@@ -16,6 +17,7 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
         description="The Stirling Club: private amenities for Turnberry Place residents near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
       />
       <JsonLdSchema type="property" />
+      <BreadcrumbSchema items={[{ name: 'Stirling Club', url: 'https://www.turnberryplaceforsale.com/stirling-club' }]} />
       <div className="card-content card-custom card-custom-03">
         <div className="container">
           <div className="row justify-content-center">

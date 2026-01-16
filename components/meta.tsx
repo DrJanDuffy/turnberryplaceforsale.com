@@ -208,6 +208,18 @@ export function Meta({
             name="twitter:site"
             content="@TurnberryPlaceLV"
           />
+          
+          {/* Hreflang for Spanish translation */}
+          <link
+            rel="alternate"
+            hrefLang="es"
+            href={`https://translate.google.com/translate?hl=es&sl=auto&tl=es&u=${encodeURIComponent(canonicalUrl)}`}
+          />
+          <link
+            rel="alternate"
+            hrefLang="en"
+            href={canonicalUrl}
+          />
         </>
       )}
     </Head>

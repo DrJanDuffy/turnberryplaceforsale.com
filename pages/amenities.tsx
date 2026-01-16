@@ -24,6 +24,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 
 const officePhoneDisplay = "(702) 500-1971"
 const officePhoneTel = "+17025001971"
@@ -135,6 +136,7 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
       </Head>
 
       <JsonLdSchema type="property" />
+      <BreadcrumbSchema items={[{ name: 'Amenities', url: 'https://www.turnberryplaceforsale.com/amenities' }]} />
 
       <div className="amenities-page">
         {/* HERO */}

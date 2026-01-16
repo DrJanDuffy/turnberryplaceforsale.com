@@ -3,6 +3,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 import Link from "next/link"
 
 interface OpenHousePageProps extends LayoutProps {}
@@ -15,6 +16,7 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
         description="Open house and private showing info for Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
       />
       <JsonLdSchema type="property" />
+      <BreadcrumbSchema items={[{ name: 'Open House', url: 'https://www.turnberryplaceforsale.com/open-house' }]} />
       <div
         className="card-content card-open-house"
         style={{

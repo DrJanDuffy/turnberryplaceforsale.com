@@ -3,6 +3,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 import { HeroSection } from "components/agent/HeroSection"
 import { ServicesSection } from "components/agent/ServicesSection"
 import { YourNeighborSection } from "components/agent/YourNeighborSection"
@@ -21,6 +22,7 @@ export default function AgentPage({ menus }: AgentPageProps) {
         description="Dr. Jan Duffy lives at Turnberry Place and helps buyers and sellers in her community. Your neighbor, your expert. Call (702) 500-1971."
       />
       <JsonLdSchema type="agent" />
+      <BreadcrumbSchema items={[{ name: 'Agent', url: 'https://www.turnberryplaceforsale.com/agent' }]} />
 
       <div className="card-content card-agent">
         <HeroSection />

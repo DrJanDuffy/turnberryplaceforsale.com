@@ -151,7 +151,8 @@ function HomePageContent() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 text-center">
-              <h1 className="mb-1" itemProp="name">Turnberry Place Las Vegas</h1>
+              {/* Changed from h1 to h2 - hero section already has the H1 */}
+              <h2 className="mb-1" itemProp="name">Turnberry Place Las Vegas</h2>
               <p itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                 <span itemProp="addressLocality">Las Vegas</span>, <span itemProp="addressRegion">NV</span> <span itemProp="postalCode">89109</span>
               </p>

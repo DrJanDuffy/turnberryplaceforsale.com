@@ -3,6 +3,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
@@ -1382,6 +1383,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         ogImages={photosOgImages}
       />
       <JsonLdSchema type="property" />
+      <BreadcrumbSchema items={[{ name: 'Photos', url: 'https://www.turnberryplaceforsale.com/photos' }]} />
       <div className="card-content card-photos photos-page">
         <a className="skip-link" href="#after-gallery">
           Skip gallery

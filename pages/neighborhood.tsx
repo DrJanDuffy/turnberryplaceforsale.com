@@ -3,6 +3,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 import { NeighborhoodSection } from "components/neighborhood-section"
 // QuickSearchWidget, FeaturedListingCard, VIPNewsletterSignup available on homepage
 import Image from "next/image"
@@ -27,6 +28,7 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
         description="Turnberry Place neighborhood guide near the Las Vegas Strip (by Wynn/Encore). Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
       />
       <JsonLdSchema type="property" />
+      <BreadcrumbSchema items={[{ name: 'Neighborhood', url: 'https://www.turnberryplaceforsale.com/neighborhood' }]} />
       <div className="card-content card-areas">
         <div className="container">
           <div className="row justify-content-center">

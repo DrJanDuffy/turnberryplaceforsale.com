@@ -5,6 +5,7 @@ import { TowerSection } from "components/tower-section"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 import Link from "next/link"
 
 const towers = [
@@ -73,11 +74,12 @@ export default function TowersPage({ menus }: TowersPageProps) {
     <Layout menus={menus}>
       <Meta
         title="Turnberry Place Towers | Las Vegas High-Rise"
-        description="Explore Turnberry Place’s four towers (2000–2005) near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos and Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+        description="Explore Turnberry Place's four towers (2000–2005) near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos and Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
         ogImage="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry%20Tower%20South%20View.jpeg"
         ogImageAlt="Turnberry Place towers and surrounding Las Vegas views"
       />
       <JsonLdSchema type="property" />
+      <BreadcrumbSchema items={[{ name: 'Towers', url: 'https://www.turnberryplaceforsale.com/towers' }]} />
       <div className="card-content card-prop-description">
         <div className="container">
           <div className="row justify-content-center">

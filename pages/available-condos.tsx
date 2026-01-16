@@ -3,6 +3,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 // VIPNewsletterSignup available on homepage
 import Script from "next/script"
 import Link from "next/link"
@@ -19,6 +20,7 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
         ogImageAlt="Turnberry Place condos for sale in Las Vegas"
       />
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
+      <BreadcrumbSchema items={[{ name: 'Available Condos', url: 'https://www.turnberryplaceforsale.com/available-condos' }]} />
       
       {/* Quick Search Widget - Keep on this page as it's relevant */}
 

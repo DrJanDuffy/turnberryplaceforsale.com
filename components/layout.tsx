@@ -37,7 +37,7 @@ export function Layout({ menus, children }: LayoutProps) {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar links={menus.main} />
-      <main className="flex-1" style={{ paddingTop: 0, marginTop: 0 }}>
+      <main id="main-content" className="flex-1" style={{ paddingTop: 0, marginTop: 0 }}>
         {children}
       </main>
       <StickyCTA />

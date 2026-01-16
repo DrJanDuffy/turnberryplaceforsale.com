@@ -8,6 +8,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 import { LeadCaptureForm } from "components/lead-capture-form"
 // ClientTestimonials and VIPNewsletterSignup available on homepage and /agent page
 
@@ -102,6 +103,7 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
         />
       </Head>
       <JsonLdSchema type="property" />
+      <BreadcrumbSchema items={[{ name: 'Request Details', url: 'https://www.turnberryplaceforsale.com/request-details' }]} />
       <div className="card-content request-details-page">
         {/* HERO */}
         <section className="request-details-hero" aria-label="Request pricing and details hero">

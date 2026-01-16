@@ -6,6 +6,22 @@ interface FooterProps {
   links: DrupalMenuLinkContent[]
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
+
+// Organization schema for footer
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties',
+  url: baseUrl,
+  logo: `${baseUrl}/images/turnberry/asset-19.jpg`,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+1-702-500-1971',
+    contactType: 'sales',
+  },
+}
+
 // Single source of truth for all site navigation links
 const allPages = [
   { href: "/", title: "Home" },
@@ -30,15 +46,19 @@ const footerLinks = allPages
 export function Footer({ links }: FooterProps) {
   return (
     <>
+      {/* Organization Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+
       {/* Site Links Section - Above Footer */}
       <section className="card-content site-links-section py-4" aria-label="Site Links">
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h2 className="text-center mb-4" style={{ fontSize: '1.5rem', fontWeight: 600 }}>
-                Site Navigation
-              </h2>
-              <nav role="navigation" aria-label="Site links navigation">
+              <h2 id="footer-nav-heading" className="sr-only">Site Navigation</h2>
+              <nav role="navigation" aria-labelledby="footer-nav-heading">
                 <div className="row g-3">
                   {allPages.map((link) => (
                     <div key={link.href} className="col-6 col-sm-4 col-md-3 col-lg-2">
@@ -74,12 +94,15 @@ export function Footer({ links }: FooterProps) {
         </div>
       </section>
 
-      <footer className="card-content card-site-footer footer-01 pt-5" role="contentinfo" aria-label="Footer">
+      <footer className="card-content card-site-footer footer-01 pt-5" role="contentinfo">
         <div className="container-fluid px-3 px-md-5">
-          {/* Navigation Links */}
-          <div className="row">
-            <div className="col-12">
-              <nav role="navigation" aria-label="Footer navigation" id="navbarFooter">
+          <div className="footer-main">
+            {/* Navigation Links */}
+            <section aria-labelledby="footer-links-heading">
+              <h2 id="footer-links-heading" className="sr-only">Footer Navigation</h2>
+              <div className="row">
+                <div className="col-12">
+                  <nav role="navigation" aria-labelledby="footer-links-heading" id="navbarFooter">
                 <div className="row g-2">
                   {footerLinks.map((link) => (
                     <div key={link.href} className="col-6 col-sm-4 col-md-3 col-lg-2 text-center py-2">
@@ -88,28 +111,33 @@ export function Footer({ links }: FooterProps) {
                       </Link>
                     </div>
                   ))}
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </section>
+
+          {/* Company Information */}
+          <section aria-labelledby="footer-contact-heading">
+            <h2 id="footer-contact-heading" className="sr-only">Contact Information</h2>
+            <div className="row justify-content-center align-items-center pt-4 pt-md-5">
+              <div className="agent-company-info col-12 col-lg-10 font-size-90 d-flex flex-column flex-md-row justify-content-center align-items-center text-center">
+                <div className="px-2 px-md-3 mb-2 mb-md-0">The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties</div>
+                <div className="px-2 px-md-3 mb-2 mb-md-0"><strong>License: S.0197614.LLC</strong></div>
+                <div className="px-2 px-md-3 mb-2 mb-md-0">
+                  <a href="tel:+17025001971" className="footer-phone-link" title="Office phone" itemProp="telephone">
+                    (702) 500-1971
+                  </a>
                 </div>
-              </nav>
+                <div className="px-2 px-md-3">
+                  2827 Paradise Rd, Las Vegas, NV 89109
+                </div>
+              </div>
             </div>
+          </section>
           </div>
 
-        {/* Company Information */}
-        <div className="row justify-content-center align-items-center pt-4 pt-md-5">
-          <div className="agent-company-info col-12 col-lg-10 font-size-90 d-flex flex-column flex-md-row justify-content-center align-items-center text-center">
-            <div className="px-2 px-md-3 mb-2 mb-md-0">The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties</div>
-            <div className="px-2 px-md-3 mb-2 mb-md-0">License: S.0197614.LLC</div>
-            <div className="px-2 px-md-3 mb-2 mb-md-0">
-              <a href="tel:7025001971" className="footer-phone-link" title="Office phone">
-                (702) 500-1971
-              </a>
-            </div>
-            <div className="px-2 px-md-3">
-              2827 Paradise Rd, Las Vegas, NV 89109
-            </div>
-          </div>
-        </div>
-
-        {/* Berkshire Hathaway Logo */}
+          {/* Berkshire Hathaway Logo */}
         <div className="row mt-4 mt-md-5">
           <div className="col-12 text-center">
             <div className="d-inline-block" style={{ maxWidth: '300px', width: '100%' }}>
@@ -161,14 +189,25 @@ export function Footer({ links }: FooterProps) {
               >
                 Accessibility Statement
               </Link>
+              <span className="mx-2" aria-hidden="true">|</span>
+              <Link
+                href="/sitemap.xml"
+                className="footer-privacy-link"
+                title="Sitemap"
+              >
+                Sitemap
+              </Link>
             </div>
             <div className="mt-3 font-size-80 text-muted">
-              Turnberry Place Las Vegas | 2827 Paradise Rd, Las Vegas, NV 89109 | Dr. Jan Duffy | <a href="tel:7025001971" className="footer-phone-link">702-500-1971</a>
+              Turnberry Place Las Vegas | 2827 Paradise Rd, Las Vegas, NV 89109 | Dr. Jan Duffy | <a href="tel:+17025001971" className="footer-phone-link" itemProp="telephone">702-500-1971</a>
+            </div>
+            <div className="mt-2 font-size-80 text-muted">
+              Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
             </div>
           </div>
         </div>
-      </div>
-    </footer>
+        </div>
+      </footer>
     </>
   )
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 import { FloorPlanGallery, FloorPlan } from "components/floor-plan-gallery"
 
 // Floor plan data with categories
@@ -111,6 +112,7 @@ export default function FloorPlansPage() {
         description="Turnberry Place floor plans: luxury high-rise condo layouts near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
       />
       <JsonLdSchema type="property" />
+      <BreadcrumbSchema items={[{ name: 'Floor Plans', url: 'https://www.turnberryplaceforsale.com/floor-plans' }]} />
       <div className="card-content card-floor-plans">
         <div className="container">
           <div className="row justify-content-center">

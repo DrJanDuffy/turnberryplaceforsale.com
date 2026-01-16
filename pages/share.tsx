@@ -6,6 +6,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 
 interface SharePageProps extends LayoutProps {}
 
@@ -69,6 +70,7 @@ export default function SharePage({ menus }: SharePageProps) {
         description="Share Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
       />
       <JsonLdSchema type="property" />
+      <BreadcrumbSchema items={[{ name: 'Share', url: 'https://www.turnberryplaceforsale.com/share' }]} />
       <div className="card-content py-5">
         <div className="container">
           <div className="row justify-content-center">

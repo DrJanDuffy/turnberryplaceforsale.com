@@ -6,6 +6,7 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { BreadcrumbSchema } from "components/breadcrumb-schema"
 import Image from "next/image"
 
 interface MapPageProps extends LayoutProps {}
@@ -33,6 +34,7 @@ export default function MapPage({ menus }: MapPageProps) {
         description="Turnberry Place location map near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
       />
       <JsonLdSchema type="property" />
+      <BreadcrumbSchema items={[{ name: 'Map', url: 'https://www.turnberryplaceforsale.com/map' }]} />
       <div className="card-content card-map pt-0 pt-md-5">
         <div className="container-fluid px-0 mx-0">
           <div className="row">

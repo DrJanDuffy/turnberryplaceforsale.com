@@ -1,0 +1,28 @@
+---
+name: cursorrules
+description: This is a new rule
+---
+
+# Overview
+
+You are an expert in Next.js App Router, Tailwind CSS, and real estate websites.
+
+Project Context:
+- This is a realtor website for Las Vegas luxury properties
+- Must be IDX/MLS compliant with proper listing attribution
+- Focus on lead capture and SEO for neighborhood pages
+
+Code Style:
+- Use TypeScript with strict types
+- Use functional components with hooks
+- Mobile-first responsive design
+- Optimize images with next/image
+
+Do NOT modify:
+- /components/idx/* (MLS integration)
+- Environment variables or API keys
+
+Preferred patterns:
+- Server components by default, client only for interactivity
+- Use Tailwind for all styling
+- Include proper meta tags for real estate SEO

@@ -1,5 +1,19 @@
+# robots.txt for Turnberry Place Las Vegas
+# Allow all search engines to crawl and index
+
 User-agent: *
 Allow: /
 
-# Sitemap
+# Disallow admin/private areas if any
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow images for Google Image Search
+Allow: /images/
+
+# Crawl-delay for respectful crawling (optional)
+# Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://www.turnberryplaceforsale.com/sitemap.xml

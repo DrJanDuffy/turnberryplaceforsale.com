@@ -8,6 +8,31 @@ interface HeroSlideshowProps {
   photos: string[]
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
+
+// LocalBusiness + RealEstateAgent schema for hero section
+const heroSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['RealEstateAgent', 'LocalBusiness'],
+  name: 'Dr. Jan Duffy - Turnberry Place Specialist',
+  image: `${baseUrl}/images/turnberry/asset-1.jpg`,
+  telephone: '+1-702-500-1971',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '2827 Paradise Rd',
+    addressLocality: 'Las Vegas',
+    addressRegion: 'NV',
+    postalCode: '89109',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 36.1215,
+    longitude: -115.1524,
+  },
+  areaServed: 'Turnberry Place Las Vegas',
+  priceRange: '$800,000 - $10,000,000',
+}
+
 export function HeroSlideshow({ photos }: HeroSlideshowProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -58,11 +83,18 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
 
   return (
     <header className="card-top-header relative h-screen min-h-[500px] w-full">
+      {/* LocalBusiness + RealEstateAgent Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(heroSchema) }}
+      />
+
       {/* Slideshow */}
       <div className="slick-slideshow absolute inset-0 z-0" aria-label="Hero image slideshow">
         {photos.map((photo, index) => {
           const isLoaded = loadedImages.has(index)
           const isCurrent = index === currentSlide
+          const isFirstSlide = index === 0
           
           return (
             <div
@@ -81,8 +113,26 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
               }}
               aria-hidden={!isCurrent}
               role="img"
-              aria-label={isCurrent ? `Hero slide ${index + 1} of ${photos.length}: Turnberry Place Las Vegas` : undefined}
+              aria-label={isCurrent ? `Hero slide ${index + 1} of ${photos.length}: Turnberry Place luxury high-rise condos with Las Vegas Strip views` : undefined}
             >
+              {/* Use Next.js Image for LCP optimization - first slide only */}
+              {isCurrent && isFirstSlide && (
+                <Image
+                  src={photo}
+                  alt="Turnberry Place luxury high-rise condos with Las Vegas Strip views"
+                  fill
+                  priority={true}
+                  sizes="100vw"
+                  quality={85}
+                  style={{
+                    objectFit: 'cover',
+                    filter: getBrightnessFilter(index),
+                  }}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                />
+              )}
+              
               {/* Show loading state for images that haven't loaded yet */}
               {!isLoaded && isCurrent && (
                 <div style={{
@@ -116,18 +166,18 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
               color: '#ffffff',
               textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)',
             }}>
-              Turnberry Place Las Vegas 
+              Turnberry Place Condos for Sale | Luxury High-Rise Living Near the Las Vegas Strip
             </h1>
             <div className="d-flex align-items-center justify-content-center mb-4">
               <div className="w-10 horiz-line" style={{ flex: '1', maxWidth: '100px', height: '2px', backgroundColor: '#ffffff' }}></div>
-              <h4 className="my-0 mx-4" style={{ 
+              <h2 className="h4 my-0 mx-4" style={{ 
                 fontFamily: 'Cinzel, serif',
                 fontWeight: 500,
                 color: '#ffffff',
                 textShadow: '1px 1px 4px rgba(0,0,0,0.6)',
               }}>
                 Las Vegas, NV
-              </h4>
+              </h2>
               <div className="w-10 horiz-line" style={{ flex: '1', maxWidth: '100px', height: '2px', backgroundColor: '#ffffff' }}></div>
             </div>
             <div className="mt-4 d-flex flex-column align-items-center justify-content-center" style={{ gap: '1rem' }}>
@@ -137,7 +187,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                 minWidth: '200px',
                 backgroundColor: 'rgba(255, 255, 255, 0.3)',
               }}>
-                <h4 className="my-0" style={{
+                <h2 className="h4 my-0" style={{
                   marginTop: '2px',
                   marginBottom: '0px',
                   fontFamily: 'Cinzel, serif',
@@ -146,7 +196,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
                   textShadow: '1px 1px 4px rgba(0,0,0,0.6)',
                 }}>
                   Units for Sale
-                </h4>
+                </h2>
               </div>
               <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center" style={{ gap: '0.75rem' }}>
                 <Link 
@@ -217,7 +267,7 @@ export function HeroSlideshow({ photos }: HeroSlideshowProps) {
           >
             <Image
               src={photo}
-              alt={`Slide ${index + 1}`}
+              alt={`Turnberry Place luxury condos Las Vegas - Slide ${index + 1}`}
               fill
               sizes="100px"
               style={{ objectFit: 'cover' }}
