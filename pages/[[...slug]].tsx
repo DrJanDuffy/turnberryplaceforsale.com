@@ -34,6 +34,8 @@ import { LeadCaptureForm } from "components/lead-capture-form"
 import { SEOHead } from "../components/seo/SEOHead"
 import { FAQSection } from "../components/seo/FAQSection"
 import { homepageFAQs } from "../lib/faq-data"
+import { RelatedPages } from "../components/RelatedPages"
+import { BackToTop } from "../components/BackToTop"
 // Components moved to other pages:
 // WhyWorkWithUs, ClientTestimonials, PowerOfNumbers, InTheMedia → /agent page
 import { FeaturedListingCard } from "components/featured-listing-card"
