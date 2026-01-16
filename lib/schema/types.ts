@@ -256,6 +256,17 @@ export interface PlaceData {
   image?: string | string[]
   telephone?: string | string[]
   openingHours?: string | string[]
+  amenityFeature?: Array<{
+    '@type': 'LocationFeatureSpecification'
+    name: string
+    value?: boolean | string
+  }>
+  containedInPlace?: {
+    '@type': string
+    name: string
+    addressRegion?: string
+    addressCountry?: string
+  }
 }
 
 export interface BreadcrumbItem {
