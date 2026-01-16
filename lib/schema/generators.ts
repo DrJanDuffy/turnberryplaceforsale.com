@@ -301,6 +301,7 @@ export function generateEventSchema(
     endDate: options?.endDate,
     description: options?.description,
     location: options?.location || {
+      '@context': 'https://schema.org' as const,
       '@type': 'Place' as const,
       name: 'Turnberry Place',
       address: BASE_ADDRESS,
