@@ -103,6 +103,12 @@ module.exports = {
         destination: '/map',
         permanent: true,
       },
+      // Redirect old API/legacy routes
+      {
+        source: '/visit-api',
+        destination: '/available-condos',
+        permanent: true,
+      },
     ]
   },
   async rewrites() {

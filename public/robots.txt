@@ -8,6 +8,7 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
+Disallow: /visit-api
 
 # Allow images for Google Image Search
 Allow: /images/

@@ -34,6 +34,7 @@ export function Meta({
   ogImageAlt,
   ogImages,
   appendPrimaryKeyword2ToTitle = false,
+  path,
   tags,
 }: MetaProps) {
   const router = useRouter()
