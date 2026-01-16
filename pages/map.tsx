@@ -4,6 +4,7 @@ import { GetStaticPropsResult } from "next"
 import { useState } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { MapHeroSection } from "components/map-hero-section"
+import { CategoryFilterTabs } from "components/category-filter-tabs"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
@@ -13,12 +14,18 @@ import Image from "next/image"
 interface MapPageProps extends LayoutProps {}
 
 export default function MapPage({ menus }: MapPageProps) {
-  const [activeTab, setActiveTab] = useState("map")
+  const [activeCategory, setActiveCategory] = useState("all")
+  const [mapQuery, setMapQuery] = useState("map")
   const mapKey = "AIzaSyDSF9E67HCf0-pecnANALPYA-donlDhIww"
   const baseUrl = "https://www.google.com/maps/embed/v1/"
   const streetAddress = "2827 Paradise Rd, Las Vegas, NV 89109"
   const propertyZip = "89109"
   const mapZoom = 15
+
+  const handleCategoryChange = (categoryId: string, query: string) => {
+    setActiveCategory(categoryId)
+    setMapQuery(query)
+  }
 
   const getMapUrl = (query: string) => {
     if (query === "map") {
@@ -44,85 +51,16 @@ export default function MapPage({ menus }: MapPageProps) {
         <div className="container-fluid px-0 mx-0">
           <div className="row">
             <div className="col-12">
-              <h2 className="text-center d-none d-md-block mb-4">Explore Nearby Places</h2>
-              <p className="lead text-center mb-4 d-none d-md-block">
+              <h2 className="text-center mb-4">Explore Nearby Places</h2>
+              <p className="lead text-center mb-4">
                 Use the interactive map below to discover nearby schools, parks, restaurants, coffee shops, and other amenities that make this location ideal for luxury living.
               </p>
-              <div className="map-controls d-none d-md-block">
-                <ul className="nav nav-pills justify-content-center">
-                  <li className="nav-item">
-                    <a
-                      className={activeTab === "map" ? "nav-link active btn-map-address" : "nav-link btn-map-address"}
-                      onClick={() => setActiveTab("map")}
-                    >
-                      Map
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className={activeTab === "schools" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
-                      data-qry="schools"
-                      onClick={() => setActiveTab("schools")}
-                    >
-                      Schools
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className={activeTab === "parks" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
-                      data-qry="parks"
-                      onClick={() => setActiveTab("parks")}
-                    >
-                      Parks
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className={activeTab === "bars" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
-                      data-qry="bars"
-                      onClick={() => setActiveTab("bars")}
-                    >
-                      Bars
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className={activeTab === "restaurants" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
-                      data-qry="restaurants"
-                      onClick={() => setActiveTab("restaurants")}
-                    >
-                      Restaurants
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className={activeTab === "coffee" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
-                      data-qry="coffee shops"
-                      onClick={() => setActiveTab("coffee")}
-                    >
-                      Coffee
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className={activeTab === "atms" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
-                      data-qry="bank with atm"
-                      onClick={() => setActiveTab("atms")}
-                    >
-                      ATMs
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className={activeTab === "gyms" ? "nav-link active btn-nearby-places" : "nav-link btn-nearby-places"}
-                      data-qry="gyms"
-                      onClick={() => setActiveTab("gyms")}
-                    >
-                      Gyms
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              
+              {/* Category Filter Tabs */}
+              <CategoryFilterTabs
+                activeCategory={activeCategory}
+                onCategoryChange={handleCategoryChange}
+              />
               <div className="map-container">
                 <div className="info-box d-flex align-items-center">
                   <div className="media m-0 p-2">
@@ -149,8 +87,9 @@ export default function MapPage({ menus }: MapPageProps) {
                   width="100%"
                   height="600"
                   frameBorder="0"
-                  src={getMapUrl(activeTab)}
+                  src={getMapUrl(mapQuery)}
                   allowFullScreen
+                  key={mapQuery}
                 ></iframe>
               </div>
             </div>
