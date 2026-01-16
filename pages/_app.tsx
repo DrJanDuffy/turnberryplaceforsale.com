@@ -9,6 +9,11 @@ import NProgress from "nprogress"
 import { syncDrupalPreviewRoutes } from "next-drupal"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { SchemaMarkup } from "../components/seo/SchemaMarkup"
+import {
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+} from "../lib/schema/generators"
 import "nprogress/nprogress.css"
 
 import "styles/globals.css"
@@ -28,9 +33,17 @@ export default function App({ Component, pageProps }) {
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient()
   }
+  // Sitewide schemas - appear on every page
+  const sitewideSchemas = [
+    generateOrganizationSchema(),
+    generateWebSiteSchema(),
+  ]
+
   return (
     <QueryClientProvider client={queryClientRef.current}>
       <Hydrate state={pageProps.dehydratedState}>
+        {/* Sitewide JSON-LD structured data */}
+        <SchemaMarkup schema={sitewideSchemas} key="sitewide-schemas" />
         <Component {...pageProps} />
         <Analytics />
         <SpeedInsights />

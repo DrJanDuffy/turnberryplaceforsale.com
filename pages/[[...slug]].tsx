@@ -19,6 +19,13 @@ import { Meta } from "components/meta"
 import { HeroSlideshow } from "components/hero-slideshow"
 import { ContactForm } from "components/contact-form"
 import { JsonLdSchema } from "components/json-ld-schema"
+import { SchemaMarkup } from "../components/seo/SchemaMarkup"
+import {
+  generateRealEstateAgentSchema,
+  generateRealEstateListingSchema,
+  generatePlaceSchema,
+  generateFAQSchema,
+} from "../lib/schema/generators"
 import { DynamicUnitCount } from "components/dynamic-unit-count"
 import { PropertyGrid } from "components/property-grid"
 import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
@@ -42,6 +49,80 @@ export default function NodePage({ node, menus }: NodePageProps) {
 
   // Handle home page when Drupal is not configured
   if (node.id === 'home' && node.type === 'node--landing_page') {
+    // Generate comprehensive schemas for homepage
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
+    
+    const homepageSchemas = [
+      // RealEstateAgent schema (already in sitewide, but more detailed here)
+      generateRealEstateAgentSchema(),
+      // RealEstateListing for the property
+      generateRealEstateListingSchema({
+        name: "Turnberry Place Las Vegas",
+        description: "Luxury high-rise condominium community featuring 4 towers with 1-4 bedroom residences, Strip views, and exclusive access to The Stirling Club. Located at 2827 Paradise Rd, just one block from the Las Vegas Strip.",
+        url: "/",
+        priceRange: "$800,000 - $10,000,000+",
+        bedrooms: "1-4",
+        bathrooms: "1-4",
+        image: [
+          `${baseUrl}/images/turnberry/Turnberry_Place_For_Sale.jpg`,
+          `${baseUrl}/images/turnberry/turnberry-tower-nice-view.jpg`,
+        ],
+        dateModified: new Date().toISOString(),
+      }),
+      // Place schema for location
+      generatePlaceSchema({
+        name: "Turnberry Place Las Vegas",
+        description: "Luxury high-rise condominium community located one block from the Las Vegas Strip",
+        url: "/",
+        image: [
+          `${baseUrl}/images/turnberry/Turnberry_Place_For_Sale.jpg`,
+        ],
+      }),
+      // FAQ schema for common questions
+      generateFAQSchema([
+        {
+          question: "What is Turnberry Place Las Vegas?",
+          answer: "Turnberry Place is a luxury high-rise condominium community in Las Vegas featuring 4 towers with 1-4 bedroom residences, Strip views, and exclusive access to The Stirling Club private amenities. Located at 2827 Paradise Rd, just one block from the Las Vegas Strip.",
+        },
+        {
+          question: "What is the price range for condos at Turnberry Place?",
+          answer: "Turnberry Place condos range from $800,000 to $10,000,000+ depending on tower, floor plan, floor level, and views. Tower 1 typically starts around $800K, while Tower 4 penthouses can exceed $10 million.",
+        },
+        {
+          question: "What amenities are available at Turnberry Place?",
+          answer: "Turnberry Place residents enjoy exclusive access to The Stirling Club, an 80,000-square-foot private facility featuring pools, fitness center, tennis courts, spa, dining venues, and business facilities. The community is guard-gated with 24-hour security, valet parking, and concierge services.",
+        },
+        {
+          question: "How many towers are at Turnberry Place?",
+          answer: "Turnberry Place consists of 4 luxury towers: Tower 1 (38 stories, completed 2000), Tower 2 (45 stories, completed 2001), Tower 3 (45 stories, completed 2002), and Tower 4 (45 stories, completed 2005).",
+        },
+        {
+          question: "How can I schedule a showing at Turnberry Place?",
+          answer: "You can schedule a private showing by calling the office at (702) 500-1971 or by requesting details through our online form. Dr. Jan Duffy specializes in Turnberry Place condos and offers personalized tours.",
+        },
+        {
+          question: "Where is Turnberry Place located?",
+          answer: "Turnberry Place is located at 2827 Paradise Rd, Las Vegas, NV 89109, just one block east of the Las Vegas Strip between the Wynn Encore and Sahara resorts. The property offers immediate proximity to world-class dining, entertainment, and attractions.",
+        },
+        {
+          question: "What is The Stirling Club at Turnberry Place?",
+          answer: "The Stirling Club is an 80,000-square-foot private membership facility exclusively for Turnberry Place residents. It features state-of-the-art fitness center, resort-style pools, tennis courts, spa services, multiple dining venues, business center, and social lounges.",
+        },
+        {
+          question: "What types of views are available at Turnberry Place?",
+          answer: "Turnberry Place offers spectacular views including Las Vegas Strip skyline, Red Rock Canyon, Spring Mountain Range, and panoramic city views. Views vary by tower, floor level, and unit orientation.",
+        },
+        {
+          question: "Is Turnberry Place a secure community?",
+          answer: "Yes, Turnberry Place features guard-gated entrance, 24-hour security personnel, video surveillance, keycard access, and many units have private elevator access. The community prioritizes security and privacy.",
+        },
+        {
+          question: "Who is the real estate agent for Turnberry Place?",
+          answer: "Dr. Jan Duffy, REALTOR, specializes in Turnberry Place and Las Vegas luxury high-rise condos. Licensed as S.0197614.LLC with Berkshire Hathaway HomeServices Nevada Properties. Contact: (702) 500-1971.",
+        },
+      ]),
+    ]
+
     return (
       <Layout menus={menus}>
         <Meta
@@ -55,8 +136,8 @@ export default function NodePage({ node, menus }: NodePageProps) {
           <meta name="author" content="Dr. Jan Duffy, REALTOR" />
           <meta name="geo.region" content="US-NV" />
           <meta name="geo.placename" content="Las Vegas" />
-          <meta name="geo.position" content="36.1447;-115.1541" />
-          <meta name="ICBM" content="36.1447, -115.1541" />
+          <meta name="geo.position" content="36.1351;-115.1551" />
+          <meta name="ICBM" content="36.1351, -115.1551" />
           
           {/* Performance optimizations */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -76,7 +157,13 @@ export default function NodePage({ node, menus }: NodePageProps) {
             href="/images/turnberry/asset-1.jpg"
           />
         </Head>
+        
+        {/* Comprehensive JSON-LD structured data */}
+        <SchemaMarkup schema={homepageSchemas} key="homepage-schemas" />
+        
+        {/* Keep legacy schema for backward compatibility (can be removed later) */}
         <JsonLdSchema type="home" propertyPrice="$800,000 - $10,000,000+" />
+        
         <HomePageContent />
       </Layout>
     )
