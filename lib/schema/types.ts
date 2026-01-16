@@ -132,6 +132,23 @@ export interface BreadcrumbList {
   itemListElement: BreadcrumbListItem[]
 }
 
+export interface ListItem {
+  '@type': 'ListItem'
+  position: number
+  item: unknown
+}
+
+export interface ItemList {
+  '@context': 'https://schema.org'
+  '@type': 'ItemList'
+  '@id'?: string
+  name?: string
+  description?: string
+  url?: string
+  numberOfItems?: number
+  itemListElement: ListItem[]
+}
+
 export interface FAQItem {
   question: string
   answer: string
@@ -281,6 +298,7 @@ export type SchemaType =
   | LocalBusiness
   | WebSite
   | BreadcrumbList
+  | ItemList
   | FAQPage
   | Place
   | RealEstateListing
