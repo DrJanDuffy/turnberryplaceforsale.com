@@ -24,6 +24,7 @@ export default function TowersPage({ menus }: TowersPageProps) {
         description="Explore four luxury towers at Turnberry Place Las Vegas. Compare Tower 1-4 features, views, and prices. Starting from $800K. Call (702) 500-1971."
         ogImage="https://www.turnberryplaceforsale.com/images/turnberry/turnberry-tower-south-view.jpeg"
         ogImageAlt="Turnberry Place towers and surrounding Las Vegas views"
+        path="/towers"
       />
       <TowersSchema />
       <BreadcrumbSchema currentPageTitle="Turnberry Place Towers | Las Vegas Luxury High-Rise Condos" />

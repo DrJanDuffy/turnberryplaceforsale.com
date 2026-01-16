@@ -125,6 +125,7 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
         description="Turnberry Place amenities include the 80,000 sqft Stirling Club with pools, spa, fitness, tennis, and dining. Guard-gated luxury living near the Las Vegas Strip. Call 702-500-1971."
         ogImage="https://www.turnberryplaceforsale.com/images/turnberry/sterlingclubpoolwithpeople.jpeg"
         ogImageAlt="Resort-style pool at The Stirling Club at Turnberry Place Las Vegas"
+        path="/amenities"
       />
 
       <Head>

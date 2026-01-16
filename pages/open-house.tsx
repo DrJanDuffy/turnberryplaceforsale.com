@@ -14,6 +14,7 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
       <Meta
         title="Open House - Turnberry Place Las Vegas"
         description="Open house and private showing info for Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+        path="/open-house"
       />
       <JsonLdSchema type="property" />
       <BreadcrumbSchema items={[{ name: 'Open House', url: 'https://www.turnberryplaceforsale.com/open-house' }]} />

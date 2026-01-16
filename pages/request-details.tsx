@@ -94,6 +94,7 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
       <Meta
         title="Request Turnberry Place Pricing & Details | Schedule a Private Tour"
         description="Request pricing and details for Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call (702) 500-1971."
+        path="/request-details"
       />
       <Head>
         <script

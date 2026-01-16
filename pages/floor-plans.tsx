@@ -125,6 +125,7 @@ export default function FloorPlansPage({ menus }: FloorPlansPageProps) {
         keywords="Turnberry Place floor plans, Las Vegas luxury condo floor plans, high-rise condo layouts"
         ogImage="/images/turnberry/turnberry-place-floor-plan-h.png"
         ogImageAlt="Turnberry Place Las Vegas luxury floor plans"
+        path="/floor-plans"
       />
       <JsonLdSchema type="property" />
       <BreadcrumbSchema currentPageTitle="Floor Plans | Turnberry Place Las Vegas" />

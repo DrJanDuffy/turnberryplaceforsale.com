@@ -18,6 +18,7 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
         description="Browse available Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
         ogImage="https://www.turnberryplaceforsale.com/images/turnberry/condos_for_sale_Turnberry_Place.jpg"
         ogImageAlt="Turnberry Place condos for sale in Las Vegas"
+        path="/available-condos"
       />
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
       <BreadcrumbSchema items={[{ name: 'Available Condos', url: 'https://www.turnberryplaceforsale.com/available-condos' }]} />

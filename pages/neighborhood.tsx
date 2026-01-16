@@ -26,6 +26,7 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
       <Meta
         title="Neighborhood - Turnberry Place Las Vegas"
         description="Turnberry Place neighborhood guide near the Las Vegas Strip (by Wynn/Encore). Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+        path="/neighborhood"
       />
       <JsonLdSchema type="property" />
       <BreadcrumbSchema items={[{ name: 'Neighborhood', url: 'https://www.turnberryplaceforsale.com/neighborhood' }]} />

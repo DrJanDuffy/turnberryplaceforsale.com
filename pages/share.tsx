@@ -73,6 +73,7 @@ export default function SharePage({ menus }: SharePageProps) {
         description="Share Turnberry Place Las Vegas with friends and family. Save Dr. Jan Duffy's contact info, schedule a tour, or send via text, email, or social media."
         ogImage="/images/turnberry/Turnberry_Place_For_Sale.jpg"
         ogImageAlt="Turnberry Place Las Vegas luxury high-rise condominium community"
+        path="/share"
       />
       <JsonLdSchema type="property" />
       <BreadcrumbSchema currentPageTitle="Share Turnberry Place | Digital Business Card" />

@@ -15,6 +15,7 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
       <Meta
         title="The Stirling Club - Turnberry Place Las Vegas"
         description="The Stirling Club: private amenities for Turnberry Place residents near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+        path="/stirling-club"
       />
       <JsonLdSchema type="property" />
       <BreadcrumbSchema items={[{ name: 'Stirling Club', url: 'https://www.turnberryplaceforsale.com/stirling-club' }]} />

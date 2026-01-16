@@ -1381,6 +1381,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
         title="Photo Gallery - Turnberry Place Las Vegas"
         description={photosMetaDescription}
         ogImages={photosOgImages}
+        path="/photos"
       />
       <JsonLdSchema type="property" />
       <BreadcrumbSchema items={[{ name: 'Photos', url: 'https://www.turnberryplaceforsale.com/photos' }]} />

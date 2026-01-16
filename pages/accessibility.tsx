@@ -12,6 +12,7 @@ export default function AccessibilityPage({ menus }: AccessibilityPageProps) {
       <Meta
         title="Accessibility Statement | Turnberry Place Las Vegas"
         description="Accessibility statement for TurnberryPlaceForSale.com. Need help? Call (702) 500-1971."
+        path="/accessibility"
       />
 
       <div className="card-content">

@@ -107,6 +107,7 @@ export default function PriceFeaturesPage({ menus }: PriceFeaturesPageProps) {
         title="Turnberry Place Pricing & Features | $800K-$10M+"
         ogImage="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Towers_Las_Vegas_Monorail.jpg"
         ogImageAlt="Turnberry Place towers near the Las Vegas Strip"
+        path="/price-features"
       />
       <Head>
         <script

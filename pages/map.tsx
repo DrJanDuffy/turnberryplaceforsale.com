@@ -43,6 +43,7 @@ export default function MapPage({ menus }: MapPageProps) {
       <Meta
         title="Turnberry Place Location | One Block From Las Vegas Strip"
         description="Turnberry Place at 2827 Paradise Rd - one block from the Strip, 10 min to airport. See nearby dining, entertainment, and shopping. Call (702) 500-1971."
+        path="/map"
       />
       <MapPlaceSchema />
       <BreadcrumbSchema currentPageTitle="Turnberry Place Location" />
