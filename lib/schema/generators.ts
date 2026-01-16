@@ -293,15 +293,15 @@ export function generateEventSchema(
   }
 ) {
   const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Event',
+    '@context': 'https://schema.org' as const,
+    '@type': 'Event' as const,
     '@id': options?.url ? `${BASE_URL}${options.url}#event` : `${BASE_URL}/#event`,
     name,
     startDate,
     endDate: options?.endDate,
     description: options?.description,
     location: options?.location || {
-      '@type': 'Place',
+      '@type': 'Place' as const,
       name: 'Turnberry Place',
       address: BASE_ADDRESS,
       geo: BASE_GEO,
