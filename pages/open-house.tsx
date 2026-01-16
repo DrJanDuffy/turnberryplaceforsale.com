@@ -6,6 +6,8 @@ import { SEOHead } from "../components/seo/SEOHead"
 import { SchemaMarkup } from "../components/seo/SchemaMarkup"
 import { Breadcrumbs } from "../components/seo/Breadcrumbs"
 import { generateEventSchema } from "../lib/schema/generators"
+import { RelatedPages } from "../components/RelatedPages"
+import { BackToTop } from "../components/BackToTop"
 import Link from "next/link"
 
 interface OpenHousePageProps extends LayoutProps {}
