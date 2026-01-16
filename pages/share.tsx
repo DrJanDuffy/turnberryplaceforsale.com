@@ -311,7 +311,12 @@ export default function SharePage({ menus }: SharePageProps) {
               </div>
             </div>
           </div>
-          
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="py-8 md:py-12 bg-white">
+        <div className="container mx-auto px-4">
           <div className="row mt-5">
             <div className="col-12 col-lg-10 mx-auto">
               <h2>Why Share Turnberry Place</h2>
