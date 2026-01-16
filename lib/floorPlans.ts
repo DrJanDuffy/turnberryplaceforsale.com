@@ -35,7 +35,7 @@ export const floorPlans: FloorPlan[] = [
     towers: [1, 2, 3, 4],
     features: ['Private balcony', 'Walk-in closet', 'Open kitchen', 'Floor-to-ceiling windows'],
     views: ['Strip views', 'City views'],
-    image: '/images/turnberry/floor-plans/turnberry-place-floor-plan-a.png',
+    image: '/images/turnberry/turnberry-place-floor-plan-a.png',
     pdfUrl: '/pdfs/turnberry-place-floor-plan-a.pdf'
   },
   {
@@ -54,7 +54,7 @@ export const floorPlans: FloorPlan[] = [
     towers: [1, 2, 3, 4],
     features: ['Wrap-around balcony', 'Two master suites', 'Gourmet kitchen', 'Marble baths'],
     views: ['Strip views', 'Mountain views'],
-    image: '/images/turnberry/floor-plans/turnberry-place-floor-plan-b.png',
+    image: '/images/turnberry/turnberry-place-floor-plan-b.png',
     pdfUrl: '/pdfs/turnberry-place-floor-plan-b.pdf'
   },
   {
@@ -73,7 +73,7 @@ export const floorPlans: FloorPlan[] = [
     towers: [1, 2, 3, 4],
     features: ['Corner unit', 'Dual balconies', 'Den/office space', 'Custom finishes'],
     views: ['Panoramic Strip views', 'Golf course views'],
-    image: '/images/turnberry/floor-plans/turnberry-place-floor-plan-c.png',
+    image: '/images/turnberry/turnberry-place-floor-plan-c.png',
     pdfUrl: '/pdfs/turnberry-place-floor-plan-c.pdf'
   },
   {
@@ -92,7 +92,7 @@ export const floorPlans: FloorPlan[] = [
     towers: [1, 2, 3, 4],
     features: ['Private elevator lobby', 'Three en-suite bedrooms', 'Formal dining', 'Wet bar'],
     views: ['Strip views', 'Mountain views', 'City views'],
-    image: '/images/turnberry/floor-plans/turnberry-place-floor-plan-d.png',
+    image: '/images/turnberry/turnberry-place-floor-plan-d.png',
     pdfUrl: '/pdfs/turnberry-place-floor-plan-d.pdf'
   },
   {
@@ -111,7 +111,7 @@ export const floorPlans: FloorPlan[] = [
     towers: [2, 3, 4],
     features: ['Corner residence', 'Wrap-around terraces', 'Upgraded finishes', 'Smart home ready'],
     views: ['180° panoramic views', 'Strip views', 'Red Rock views'],
-    image: '/images/turnberry/floor-plans/turnberry-place-floor-plan-e.png',
+    image: '/images/turnberry/turnberry-place-floor-plan-e.png',
     pdfUrl: '/pdfs/turnberry-place-floor-plan-e.pdf'
   },
   {
@@ -130,7 +130,7 @@ export const floorPlans: FloorPlan[] = [
     towers: [3, 4],
     features: ['Expanded layout', 'Home office', 'Butler pantry', 'Premium finishes'],
     views: ['Unobstructed Strip views', 'Mountain panorama'],
-    image: '/images/turnberry/floor-plans/turnberry-place-floor-plan-er.png',
+    image: '/images/turnberry/turnberry-place-floor-plan-er.png',
     pdfUrl: '/pdfs/turnberry-place-floor-plan-er.pdf'
   },
   {
@@ -149,7 +149,7 @@ export const floorPlans: FloorPlan[] = [
     towers: [2, 3, 4],
     features: ['Penthouse floor', 'Multiple terraces', 'Media room', 'Wine storage'],
     views: ['360° views', 'Strip', 'Mountains', 'Downtown'],
-    image: '/images/turnberry/floor-plans/turnberry-place-floor-plan-f.png',
+    image: '/images/turnberry/turnberry-place-floor-plan-f.png',
     pdfUrl: '/pdfs/turnberry-place-floor-plan-f.pdf'
   },
   {
@@ -168,7 +168,7 @@ export const floorPlans: FloorPlan[] = [
     towers: [2, 3, 4],
     features: ['Combined units available', 'Private elevator', 'Chef kitchen', 'Spa bath'],
     views: ['Sweeping panoramas', 'Golf course', 'Strip', 'Mountains'],
-    image: '/images/turnberry/floor-plans/turnberry-place-floor-plan-g.png',
+    image: '/images/turnberry/turnberry-place-floor-plan-g.png',
     pdfUrl: '/pdfs/turnberry-place-floor-plan-g.pdf'
   },
   {
@@ -187,7 +187,7 @@ export const floorPlans: FloorPlan[] = [
     towers: [2, 3, 4],
     features: ['Two-story penthouse', 'Private pool/spa', 'Rooftop terrace', 'Theater room', '12ft ceilings'],
     views: ['Unmatched 360° views', 'Private rooftop views'],
-    image: '/images/turnberry/floor-plans/turnberry-place-floor-plan-h.png',
+    image: '/images/turnberry/turnberry-place-floor-plan-h.png',
     pdfUrl: '/pdfs/turnberry-place-floor-plan-h.pdf'
   }
 ]

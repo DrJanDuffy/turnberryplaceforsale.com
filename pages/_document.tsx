@@ -19,7 +19,7 @@ export default class Document extends NextDocument {
           {/* Google Analytics */}
           <script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-RZ48JCVXWJ"
+            src="https://www.googletagmanager.com/gtag/js?id=G-0H44Y5TX5Q"
           />
           <script
             dangerouslySetInnerHTML={{
@@ -27,14 +27,19 @@ export default class Document extends NextDocument {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                // Google Analytics 4 property
+                // Google Analytics 4 property (primary)
+                gtag('config', 'G-0H44Y5TX5Q', {
+                  page_location: typeof window !== 'undefined' ? window.location.href : 'https://www.turnberryplaceforsale.com'
+                });
+                // Google Analytics 4 property (secondary)
                 gtag('config', 'G-RZ48JCVXWJ', {
                   page_location: typeof window !== 'undefined' ? window.location.href : 'https://www.turnberryplaceforsale.com'
                 });
-                // Universal Analytics property
+                // Universal Analytics property (legacy)
                 gtag('config', 'UA-46249003-1', {
                   page_path: typeof window !== 'undefined' ? window.location.pathname : '/'
                 });
+                // Google Ads conversion tracking
                 gtag('config', 'AW-859648231');
               `,
             }}

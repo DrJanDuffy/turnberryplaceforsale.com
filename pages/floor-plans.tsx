@@ -123,7 +123,7 @@ export default function FloorPlansPage({ menus }: FloorPlansPageProps) {
         title="Floor Plans | Turnberry Place Las Vegas Condos"
         description="Explore 9 luxury floor plans at Turnberry Place Las Vegas. From 1,556 to 9,000+ sq ft. 1-4 bedrooms, penthouses with Strip views. Prices from $450K to $10M+."
         keywords="Turnberry Place floor plans, Las Vegas luxury condo floor plans, high-rise condo layouts"
-        ogImage="/images/turnberry/floor-plans/turnberry-place-floor-plan-h.png"
+        ogImage="/images/turnberry/turnberry-place-floor-plan-h.png"
         ogImageAlt="Turnberry Place Las Vegas luxury floor plans"
       />
       <JsonLdSchema type="property" />
