@@ -10,7 +10,11 @@ export default class Document extends NextDocument {
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <link rel="shortcut icon" type="image/png" href="https://cribflyer-publicsite.s3.amazonaws.com/favicon/256.png" />
           <link rel="apple-touch-icon" href="https://cribflyer-publicsite.s3.amazonaws.com/favicon/256.png" />
-          <meta name="robots" content="noimageindex" />
+          {/* Allow indexing + large image previews (critical for Photos + rich results) */}
+          <meta
+            name="robots"
+            content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+          />
           <meta name="author" content="Dr. Jan Duffy, REALTOR" />
           {/* Google Analytics */}
           <script
@@ -29,7 +33,7 @@ export default class Document extends NextDocument {
                 });
                 // Universal Analytics property
                 gtag('config', 'UA-46249003-1', {
-                  page_path: typeof window !== 'undefined' ? window.location.pathname : '/2877-paradise-rd'
+                  page_path: typeof window !== 'undefined' ? window.location.pathname : '/'
                 });
                 gtag('config', 'AW-859648231');
               `,

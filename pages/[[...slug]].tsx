@@ -52,24 +52,11 @@ export default function NodePage({ node, menus }: NodePageProps) {
           ogImageAlt="Turnberry Place Las Vegas luxury high-rise condominium community"
         />
         <Head>
-          <meta
-            key="description"
-            name="description"
-            content="Turnberry Place luxury high-rise condos near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos & Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
-          />
-          <meta
-            key="keywords"
-            name="keywords"
-            content="Turnberry Towers Las Vegas High Rise Condos, Las Vegas Strip High Rise Condos for Sale, Turnberry Place for sale, Turnberry Place condos, Las Vegas high-rise condos, luxury condos Las Vegas, Las Vegas Strip condos, Stirling Club, Dr. Jan Duffy REALTOR"
-          />
           <meta name="author" content="Dr. Jan Duffy, REALTOR" />
-          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-          <meta name="googlebot" content="index, follow" />
           <meta name="geo.region" content="US-NV" />
           <meta name="geo.placename" content="Las Vegas" />
           <meta name="geo.position" content="36.1447;-115.1541" />
           <meta name="ICBM" content="36.1447, -115.1541" />
-          <link rel="canonical" href="https://www.turnberryplaceforsale.com/" />
           
           {/* Performance optimizations */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
