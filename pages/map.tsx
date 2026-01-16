@@ -3,6 +3,7 @@
 import { GetStaticPropsResult } from "next"
 import { useState } from "react"
 import { Layout, LayoutProps } from "components/layout"
+import { MapHeroSection } from "components/map-hero-section"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
@@ -35,13 +36,17 @@ export default function MapPage({ menus }: MapPageProps) {
       />
       <JsonLdSchema type="property" />
       <BreadcrumbSchema items={[{ name: 'Map', url: 'https://www.turnberryplaceforsale.com/map' }]} />
+      
+      {/* Map Hero Section */}
+      <MapHeroSection address={streetAddress} mapKey={mapKey} />
+      
       <div className="card-content card-map pt-0 pt-md-5">
         <div className="container-fluid px-0 mx-0">
           <div className="row">
             <div className="col-12">
-              <h1 className="text-center d-none d-md-block mb-4">Turnberry Place Las Vegas: Map & Nearby Places</h1>
+              <h2 className="text-center d-none d-md-block mb-4">Explore Nearby Places</h2>
               <p className="lead text-center mb-4 d-none d-md-block">
-                Explore Turnberry Place's prime location at 2827 Paradise Rd, Las Vegas, NV 89109, just one block from the Las Vegas Strip. Use the interactive map below to discover nearby schools, parks, restaurants, coffee shops, and other amenities that make this location ideal for luxury living.
+                Use the interactive map below to discover nearby schools, parks, restaurants, coffee shops, and other amenities that make this location ideal for luxury living.
               </p>
               <div className="map-controls d-none d-md-block">
                 <ul className="nav nav-pills justify-content-center">
