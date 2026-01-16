@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { MapPin, Car, Walking, Plane, Mountain, ShoppingBag, Building2 } from 'lucide-react'
+import { MapPin, Car, Footprints, Plane, Mountain, ShoppingBag, Building2 } from 'lucide-react'
 
 interface Destination {
   name: string
@@ -105,7 +105,7 @@ export function DistanceReferenceSection() {
         {walkableDestinations.length > 0 && (
           <div className="mb-12">
             <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center gap-2">
-              <Walking size={20} className="text-[#D4AF37]" aria-hidden="true" />
+              <Footprints size={20} className="text-[#D4AF37]" aria-hidden="true" />
               Within Walking Distance
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -185,7 +185,7 @@ function DestinationCard({ destination, isWalkable }: DestinationCardProps) {
         </div>
         {destination.walkTime && (
           <div className="flex items-center gap-2 text-gray-600">
-            <Walking size={16} aria-hidden="true" />
+            <Footprints size={16} aria-hidden="true" />
             <span>{destination.walkTime} walk</span>
           </div>
         )}

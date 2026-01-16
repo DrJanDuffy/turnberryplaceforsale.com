@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Star, Shield, Walking, Car } from 'lucide-react'
+import { Star, Shield, Footprints, Car } from 'lucide-react'
 
 interface BenefitCard {
   title: string
@@ -31,7 +31,7 @@ const benefits: BenefitCard[] = [
   },
   {
     title: 'Walkable Luxury',
-    icon: <Walking size={32} />,
+    icon: <Footprints size={32} />,
     points: [
       '20+ Zagat-rated restaurants within walking distance',
       'No car needed for world-class dining',
