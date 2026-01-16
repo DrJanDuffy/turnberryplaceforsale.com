@@ -12,6 +12,7 @@ import type {
   FAQPage,
   Place,
   RealEstateListing,
+  Person,
   ListingData,
   PlaceData,
   BreadcrumbItem,
