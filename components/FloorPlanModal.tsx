@@ -3,7 +3,7 @@
 import { useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FloorPlan } from '@/lib/floorPlans'
+import { FloorPlan } from 'lib/floorPlans'
 
 interface FloorPlanModalProps {
   plan: FloorPlan

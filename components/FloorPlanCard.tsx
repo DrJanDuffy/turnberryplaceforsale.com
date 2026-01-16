@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { FloorPlan } from '@/lib/floorPlans'
+import { FloorPlan } from 'lib/floorPlans'
 import FloorPlanModal from './FloorPlanModal'
 
 interface FloorPlanCardProps {
