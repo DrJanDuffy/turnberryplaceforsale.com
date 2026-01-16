@@ -9,6 +9,7 @@ import { PlaceCardsGrid } from "components/place-cards-grid"
 import { InteractiveMap } from "components/interactive-map"
 import { DistanceReferenceSection } from "components/distance-reference-section"
 import { NeighborhoodBenefitsSection } from "components/neighborhood-benefits-section"
+import { DirectionsContactCTA } from "components/directions-contact-cta"
 import { placesData, type Place } from "lib/places-data"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
@@ -101,6 +102,9 @@ export default function MapPage({ menus }: MapPageProps) {
 
           {/* Neighborhood Benefits Section */}
           <NeighborhoodBenefitsSection />
+
+          {/* Directions & Contact CTA */}
+          <DirectionsContactCTA address={streetAddress} />
           
           <div className="row mt-5">
             <div className="col-12 col-lg-10 mx-auto">
