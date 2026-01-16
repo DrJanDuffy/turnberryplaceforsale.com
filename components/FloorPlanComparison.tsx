@@ -1,6 +1,6 @@
 'use client'
 
-import { FloorPlan } from '@/lib/floorPlans'
+import { FloorPlan } from 'lib/floorPlans'
 import Image from 'next/image'
 
 interface ComparisonProps {
