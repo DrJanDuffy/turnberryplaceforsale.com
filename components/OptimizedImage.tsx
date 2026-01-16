@@ -6,7 +6,7 @@
 import React from 'react'
 import Image, { ImageProps } from 'next/image'
 
-interface OptimizedImageProps extends Omit<ImageProps, 'priority'> {
+interface OptimizedImageProps extends Omit<ImageProps, 'priority' | 'fetchPriority'> {
   /**
    * Whether this is an LCP (Largest Contentful Paint) image
    * Sets fetchpriority="high" and priority={true}
@@ -81,6 +81,8 @@ export function OptimizedImage({
       >
         <Image
           {...props}
+          src={props.src}
+          alt={props.alt}
           priority={true}
           fetchPriority="high"
           width={width}
@@ -110,6 +112,8 @@ export function OptimizedImage({
     >
       <Image
         {...props}
+        src={props.src}
+        alt={props.alt}
         width={width}
         height={height}
         fill={fill}

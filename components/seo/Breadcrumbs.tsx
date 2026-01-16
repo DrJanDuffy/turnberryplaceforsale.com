@@ -109,7 +109,6 @@ export function Breadcrumbs({
                         )}
                       </span>
                     </Link>
-                    <meta itemProp="position" content={String(index + 1)} />
                     <ChevronRight
                       size={16}
                       className="text-gray-400 mx-2"
