@@ -1,238 +1,245 @@
 'use client'
 
-import { useState, useEffect } from "react"
-import { Layout, LayoutProps } from "components/layout"
-import { Meta } from "components/meta"
-import { JsonLdSchema } from "components/json-ld-schema"
-import { BreadcrumbSchema } from "components/breadcrumb-schema"
-import { FloorPlanGallery, FloorPlan } from "components/floor-plan-gallery"
+import { useState, useMemo } from 'react'
+import { GetStaticPropsResult } from 'next'
+import { Layout, LayoutProps } from 'components/layout'
+import { getMenus } from 'lib/get-menus'
+import { Meta } from 'components/meta'
+import { JsonLdSchema } from 'components/json-ld-schema'
+import { BreadcrumbSchema } from 'components/breadcrumb-schema'
+import { floorPlans, FloorPlan } from 'lib/floorPlans'
+import FloorPlanCard from 'components/FloorPlanCard'
+import FloorPlanFilters, { FilterState } from 'components/FloorPlanFilters'
+import FloorPlanComparison from 'components/FloorPlanComparison'
 
-// Floor plan data with categories
-const floorPlanData: FloorPlan[] = [
-  {
-    id: 'plan-a',
-    name: 'Turnberry Place Floor Plan A',
-    category: '1-Bedroom',
-    image: '/images/turnberry/turnberry-place-floor-plan-a.png',
-    alt: 'Turnberry Place Floor Plan A - 1 Bedroom',
-    sqft: '1,200',
-    beds: 1,
-    baths: 1,
-  },
-  {
-    id: 'plan-b',
-    name: 'Turnberry Place Floor Plan B',
-    category: '2-Bedroom',
-    image: '/images/turnberry/turnberry-place-floor-plan-b.png',
-    alt: 'Turnberry Place Floor Plan B - 2 Bedroom',
-    sqft: '1,800',
-    beds: 2,
-    baths: 2,
-  },
-  {
-    id: 'plan-c',
-    name: 'Turnberry Place Floor Plan C',
-    category: '2-Bedroom',
-    image: '/images/turnberry/turnberry-place-floor-plan-c.png',
-    alt: 'Turnberry Place Floor Plan C - 2 Bedroom',
-    sqft: '2,000',
-    beds: 2,
-    baths: 2,
-  },
-  {
-    id: 'plan-d',
-    name: 'Turnberry Place Floor Plan D',
-    category: '3-Bedroom',
-    image: '/images/turnberry/turnberry-place-floor-plan-d.png',
-    alt: 'Turnberry Place Floor Plan D - 3 Bedroom',
-    sqft: '2,500',
-    beds: 3,
-    baths: 2,
-  },
-  {
-    id: 'plan-e',
-    name: 'Turnberry Place Floor Plan E',
-    category: '3-Bedroom',
-    image: '/images/turnberry/turnberry-place-floor-plan-e.png',
-    alt: 'Turnberry Place Floor Plan E - 3 Bedroom',
-    sqft: '3,000',
-    beds: 3,
-    baths: 3,
-  },
-  {
-    id: 'plan-er',
-    name: 'Turnberry Place Floor Plan ER',
-    category: '3-Bedroom',
-    image: '/images/turnberry/turnberry-place-floor-plan-er.png',
-    alt: 'Turnberry Place Floor Plan ER - 3 Bedroom',
-    sqft: '3,200',
-    beds: 3,
-    baths: 3,
-  },
-  {
-    id: 'plan-f',
-    name: 'Turnberry Place Floor Plan F',
-    category: '4-Bedroom',
-    image: '/images/turnberry/turnberry-place-floor-plan-f.png',
-    alt: 'Turnberry Place Floor Plan F - 4 Bedroom',
-    sqft: '4,000',
-    beds: 4,
-    baths: 3,
-  },
-  {
-    id: 'plan-g',
-    name: 'Turnberry Place Floor Plan G',
-    category: '4-Bedroom',
-    image: '/images/turnberry/turnberry-place-floor-plan-g.png',
-    alt: 'Turnberry Place Floor Plan G - 4 Bedroom',
-    sqft: '4,500',
-    beds: 4,
-    baths: 4,
-  },
-  {
-    id: 'plan-h',
-    name: 'Turnberry Place Floor Plan H',
-    category: 'Penthouse',
-    image: '/images/turnberry/turnberry-place-floor-plan-h.png',
-    alt: 'Turnberry Place Floor Plan H - Penthouse',
-    sqft: '8,000+',
-    beds: 4,
-    baths: 4,
-  },
-]
+interface FloorPlansPageProps extends LayoutProps {}
 
-export default function FloorPlansPage() {
-  // Use empty menus for client component - layout handles gracefully
-  const menus = { main: [], footer: [] }
+// Generate JSON-LD schema for SEO
+function generateFloorPlanSchema() {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
+  
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Turnberry Place Las Vegas Floor Plans',
+    description: 'Luxury condominium floor plans available at Turnberry Place',
+    numberOfItems: floorPlans.length,
+    itemListElement: floorPlans.map((plan, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Accommodation',
+        name: `Turnberry Place ${plan.name}`,
+        description: `${plan.beds} bedroom, ${plan.baths} bathroom luxury condo, ${plan.sqft} sq ft`,
+        floorSize: {
+          '@type': 'QuantitativeValue',
+          value: plan.sqftMin,
+          unitCode: 'SQF'
+        },
+        numberOfRooms: plan.beds,
+        numberOfBathroomsTotal: plan.baths,
+        amenityFeature: plan.features.map(f => ({ '@type': 'LocationFeatureSpecification', name: f })),
+        image: `${baseUrl}${plan.image}`,
+        offers: {
+          '@type': 'Offer',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            minPrice: plan.priceMin,
+            maxPrice: plan.priceMax,
+            priceCurrency: 'USD'
+          }
+        }
+      }
+    }))
+  }
+}
+
+export default function FloorPlansPage({ menus }: FloorPlansPageProps) {
+  const [filters, setFilters] = useState<FilterState>({
+    type: 'all',
+    minSqft: 0,
+    maxSqft: 10000,
+    minPrice: 0,
+    maxPrice: 15000000,
+    tower: null
+  })
+
+  const [comparingPlans, setComparingPlans] = useState<FloorPlan[]>([])
+
+  // Filter floor plans based on current filters
+  const filteredPlans = useMemo(() => {
+    return floorPlans.filter(plan => {
+      // Type filter
+      if (filters.type !== 'all' && plan.type.toLowerCase() !== filters.type) {
+        return false
+      }
+
+      // Square footage filter
+      if (plan.sqftMax < filters.minSqft || plan.sqftMin > filters.maxSqft) {
+        return false
+      }
+
+      // Price filter
+      if (plan.priceMax < filters.minPrice || plan.priceMin > filters.maxPrice) {
+        return false
+      }
+
+      // Tower filter
+      if (filters.tower !== null && !plan.towers.includes(filters.tower)) {
+        return false
+      }
+
+      return true
+    })
+  }, [filters])
+
+  const handleCompare = (plan: FloorPlan) => {
+    const isAlreadyComparing = comparingPlans.some(p => p.id === plan.id)
+    
+    if (isAlreadyComparing) {
+      // Remove from comparison
+      setComparingPlans(comparingPlans.filter(p => p.id !== plan.id))
+    } else {
+      // Add to comparison (max 3)
+      if (comparingPlans.length < 3) {
+        setComparingPlans([...comparingPlans, plan])
+      }
+    }
+  }
+
+  const handleRemoveFromComparison = (planId: string) => {
+    setComparingPlans(comparingPlans.filter(p => p.id !== planId))
+  }
+
+  const handleClearComparison = () => {
+    setComparingPlans([])
+  }
+
+  const schema = generateFloorPlanSchema()
 
   return (
     <Layout menus={menus}>
       <Meta
-        title="Floor Plans - Turnberry Place Las Vegas"
-        description="Turnberry Place floor plans: luxury high-rise condo layouts near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+        title="Floor Plans | Turnberry Place Las Vegas Condos"
+        description="Explore 9 luxury floor plans at Turnberry Place Las Vegas. From 1,556 to 9,000+ sq ft. 1-4 bedrooms, penthouses with Strip views. Prices from $450K to $10M+."
+        keywords="Turnberry Place floor plans, Las Vegas luxury condo floor plans, high-rise condo layouts"
+        ogImage="/images/turnberry/floor-plans/turnberry-place-floor-plan-h.png"
+        ogImageAlt="Turnberry Place Las Vegas luxury floor plans"
       />
       <JsonLdSchema type="property" />
-      <BreadcrumbSchema items={[{ name: 'Floor Plans', url: 'https://www.turnberryplaceforsale.com/floor-plans' }]} />
-      <div className="card-content card-floor-plans">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-12 col-lg-10">
-              <div className="page-header">
-                <h1>Turnberry Place Las Vegas Floor Plans</h1>
-                <p className="lead">
-                  Explore the comprehensive floor plans available at Turnberry Place Las Vegas, featuring luxury high-rise condominiums ranging from one to four bedrooms. These detailed floor plans showcase the thoughtful design, spacious layouts, and premium features that define luxury living at Turnberry Place. As a Las Vegas real estate expert with over 30 years of experience, I can provide insights into how these floor plans accommodate various lifestyle needs and preferences.
-                </p>
-              </div>
-            </div>
+      <BreadcrumbSchema currentPageTitle="Floor Plans | Turnberry Place Las Vegas" />
+      
+      {/* SEO Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema, null, 2) }}
+      />
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-12 md:py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            Turnberry Place Floor Plans
+          </h1>
+          <p className="text-gray-300 max-w-3xl mx-auto text-lg md:text-xl">
+            Explore 9 distinctive luxury floor plans ranging from elegant 1-bedroom residences to spectacular penthouses. Each layout is thoughtfully designed for modern luxury living near the Las Vegas Strip.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-8 md:py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          {/* Filters */}
+          <FloorPlanFilters onFilterChange={setFilters} />
+
+          {/* Results Count */}
+          <div className="mb-6">
+            <p className="text-gray-600">
+              Showing <strong>{filteredPlans.length}</strong> of {floorPlans.length} floor plans
+            </p>
           </div>
-          <div className="row">
-            <div className="col-12">
-              <FloorPlanGallery floorPlans={floorPlanData} />
+
+          {/* Floor Plan Grid */}
+          {filteredPlans.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredPlans.map(plan => (
+                <FloorPlanCard
+                  key={plan.id}
+                  plan={plan}
+                  onCompare={handleCompare}
+                  isComparing={comparingPlans.some(p => p.id === plan.id)}
+                />
+              ))}
             </div>
-          </div>
-          
-          <div className="row">
-            <div className="col-12 col-lg-10 mx-auto">
-              <div className="content-section">
-                <h2>Understanding Turnberry Place Floor Plans</h2>
-              <p>
-                Turnberry Place floor plans are designed to maximize space, functionality, and luxury living. Each floor plan has been thoughtfully crafted to provide residents with comfortable, elegant living spaces that accommodate various lifestyle needs. Understanding the characteristics of different floor plans helps buyers identify residences that best meet their requirements for space, layout, and functionality.
-              </p>
-              <h3>Floor Plan Categories and Sizes</h3>
-              <p>
-                Turnberry Place offers floor plans ranging from approximately 1,200 to over 8,000 square feet, accommodating one to four or more bedrooms. The floor plans are organized by size and configuration, with options for single-level residences, multi-level penthouses, and residences with private terraces. Each category offers distinct advantages, from efficient one-bedroom layouts perfect for professionals or second-home owners to expansive penthouses designed for entertaining and luxury living.
-              </p>
-              <h3>Design Philosophy and Layout Principles</h3>
-              <p>
-                Turnberry Place floor plans reflect a design philosophy that emphasizes open-concept living, natural light, and seamless indoor-outdoor flow. The layouts prioritize views, with floor-to-ceiling windows that frame spectacular vistas of the Las Vegas Strip, Red Rock Canyon, and the Spring Mountain Range. The design principles ensure that every residence maximizes its potential for comfortable daily living while providing elegant spaces for entertaining and relaxation.
-              </p>
-              <h3>Premium Features and Finishes</h3>
-              <p>
-                All Turnberry Place floor plans include premium features and finishes that reflect the development's luxury positioning. These features include hardwood or premium tile flooring, granite or quartz countertops, high-end appliances, custom cabinetry, designer fixtures, and floor-to-ceiling windows. The floor plans are designed to showcase these premium features while maintaining functionality and livability. Understanding these features helps buyers appreciate the value and quality available in every Turnberry Place residence.
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>One and Two Bedroom Floor Plans</h2>
-              <p>
-                Turnberry Place's one and two bedroom floor plans offer efficient, elegant living spaces perfect for professionals, couples, or those seeking a second home in Las Vegas. These floor plans range from approximately 1,200 to 2,500 square feet and provide all the amenities and features of larger residences in more compact, manageable spaces.
-              </p>
-              <h3>One Bedroom Residences</h3>
-              <p>
-                One bedroom floor plans at Turnberry Place typically range from approximately 1,200 to 1,800 square feet and feature open-concept living areas, well-appointed kitchens, spacious bedrooms with walk-in closets, and luxurious bathrooms. Many one-bedroom residences feature private balconies or terraces that extend the living space outdoors. These floor plans are perfect for professionals, single residents, or couples who value efficient use of space without sacrificing luxury and quality.
-              </p>
-              <h3>Two Bedroom Residences</h3>
-              <p>
-                Two bedroom floor plans at Turnberry Place typically range from approximately 1,800 to 2,500 square feet and provide additional space for home offices, guest accommodations, or flexible living arrangements. These floor plans feature spacious living areas, well-designed kitchens, two bedrooms with ample closet space, and multiple bathrooms. Many two-bedroom residences feature private terraces and enhanced views, making them ideal for residents who want more space while maintaining the convenience and luxury of Turnberry Place living.
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Three and Four Bedroom Floor Plans</h2>
-              <p>
-                Turnberry Place's three and four bedroom floor plans offer expansive living spaces designed for families, those who frequently entertain, or residents who require additional space for home offices, hobbies, or guest accommodations. These floor plans range from approximately 2,500 to over 5,000 square feet and provide the ultimate in luxury high-rise living.
-              </p>
-              <h3>Three Bedroom Residences</h3>
-              <p>
-                Three bedroom floor plans at Turnberry Place typically range from approximately 2,500 to 4,000 square feet and feature spacious living areas, formal dining spaces, well-appointed kitchens, three bedrooms with walk-in closets, and multiple bathrooms. Many three-bedroom residences feature private terraces, enhanced views, and additional spaces for home offices or media rooms. These floor plans are ideal for families, those who entertain frequently, or residents who value space and flexibility in their living arrangements.
-              </p>
-              <h3>Four Bedroom and Larger Residences</h3>
-              <p>
-                Four bedroom and larger floor plans at Turnberry Place typically range from approximately 4,000 to over 8,000 square feet and represent the pinnacle of luxury living. These floor plans feature expansive living areas, formal dining rooms, gourmet kitchens, multiple bedrooms with walk-in closets, numerous bathrooms, and additional spaces for home offices, media rooms, or entertainment areas. Many larger residences feature multiple terraces, panoramic views, and premium finishes throughout. These floor plans are ideal for those seeking the ultimate in luxury high-rise living with maximum space and amenities.
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Penthouse and High-Floor Floor Plans</h2>
-              <p>
-                Turnberry Place's penthouse and high-floor residences offer the most exceptional floor plans in the development, featuring elevated ceilings, expansive layouts, and the most dramatic views available. These residences, typically located above the 30th floor, represent the ultimate in luxury living at Turnberry Place.
-              </p>
-              <h3>Penthouse Features and Characteristics</h3>
-              <p>
-                Penthouse floor plans at Turnberry Place feature elevated ceilings up to 12 feet, expansive layouts exceeding 8,000 square feet, multiple terraces with panoramic views, and the most exceptional finishes available. These residences often feature private elevator access, wine cellars, home theaters, and additional luxury amenities. The penthouse floor plans are designed for those seeking the ultimate in luxury living with maximum space, views, and amenities.
-              </p>
-              <h3>High-Floor Advantages</h3>
-              <p>
-                High-floor residences at Turnberry Place, typically located above the 20th floor, offer enhanced views, increased privacy, and elevated ceilings compared to lower-floor residences. These floor plans feature the same quality and finishes as other residences but benefit from the dramatic views and sense of elevation that come with higher floor levels. Understanding these advantages helps buyers appreciate the value and lifestyle benefits of high-floor residences.
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Selecting the Right Floor Plan</h2>
-              <p>
-                Selecting the right floor plan at Turnberry Place requires understanding your lifestyle needs, space requirements, and preferences for layout and functionality. Working with an experienced real estate professional who understands Turnberry Place floor plans can help you identify the perfect residence that meets your needs while fitting your budget.
-              </p>
-              <h3>Assessing Your Space Requirements</h3>
-              <p>
-                Assessing your space requirements involves considering your current and future needs for bedrooms, living areas, storage, and flexible spaces. Factors to consider include family size, frequency of entertaining, need for home office space, guest accommodations, and lifestyle preferences. Understanding these requirements helps you identify floor plans that provide adequate space without excess that goes unused.
-              </p>
-              <h3>Evaluating Layout and Flow</h3>
-              <p>
-                Evaluating layout and flow involves considering how the floor plan accommodates your daily routines, entertaining needs, and lifestyle preferences. Factors to consider include the relationship between spaces, natural light, views, privacy, and accessibility. Understanding these layout characteristics helps you identify floor plans that function well for your specific needs and preferences.
-              </p>
-              <h3>Considering View and Orientation</h3>
-              <p>
-                Considering view and orientation involves understanding how different floor plans and orientations provide access to the views you value most. Factors to consider include whether you prefer Strip views, mountain views, city views, or a combination, and how floor level and orientation affect view quality. Understanding these view characteristics helps you identify floor plans that provide the views you desire.
-              </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Contact Dr. Jan Duffy for Floor Plan Information</h2>
-                <p>
-                  As a Las Vegas real estate expert with over 30 years of experience and deep knowledge of Turnberry Place floor plans, I can provide comprehensive information about available floor plans, their characteristics, and how they accommodate various lifestyle needs. My expertise in luxury high-rise condominiums, combined with my understanding of Turnberry Place's unique floor plans, enables me to help buyers identify the perfect residence that meets their needs and preferences.
-                </p>
-                <p>
-                  Whether you're interested in one-bedroom efficiency, two-bedroom flexibility, three-bedroom space, or four-bedroom luxury, I can provide detailed information about available floor plans, their features, and how they compare to help you make informed decisions. My goal is to help you find the perfect Turnberry Place residence that meets your space requirements, lifestyle needs, and budget while providing exceptional value and luxury living.
-                </p>
-                <p>
-                  <strong>Ready to explore Turnberry Place floor plans?</strong> Contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a> to discuss available floor plans, schedule a private showing, and learn how different floor plans can accommodate your lifestyle needs. With my extensive knowledge of Turnberry Place floor plans, I can help you find the perfect residence that exceeds your expectations.
-                </p>
-              </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-600 text-lg mb-4">No floor plans match your filters.</p>
+              <button
+                onClick={() => setFilters({
+                  type: 'all',
+                  minSqft: 0,
+                  maxSqft: 10000,
+                  minPrice: 0,
+                  maxPrice: 15000000,
+                  tower: null
+                })}
+                className="text-amber-600 hover:text-amber-700 font-medium"
+              >
+                Clear all filters
+              </button>
             </div>
+          )}
+        </div>
+      </section>
+
+      {/* Comparison Bar */}
+      <FloorPlanComparison
+        plans={comparingPlans}
+        onRemove={handleRemoveFromComparison}
+        onClear={handleClearComparison}
+      />
+
+      {/* Content Section */}
+      <section className="py-8 md:py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Understanding Turnberry Place Floor Plans</h2>
+            <p className="text-gray-600 mb-6">
+              Turnberry Place floor plans are designed to maximize space, functionality, and luxury living. Each floor plan has been thoughtfully crafted to provide residents with comfortable, elegant living spaces that accommodate various lifestyle needs.
+            </p>
+            
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">Floor Plan Categories and Sizes</h3>
+            <p className="text-gray-600 mb-6">
+              Turnberry Place offers floor plans ranging from approximately 1,556 to over 9,000 square feet, accommodating one to four or more bedrooms. The floor plans are organized by size and configuration, with options for single-level residences, multi-level penthouses, and residences with private terraces.
+            </p>
+
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">Selecting the Right Floor Plan</h3>
+            <p className="text-gray-600 mb-6">
+              Selecting the right floor plan at Turnberry Place requires understanding your lifestyle needs, space requirements, and preferences for layout and functionality. Use the filters above to narrow down options by bedroom count, square footage, price range, and tower location.
+            </p>
+
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 mt-8">Contact Dr. Jan Duffy for Floor Plan Information</h2>
+            <p className="text-gray-600 mb-4">
+              As a Las Vegas real estate expert with deep knowledge of Turnberry Place floor plans, I can provide comprehensive information about available floor plans, their characteristics, and how they accommodate various lifestyle needs.
+            </p>
+            <p className="text-gray-600">
+              <strong>Ready to explore Turnberry Place floor plans?</strong> Contact the office at <a href="tel:+17025001971" className="text-amber-600 hover:text-amber-700 underline">(702) 500-1971</a> to discuss available floor plans, schedule a private showing, and learn how different floor plans can accommodate your lifestyle needs.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Add bottom padding when comparison bar is visible */}
+      {comparingPlans.length > 0 && <div className="h-32" />}
     </Layout>
   )
 }
 
+export async function getStaticProps(): Promise<GetStaticPropsResult<FloorPlansPageProps>> {
+  return {
+    props: {
+      menus: await getMenus({} as any),
+    },
+  }
+}
