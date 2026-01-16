@@ -23,6 +23,7 @@ export default function MLSPage({ menus }: MLSPageProps) {
         keywords="Turnberry Place Las Vegas, luxury condos Las Vegas, high-rise condos for sale, Las Vegas Strip condos, MLS listing"
         ogImage="/images/turnberry/Turnberry_Place_For_Sale.jpg"
         ogImageAlt="Turnberry Place Las Vegas luxury high-rise condominium community"
+        path="/mls"
       />
       <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
       <BreadcrumbSchema currentPageTitle="Turnberry Place MLS Listing" />

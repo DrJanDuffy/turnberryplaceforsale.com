@@ -15,5 +15,5 @@ Allow: /images/
 # Crawl-delay for respectful crawling (optional)
 # Crawl-delay: 1
 
-# Sitemap location
+# Sitemap location (www is primary domain)
 Sitemap: https://www.turnberryplaceforsale.com/sitemap.xml

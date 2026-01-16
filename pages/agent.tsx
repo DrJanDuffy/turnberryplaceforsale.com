@@ -20,6 +20,7 @@ export default function AgentPage({ menus }: AgentPageProps) {
       <Meta
         title="Dr. Jan Duffy | Your Turnberry Place Neighbor & REALTOR"
         description="Dr. Jan Duffy lives at Turnberry Place and helps buyers and sellers in her community. Your neighbor, your expert. Call (702) 500-1971."
+        path="/agent"
       />
       <JsonLdSchema type="agent" />
       <BreadcrumbSchema items={[{ name: 'Agent', url: 'https://www.turnberryplaceforsale.com/agent' }]} />

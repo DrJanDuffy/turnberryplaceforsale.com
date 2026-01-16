@@ -38,8 +38,31 @@ export function Meta({
 }: MetaProps) {
   const router = useRouter()
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.turnberryplaceforsale.com"
-  const canonicalUrl = `${baseUrl}${router.asPath !== "/" ? router.asPath : ""}`
+  // Ensure www is always used as primary domain for canonical URLs
+  const getBaseUrl = (): string => {
+    let envUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.turnberryplaceforsale.com"
+    // Force www if not present
+    if (envUrl.includes('turnberryplaceforsale.com') && !envUrl.includes('www.')) {
+      envUrl = envUrl.replace('turnberryplaceforsale.com', 'www.turnberryplaceforsale.com')
+    }
+    // Ensure www prefix and remove trailing slash
+    envUrl = envUrl.replace(/^https?:\/\/(?!www\.)/, 'https://www.').replace(/\/$/, '')
+    return envUrl
+  }
+  
+  const baseUrl = getBaseUrl()
+  
+  // Normalize canonical URL: remove trailing slashes (except root), remove query strings, ensure consistent format
+  const normalizePath = (path: string): string => {
+    if (!path || path === '/') return ''
+    // Remove query strings and hash fragments for canonical
+    const cleanPath = path.split('?')[0].split('#')[0]
+    // Remove trailing slash (except for root)
+    return cleanPath.endsWith('/') && cleanPath.length > 1 ? cleanPath.slice(0, -1) : cleanPath
+  }
+  
+  const normalizedPath = normalizePath(path || router.asPath)
+  const canonicalUrl = `${baseUrl}${normalizedPath}`
 
   // Brand-forward defaults, but reinforce the two primary keyword themes sitewide.
   const defaultTitle = withSuffix(

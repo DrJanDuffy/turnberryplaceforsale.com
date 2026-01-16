@@ -59,6 +59,52 @@ module.exports = {
       },
     ]
   },
+  async redirects() {
+    return [
+      // Redirect old/legacy routes to current pages (301 permanent redirects)
+      {
+        source: '/ap',
+        destination: '/agent',
+        permanent: true,
+      },
+      {
+        source: '/lc',
+        destination: '/available-condos',
+        permanent: true,
+      },
+      {
+        source: '/tour',
+        destination: '/available-condos',
+        permanent: true,
+      },
+      {
+        source: '/tour/:path*',
+        destination: '/:path*',
+        permanent: true,
+      },
+      {
+        source: '/ub',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/ub/:path*',
+        destination: '/:path*',
+        permanent: true,
+      },
+      {
+        source: '/privacy',
+        destination: '/accessibility',
+        permanent: true,
+      },
+      // Redirect old property address pages to map page
+      {
+        source: '/2877-paradise-rd',
+        destination: '/map',
+        permanent: true,
+      },
+    ]
+  },
   async rewrites() {
     return [
       {
