@@ -339,9 +339,9 @@ export function generatePersonSchema(
     knowsAbout?: string[]
     areaServed?: string | string[]
   }
-) {
+): Person {
   return {
-    '@context': 'https://schema.org',
+    '@context': 'https://schema.org' as const,
     '@type': 'Person',
     '@id': `${BASE_URL}/#person-${name.toLowerCase().replace(/\s+/g, '-')}`,
     name,
