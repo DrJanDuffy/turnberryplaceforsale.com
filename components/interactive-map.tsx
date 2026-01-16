@@ -375,5 +375,3 @@ export function InteractiveMap({
     </div>
   )
 }
-
-import React from 'react'
