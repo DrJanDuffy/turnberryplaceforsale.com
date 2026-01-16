@@ -19,6 +19,7 @@ const staticPages = [
   '/stirling-club',
   '/neighborhood',
   '/accessibility',
+  '/mls',
 ]
 
 function generateSiteMap() {
