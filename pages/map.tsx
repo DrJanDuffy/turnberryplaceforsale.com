@@ -26,7 +26,6 @@ export default function MapPage({ menus }: MapPageProps) {
 
   const handleCategoryChange = (categoryId: string, query: string) => {
     setActiveCategory(categoryId)
-    setMapQuery(query)
     setSelectedPlace(null) // Clear selection when category changes
   }
 
