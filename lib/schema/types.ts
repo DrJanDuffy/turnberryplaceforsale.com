@@ -128,6 +128,24 @@ export interface ContactPage {
   mainEntity?: Organization | Person | any
 }
 
+export interface SportsActivityLocation {
+  '@context': 'https://schema.org'
+  '@type': 'SportsActivityLocation'
+  '@id'?: string
+  name: string
+  description?: string
+  sport: string
+  url?: string
+  address?: PostalAddress
+  geo?: GeoCoordinates
+  openingHours?: string | string[]
+  amenityFeature?: Array<{
+    '@type': 'LocationFeatureSpecification'
+    name: string
+    value?: boolean | string
+  }>
+}
+
 export interface BreadcrumbListItem {
   '@type': 'ListItem'
   position: number
@@ -315,6 +333,7 @@ export type SchemaType =
   | RealEstateListing
   | Event
   | Person
+  | SportsActivityLocation
 
 // Graph format for multiple schemas on one page
 export interface SchemaGraph {

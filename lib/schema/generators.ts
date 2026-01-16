@@ -52,8 +52,8 @@ const BASE_ORGANIZATION: Organization = {
  */
 export function generateOrganizationSchema(overrides?: Partial<Organization>): Organization {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@context': 'https://schema.org' as const,
+    '@type': 'Organization' as const,
     '@id': `${BASE_URL}/#organization`,
     name: 'The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties',
     url: BASE_URL,
@@ -75,8 +75,8 @@ export function generateOrganizationSchema(overrides?: Partial<Organization>): O
  */
 export function generateRealEstateAgentSchema(overrides?: Partial<RealEstateAgent>): RealEstateAgent {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'RealEstateAgent',
+    '@context': 'https://schema.org' as const,
+    '@type': 'RealEstateAgent' as const,
     '@id': `${BASE_URL}/#agent`,
     name: 'Dr. Jan Duffy, REALTOR',
     alternateName: 'The Turnberry Place Team',
@@ -114,8 +114,8 @@ export function generateRealEstateAgentSchema(overrides?: Partial<RealEstateAgen
  */
 export function generateLocalBusinessSchema(overrides?: Partial<LocalBusiness>): LocalBusiness {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@context': 'https://schema.org' as const,
+    '@type': 'LocalBusiness' as const,
     '@id': `${BASE_URL}/#business`,
     name: 'The Turnberry Place Team',
     description:
@@ -144,8 +144,8 @@ export function generateLocalBusinessSchema(overrides?: Partial<LocalBusiness>):
  */
 export function generateWebSiteSchema(overrides?: Partial<WebSite>): WebSite {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
+    '@context': 'https://schema.org' as const,
+    '@type': 'WebSite' as const,
     '@id': `${BASE_URL}/#website`,
     name: 'Turnberry Place Las Vegas | Luxury Real Estate',
     url: BASE_URL,
@@ -170,8 +170,8 @@ export function generateWebSiteSchema(overrides?: Partial<WebSite>): WebSite {
  */
 export function generateBreadcrumbSchema(items: BreadcrumbItem[]): BreadcrumbList {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
+    '@context': 'https://schema.org' as const,
+    '@type': 'BreadcrumbList' as const,
     '@id': `${BASE_URL}/#breadcrumb`,
     itemListElement: items.map((item, index) => ({
       '@type': 'ListItem',
@@ -187,8 +187,8 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]): BreadcrumbLis
  */
 export function generateRealEstateListingSchema(listing: ListingData): RealEstateListing {
   const schema: RealEstateListing = {
-    '@context': 'https://schema.org',
-    '@type': 'RealEstateListing',
+    '@context': 'https://schema.org' as const,
+    '@type': 'RealEstateListing' as const,
     '@id': `${BASE_URL}${listing.url}#listing`,
     name: listing.name,
     description: listing.description,
@@ -228,8 +228,8 @@ export function generateRealEstateListingSchema(listing: ListingData): RealEstat
  */
 export function generateFAQSchema(faqs: { question: string; answer: string }[]): FAQPage {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
+    '@context': 'https://schema.org' as const,
+    '@type': 'FAQPage' as const,
     '@id': `${BASE_URL}/#faq`,
     mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
@@ -247,8 +247,8 @@ export function generateFAQSchema(faqs: { question: string; answer: string }[]):
  */
 export function generatePlaceSchema(place: PlaceData): Place {
   const schema: Place = {
-    '@context': 'https://schema.org',
-    '@type': 'Place',
+    '@context': 'https://schema.org' as const,
+    '@type': 'Place' as const,
     '@id': place.url ? `${BASE_URL}${place.url}#place` : `${BASE_URL}/#place`,
     name: place.name,
     description: place.description,
@@ -411,8 +411,8 @@ export function generateAggregateOfferSchema(
   const highPrice = priceMatch?.[1]?.replace(/[$,]/g, '') || '10000000'
 
   return {
-    '@context': 'https://schema.org',
-    '@type': 'AggregateOffer',
+    '@context': 'https://schema.org' as const,
+    '@type': 'AggregateOffer' as const,
     '@id': `${BASE_URL}/#aggregate-offer`,
     priceRange,
     priceCurrency: options?.priceCurrency || 'USD',
@@ -452,8 +452,8 @@ export function generateResidenceSchema(
   }
 ) {
   const schema: any = {
-    '@context': 'https://schema.org',
-    '@type': 'Residence',
+    '@context': 'https://schema.org' as const,
+    '@type': 'Residence' as const,
     '@id': options?.url ? `${BASE_URL}${options.url}#residence` : `${BASE_URL}/#residence`,
     name,
     description: options?.description,
@@ -548,8 +548,8 @@ export function generateSportsActivityLocationSchema(
   }
 ) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'SportsActivityLocation',
+    '@context': 'https://schema.org' as const,
+    '@type': 'SportsActivityLocation' as const,
     '@id': options?.url ? `${BASE_URL}${options.url}#sports-activity` : `${BASE_URL}/#sports-activity`,
     name,
     description: options?.description,
