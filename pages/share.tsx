@@ -395,7 +395,7 @@ export default function SharePage({ menus }: SharePageProps) {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </Layout>
   )
 }
