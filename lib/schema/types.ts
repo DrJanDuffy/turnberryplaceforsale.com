@@ -118,6 +118,16 @@ export interface WebSite {
   inLanguage?: string | string[]
 }
 
+export interface ContactPage {
+  '@context': 'https://schema.org'
+  '@type': 'ContactPage'
+  '@id'?: string
+  name: string
+  url: string
+  description?: string
+  mainEntity?: Organization | Person | any
+}
+
 export interface BreadcrumbListItem {
   '@type': 'ListItem'
   position: number
@@ -297,6 +307,7 @@ export type SchemaType =
   | RealEstateAgent
   | LocalBusiness
   | WebSite
+  | ContactPage
   | BreadcrumbList
   | ItemList
   | FAQPage

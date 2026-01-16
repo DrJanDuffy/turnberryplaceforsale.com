@@ -518,8 +518,8 @@ export function generateContactPageSchema(
   }
 ) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'ContactPage',
+    '@context': 'https://schema.org' as const,
+    '@type': 'ContactPage' as const,
     '@id': `${BASE_URL}${url}#contact-page`,
     name,
     description: options?.description,
