@@ -220,6 +220,14 @@ export interface Person {
   telephone?: string | string[]
   address?: PostalAddress
   sameAs?: string[]
+  additionalType?: string
+  identifier?: {
+    '@type': 'PropertyValue'
+    name: string
+    value: string
+  }
+  knowsAbout?: string[]
+  areaServed?: string | string[]
 }
 
 export interface ListingData {
