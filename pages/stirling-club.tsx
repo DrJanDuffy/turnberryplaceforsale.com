@@ -2,8 +2,18 @@ import { GetStaticPropsResult } from "next"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
-import { JsonLdSchema } from "components/json-ld-schema"
-import { BreadcrumbSchema } from "components/breadcrumb-schema"
+import { SEOHead } from "../components/seo/SEOHead"
+import { SchemaMarkup } from "../components/seo/SchemaMarkup"
+import { Breadcrumbs } from "../components/seo/Breadcrumbs"
+import {
+  generatePlaceSchema,
+  generateSportsActivityLocationSchema,
+} from "../lib/schema/generators"
+import { FAQSection } from "../components/seo/FAQSection"
+import { stirlingClubFAQs } from "../lib/faq-data"
+import { RelatedPages } from "../components/RelatedPages"
+import { BackToTop } from "../components/BackToTop"
+import { linkifyContent } from "../lib/utils/linkify"
 // ClientTestimonials and VIPNewsletterSignup available on homepage and /agent page
 import Image from "next/image"
 
@@ -12,13 +22,66 @@ interface StirlingClubPageProps extends LayoutProps {}
 export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
   return (
     <Layout menus={menus}>
+      {/* SEO Meta Tags */}
+      <SEOHead path="/stirling-club" />
+      
+      {/* Keep Meta component for backward compatibility */}
       <Meta
         title="The Stirling Club - Turnberry Place Las Vegas"
         description="The Stirling Club: private amenities for Turnberry Place residents near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call (702) 500-1971."
         path="/stirling-club"
       />
-      <JsonLdSchema type="property" />
-      <BreadcrumbSchema items={[{ name: 'Stirling Club', url: 'https://www.turnberryplaceforsale.com/stirling-club' }]} />
+      {/* JSON-LD Structured Data */}
+      {(() => {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
+        
+        const stirlingClubSchemas = [
+          generatePlaceSchema({
+            name: 'The Stirling Club at Turnberry Place',
+            description: '80,000-square-foot private membership facility exclusively for Turnberry Place residents. Features state-of-the-art fitness center, resort-style pools, tennis courts, spa services, multiple dining venues, business center, and social lounges.',
+            url: '/stirling-club',
+            amenityFeature: [
+              { '@type': 'LocationFeatureSpecification', name: 'Fitness Center', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Resort Pool', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Tennis Courts', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Spa', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Dining', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Business Center', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Cigar Bar', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Social Lounges', value: true },
+            ],
+            image: [
+              `${baseUrl}/images/turnberry/optimized/StirlingClub_CigarBar_View1.optimized.jpg`,
+              `${baseUrl}/images/turnberry/SterlingClubDinning.avif`,
+              `${baseUrl}/images/turnberry/sterlingclubpool-.jpeg`,
+            ],
+          }),
+          generateSportsActivityLocationSchema('The Stirling Club Fitness Center', 'Fitness', {
+            description: 'State-of-the-art fitness facility at The Stirling Club',
+            url: '/stirling-club#fitness',
+          }),
+          generateSportsActivityLocationSchema('The Stirling Club Tennis Courts', 'Tennis', {
+            description: 'Professional tennis courts at The Stirling Club',
+            url: '/stirling-club#tennis',
+          }),
+          generateSportsActivityLocationSchema('The Stirling Club Pool', 'Swimming', {
+            description: 'Resort-style pools at The Stirling Club',
+            url: '/stirling-club#pool',
+          }),
+        ]
+
+        return <SchemaMarkup schema={stirlingClubSchemas} key="stirling-club-schemas" />
+      })()}
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Stirling Club', url: '/stirling-club' },
+        ]}
+        className="container py-4"
+      />
+      
       <div className="card-content card-custom card-custom-03">
         <div className="container">
           <div className="row justify-content-center">
@@ -121,6 +184,20 @@ export default function StirlingClubPage({ menus }: StirlingClubPageProps) {
           </div>
         </div>
       </div>
+
+      {/* FAQ Section */}
+      <FAQSection
+        faqs={stirlingClubFAQs}
+        heading="Frequently Asked Questions About The Stirling Club"
+        description="Learn more about The Stirling Club's amenities, membership, and exclusive benefits for Turnberry Place residents."
+        className="bg-gray-50"
+      />
+
+      {/* Related Pages */}
+      <RelatedPages path="/stirling-club" />
+
+      {/* Back to Top Button */}
+      <BackToTop showAfter={400} />
 
       {/* Client Testimonials and VIP Newsletter - Available on homepage and /agent page */}
     </Layout>

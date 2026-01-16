@@ -2,8 +2,7 @@ import { GetStaticPropsResult } from "next"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
-import { JsonLdSchema } from "components/json-ld-schema"
-import { BreadcrumbSchema } from "components/breadcrumb-schema"
+import { SEOHead } from "../components/seo/SEOHead"
 import Link from "next/link"
 
 interface OpenHousePageProps extends LayoutProps {}
@@ -16,8 +15,29 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
         description="Open house and private showing info for Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call (702) 500-1971."
         path="/open-house"
       />
-      <JsonLdSchema type="property" />
-      <BreadcrumbSchema items={[{ name: 'Open House', url: 'https://www.turnberryplaceforsale.com/open-house' }]} />
+      {/* JSON-LD Structured Data */}
+      {(() => {
+        // Generate Event schema for private showings (general event, not specific date)
+        const openHouseSchema = generateEventSchema(
+          'Turnberry Place Private Showings',
+          new Date().toISOString(),
+          {
+            description: 'Schedule a private showing of Turnberry Place luxury condominiums. Available by appointment with Dr. Jan Duffy, your Turnberry Place neighbor and real estate expert.',
+            url: '/open-house',
+          }
+        )
+
+        return <SchemaMarkup schema={openHouseSchema} key="open-house-schema" />
+      })()}
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Open House', url: '/open-house' },
+        ]}
+        className="container py-4"
+      />
       <div
         className="card-content card-open-house"
         style={{
@@ -156,6 +176,12 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
           </div>
         </div>
       </div>
+
+      {/* Related Pages */}
+      <RelatedPages path="/open-house" />
+
+      {/* Back to Top Button */}
+      <BackToTop showAfter={400} />
     </Layout>
   )
 }

@@ -17,6 +17,10 @@ interface MLSPageProps extends LayoutProps {}
 export default function MLSPage({ menus }: MLSPageProps) {
   return (
     <Layout menus={menus}>
+      {/* SEO Meta Tags */}
+      <SEOHead path="/mls" />
+      
+      {/* Keep Meta component for backward compatibility */}
       <Meta
         title="Turnberry Place Las Vegas | MLS Property Listing"
         description="Turnberry Place luxury high-rise condos in Las Vegas, NV 89109. 4 luxury towers from $800,000 to $10M+. Exclusive Stirling Club amenities. Call (702) 500-1971."

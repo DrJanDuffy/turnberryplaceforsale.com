@@ -1,10 +1,9 @@
 # robots.txt for Turnberry Place Las Vegas
-# Allow all search engines to crawl and index
+# Updated for 2025 SEO best practices
 
+# Allow all search engines to crawl and index
 User-agent: *
 Allow: /
-
-# Disallow admin/private areas if any
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
@@ -13,8 +12,25 @@ Disallow: /visit-api
 # Allow images for Google Image Search
 Allow: /images/
 
-# Crawl-delay for respectful crawling (optional)
-# Crawl-delay: 1
+# Crawl-delay for politeness (optional)
+Crawl-delay: 1
 
-# Sitemap location (www is primary domain)
+# Block AI training crawlers (optional - remove if you want AI indexing)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Sitemaps
 Sitemap: https://www.turnberryplaceforsale.com/sitemap.xml
+Sitemap: https://www.turnberryplaceforsale.com/sitemap-images.xml

@@ -5,8 +5,12 @@ import { GetStaticPropsResult } from 'next'
 import { Layout, LayoutProps } from 'components/layout'
 import { getMenus } from 'lib/get-menus'
 import { Meta } from 'components/meta'
-import { JsonLdSchema } from 'components/json-ld-schema'
-import { BreadcrumbSchema } from 'components/breadcrumb-schema'
+import { SEOHead } from '../components/seo/SEOHead'
+import { FAQSection } from '../components/seo/FAQSection'
+import { floorPlansFAQs } from '../lib/faq-data'
+import { RelatedPages } from '../components/RelatedPages'
+import { BackToTop } from '../components/BackToTop'
+import { linkifyContent } from '../lib/utils/linkify'
 import { floorPlans, FloorPlan } from 'lib/floorPlans'
 import FloorPlanCard from 'components/FloorPlanCard'
 import FloorPlanFilters, { FilterState } from 'components/FloorPlanFilters'
@@ -127,13 +131,54 @@ export default function FloorPlansPage({ menus }: FloorPlansPageProps) {
         ogImageAlt="Turnberry Place Las Vegas luxury floor plans"
         path="/floor-plans"
       />
-      <JsonLdSchema type="property" />
-      <BreadcrumbSchema currentPageTitle="Floor Plans | Turnberry Place Las Vegas" />
-      
-      {/* SEO Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema, null, 2) }}
+      {/* JSON-LD Structured Data */}
+      {(() => {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
+        
+        // Convert floor plans to ItemList format
+        const floorPlanItems = floorPlans.map((plan) => ({
+          '@type': 'Product',
+          name: `Turnberry Place ${plan.name}`,
+          description: `${plan.beds} bedroom, ${plan.baths} bathroom luxury condo, ${plan.sqft} sq ft`,
+          floorSize: {
+            '@type': 'QuantitativeValue',
+            value: plan.sqftMin,
+            unitCode: 'SQF',
+          },
+          numberOfRooms: plan.beds,
+          numberOfBathroomsTotal: plan.baths,
+          image: `${baseUrl}${plan.image}`,
+          offers: {
+            '@type': 'Offer',
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              minPrice: plan.priceMin,
+              maxPrice: plan.priceMax,
+              priceCurrency: 'USD',
+            },
+          },
+        }))
+
+        const floorPlanSchema = generateItemListSchema(
+          'Turnberry Place Floor Plans',
+          floorPlanItems,
+          {
+            description: 'Available floor plans at Turnberry Place Las Vegas, ranging from 1,556 to 9,000+ sq ft with 1-4 bedrooms',
+            url: '/floor-plans',
+            numberOfItems: floorPlans.length,
+          }
+        )
+
+        return <SchemaMarkup schema={floorPlanSchema} key="floor-plans-schema" />
+      })()}
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Floor Plans', url: '/floor-plans' },
+        ]}
+        className="container py-4"
       />
 
       {/* Hero Section */}
@@ -199,6 +244,14 @@ export default function FloorPlansPage({ menus }: FloorPlansPageProps) {
         plans={comparingPlans}
         onRemove={handleRemoveFromComparison}
         onClear={handleClearComparison}
+      />
+
+      {/* FAQ Section */}
+      <FAQSection
+        faqs={floorPlansFAQs}
+        heading="Frequently Asked Questions About Floor Plans"
+        description="Common questions about Turnberry Place floor plans, sizes, configurations, and customization options."
+        className="bg-gray-50"
       />
 
       {/* Content Section */}

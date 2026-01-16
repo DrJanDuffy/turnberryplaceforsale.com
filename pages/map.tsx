@@ -13,6 +13,7 @@ import { DirectionsContactCTA } from "components/directions-contact-cta"
 import { placesData, type Place } from "lib/places-data"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
+import { SEOHead } from "../components/seo/SEOHead"
 import { MapPlaceSchema } from "components/map-place-schema"
 import { BreadcrumbSchema } from "components/breadcrumb-schema"
 

@@ -76,9 +76,9 @@ export function ExpandableTowerSections({ towers }: ExpandableTowerSectionsProps
                       {tower.number}
                     </span>
                     <div>
-                      <h3 className="h4 mb-1" style={{ fontWeight: 600 }}>
+                      <h2 className="h4 mb-1" style={{ fontWeight: 600 }} id={`tower-${tower.number}`}>
                         Tower {tower.number} - {tower.name}
-                      </h3>
+                      </h2>
                       <p className="text-muted mb-0" style={{ fontSize: '0.95rem' }}>
                         {tower.tagline}
                       </p>

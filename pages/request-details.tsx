@@ -7,8 +7,12 @@ import { CalendarDays, CheckCircle2, Phone } from "lucide-react"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
-import { JsonLdSchema } from "components/json-ld-schema"
-import { BreadcrumbSchema } from "components/breadcrumb-schema"
+import { SEOHead } from "../components/seo/SEOHead"
+import { SchemaMarkup } from "../components/seo/SchemaMarkup"
+import { Breadcrumbs } from "../components/seo/Breadcrumbs"
+import { generateContactPageSchema } from "../lib/schema/generators"
+import { RelatedPages } from "../components/RelatedPages"
+import { BackToTop } from "../components/BackToTop"
 import { LeadCaptureForm } from "components/lead-capture-form"
 // ClientTestimonials and VIPNewsletterSignup available on homepage and /agent page
 
@@ -26,40 +30,6 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
 
   const [showCalendly, setShowCalendly] = useState(false)
 
-  const realEstateListingSchema = useMemo(() => {
-    return {
-      "@context": "https://schema.org",
-      "@type": "RealEstateListing",
-      name: "Request Turnberry Place Pricing & Details",
-      url: "https://www.turnberryplaceforsale.com/request-details",
-      description:
-        "Request pricing and details for Turnberry Place Las Vegas luxury high-rise condos from $800K to $10M+. Schedule a private tour or call the office for immediate help.",
-      dateModified: new Date().toISOString(),
-      priceRange: "$800,000 - $10,000,000+",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: propertyAddress,
-        addressLocality: "Las Vegas",
-        addressRegion: "NV",
-        postalCode: "89109",
-        addressCountry: "US",
-      },
-      broker: {
-        "@type": "RealEstateAgent",
-        name: "Dr. Jan Duffy, REALTOR",
-        telephone: officePhoneTel,
-        identifier: {
-          "@type": "PropertyValue",
-          name: "Nevada Real Estate License",
-          value: "S.0197614.LLC",
-        },
-        memberOf: {
-          "@type": "Organization",
-          name: "Berkshire Hathaway HomeServices Nevada Properties",
-        },
-      },
-    }
-  }, [officePhoneTel, propertyAddress])
 
   // Optional reveal animations (respects reduced motion)
   useEffect(() => {
@@ -96,15 +66,27 @@ export default function RequestDetailsPage({ menus }: RequestDetailsPageProps) {
         description="Request pricing and details for Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call (702) 500-1971."
         path="/request-details"
       />
-      <Head>
-        <script
-          type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateListingSchema) }}
-        />
-      </Head>
-      <JsonLdSchema type="property" />
-      <BreadcrumbSchema items={[{ name: 'Request Details', url: 'https://www.turnberryplaceforsale.com/request-details' }]} />
+      {/* JSON-LD Structured Data */}
+      {(() => {
+        const contactPageSchema = generateContactPageSchema(
+          'Request Turnberry Place Pricing & Details',
+          '/request-details',
+          {
+            description: 'Request pricing and details for Turnberry Place Las Vegas luxury high-rise condos from $800K to $10M+. Schedule a private tour or call the office for immediate help.',
+          }
+        )
+
+        return <SchemaMarkup schema={contactPageSchema} key="contact-page-schema" />
+      })()}
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Request Details', url: '/request-details' },
+        ]}
+        className="container py-4"
+      />
       <div className="card-content request-details-page">
         {/* HERO */}
         <section className="request-details-hero" aria-label="Request pricing and details hero">

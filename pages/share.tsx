@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
+import { SEOHead } from "../components/seo/SEOHead"
 import { JsonLdSchema } from "components/json-ld-schema"
 import { BreadcrumbSchema } from "components/breadcrumb-schema"
 import DigitalCard from "components/digital-card"
@@ -68,6 +69,10 @@ export default function SharePage({ menus }: SharePageProps) {
 
   return (
     <Layout menus={menus}>
+      {/* SEO Meta Tags */}
+      <SEOHead path="/share" />
+      
+      {/* Keep Meta component for backward compatibility */}
       <Meta
         title="Share Turnberry Place | Digital Business Card & Schedule Tour"
         description="Share Turnberry Place Las Vegas with friends and family. Save Dr. Jan Duffy's contact info, schedule a tour, or send via text, email, or social media."

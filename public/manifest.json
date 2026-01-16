@@ -1,0 +1,28 @@
+{
+  "name": "Turnberry Place Las Vegas | Luxury High-Rise Condos",
+  "short_name": "Turnberry Place",
+  "description": "Luxury high-rise condos near the Las Vegas Strip. 4 towers, $800K-$10M+. Exclusive Stirling Club amenities.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a365d",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "https://cribflyer-publicsite.s3.amazonaws.com/favicon/256.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://cribflyer-publicsite.s3.amazonaws.com/favicon/256.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["real estate", "business"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

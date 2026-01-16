@@ -2,8 +2,10 @@ import { GetStaticPropsResult } from "next"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
-import { JsonLdSchema } from "components/json-ld-schema"
-import { BreadcrumbSchema } from "components/breadcrumb-schema"
+import { SEOHead } from "../components/seo/SEOHead"
+import { SchemaMarkup } from "../components/seo/SchemaMarkup"
+import { Breadcrumbs } from "../components/seo/Breadcrumbs"
+import { generatePlaceSchema } from "../lib/schema/generators"
 import { NeighborhoodSection } from "components/neighborhood-section"
 // QuickSearchWidget, FeaturedListingCard, VIPNewsletterSignup available on homepage
 import Image from "next/image"
@@ -28,8 +30,31 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
         description="Turnberry Place neighborhood guide near the Las Vegas Strip (by Wynn/Encore). Las Vegas Strip High Rise Condos for Sale. Call (702) 500-1971."
         path="/neighborhood"
       />
-      <JsonLdSchema type="property" />
-      <BreadcrumbSchema items={[{ name: 'Neighborhood', url: 'https://www.turnberryplaceforsale.com/neighborhood' }]} />
+      {/* JSON-LD Structured Data */}
+      {(() => {
+        const neighborhoodSchema = generatePlaceSchema({
+          name: 'Turnberry Place Neighborhood',
+          description: 'Prime location one block from the Las Vegas Strip, near Wynn Encore and Sahara resorts. Situated between the Strip\'s most iconic attractions while maintaining privacy and security through guard-gated entrance.',
+          url: '/neighborhood',
+          containedInPlace: {
+            '@type': 'City',
+            name: 'Las Vegas',
+            addressRegion: 'NV',
+            addressCountry: 'US',
+          },
+        })
+
+        return <SchemaMarkup schema={neighborhoodSchema} key="neighborhood-schema" />
+      })()}
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Neighborhood', url: '/neighborhood' },
+        ]}
+        className="container py-4"
+      />
       <div className="card-content card-areas">
         <div className="container">
           <div className="row justify-content-center">
@@ -191,6 +216,12 @@ export default function NeighborhoodPage({ menus }: NeighborhoodPageProps) {
       </div>
 
       {/* Featured Listings and VIP Newsletter - Available on homepage */}
+
+      {/* Related Pages */}
+      <RelatedPages path="/neighborhood" />
+
+      {/* Back to Top Button */}
+      <BackToTop showAfter={400} />
     </Layout>
   )
 }

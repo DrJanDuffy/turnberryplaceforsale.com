@@ -330,6 +330,14 @@ export function generatePersonSchema(
     telephone?: string | string[]
     address?: PostalAddress
     sameAs?: string[]
+    additionalType?: string
+    identifier?: {
+      '@type': 'PropertyValue'
+      name: string
+      value: string
+    }
+    knowsAbout?: string[]
+    areaServed?: string | string[]
   }
 ) {
   return {
@@ -348,5 +356,206 @@ export function generatePersonSchema(
       : ['+17025001971'],
     address: options?.address || BASE_ADDRESS,
     sameAs: options?.sameAs || [],
+    additionalType: options?.additionalType,
+    identifier: options?.identifier,
+    knowsAbout: options?.knowsAbout,
+    areaServed: options?.areaServed,
+  }
+}
+
+/**
+ * Generate ItemList schema (for collections like towers, floor plans, listings)
+ */
+export function generateItemListSchema(
+  name: string,
+  items: any[],
+  options?: {
+    description?: string
+    url?: string
+    numberOfItems?: number
+  }
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${BASE_URL}${options?.url || ''}#itemlist`,
+    name,
+    description: options?.description,
+    url: options?.url ? `${BASE_URL}${options.url}` : BASE_URL,
+    numberOfItems: options?.numberOfItems || items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: item,
+    })),
+  }
+}
+
+/**
+ * Generate AggregateOffer schema (for price ranges)
+ */
+export function generateAggregateOfferSchema(
+  priceRange: string,
+  options?: {
+    priceCurrency?: string
+    availability?: string
+    itemCondition?: string
+    offerCount?: number
+  }
+) {
+  // Parse price range (e.g., "$800,000 - $10,000,000+")
+  const priceMatch = priceRange.match(/\$?([\d,]+)/g)
+  const lowPrice = priceMatch?.[0]?.replace(/[$,]/g, '') || '800000'
+  const highPrice = priceMatch?.[1]?.replace(/[$,]/g, '') || '10000000'
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AggregateOffer',
+    '@id': `${BASE_URL}/#aggregate-offer`,
+    priceRange,
+    priceCurrency: options?.priceCurrency || 'USD',
+    lowPrice,
+    highPrice,
+    availability: options?.availability || 'https://schema.org/InStock',
+    itemCondition: options?.itemCondition || 'https://schema.org/NewCondition',
+    offerCount: options?.offerCount,
+  }
+}
+
+/**
+ * Generate Residence schema (for individual towers or properties)
+ */
+export function generateResidenceSchema(
+  name: string,
+  options?: {
+    description?: string
+    url?: string
+    numberOfRooms?: string | number
+    numberOfBedroomsTotal?: string | number
+    numberOfBathroomsTotal?: string | number
+    yearBuilt?: number
+    numberOfFloors?: number
+    floorSize?: {
+      value: number | string
+      unitCode?: string
+    }
+    amenityFeature?: Array<{
+      '@type': 'LocationFeatureSpecification'
+      name: string
+      value?: boolean | string
+    }>
+    image?: string | string[]
+    address?: PostalAddress
+    geo?: GeoCoordinates
+  }
+) {
+  const schema: any = {
+    '@context': 'https://schema.org',
+    '@type': 'Residence',
+    '@id': options?.url ? `${BASE_URL}${options.url}#residence` : `${BASE_URL}/#residence`,
+    name,
+    description: options?.description,
+    address: options?.address || BASE_ADDRESS,
+    geo: options?.geo || BASE_GEO,
+  }
+
+  if (options?.url) {
+    schema.url = `${BASE_URL}${options.url}`
+  }
+
+  if (options?.numberOfRooms) {
+    schema.numberOfRooms = options.numberOfRooms
+  }
+
+  if (options?.numberOfBedroomsTotal) {
+    schema.numberOfBedroomsTotal = options.numberOfBedroomsTotal
+  }
+
+  if (options?.numberOfBathroomsTotal) {
+    schema.numberOfBathroomsTotal = options.numberOfBathroomsTotal
+  }
+
+  if (options?.yearBuilt) {
+    schema.yearBuilt = options.yearBuilt
+  }
+
+  if (options?.numberOfFloors) {
+    schema.numberOfFloors = options.numberOfFloors
+  }
+
+  if (options?.floorSize) {
+    schema.floorSize = {
+      '@type': 'QuantitativeValue',
+      value: options.floorSize.value,
+      unitCode: options.floorSize.unitCode || 'SQM',
+    }
+  }
+
+  if (options?.amenityFeature) {
+    schema.amenityFeature = options.amenityFeature
+  }
+
+  if (options?.image) {
+    schema.image = Array.isArray(options.image)
+      ? options.image.map((img) => (img.startsWith('http') ? img : `${BASE_URL}${img}`))
+      : [options.image.startsWith('http') ? options.image : `${BASE_URL}${options.image}`]
+  }
+
+  return schema
+}
+
+/**
+ * Generate ContactPage schema
+ */
+export function generateContactPageSchema(
+  name: string,
+  url: string,
+  options?: {
+    description?: string
+    mainEntity?: any
+  }
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${BASE_URL}${url}#contact-page`,
+    name,
+    description: options?.description,
+    url: `${BASE_URL}${url}`,
+    mainEntity: options?.mainEntity || generateOrganizationSchema(),
+  }
+}
+
+/**
+ * Generate SportsActivityLocation schema (for fitness, tennis, pool facilities)
+ */
+export function generateSportsActivityLocationSchema(
+  name: string,
+  sport: string,
+  options?: {
+    description?: string
+    url?: string
+    address?: PostalAddress
+    geo?: GeoCoordinates
+    openingHours?: string | string[]
+    amenityFeature?: Array<{
+      '@type': 'LocationFeatureSpecification'
+      name: string
+      value?: boolean | string
+    }>
+  }
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SportsActivityLocation',
+    '@id': options?.url ? `${BASE_URL}${options.url}#sports-activity` : `${BASE_URL}/#sports-activity`,
+    name,
+    description: options?.description,
+    sport,
+    url: options?.url ? `${BASE_URL}${options.url}` : BASE_URL,
+    address: options?.address || BASE_ADDRESS,
+    geo: options?.geo || BASE_GEO,
+    openingHours: options?.openingHours,
+    amenityFeature: options?.amenityFeature,
   }
 }

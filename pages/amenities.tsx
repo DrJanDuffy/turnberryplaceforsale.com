@@ -23,8 +23,13 @@ import {
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
-import { JsonLdSchema } from "components/json-ld-schema"
-import { BreadcrumbSchema } from "components/breadcrumb-schema"
+import { SEOHead } from "../components/seo/SEOHead"
+import { SchemaMarkup } from "../components/seo/SchemaMarkup"
+import { Breadcrumbs } from "../components/seo/Breadcrumbs"
+import { generatePlaceSchema } from "../lib/schema/generators"
+import { RelatedPages } from "../components/RelatedPages"
+import { BackToTop } from "../components/BackToTop"
+import { linkifyContent } from "../lib/utils/linkify"
 
 const officePhoneDisplay = "(702) 500-1971"
 const officePhoneTel = "+17025001971"
@@ -120,6 +125,10 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
 
   return (
     <Layout menus={menus}>
+      {/* SEO Meta Tags */}
+      <SEOHead path="/amenities" />
+      
+      {/* Keep Meta component for backward compatibility */}
       <Meta
         title="Turnberry Place Amenities | Stirling Club Las Vegas"
         description="Turnberry Place amenities include the 80,000 sqft Stirling Club with pools, spa, fitness, tennis, and dining. Guard-gated luxury living near the Las Vegas Strip. Call (702) 500-1971."
@@ -136,8 +145,45 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
         />
       </Head>
 
-      <JsonLdSchema type="property" />
-      <BreadcrumbSchema items={[{ name: 'Amenities', url: 'https://www.turnberryplaceforsale.com/amenities' }]} />
+      {/* JSON-LD Structured Data */}
+      {(() => {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
+        
+        const amenitiesSchema = generatePlaceSchema({
+          name: 'Turnberry Place Amenities',
+          description: 'Comprehensive amenities at Turnberry Place luxury condominium community including guard-gated security, 24-hour concierge, valet parking, and exclusive access to The Stirling Club\'s 80,000-square-foot private facility.',
+          url: '/amenities',
+          amenityFeature: [
+            { '@type': 'LocationFeatureSpecification', name: 'Guard Gated', value: true },
+            { '@type': 'LocationFeatureSpecification', name: 'Gym', value: true },
+            { '@type': 'LocationFeatureSpecification', name: 'Pool', value: true },
+            { '@type': 'LocationFeatureSpecification', name: 'Tennis', value: true },
+            { '@type': 'LocationFeatureSpecification', name: 'Spa', value: true },
+            { '@type': 'LocationFeatureSpecification', name: 'Concierge', value: true },
+            { '@type': 'LocationFeatureSpecification', name: 'Valet', value: true },
+            { '@type': 'LocationFeatureSpecification', name: '24-Hour Security', value: true },
+            { '@type': 'LocationFeatureSpecification', name: 'The Stirling Club', value: true },
+            { '@type': 'LocationFeatureSpecification', name: 'Private Elevator Access', value: true },
+            { '@type': 'LocationFeatureSpecification', name: 'City Views', value: true },
+            { '@type': 'LocationFeatureSpecification', name: 'Mountain Views', value: true },
+          ],
+          image: [
+            `${baseUrl}/images/turnberry/sterlingclubpoolwithpeople.jpeg`,
+            `${baseUrl}/images/turnberry/optimized/StirlingClub_CigarBar_View1.optimized.jpg`,
+          ],
+        })
+
+        return <SchemaMarkup schema={amenitiesSchema} key="amenities-schema" />
+      })()}
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Amenities', url: '/amenities' },
+        ]}
+        className="container py-4"
+      />
 
       <div className="amenities-page">
         {/* HERO */}
@@ -553,6 +599,12 @@ export default function AmenitiesPage({ menus }: AmenitiesPageProps) {
           </div>
         </section>
       </div>
+
+      {/* Related Pages */}
+      <RelatedPages path="/amenities" />
+
+      {/* Back to Top Button */}
+      <BackToTop showAfter={400} />
     </Layout>
   )
 }

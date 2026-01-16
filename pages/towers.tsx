@@ -8,8 +8,18 @@ import { SharedAmenitiesSection } from "components/shared-amenities-section"
 import { TowersCTASection } from "components/towers-cta-section"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
-import { TowersSchema } from "components/towers-schema"
-import { BreadcrumbSchema } from "components/breadcrumb-schema"
+import { SEOHead } from "../components/seo/SEOHead"
+import { SchemaMarkup } from "../components/seo/SchemaMarkup"
+import { Breadcrumbs } from "../components/seo/Breadcrumbs"
+import {
+  generateItemListSchema,
+  generateResidenceSchema,
+} from "../lib/schema/generators"
+import { FAQSection } from "../components/seo/FAQSection"
+import { towersFAQs } from "../lib/faq-data"
+import { RelatedPages } from "../components/RelatedPages"
+import { BackToTop } from "../components/BackToTop"
+import { linkifyContent } from "../lib/utils/linkify"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -19,6 +29,10 @@ interface TowersPageProps extends LayoutProps {}
 export default function TowersPage({ menus }: TowersPageProps) {
   return (
     <Layout menus={menus}>
+      {/* SEO Meta Tags */}
+      <SEOHead path="/towers" />
+      
+      {/* Keep Meta component for backward compatibility (can be removed later) */}
       <Meta
         title="Turnberry Place Towers | Las Vegas Luxury High-Rise Condos"
         description="Explore four luxury towers at Turnberry Place Las Vegas. Compare Tower 1-4 features, views, and prices. Starting from $800K. Call (702) 500-1971."
@@ -26,8 +40,100 @@ export default function TowersPage({ menus }: TowersPageProps) {
         ogImageAlt="Turnberry Place towers and surrounding Las Vegas views"
         path="/towers"
       />
-      <TowersSchema />
-      <BreadcrumbSchema currentPageTitle="Turnberry Place Towers | Las Vegas Luxury High-Rise Condos" />
+      {/* JSON-LD Structured Data */}
+      {(() => {
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.turnberryplaceforsale.com'
+        
+        // Generate Residence schemas for each tower
+        const towerResidences = [
+          generateResidenceSchema('Turnberry Place Tower 1', {
+            description: 'The original Turnberry Place tower, completed in 2000. 38 stories with direct Stirling Club access. Size range: 1,200 - 4,000 sq ft. Starting from $800K.',
+            url: '/towers#tower-1',
+            numberOfFloors: 38,
+            yearBuilt: 2000,
+            numberOfBedroomsTotal: '1-4',
+            numberOfBathroomsTotal: '1-3',
+            floorSize: { value: '1,200-4,000', unitCode: 'SQM' },
+            amenityFeature: [
+              { '@type': 'LocationFeatureSpecification', name: 'Direct Stirling Club Access', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Concierge Service', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Private Elevator Access', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Guard-Gated Security', value: true },
+            ],
+            image: [`${baseUrl}/images/turnberry/Turnberry_Place_For_Sale.jpg`],
+          }),
+          generateResidenceSchema('Turnberry Place Tower 2', {
+            description: 'The spacious tower, completed in 2001. 45 stories with largest floor plans and spectacular Strip views. Size range: 1,500 - 5,000 sq ft. Starting from $1.2M.',
+            url: '/towers#tower-2',
+            numberOfFloors: 45,
+            yearBuilt: 2001,
+            numberOfBedroomsTotal: '2-4',
+            numberOfBathroomsTotal: '2-4',
+            floorSize: { value: '1,500-5,000', unitCode: 'SQM' },
+            amenityFeature: [
+              { '@type': 'LocationFeatureSpecification', name: 'Stirling Club Access', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Enhanced Concierge', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Strip Views', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Largest Floor Plans', value: true },
+            ],
+            image: [`${baseUrl}/images/turnberry/turnberry-tower-nice-view.jpg`],
+          }),
+          generateResidenceSchema('Turnberry Place Tower 3', {
+            description: 'The modern classic, completed in 2002. 45 stories with contemporary design and desert-inspired aesthetic. Size range: 1,500 - 5,000 sq ft. Starting from $1.2M.',
+            url: '/towers#tower-3',
+            numberOfFloors: 45,
+            yearBuilt: 2002,
+            numberOfBedroomsTotal: '2-4',
+            numberOfBathroomsTotal: '2-4',
+            floorSize: { value: '1,500-5,000', unitCode: 'SQM' },
+            amenityFeature: [
+              { '@type': 'LocationFeatureSpecification', name: 'Stirling Club Access', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Enhanced Concierge', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Spacious Terraces', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Modern Finishes', value: true },
+            ],
+            image: [`${baseUrl}/images/turnberry/turnberry-tower-south-view.jpeg`],
+          }),
+          generateResidenceSchema('Turnberry Place Tower 4', {
+            description: 'The crown jewel, completed in 2005. 45 stories with ultimate luxury penthouses and highest ceilings. Size range: 2,000 - 8,000+ sq ft. Starting from $3M.',
+            url: '/towers#tower-4',
+            numberOfFloors: 45,
+            yearBuilt: 2005,
+            numberOfBedroomsTotal: '3-5',
+            numberOfBathroomsTotal: '3-5',
+            floorSize: { value: '2,000-8,000+', unitCode: 'SQM' },
+            amenityFeature: [
+              { '@type': 'LocationFeatureSpecification', name: 'Stirling Club Access', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Premium Concierge', value: true },
+              { '@type': 'LocationFeatureSpecification', name: '12ft Ceilings', value: true },
+              { '@type': 'LocationFeatureSpecification', name: 'Largest Penthouses', value: true },
+            ],
+            image: [`${baseUrl}/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg`],
+          }),
+        ]
+
+        // Generate ItemList schema containing all towers
+        const itemListSchema = generateItemListSchema(
+          'Turnberry Place Towers',
+          towerResidences,
+          {
+            description: 'Four luxury high-rise towers at Turnberry Place Las Vegas, completed between 2000-2005, ranging from 38-45 stories with exclusive Stirling Club access.',
+            url: '/towers',
+            numberOfItems: 4,
+          }
+        )
+
+        return <SchemaMarkup schema={[itemListSchema, ...towerResidences]} key="towers-schemas" />
+      })()}
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Towers', url: '/towers' },
+        ]}
+        className="container py-4"
+      />
       
       {/* Hero Section */}
       <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
@@ -49,6 +155,7 @@ export default function TowersPage({ menus }: TowersPageProps) {
         {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-20 text-center">
           <h1 
+            id="towers-heading"
             className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4" 
             style={{ 
               fontFamily: 'Cinzel, serif',
@@ -56,7 +163,7 @@ export default function TowersPage({ menus }: TowersPageProps) {
               letterSpacing: '0.02em'
             }}
           >
-            Four Towers. One Iconic Address.
+            Turnberry Place Las Vegas - Four Luxury High-Rise Towers
           </h1>
           <p 
             className="text-xl md:text-2xl mb-6 max-w-2xl mx-auto"
@@ -365,6 +472,20 @@ export default function TowersPage({ menus }: TowersPageProps) {
 
       {/* Conversion CTA Section */}
       <TowersCTASection />
+
+      {/* FAQ Section */}
+      <FAQSection
+        faqs={towersFAQs}
+        heading="Frequently Asked Questions About Turnberry Place Towers"
+        description="Learn about the differences between towers, views, amenities, and which tower might be right for you."
+        className="bg-gray-50"
+      />
+
+      {/* Related Pages */}
+      <RelatedPages path="/towers" />
+
+      {/* Back to Top Button */}
+      <BackToTop showAfter={400} />
 
       {/* Quick Search and Featured Listings - Available on homepage and /available-condos */}
     </Layout>

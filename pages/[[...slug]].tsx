@@ -31,6 +31,9 @@ import { PropertyGrid } from "components/property-grid"
 import { VIPNewsletterSignup } from "components/vip-newsletter-signup"
 import { LuxuryAmenitiesGrid } from "components/luxury-amenities-grid"
 import { LeadCaptureForm } from "components/lead-capture-form"
+import { SEOHead } from "../components/seo/SEOHead"
+import { FAQSection } from "../components/seo/FAQSection"
+import { homepageFAQs } from "../lib/faq-data"
 // Components moved to other pages:
 // WhyWorkWithUs, ClientTestimonials, PowerOfNumbers, InTheMedia → /agent page
 import { FeaturedListingCard } from "components/featured-listing-card"
@@ -676,6 +679,20 @@ function HomePageContent() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection
+        faqs={homepageFAQs}
+        heading="Frequently Asked Questions About Turnberry Place"
+        description="Get answers to common questions about Turnberry Place luxury condominiums, amenities, pricing, and more."
+        className="bg-gray-50"
+      />
+
+      {/* Related Pages */}
+      <RelatedPages path="/" />
+
+      {/* Back to Top Button */}
+      <BackToTop showAfter={400} />
     </>
   )
 }

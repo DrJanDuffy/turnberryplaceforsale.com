@@ -2,8 +2,15 @@ import { GetStaticPropsResult } from "next"
 import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
-import { JsonLdSchema } from "components/json-ld-schema"
-import { BreadcrumbSchema } from "components/breadcrumb-schema"
+import { SEOHead } from "../components/seo/SEOHead"
+import { SchemaMarkup } from "../components/seo/SchemaMarkup"
+import { Breadcrumbs } from "../components/seo/Breadcrumbs"
+import { generateRealEstateListingSchema } from "../lib/schema/generators"
+import { FAQSection } from "../components/seo/FAQSection"
+import { availableCondosFAQs } from "../lib/faq-data"
+import { RelatedPages } from "../components/RelatedPages"
+import { BackToTop } from "../components/BackToTop"
+import { linkifyContent } from "../lib/utils/linkify"
 // VIPNewsletterSignup available on homepage
 import Script from "next/script"
 import Link from "next/link"
@@ -13,6 +20,10 @@ interface AvailableCondosPageProps extends LayoutProps {}
 export default function AvailableCondosPage({ menus }: AvailableCondosPageProps) {
   return (
     <Layout menus={menus}>
+      {/* SEO Meta Tags */}
+      <SEOHead path="/available-condos" />
+      
+      {/* Keep Meta component for backward compatibility */}
       <Meta
         title="Turnberry Place Condos for Sale | Las Vegas"
         description="Browse available Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call (702) 500-1971."
@@ -20,8 +31,33 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
         ogImageAlt="Turnberry Place condos for sale in Las Vegas"
         path="/available-condos"
       />
-      <JsonLdSchema type="property" propertyPrice="$800,000 - $10,000,000+" />
-      <BreadcrumbSchema items={[{ name: 'Available Condos', url: 'https://www.turnberryplaceforsale.com/available-condos' }]} />
+      {/* JSON-LD Structured Data */}
+      {(() => {
+        const listingSchema = generateRealEstateListingSchema({
+          name: 'Available Turnberry Place Condos',
+          description: 'Browse available luxury condominiums for sale at Turnberry Place Las Vegas, featuring one to four bedroom residences ranging from approximately $800,000 to over $10 million. Each available residence offers premium finishes, stunning views, and exclusive access to The Stirling Club\'s world-class amenities.',
+          url: '/available-condos',
+          priceRange: '$800,000 - $10,000,000+',
+          bedrooms: '1-4',
+          bathrooms: '1-4',
+          image: [
+            'https://www.turnberryplaceforsale.com/images/turnberry/condos_for_sale_Turnberry_Place.jpg',
+            'https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg',
+          ],
+          dateModified: new Date().toISOString(),
+        })
+
+        return <SchemaMarkup schema={listingSchema} key="listings-schema" />
+      })()}
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Available Condos', url: '/available-condos' },
+        ]}
+        className="container py-4"
+      />
       
       {/* Quick Search Widget - Keep on this page as it's relevant */}
 
@@ -121,6 +157,18 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
                 </a>
               </div>
               </div>
+            </div>
+          </div>
+
+          {/* FAQ Section */}
+          <div className="row mt-5">
+            <div className="col-12">
+              <FAQSection
+                faqs={availableCondosFAQs}
+                heading="Frequently Asked Questions About Available Condos"
+                description="Common questions about Turnberry Place listings, availability, rental policies, and HOA fees."
+                className="bg-white"
+              />
             </div>
           </div>
           

@@ -1,4 +1,6 @@
 import { GetServerSideProps } from 'next'
+import fs from 'fs'
+import path from 'path'
 
 // Ensure www is always used as primary domain
 const baseUrl = (() => {
@@ -10,24 +12,95 @@ const baseUrl = (() => {
   return envUrl.replace(/\/$/, '') // Remove trailing slash
 })()
 
-// All static pages - ensure no trailing slashes
-const staticPages = [
-  '',
-  '/price-features',
-  '/towers',
-  '/amenities',
-  '/photos',
-  '/map',
-  '/open-house',
-  '/request-details',
-  '/agent',
-  '/available-condos',
-  '/floor-plans',
-  '/share',
-  '/stirling-club',
-  '/neighborhood',
-  '/accessibility',
-  '/mls',
+// Enhanced sitemap with priorities and change frequencies
+interface SitemapPage {
+  path: string
+  priority: string
+  changefreq: string
+  lastmod?: string
+}
+
+const staticPages: SitemapPage[] = [
+  {
+    path: '',
+    priority: '1.0',
+    changefreq: 'weekly',
+  },
+  {
+    path: '/available-condos',
+    priority: '0.9',
+    changefreq: 'daily',
+  },
+  {
+    path: '/towers',
+    priority: '0.8',
+    changefreq: 'weekly',
+  },
+  {
+    path: '/stirling-club',
+    priority: '0.8',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/price-features',
+    priority: '0.8',
+    changefreq: 'weekly',
+  },
+  {
+    path: '/floor-plans',
+    priority: '0.7',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/amenities',
+    priority: '0.7',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/neighborhood',
+    priority: '0.7',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/agent',
+    priority: '0.7',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/open-house',
+    priority: '0.7',
+    changefreq: 'weekly',
+  },
+  {
+    path: '/photos',
+    priority: '0.6',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/map',
+    priority: '0.6',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/request-details',
+    priority: '0.6',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/share',
+    priority: '0.4',
+    changefreq: 'monthly',
+  },
+  {
+    path: '/mls',
+    priority: '0.6',
+    changefreq: 'daily',
+  },
+  {
+    path: '/accessibility',
+    priority: '0.3',
+    changefreq: 'yearly',
+  },
 ]
 
 function generateSiteMap() {
@@ -39,18 +112,18 @@ function generateSiteMap() {
            xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
      ${staticPages
-       .map((path) => {
+       .map((page) => {
          // Ensure no trailing slashes in sitemap URLs
-         const cleanPath = path === '' ? '' : path.replace(/\/$/, '')
+         const cleanPath = page.path === '' ? '' : page.path.replace(/\/$/, '')
          const url = `${baseUrl}${cleanPath}`
-         const priority = path === '' ? '1.0' : '0.8'
-         const changefreq = path === '' ? 'daily' : 'weekly'
+         const lastmod = page.lastmod || today
+         
          return `
        <url>
            <loc>${url}</loc>
-           <lastmod>${today}</lastmod>
-           <changefreq>${changefreq}</changefreq>
-           <priority>${priority}</priority>
+           <lastmod>${lastmod}</lastmod>
+           <changefreq>${page.changefreq}</changefreq>
+           <priority>${page.priority}</priority>
        </url>
      `
        })
@@ -64,7 +137,7 @@ function SiteMap() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  // Generate the XML sitemap with the blog data
+  // Generate the XML sitemap with the page data
   const sitemap = generateSiteMap()
 
   res.setHeader('Content-Type', 'text/xml')
