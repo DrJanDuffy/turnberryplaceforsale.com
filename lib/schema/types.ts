@@ -218,6 +218,7 @@ export interface RealEstateListing {
   description?: string
   url: string
   dateModified?: string
+  datePosted?: string
   priceRange?: string
   address?: PostalAddress
   geo?: GeoCoordinates
@@ -290,6 +291,12 @@ export interface ListingData {
     unitCode?: string
   }
   dateModified?: string
+  datePosted?: string
+  offer?: {
+    price?: string | number
+    priceCurrency?: string
+    availability?: string
+  }
 }
 
 export interface PlaceData {

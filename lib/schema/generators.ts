@@ -200,6 +200,10 @@ export function generateRealEstateListingSchema(listing: ListingData): RealEstat
     broker: generateRealEstateAgentSchema(),
   }
 
+  if (listing.datePosted) {
+    schema.datePosted = listing.datePosted
+  }
+
   if (listing.image) {
     schema.image = Array.isArray(listing.image) ? listing.image : [listing.image]
   }
@@ -217,6 +221,16 @@ export function generateRealEstateListingSchema(listing: ListingData): RealEstat
       '@type': 'QuantitativeValue',
       value: listing.floorSize.value,
       unitCode: listing.floorSize.unitCode || 'SQM',
+    }
+  }
+
+  // Add Offer object if provided
+  if (listing.offer) {
+    schema.offers = {
+      '@type': 'Offer',
+      price: listing.offer.price,
+      priceCurrency: listing.offer.priceCurrency || 'USD',
+      availability: listing.offer.availability || 'https://schema.org/InStock',
     }
   }
 

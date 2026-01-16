@@ -45,6 +45,12 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
             'https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg',
           ],
           dateModified: new Date().toISOString(),
+          datePosted: new Date().toISOString(),
+          offer: {
+            price: '800000',
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
         })
 
         return <SchemaMarkup schema={listingSchema} key="listings-schema" />
