@@ -1,71 +1,18 @@
 import { GetStaticPropsResult } from "next"
 import { Layout, LayoutProps } from "components/layout"
-import { TowerSection } from "components/tower-section"
-// QuickSearchWidget and FeaturedListingCard available on homepage and /available-condos
+import { TowerCards } from "components/tower-cards"
+import { TowerComparisonTable } from "components/tower-comparison-table"
+import { ExpandableTowerSections } from "components/expandable-tower-sections"
+import { TowerViewsSection } from "components/tower-views-section"
+import { SharedAmenitiesSection } from "components/shared-amenities-section"
+import { TowersCTASection } from "components/towers-cta-section"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
-import { JsonLdSchema } from "components/json-ld-schema"
+import { TowersSchema } from "components/towers-schema"
 import { BreadcrumbSchema } from "components/breadcrumb-schema"
 import Link from "next/link"
+import Image from "next/image"
 
-const towers = [
-  {
-    number: 1,
-    title: "Tower 1 - Elegant High-Rise Living",
-    description:
-      "Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living, offering spacious residences with stunning views of the Las Vegas Strip and mountains. Completed in 2000, this 38-story tower features private elevator access, 24-hour security, and direct access to The Stirling Club's world-class amenities.",
-    features: [
-      "Private elevator access",
-      "24-hour security",
-      "Direct access to The Stirling Club",
-      "Stunning Strip and mountain views",
-    ],
-    year: 2000,
-    stories: 38,
-  },
-  {
-    number: 2,
-    title: "Tower 2 - Sophisticated Strip Views",
-    description:
-      "Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living. Built in 2001, this tower showcases larger floor plans, floor-to-ceiling windows, and premium finishes throughout. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club's resort-style amenities.",
-    features: [
-      "Larger floor plans",
-      "Floor-to-ceiling windows",
-      "Private balconies",
-      "Concierge services",
-    ],
-    year: 2001,
-    stories: 45,
-  },
-  {
-    number: 3,
-    title: "Tower 3 - Premium Desert Living",
-    description:
-      "The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs, spacious terraces, and sophisticated interior finishes. Residents experience the perfect blend of privacy and resort-style living.",
-    features: [
-      "Contemporary luxury design",
-      "Spacious terraces",
-      "Sophisticated interior finishes",
-      "Panoramic views",
-    ],
-    year: 2002,
-    stories: 45,
-  },
-  {
-    number: 4,
-    title: "Tower 4 - Ultimate Luxury Living",
-    description:
-      "As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views, premium amenities, and exceptional finishes. Residents enjoy the finest in desert living with full access to The Stirling Club.",
-    features: [
-      "Most refined residences",
-      "Unparalleled views",
-      "Premium amenities",
-      "Exceptional finishes",
-    ],
-    year: 2005,
-    stories: 45,
-  },
-]
 
 interface TowersPageProps extends LayoutProps {}
 
@@ -73,158 +20,346 @@ export default function TowersPage({ menus }: TowersPageProps) {
   return (
     <Layout menus={menus}>
       <Meta
-        title="Turnberry Place Towers | Las Vegas High-Rise"
-        description="Explore Turnberry Place's four towers (2000–2005) near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos and Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
-        ogImage="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry%20Tower%20South%20View.jpeg"
+        title="Turnberry Place Towers | Las Vegas Luxury High-Rise Condos"
+        description="Explore four luxury towers at Turnberry Place Las Vegas. Compare Tower 1-4 features, views, and prices. Starting from $800K. Call (702) 500-1971."
+        ogImage="https://www.turnberryplaceforsale.com/images/turnberry/turnberry-tower-south-view.jpeg"
         ogImageAlt="Turnberry Place towers and surrounding Las Vegas views"
       />
-      <JsonLdSchema type="property" />
-      <BreadcrumbSchema items={[{ name: 'Towers', url: 'https://www.turnberryplaceforsale.com/towers' }]} />
-      <div className="card-content card-prop-description">
+      <TowersSchema />
+      <BreadcrumbSchema currentPageTitle="Turnberry Place Towers | Las Vegas Luxury High-Rise Condos" />
+      
+      {/* Hero Section */}
+      <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/turnberry/turnberry-tower-south-view.jpeg"
+            alt="Turnberry Place four luxury towers near the Las Vegas Strip"
+            fill
+            priority
+            sizes="100vw"
+            quality={85}
+            className="object-cover"
+          />
+          {/* Overlay gradient - dark bottom to transparent top */}
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent z-10" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 relative z-20 text-center">
+          <h1 
+            className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4" 
+            style={{ 
+              fontFamily: 'Cinzel, serif',
+              textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)',
+              letterSpacing: '0.02em'
+            }}
+          >
+            Four Towers. One Iconic Address.
+          </h1>
+          <p 
+            className="text-xl md:text-2xl mb-6 max-w-2xl mx-auto"
+            style={{
+              color: 'rgba(255, 255, 255, 0.95)',
+              textShadow: '1px 1px 4px rgba(0, 0, 0, 0.5)'
+            }}
+          >
+            Discover your perfect residence at Turnberry Place
+          </p>
+          
+          {/* Quick Stats Row */}
+          <div 
+            className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-8"
+            style={{
+              color: 'rgba(255, 255, 255, 0.98)',
+              textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5)'
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <span 
+                className="text-2xl md:text-3xl font-bold" 
+                style={{ color: '#D4AF37', textShadow: '0 0 10px rgba(212, 175, 55, 0.3)' }}
+              >
+                4
+              </span>
+              <span className="text-lg md:text-xl">Towers</span>
+            </div>
+            <div className="hidden md:block" style={{ color: '#D4AF37' }}>|</div>
+            <div className="flex items-center gap-2">
+              <span 
+                className="text-2xl md:text-3xl font-bold" 
+                style={{ color: '#D4AF37', textShadow: '0 0 10px rgba(212, 175, 55, 0.3)' }}
+              >
+                38-45
+              </span>
+              <span className="text-lg md:text-xl">Stories</span>
+            </div>
+            <div className="hidden md:block" style={{ color: '#D4AF37' }}>|</div>
+            <div className="flex items-center gap-2">
+              <span 
+                className="text-2xl md:text-3xl font-bold" 
+                style={{ color: '#D4AF37', textShadow: '0 0 10px rgba(212, 175, 55, 0.3)' }}
+              >
+                1,200+
+              </span>
+              <span className="text-lg md:text-xl">Residences</span>
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              onClick={() => {
+                document.getElementById('towers-content')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="px-8 py-4 rounded-md font-medium text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+              style={{
+                backgroundColor: '#D4AF37',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#B8941F'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#D4AF37'
+              }}
+            >
+              Compare Towers
+            </button>
+            <Link
+              href="tel:+17025001971"
+              className="px-8 py-4 rounded-md font-medium text-white border-2 border-white transition-all duration-300 hover:bg-white hover:text-gray-900"
+            >
+              Call (702) 500-1971
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Tower Cards Section */}
+      <TowerCards
+        towers={[
+          {
+            number: 1,
+            completed: 2000,
+            stories: 38,
+            sizeRange: '1,200 - 4,000 sq ft',
+            priceRange: 'Starting $800K',
+            highlight: 'Direct Stirling Club Access',
+            bestFor: 'Entry to Turnberry lifestyle',
+            image: '/images/turnberry/Turnberry_Place_For_Sale.jpg',
+          },
+          {
+            number: 2,
+            completed: 2001,
+            stories: 45,
+            sizeRange: '1,500 - 5,000 sq ft',
+            priceRange: '$1.2M - $5M',
+            highlight: 'Largest Floor Plans',
+            bestFor: 'Space & Strip views',
+            image: '/images/turnberry/turnberry-tower-nice-view.jpg',
+          },
+          {
+            number: 3,
+            completed: 2002,
+            stories: 45,
+            sizeRange: '1,500 - 5,000 sq ft',
+            priceRange: '$1.2M - $5M',
+            highlight: 'Contemporary Design',
+            bestFor: 'Modern aesthetic lovers',
+            image: '/images/turnberry/turnberry-tower-south-view.jpeg',
+          },
+          {
+            number: 4,
+            completed: 2005,
+            stories: 45,
+            sizeRange: '2,000 - 8,000+ sq ft',
+            priceRange: '$3M - $10M+',
+            highlight: 'Ultimate Penthouses',
+            bestFor: 'Pinnacle luxury seekers',
+            image: '/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg',
+          },
+        ]}
+      />
+
+      {/* Tower Comparison Table */}
+      <TowerComparisonTable
+        towers={[
+          {
+            number: 1,
+            completed: 2000,
+            stories: 38,
+            minSize: '1,200 sf',
+            maxSize: '4,000 sf',
+            startingPrice: '$800K',
+            ceilingHeight: 'Standard',
+            stirlingAccess: 'Direct',
+            concierge: 'Yes',
+            bestViews: 'Sunrise',
+          },
+          {
+            number: 2,
+            completed: 2001,
+            stories: 45,
+            minSize: '1,500 sf',
+            maxSize: '5,000 sf',
+            startingPrice: '$1.2M',
+            ceilingHeight: 'Standard',
+            stirlingAccess: 'Yes',
+            concierge: 'Enhanced',
+            bestViews: 'Strip',
+          },
+          {
+            number: 3,
+            completed: 2002,
+            stories: 45,
+            minSize: '1,500 sf',
+            maxSize: '5,000 sf',
+            startingPrice: '$1.2M',
+            ceilingHeight: 'Standard',
+            stirlingAccess: 'Yes',
+            concierge: 'Enhanced',
+            bestViews: 'Desert',
+          },
+          {
+            number: 4,
+            completed: 2005,
+            stories: 45,
+            minSize: '2,000 sf',
+            maxSize: '8,000+ sf',
+            startingPrice: '$3M',
+            ceilingHeight: 'Up to 12ft',
+            stirlingAccess: 'Yes',
+            concierge: 'Premium',
+            bestViews: 'All',
+          },
+        ]}
+      />
+
+      {/* Expandable Tower Sections */}
+      <ExpandableTowerSections
+        towers={[
+          {
+            number: 1,
+            name: 'The Original',
+            tagline: 'Where Turnberry Place began',
+            heroImage: '/images/turnberry/Turnberry_Place_For_Sale.jpg',
+            stats: [
+              { label: 'Completed', value: '2000' },
+              { label: 'Stories', value: '38' },
+              { label: 'Size Range', value: '1,200 - 4,000 sf' },
+              { label: 'Starting Price', value: '$800K' },
+            ],
+            description:
+              'Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living in Las Vegas. Completed in 2000, this 38-story tower was the first to welcome residents to the Turnberry Place lifestyle, establishing the development\'s reputation for excellence.',
+            special: [
+              'Direct Stirling Club connection',
+              'Proven community',
+              'Excellent value',
+            ],
+            bestFor: 'First-time Turnberry buyers',
+          },
+          {
+            number: 2,
+            name: 'The Spacious One',
+            tagline: 'Room to breathe, views to inspire',
+            heroImage: '/images/turnberry/turnberry-tower-nice-view.jpg',
+            stats: [
+              { label: 'Completed', value: '2001' },
+              { label: 'Stories', value: '45' },
+              { label: 'Size Range', value: '1,500 - 5,000 sf' },
+              { label: 'Price Range', value: '$1.2M - $5M' },
+            ],
+            description:
+              'Rising 45 stories, Tower 2 delivers breathtaking views and refined luxury living with larger floor plans and premium finishes. Residents enjoy private balconies, concierge services, and exclusive access to The Stirling Club\'s resort-style amenities.',
+            special: [
+              'Largest floor plans',
+              'Enhanced concierge',
+              'Spectacular Strip views',
+            ],
+            bestFor: 'Families and entertainers',
+          },
+          {
+            number: 3,
+            name: 'The Modern Classic',
+            tagline: 'Contemporary design meets desert beauty',
+            heroImage: '/images/turnberry/turnberry-tower-south-view.jpeg',
+            stats: [
+              { label: 'Completed', value: '2002' },
+              { label: 'Stories', value: '45' },
+              { label: 'Size Range', value: '1,500 - 5,000 sf' },
+              { label: 'Price Range', value: '$1.2M - $5M' },
+            ],
+            description:
+              'The third tower of Turnberry Place stands 45 stories tall, offering contemporary luxury residences with panoramic views. Completed in 2002, Tower 3 features modern designs and spacious terraces that represent the perfect blend of privacy and resort-style living.',
+            special: [
+              'Modern finishes',
+              'Spacious terraces',
+              'Desert-inspired aesthetic',
+            ],
+            bestFor: 'Design-forward buyers',
+          },
+          {
+            number: 4,
+            name: 'The Crown Jewel',
+            tagline: 'The pinnacle of Las Vegas luxury',
+            heroImage: '/images/turnberry/turnberry-towers-las-vegas-nv-primary-photo.jpg',
+            stats: [
+              { label: 'Completed', value: '2005' },
+              { label: 'Stories', value: '45' },
+              { label: 'Size Range', value: '2,000 - 8,000+ sf' },
+              { label: 'Price Range', value: '$3M - $10M+' },
+            ],
+            description:
+              'As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living in Las Vegas. This 45-story masterpiece, completed in 2005, offers the most refined residences with unparalleled views and exceptional finishes that set new standards for luxury condominium living.',
+            special: [
+              'Highest ceilings (12ft)',
+              'Largest penthouses',
+              'Premium everything',
+            ],
+            bestFor: 'Ultimate luxury seekers',
+          },
+        ]}
+      />
+
+      {/* Tower Views Section */}
+      <TowerViewsSection />
+
+      {/* Shared Amenities Section */}
+      <SharedAmenitiesSection />
+
+      {/* Summary Section */}
+      <section id="towers-content" className="card-content py-5 bg-light">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 col-lg-10">
-              <div className="page-header">
-                <h1>Turnberry Place Towers | Las Vegas' Premier High-Rise Community</h1>
-                <p className="lead">
-                  Turnberry Place represents the pinnacle of luxury high-rise living in Las Vegas, featuring four distinct towers that have redefined upscale urban living since 2000. Each tower offers unique architectural features, premium amenities, and breathtaking views of the Las Vegas Strip, Red Rock Canyon, and the Spring Mountain Range. As a Las Vegas real estate expert with over 30 years of experience, I can attest that Turnberry Place stands as one of the most prestigious condominium communities in the Entertainment Capital of the World.
+              <div className="text-center mb-5">
+                <h2>Turnberry Place: Four Towers, One Vision</h2>
+                <p className="lead text-muted">
+                  Strategically positioned one block east of the Las Vegas Strip, Turnberry Place features four luxury towers (38-45 stories) completed between 2000-2005. Each tower offers unique value while sharing exclusive access to The Stirling Club's 80,000-square-foot private facility, 24-hour security, and concierge services.
                 </p>
               </div>
-
-              <div className="content-section">
-                <h2>Overview of Turnberry Place Towers</h2>
-                <p>
-                  The Turnberry Place development consists of four luxury towers strategically positioned just one block east of the Las Vegas Strip, between the Wynn Encore and Sahara resorts. These towers range from 38 to 45 stories, housing approximately 1,200 luxury residences combined. Each tower was completed in phases between 2000 and 2005, representing the evolution of luxury high-rise design in Las Vegas. The development's Art Deco influences and Miami-inspired architecture create a striking silhouette against the Las Vegas skyline, making it instantly recognizable to residents and visitors alike.
-                </p>
-                <p>
-                  What sets Turnberry Place apart from other luxury condominium developments in Las Vegas is its exclusive access to The Stirling Club, an 80,000-square-foot private membership facility. This world-class amenity, combined with 24-hour security, private elevator access, and concierge services, creates an unparalleled living experience that attracts discerning buyers from around the world. The development's guard-gated entrance and raised elevation provide both security and privacy, while maintaining immediate proximity to the Strip's most iconic attractions.
-                </p>
-              </div>
-
-              <div className="tower-section">
-                <h2>Tower 1 - Elegant High-Rise Living</h2>
-                <p>
-                  Turnberry Place Tower 1 represents the inaugural vision of luxury high-rise living in Las Vegas, setting the standard for what would become one of the city's most prestigious residential communities. Completed in 2000, this 38-story tower was the first to welcome residents to the Turnberry Place lifestyle, establishing the development's reputation for excellence in design, amenities, and service.
-                </p>
-                <h3>Architectural Features and Design</h3>
-                <p>
-                  Tower 1 features elegant Art Deco influences that pay homage to Las Vegas's golden era while incorporating modern luxury living standards. The tower's curved facade and symmetrical layout create visual interest from every angle, while the building's strategic positioning maximizes views of both the Strip and the surrounding mountains. Each residence in Tower 1 was designed with attention to detail, featuring premium finishes, spacious layouts, and private balconies that capitalize on Las Vegas's dramatic vistas.
-                </p>
-                <h3>Residence Features and Amenities</h3>
-                <p>
-                  Residences in Tower 1 range from approximately 1,200 to over 4,000 square feet, offering one to four bedrooms to accommodate various lifestyle needs. Each unit features private elevator access, ensuring complete privacy and convenience for residents. The tower's 24-hour security system, combined with keycard access and video surveillance, provides peace of mind that is essential for luxury living in an urban environment.
-                </p>
-                <h3>Direct Access to The Stirling Club</h3>
-                <p>
-                  One of Tower 1's most significant advantages is its direct access to The Stirling Club, allowing residents to enjoy world-class amenities without leaving the building. This 80,000-square-foot private club features a state-of-the-art fitness center, resort-style pools, tennis courts, spa services, and multiple dining venues. The club serves as the social hub of the Turnberry Place community, fostering connections among residents while providing an exclusive retreat from the bustling Strip below.
-                </p>
-                <h3>Views and Location Benefits</h3>
-                <p>
-                  Tower 1 residents enjoy stunning views of the Las Vegas Strip, the Spring Mountain Range, and Red Rock Canyon. The tower's east-facing orientation provides spectacular sunrise views, while west-facing units capture breathtaking sunsets over the mountains. The building's elevated position, combined with floor-to-ceiling windows in many units, ensures that every residence maximizes its view potential.
-                </p>
-
-              </div>
-
-              <div className="tower-section">
-                <h2>Tower 2 - Sophisticated Strip Views</h2>
-                <p>
-                  Rising 45 stories above the Las Vegas landscape, Tower 2 represents the evolution of luxury living at Turnberry Place. Completed in 2001, this tower builds upon Tower 1's success while introducing larger floor plans, enhanced amenities, and even more sophisticated design elements. Tower 2's increased height provides residents with even more dramatic views of the Strip and surrounding areas.
-                </p>
-                <h3>Enhanced Floor Plans and Design</h3>
-                <p>
-                  Tower 2 showcases larger floor plans compared to Tower 1, with residences ranging from approximately 1,500 to over 5,000 square feet. The tower's design emphasizes open-concept living spaces, with floor-to-ceiling windows that flood interiors with natural light while framing spectacular views. Premium finishes throughout include hardwood flooring, granite countertops, high-end appliances, and custom cabinetry that reflect the sophisticated tastes of luxury homebuyers.
-                </p>
-                <h3>Private Balconies and Outdoor Living</h3>
-                <p>
-                  Many Tower 2 residences feature private balconies that extend the living space outdoors, allowing residents to enjoy Las Vegas's year-round pleasant weather while taking in panoramic views. These outdoor spaces range from intimate Juliet balconies to expansive terraces that accommodate outdoor dining and entertaining. The tower's design ensures that outdoor living is seamlessly integrated with indoor spaces, creating a true indoor-outdoor lifestyle experience.
-                </p>
-                <h3>Concierge Services and Resident Support</h3>
-                <p>
-                  Tower 2 residents benefit from comprehensive concierge services that handle everything from package delivery to restaurant reservations, transportation arrangements, and housekeeping coordination. The tower's dedicated concierge team understands the needs of luxury living and provides personalized service that enhances the resident experience. This level of service, combined with 24-hour security and valet parking, ensures that Tower 2 residents enjoy a truly maintenance-free lifestyle.
-                </p>
-                <h3>Exclusive Access to Resort-Style Amenities</h3>
-                <p>
-                  Like all Turnberry Place towers, Tower 2 residents enjoy exclusive access to The Stirling Club's resort-style amenities. The club's fitness center features state-of-the-art equipment, personal training services, and group fitness classes. The resort-style pools, both indoor and outdoor, provide year-round swimming opportunities, while the spa and beauty services center offers relaxation and rejuvenation. Multiple dining venues within the club eliminate the need to leave the property for exceptional culinary experiences.
-                </p>
-
-              </div>
-
-              <div className="tower-section">
-                <h2>Tower 3 - Premium Desert Living</h2>
-                <p>
-                  The third tower of Turnberry Place, completed in 2002, stands 45 stories tall and represents the perfect blend of contemporary luxury and desert-inspired design. Tower 3 offers contemporary luxury residences with panoramic views that showcase both the urban energy of the Strip and the natural beauty of the surrounding desert landscape. This tower appeals to buyers seeking modern design elements combined with the timeless luxury that defines Turnberry Place.
-                </p>
-                <h3>Contemporary Design Elements</h3>
-                <p>
-                  Tower 3 features modern designs that incorporate clean lines, minimalist aesthetics, and sophisticated color palettes inspired by the desert environment. The tower's architecture emphasizes natural light, with expansive windows and open floor plans that create bright, airy living spaces. Contemporary finishes include sleek cabinetry, modern fixtures, and designer appliances that appeal to buyers with contemporary tastes while maintaining the luxury standards expected at Turnberry Place.
-                </p>
-                <h3>Spacious Terraces and Outdoor Spaces</h3>
-                <p>
-                  Tower 3 residences feature spacious terraces that provide private outdoor retreats with stunning views. These terraces are designed for both relaxation and entertaining, with many units featuring outdoor kitchens, fire features, and comfortable seating areas. The tower's design maximizes outdoor living opportunities, recognizing that Las Vegas's climate allows for year-round enjoyment of outdoor spaces. These terraces become extensions of the interior living spaces, creating seamless transitions between indoor and outdoor environments.
-                </p>
-                <h3>Sophisticated Interior Finishes</h3>
-                <p>
-                  The interior finishes in Tower 3 reflect sophisticated design sensibilities, with attention to detail evident in every aspect of the residences. High ceilings, premium flooring materials, custom lighting, and designer fixtures create an atmosphere of refined luxury. The tower's design philosophy emphasizes quality over quantity, ensuring that every square foot is thoughtfully designed and finished to the highest standards. This approach results in residences that feel both luxurious and livable, meeting the needs of discerning buyers who value both aesthetics and functionality.
-                </p>
-                <h3>Privacy and Resort-Style Living</h3>
-                <p>
-                  Tower 3 residents experience the perfect blend of privacy and resort-style living, with the tower's design ensuring that each residence feels like a private retreat while providing access to world-class amenities. The building's security systems, private elevator access, and soundproofing create a sense of seclusion and tranquility, while The Stirling Club provides resort-style amenities just steps away. This combination of privacy and convenience is rare in urban high-rise living and represents one of Turnberry Place's most compelling value propositions.
-                </p>
-
-              </div>
-
-              <div className="tower-section">
-                <h2>Tower 4 - Ultimate Luxury Living</h2>
-                <p>
-                  As the crown jewel of Turnberry Place, Tower 4 represents the pinnacle of luxury high-rise living in Las Vegas. This 45-story masterpiece, completed in 2005, offers the most refined residences in the development, with unparalleled views, premium amenities, and exceptional finishes that set new standards for luxury condominium living. Tower 4 represents the culmination of lessons learned from the previous three towers, incorporating the best features while introducing new innovations in luxury living.
-                </p>
-                <h3>Most Refined Residences</h3>
-                <p>
-                  Tower 4's residences are the most refined in the Turnberry Place development, with floor plans ranging from approximately 2,000 to over 8,000 square feet. The tower's penthouses, located above the 30th floor, feature elevated ceilings up to 12 feet, creating dramatic interior spaces that feel both grand and intimate. These residences showcase the finest materials and finishes available, with custom details that reflect the sophisticated tastes of luxury buyers. The tower's design emphasizes both functionality and aesthetics, ensuring that every residence is both beautiful and practical for daily living.
-                </p>
-                <h3>Unparalleled Views and Vantage Points</h3>
-                <p>
-                  Tower 4's increased height and strategic positioning provide residents with unparalleled views that are simply not available in lower towers or other Las Vegas developments. The tower's west-facing units offer spectacular sunset views over Red Rock Canyon and the Spring Mountains, while east-facing units provide panoramic cityscapes stretching to downtown Las Vegas. South-facing units have direct sightlines to the Strip's glowing skyline, creating a front-row seat to Las Vegas's most iconic views. North-facing units offer expansive views of the Las Vegas Valley and the Sheep Mountain Range, showcasing the natural beauty that surrounds the city.
-                </p>
-                <h3>Premium Amenities and Services</h3>
-                <p>
-                  Tower 4 residents enjoy access to the most comprehensive suite of amenities and services in the Turnberry Place development. The tower's concierge services are enhanced compared to earlier towers, with dedicated staff members who provide personalized attention to residents' needs. Valet parking, limousine services, and housekeeping coordination are all included, ensuring that Tower 4 residents enjoy a truly maintenance-free lifestyle. The building's security systems are state-of-the-art, providing peace of mind while maintaining the convenience and accessibility that luxury living requires.
-                </p>
-                <h3>Exceptional Finishes and Custom Details</h3>
-                <p>
-                  The finishes in Tower 4 residences are exceptional, with no detail overlooked in the pursuit of luxury. Custom millwork, designer fixtures, premium appliances, and high-end materials create an atmosphere of refined elegance throughout each residence. The tower's design philosophy emphasizes both timeless elegance and contemporary sophistication, ensuring that residences remain desirable and relevant for years to come. This attention to detail and quality is evident in every aspect of Tower 4, from the building's common areas to the most intimate spaces within each residence.
-                </p>
-                <h3>Full Access to The Stirling Club</h3>
-                <p>
-                  Like all Turnberry Place residents, Tower 4 owners enjoy full access to The Stirling Club's extensive amenities. This 80,000-square-foot private club serves as the social and recreational hub of the community, providing residents with opportunities for fitness, relaxation, dining, and socializing without leaving the property. The club's recent renovations have enhanced its facilities, ensuring that they remain state-of-the-art and competitive with the best private clubs in Las Vegas. Tower 4 residents particularly appreciate the club's business center, which provides professional meeting spaces and conference facilities for those who work from home or need to conduct business while maintaining their luxury lifestyle.
-                </p>
-
-              </div>
-
-              <div className="content-section">
-                <h2>Comparing the Four Towers</h2>
-                <p>
-                  While each Turnberry Place tower offers luxury living, understanding the differences between them helps buyers make informed decisions. Tower 1, as the original tower, established the development's reputation and offers proven value with its established community and direct access to amenities. Tower 2 introduced larger floor plans and enhanced services, appealing to buyers who prioritize space and convenience. Tower 3's contemporary design attracts buyers with modern aesthetic preferences, while Tower 4 represents the ultimate in luxury living for those seeking the finest available.
-                </p>
-                <h3>Price Points and Value Propositions</h3>
-                <p>
-                  Each tower offers different value propositions based on completion date, features, and market positioning. Tower 1 residences typically represent excellent value for buyers seeking entry into the Turnberry Place community, with prices generally starting around $800,000. Tower 2 and Tower 3 residences command premium prices due to their larger floor plans and enhanced features, with prices ranging from $1.2 million to $5 million depending on size, floor level, and view quality. Tower 4 residences represent the pinnacle of pricing, with penthouses and high-floor units commanding prices from $3 million to over $10 million, reflecting their exceptional features, views, and finishes.
-                </p>
-              </div>
-
-              <div className="content-section">
-                <h2>Why Choose Turnberry Place Towers?</h2>
-                <p>
-                  Each tower offers unique value: Tower 1 provides excellent entry-level pricing, Tower 2-3 feature enhanced amenities and larger floor plans, and Tower 4 represents ultimate luxury. All towers share prime location, exclusive Stirling Club access, and comprehensive security.
-                </p>
-                <p>
-                  <strong>Ready to explore Turnberry Place towers?</strong> Contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a> to schedule a private showing or discuss your luxury condominium needs.
-                </p>
+              
+              <div className="row g-4 mb-5">
+                <div className="col-12 col-md-6">
+                  <h3 className="h5 mb-3">Prime Location</h3>
+                  <p className="text-muted">
+                    Situated between the Wynn Encore and Sahara resorts, Turnberry Place provides immediate proximity to the Strip's most iconic attractions while maintaining privacy and security through a guard-gated entrance.
+                  </p>
+                </div>
+                <div className="col-12 col-md-6">
+                  <h3 className="h5 mb-3">Exclusive Access</h3>
+                  <p className="text-muted">
+                    All residents enjoy full access to The Stirling Club, featuring state-of-the-art fitness facilities, resort-style pools, tennis courts, spa services, and multiple fine dining venues.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Conversion CTA Section */}
+      <TowersCTASection />
 
       {/* Quick Search and Featured Listings - Available on homepage and /available-condos */}
     </Layout>
