@@ -7,7 +7,7 @@ interface TowerCardData {
   completed: number
   stories: number
   sizeRange: string
-  priceRange: string
+  priceRange?: string
   highlight: string
   bestFor: string
   image?: string
