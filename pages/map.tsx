@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Layout, LayoutProps } from "components/layout"
 import { MapHeroSection } from "components/map-hero-section"
 import { CategoryFilterTabs } from "components/category-filter-tabs"
+import { PlaceCardsGrid } from "components/place-cards-grid"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
@@ -94,6 +95,9 @@ export default function MapPage({ menus }: MapPageProps) {
               </div>
             </div>
           </div>
+
+          {/* Place Cards Grid */}
+          <PlaceCardsGrid activeCategory={activeCategory} />
           
           <div className="row mt-5">
             <div className="col-12 col-lg-10 mx-auto">
