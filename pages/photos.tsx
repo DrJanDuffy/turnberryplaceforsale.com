@@ -1844,7 +1844,7 @@ export default function PhotosPage({ menus }: PhotosPageProps) {
               </p>
 
               <p className="mt-4">
-                <strong>Ready to see Turnberry Place in person?</strong> Contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a> to schedule a private showing.
+                <strong>Ready to see Turnberry Place in person?</strong> Contact the office at <a href="tel:+17025001971" className="text-decoration-underline">(702) 500-1971</a> to schedule a private showing.
               </p>
             </div>
           </div>

@@ -7,6 +7,8 @@ import {
 } from "@tanstack/react-query"
 import NProgress from "nprogress"
 import { syncDrupalPreviewRoutes } from "next-drupal"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import "nprogress/nprogress.css"
 
 import "styles/globals.css"
@@ -30,6 +32,8 @@ export default function App({ Component, pageProps }) {
     <QueryClientProvider client={queryClientRef.current}>
       <Hydrate state={pageProps.dehydratedState}>
         <Component {...pageProps} />
+        <Analytics />
+        <SpeedInsights />
       </Hydrate>
     </QueryClientProvider>
   )

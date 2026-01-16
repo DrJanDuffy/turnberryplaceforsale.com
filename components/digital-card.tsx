@@ -23,7 +23,7 @@ N:Duffy;Jan;Dr.;;
 ORG:Berkshire Hathaway HomeServices Nevada Properties
 TITLE:REALTOR - Turnberry Place Specialist
 TEL;TYPE=WORK,VOICE:(702) 500-1971
-EMAIL:drjanduffy@gmail.com
+EMAIL:DrDuffy@TurnberryPlaceForSale.com
 ADR;TYPE=WORK:;;2827 Paradise Rd;Las Vegas;NV;89109;USA
 URL:${siteUrl}
 NOTE:Turnberry Place Las Vegas Luxury Condo Specialist. License S.0197614.LLC

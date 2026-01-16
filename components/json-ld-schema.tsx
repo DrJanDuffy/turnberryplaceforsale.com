@@ -31,7 +31,7 @@ export function JsonLdSchema({
       'Turnberry Place specialist and Las Vegas luxury high-rise condo REALTOR. Licensed REALTOR (S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties.',
     url: baseUrl,
     telephone: ['+17025001971'],
-    email: 'jan@turnberryplaceforsale.com',
+    email: 'DrDuffy@TurnberryPlaceForSale.com',
     identifier: {
       '@type': 'PropertyValue',
       name: 'Nevada Real Estate License',

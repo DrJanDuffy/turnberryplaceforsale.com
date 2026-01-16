@@ -66,8 +66,8 @@ export function CalendlySection() {
               </div>
               <div className="mt-3 text-sm text-gray-600">
                 Prefer email?{" "}
-                <a className="underline" href="mailto:jan@turnberryplaceforsale.com">
-                  jan@turnberryplaceforsale.com
+                <a className="underline" href="mailto:DrDuffy@TurnberryPlaceForSale.com">
+                  DrDuffy@TurnberryPlaceForSale.com
                 </a>
               </div>
             </div>

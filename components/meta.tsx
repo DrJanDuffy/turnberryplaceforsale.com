@@ -80,7 +80,7 @@ export function Meta({
   const defaultDescription =
     "Turnberry Place luxury high-rise condos near the Las Vegas Strip. " +
     `${PRIMARY_KEYWORD_1} & ${PRIMARY_KEYWORD_2}. ` +
-    "Call 702-500-1971."
+    "Call (702) 500-1971."
   const effectiveDescription = description || defaultDescription
 
   // Note: meta keywords are not used by Google, but we keep them for completeness and other crawlers/tools.

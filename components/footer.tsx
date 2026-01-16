@@ -17,7 +17,7 @@ const organizationSchema = {
   logo: `${baseUrl}/images/turnberry/asset-19.jpg`,
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+1-702-500-1971',
+    telephone: '+17025001971',
     contactType: 'sales',
   },
 }
@@ -199,7 +199,7 @@ export function Footer({ links }: FooterProps) {
               </Link>
             </div>
             <div className="mt-3 font-size-80 text-muted">
-              Turnberry Place Las Vegas | 2827 Paradise Rd, Las Vegas, NV 89109 | Dr. Jan Duffy | <a href="tel:+17025001971" className="footer-phone-link" itemProp="telephone">702-500-1971</a>
+              Turnberry Place Las Vegas | 2827 Paradise Rd, Las Vegas, NV 89109 | Dr. Jan Duffy | <a href="tel:+17025001971" className="footer-phone-link" itemProp="telephone">(702) 500-1971</a>
             </div>
             <div className="mt-2 font-size-80 text-muted">
               Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}

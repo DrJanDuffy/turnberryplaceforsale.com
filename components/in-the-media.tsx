@@ -122,7 +122,7 @@ export function InTheMedia() {
           <div className="col-12 text-center">
             <p className="text-muted mb-0" style={{ fontSize: '1rem' }}>
               For media inquiries, please contact{" "}
-              <a href="tel:7025001971" className="text-primary font-weight-bold">(702) 500-1971</a>
+              <a href="tel:+17025001971" className="text-primary font-weight-bold">(702) 500-1971</a>
             </p>
           </div>
         </div>

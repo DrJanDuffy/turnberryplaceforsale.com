@@ -16,7 +16,7 @@ const heroSchema = {
   '@type': ['RealEstateAgent', 'LocalBusiness'],
   name: 'Dr. Jan Duffy - Turnberry Place Specialist',
   image: `${baseUrl}/images/turnberry/asset-1.jpg`,
-  telephone: '+1-702-500-1971',
+  telephone: '+17025001971',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '2827 Paradise Rd',

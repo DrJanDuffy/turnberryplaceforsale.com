@@ -78,7 +78,7 @@ export function ExitIntentPopup() {
         </p>
         <div className="d-flex flex-column gap-2">
           <a 
-            href="tel:7025001971" 
+            href="tel:+17025001971" 
             className="btn btn-primary btn-lg font-weight-bold"
             onClick={() => handleCTAClick('phone')}
           >

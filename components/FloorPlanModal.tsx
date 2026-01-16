@@ -158,7 +158,7 @@ export default function FloorPlanModal({ plan, isOpen, onClose }: FloorPlanModal
 
               <div className="grid grid-cols-2 gap-3">
                 <a
-                  href="tel:7025001971"
+                  href="tel:+17025001971"
                   className="flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white py-3 px-4 rounded-lg font-medium transition"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

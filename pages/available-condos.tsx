@@ -15,7 +15,7 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
     <Layout menus={menus}>
       <Meta
         title="Turnberry Place Condos for Sale | Las Vegas"
-        description="Browse available Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+        description="Browse available Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call (702) 500-1971."
         ogImage="https://www.turnberryplaceforsale.com/images/turnberry/condos_for_sale_Turnberry_Place.jpg"
         ogImageAlt="Turnberry Place condos for sale in Las Vegas"
         path="/available-condos"
@@ -116,7 +116,7 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
               </div>
               <div className="text-center mt-4">
                 <p className="mb-3">Interested in viewing these luxury condos?</p>
-                <a href="tel:7025001971" className="btn btn-custom btn-lg" title="Call 702-500-1971">
+                <a href="tel:+17025001971" className="btn btn-custom btn-lg" title="Call (702) 500-1971">
                   Call (702) 500-1971
                 </a>
               </div>
@@ -135,7 +135,7 @@ export default function AvailableCondosPage({ menus }: AvailableCondosPageProps)
                   The RealScout widget above displays current available properties with real-time information. Use the filters to find residences that match your preferences by price, size, or tower.
                 </p>
                 <p>
-                  <strong>Ready to view available condos?</strong> Contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a> to schedule a private showing or discuss available properties.
+                  <strong>Ready to view available condos?</strong> Contact the office at <a href="tel:+17025001971" className="text-decoration-underline">(702) 500-1971</a> to schedule a private showing or discuss available properties.
                 </p>
               </div>
             </div>

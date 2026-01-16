@@ -211,7 +211,7 @@ export function Navbar({ links, ...props }: NavbarProps) {
                   The Turnberry Place Team at Berkshire Hathaway HomeServices Nevada Properties
                 </div>
                 <div className="agent-phone">
-                  <a href="tel:7025001971" title="Office phone">(702) 500-1971</a>
+                  <a href="tel:+17025001971" title="Office phone">(702) 500-1971</a>
                 </div>
                 <div className="agent-address d-none d-md-block font-size-80 mt-1" style={{ fontSize: '0.75rem', opacity: 0.9 }}>
                   2827 Paradise Rd, Las Vegas, NV 89109

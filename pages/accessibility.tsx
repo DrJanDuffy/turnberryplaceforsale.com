@@ -42,7 +42,7 @@ export default function AccessibilityPage({ menus }: AccessibilityPageProps) {
             <a href="tel:+17025001971">(702) 500-1971</a>
             <br />
             <strong>Email:</strong>{" "}
-            <a href="mailto:jan@lasvegas55plushomes.com">jan@lasvegas55plushomes.com</a>
+            <a href="mailto:DrDuffy@TurnberryPlaceForSale.com">DrDuffy@TurnberryPlaceForSale.com</a>
           </p>
 
           <p className="mt-4 text-muted">

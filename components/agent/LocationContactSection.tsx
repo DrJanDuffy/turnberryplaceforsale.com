@@ -116,10 +116,10 @@ export function LocationContactSection() {
                 <div className="flex-1">
                   <div className="text-sm text-gray-600">Email</div>
                   <a
-                    href="mailto:jan@turnberryplaceforsale.com"
+                    href="mailto:DrDuffy@TurnberryPlaceForSale.com"
                     className="mt-1 block font-semibold text-gray-900 underline"
                   >
-                    jan@turnberryplaceforsale.com
+                    DrDuffy@TurnberryPlaceForSale.com
                   </a>
                   <p className="mt-3 text-gray-600">
                     <strong className="text-gray-900">Availability:</strong> I respond within 2 hours.

@@ -46,7 +46,7 @@ export default function NodePage({ node, menus }: NodePageProps) {
       <Layout menus={menus}>
         <Meta
           title="Turnberry Place High-Rise Condos | Near the Las Vegas Strip"
-          description="Turnberry Place luxury high-rise condos near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos & Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+          description="Turnberry Place luxury high-rise condos near the Las Vegas Strip. Turnberry Towers Las Vegas High Rise Condos & Las Vegas Strip High Rise Condos for Sale. Call (702) 500-1971."
           keywords="Turnberry Towers Las Vegas High Rise Condos, Las Vegas Strip High Rise Condos for Sale, Turnberry Place for sale, Turnberry Place condos, Las Vegas high-rise condos, luxury condos Las Vegas, Las Vegas Strip condos, Stirling Club, Dr. Jan Duffy REALTOR"
           ogImage="https://www.turnberryplaceforsale.com/images/turnberry/Turnberry_Place_For_Sale.jpg"
           ogImageAlt="Turnberry Place Las Vegas luxury high-rise condominium community"
@@ -266,7 +266,7 @@ function HomePageContent() {
                 <Link href="/available-condos" className="btn btn-primary btn-lg mr-2">
                   View All Listings
                 </Link>
-                <a href="tel:7025001971" className="btn btn-outline-primary btn-lg" title="Call 702-500-1971">
+                <a href="tel:+17025001971" className="btn btn-outline-primary btn-lg" title="Call (702) 500-1971">
                   Call (702) 500-1971
                 </a>
               </div>
@@ -403,7 +403,7 @@ function HomePageContent() {
                 <div className="col-12 text-center py-2">
                   <div className="py-2 d-flex flex-column flex-lg-row align-items-center justify-content-center" style={{ gap: '5px' }}>
                     <div className="mx-2" itemScope itemType="https://schema.org/LocalBusiness">
-                      <span>Office:</span> <a href="tel:7025001971" title="Phone office">(702) 500-1971</a>
+                      <span>Office:</span> <a href="tel:+17025001971" title="Phone office">(702) 500-1971</a>
                     </div>
                   </div>
                   <div className="py-2">

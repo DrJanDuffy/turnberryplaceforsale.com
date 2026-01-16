@@ -13,7 +13,7 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
     <Layout menus={menus}>
       <Meta
         title="Open House - Turnberry Place Las Vegas"
-        description="Open house and private showing info for Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call 702-500-1971."
+        description="Open house and private showing info for Turnberry Place luxury high-rise condos near the Las Vegas Strip. Las Vegas Strip High Rise Condos for Sale. Call (702) 500-1971."
         path="/open-house"
       />
       <JsonLdSchema type="property" />
@@ -46,7 +46,7 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
                     <Link href="/request-details" className="btn btn-custom btn-lg" title="Request Showing">
                       Request Showing
                     </Link>
-                    <a href="tel:7025001971" className="btn btn-custom btn-lg" title="Call 702-500-1971">
+                    <a href="tel:+17025001971" className="btn btn-custom btn-lg" title="Call (702) 500-1971">
                       Call (702) 500-1971
                     </a>
                   </div>
@@ -150,7 +150,7 @@ export default function OpenHousePage({ menus }: OpenHousePageProps) {
                 Whether you're interested in a specific residence, want to explore multiple options, or are just beginning your search for luxury living in Las Vegas, I'm here to help. My goal is to provide you with the information, guidance, and support you need to make informed decisions about Turnberry Place and find the perfect residence that meets your needs and exceeds your expectations.
               </p>
               <p className="mt-4">
-                <strong>Schedule your private showing today!</strong> Contact the office at <a href="tel:7025001971" className="text-decoration-underline">(702) 500-1971</a> or <Link href="/request-details" className="text-decoration-underline">request a showing online</Link>. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can provide you with an exceptional showing experience that helps you discover the perfect luxury residence.
+                <strong>Schedule your private showing today!</strong> Contact the office at <a href="tel:+17025001971" className="text-decoration-underline">(702) 500-1971</a> or <Link href="/request-details" className="text-decoration-underline">request a showing online</Link>. With my extensive knowledge of Turnberry Place and the Las Vegas luxury market, I can provide you with an exceptional showing experience that helps you discover the perfect luxury residence.
               </p>
             </div>
           </div>
