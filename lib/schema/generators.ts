@@ -377,15 +377,15 @@ export function generateItemListSchema(
   }
 ) {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
+    '@context': 'https://schema.org' as const,
+    '@type': 'ItemList' as const,
     '@id': `${BASE_URL}${options?.url || ''}#itemlist`,
     name,
     description: options?.description,
     url: options?.url ? `${BASE_URL}${options.url}` : BASE_URL,
     numberOfItems: options?.numberOfItems || items.length,
     itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
+      '@type': 'ListItem' as const,
       position: index + 1,
       item: item,
     })),
