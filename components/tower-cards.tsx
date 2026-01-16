@@ -11,6 +11,8 @@ interface TowerCardData {
   highlight: string
   bestFor: string
   image?: string
+  tagline?: string
+  priceStart?: string
 }
 
 interface TowerCardsProps {
@@ -19,140 +21,86 @@ interface TowerCardsProps {
 
 export function TowerCards({ towers }: TowerCardsProps) {
   return (
-    <section className="card-content py-5" aria-label="Turnberry Place Towers">
-      <div className="container">
-        <div className="row g-4">
-          {towers.map((tower) => (
-            <div key={tower.number} className="col-12 col-md-6 col-lg-3">
-              <TowerCard tower={tower} />
-            </div>
-          ))}
+    <section className="py-20 bg-gray-50">
+      <div className="container mx-auto px-6">
+        <h2 className="text-3xl md:text-4xl font-serif text-center mb-4">
+          Four Distinct Towers
+        </h2>
+        <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+          Each tower offers a unique living experience. Find the one that fits your lifestyle.
+        </p>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {towers.map((tower) => {
+            const imageSrc = tower.image || `/images/turnberry/tower-${tower.number}.jpg`
+            const priceDisplay = tower.priceStart || tower.priceRange
+            const sizeDisplay = tower.sizeRange.includes('sq ft') ? tower.sizeRange : `${tower.sizeRange} sq ft`
+            
+            return (
+              <div 
+                key={tower.number}
+                className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow overflow-hidden"
+              >
+                {/* Tower Image */}
+                <div className="h-48 bg-gray-200 relative overflow-hidden">
+                  <Image
+                    src={imageSrc}
+                    alt={`Turnberry Place Tower ${tower.number}${tower.tagline ? ` - ${tower.tagline}` : ''}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    style={{ objectFit: 'cover' }}
+                    quality={85}
+                  />
+                  <div className="absolute top-4 left-4 bg-[#D4AF37] text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    Tower {tower.number}
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="p-6">
+                  {tower.tagline && (
+                    <h3 className="text-xl font-serif mb-1">{tower.tagline}</h3>
+                  )}
+                  <p className="text-[#D4AF37] font-semibold text-lg mb-4">
+                    From {priceDisplay}
+                  </p>
+                  
+                  {/* Stats */}
+                  <div className="grid grid-cols-2 gap-3 text-sm mb-4">
+                    <div>
+                      <span className="text-gray-500">Stories</span>
+                      <p className="font-semibold">{tower.stories}</p>
+                    </div>
+                    <div>
+                      <span className="text-gray-500">Built</span>
+                      <p className="font-semibold">{tower.completed}</p>
+                    </div>
+                    <div className="col-span-2">
+                      <span className="text-gray-500">Size Range</span>
+                      <p className="font-semibold">{sizeDisplay}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Highlight */}
+                  <div className="bg-gray-50 rounded-lg p-3 mb-4">
+                    <p className="text-sm text-gray-700">
+                      <span className="font-semibold">Highlight:</span> {tower.highlight}
+                    </p>
+                  </div>
+                  
+                  {/* CTA */}
+                  <Link
+                    href={`/available-condos?tower=${tower.number}`}
+                    className="block w-full text-center py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                  >
+                    View Available
+                  </Link>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
-  )
-}
-
-function TowerCard({ tower }: { tower: TowerCardData }) {
-  const imageSrc = tower.image || `/images/turnberry/tower-${tower.number}.jpg`
-
-  return (
-    <div
-      className="bg-white shadow-md overflow-hidden h-100"
-      style={{
-        borderRadius: '8px',
-        transition: 'all 0.3s ease',
-        cursor: 'pointer',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-8px)'
-        e.currentTarget.style.boxShadow = '0 12px 32px rgba(0, 0, 0, 0.15)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0)'
-        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)'
-      }}
-    >
-      {/* Tower Image */}
-      <div style={{ position: 'relative', width: '100%', height: '192px', overflow: 'hidden' }}>
-        <Image
-          src={imageSrc}
-          alt={`Turnberry Place Tower ${tower.number}`}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-          style={{ objectFit: 'cover' }}
-          quality={85}
-        />
-        {/* Tower Number Badge */}
-        <div
-          className="position-absolute text-white font-weight-bold"
-          style={{
-            top: '1rem',
-            left: '1rem',
-            width: '48px',
-            height: '48px',
-            borderRadius: '50%',
-            backgroundColor: '#D4AF37',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '1.25rem',
-            zIndex: 10,
-          }}
-        >
-          {tower.number}
-        </div>
-      </div>
-
-      {/* Card Content */}
-      <div style={{ padding: '1.5rem' }}>
-        {/* Key Stats Grid */}
-        <div className="row g-2 mb-3" style={{ marginLeft: 0, marginRight: 0 }}>
-          <div className="col-6">
-            <div className="small text-muted mb-1">Completed</div>
-            <div className="small font-weight-semibold text-dark">{tower.completed}</div>
-          </div>
-          <div className="col-6">
-            <div className="small text-muted mb-1">Stories</div>
-            <div className="small font-weight-semibold text-dark">{tower.stories}</div>
-          </div>
-          <div className="col-12">
-            <div className="small text-muted mb-1">Size Range</div>
-            <div className="small font-weight-semibold text-dark">{tower.sizeRange}</div>
-          </div>
-        </div>
-
-        {/* Price Range - Highlighted in Gold */}
-        <div className="mb-3 pb-3 border-bottom">
-          <div className="small text-muted mb-1">Price Range</div>
-          <div
-            className="h5 font-weight-bold mb-0"
-            style={{ color: '#D4AF37' }}
-          >
-            {tower.priceRange}
-          </div>
-        </div>
-
-        {/* Highlight Feature */}
-        <div className="mb-3">
-          <div className="small font-weight-semibold text-muted mb-1">Highlight</div>
-          <div className="small text-dark font-weight-medium">{tower.highlight}</div>
-        </div>
-
-        {/* Best For */}
-        <div className="mb-4">
-          <div className="small text-muted mb-1">Best For</div>
-          <div className="small">{tower.bestFor}</div>
-        </div>
-
-        {/* View Available Button */}
-        <Link
-          href={`/available-condos?tower=${tower.number}`}
-          className="btn btn-block text-center font-weight-medium"
-          style={{
-            backgroundColor: '#374151',
-            color: '#ffffff',
-            padding: '0.75rem 1rem',
-            borderRadius: '6px',
-            border: 'none',
-            transition: 'all 0.3s ease',
-            display: 'block',
-            width: '100%',
-            textDecoration: 'none',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = '#D4AF37'
-            e.currentTarget.style.color = '#000000'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = '#374151'
-            e.currentTarget.style.color = '#ffffff'
-          }}
-        >
-          View Available
-        </Link>
-      </div>
-    </div>
   )
 }
