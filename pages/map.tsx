@@ -20,13 +20,9 @@ interface MapPageProps extends LayoutProps {}
 
 export default function MapPage({ menus }: MapPageProps) {
   const [activeCategory, setActiveCategory] = useState("all")
-  const [mapQuery, setMapQuery] = useState("map")
   const [selectedPlace, setSelectedPlace] = useState<Place | null>(null)
-  const mapKey = "AIzaSyDSF9E67HCf0-pecnANALPYA-donlDhIww"
-  const baseUrl = "https://www.google.com/maps/embed/v1/"
+  const mapKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "AIzaSyDSF9E67HCf0-pecnANALPYA-donlDhIww"
   const streetAddress = "2827 Paradise Rd, Las Vegas, NV 89109"
-  const propertyZip = "89109"
-  const mapZoom = 15
 
   const handleCategoryChange = (categoryId: string, query: string) => {
     setActiveCategory(categoryId)
@@ -36,19 +32,11 @@ export default function MapPage({ menus }: MapPageProps) {
 
   const handlePlaceClick = (place: Place) => {
     setSelectedPlace(place)
-    // Scroll to map
+    // Scroll to map smoothly
     const mapContainer = document.getElementById('map-container')
     if (mapContainer) {
       mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
-  }
-
-  const getMapUrl = (query: string) => {
-    if (query === "map") {
-      return `${baseUrl}place?key=${mapKey}&q=${encodeURI(streetAddress)}&zoom=${mapZoom}`
-    }
-    const keywords = `${query} ${propertyZip}`
-    return `${baseUrl}search?key=${mapKey}&q=${encodeURI(keywords)}&zoom=${mapZoom - 1}`
   }
 
   return (
