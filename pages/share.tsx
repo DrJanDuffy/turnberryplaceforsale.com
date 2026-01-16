@@ -75,7 +75,7 @@ export default function SharePage({ menus }: SharePageProps) {
         ogImageAlt="Turnberry Place Las Vegas luxury high-rise condominium community"
       />
       <JsonLdSchema type="property" />
-      <BreadcrumbSchema currentPageTitle="Share Turnberry Place" />
+      <BreadcrumbSchema currentPageTitle="Share Turnberry Place | Digital Business Card" />
       
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-12 md:py-16">
@@ -190,49 +190,7 @@ export default function SharePage({ menus }: SharePageProps) {
           <div className="row justify-content-center">
             <div className="col-12 col-md-10 col-lg-8">
               <div className="bg-white rounded-lg shadow-lg p-6">
-                
-                {/* Social Share Buttons */}
-                <div className="mb-5">
-                  <h2 className="text-center mb-4">Share on Social Media</h2>
-                  <div className="d-flex flex-wrap justify-content-center gap-3">
-                    <a
-                      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary"
-                    >
-                      Facebook
-                    </a>
-                    <a
-                      href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareDescription)}&url=${encodeURIComponent(shareUrl)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-info"
-                    >
-                      Twitter
-                    </a>
-                    <a
-                      href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(shareUrl)}&media=${encodeURIComponent(shareImage)}&description=${encodeURIComponent(shareDescription)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-danger"
-                    >
-                      Pinterest
-                    </a>
-                    <a
-                      href={`http://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary"
-                    >
-                      LinkedIn
-                    </a>
-                  </div>
-                </div>
-
-                {/* Send to Friend Form */}
-                <div className="border-top pt-4">
-                  <h2 className="text-center mb-4">Send to a Friend</h2>
+                <h2 className="text-center mb-4 text-2xl font-bold">Send to a Friend</h2>
                   <p className="text-center mb-4">
                     Share Turnberry Place with someone specific using our send-to-friend form. Add a personal message to let them know why you think they'd be interested in this exceptional luxury community.
                   </p>
