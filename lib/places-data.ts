@@ -1,16 +1,24 @@
-'use client'
+/**
+ * Shared places data for map and place cards
+ * Used by both InteractiveMap and PlaceCardsGrid
+ */
 
-import React, { useState, useMemo } from 'react'
-import { PlaceCard } from './place-card'
-import { placesData, type Place } from '../lib/places-data'
-
-interface PlaceCardsGridProps {
-  activeCategory: string
-  places?: Place[]
-  onPlaceClick?: (place: Place) => void
+export interface Place {
+  name: string
+  category: string
+  distance: string
+  walkTime?: string
+  image?: string
+  rating?: number
+  priceLevel?: string
+  address: string
+  description?: string
+  mapQuery?: string
+  lat?: number
+  lng?: number
 }
 
-const defaultPlaces: Place[] = placesData
+export const placesData: Place[] = [
   // DINING
   {
     name: 'SW Steakhouse',
@@ -22,6 +30,8 @@ const defaultPlaces: Place[] = placesData
     priceLevel: '$$$$',
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'SW Steakhouse Wynn Las Vegas',
+    lat: 36.1274,
+    lng: -115.1642,
   },
   {
     name: 'Sinatra',
@@ -33,6 +43,8 @@ const defaultPlaces: Place[] = placesData
     priceLevel: '$$$$',
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Sinatra Encore Las Vegas',
+    lat: 36.1285,
+    lng: -115.1651,
   },
   {
     name: 'Kassi Beach House',
@@ -44,6 +56,8 @@ const defaultPlaces: Place[] = placesData
     priceLevel: '$$$',
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Kassi Beach House Las Vegas',
+    lat: 36.1263,
+    lng: -115.1633,
   },
   {
     name: 'Bazaar Meat',
@@ -55,6 +69,8 @@ const defaultPlaces: Place[] = placesData
     priceLevel: '$$$$',
     address: '3708 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Bazaar Meat José Andrés Las Vegas',
+    lat: 36.1296,
+    lng: -115.1662,
   },
   {
     name: 'Wing Lei',
@@ -66,6 +82,8 @@ const defaultPlaces: Place[] = placesData
     priceLevel: '$$$$',
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Wing Lei Wynn Las Vegas',
+    lat: 36.1278,
+    lng: -115.1645,
   },
   {
     name: 'Bartolotta Ristorante',
@@ -77,6 +95,8 @@ const defaultPlaces: Place[] = placesData
     priceLevel: '$$$$',
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Bartolotta Wynn Las Vegas',
+    lat: 36.1289,
+    lng: -115.1657,
   },
 
   // ENTERTAINMENT
@@ -89,6 +109,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.7,
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Wynn Las Vegas',
+    lat: 36.1274,
+    lng: -115.1642,
   },
   {
     name: 'Encore',
@@ -99,6 +121,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.7,
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Encore Las Vegas',
+    lat: 36.1285,
+    lng: -115.1651,
   },
   {
     name: 'Resorts World',
@@ -109,6 +133,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.6,
     address: '3000 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Resorts World Las Vegas',
+    lat: 36.1296,
+    lng: -115.1633,
   },
   {
     name: 'T-Mobile Arena',
@@ -119,6 +145,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.8,
     address: '3780 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'T-Mobile Arena Las Vegas',
+    lat: 36.1028,
+    lng: -115.1784,
   },
   {
     name: 'Allegiant Stadium',
@@ -128,6 +156,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.9,
     address: '3333 Al Davis Way, Las Vegas, NV',
     mapQuery: 'Allegiant Stadium Las Vegas',
+    lat: 36.0910,
+    lng: -115.1844,
   },
 
   // SHOPPING
@@ -140,6 +170,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.5,
     address: '3200 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Fashion Show Mall Las Vegas',
+    lat: 36.1307,
+    lng: -115.1696,
   },
   {
     name: 'Wynn Plaza',
@@ -150,6 +182,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.7,
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Wynn Plaza Shops Las Vegas',
+    lat: 36.1274,
+    lng: -115.1642,
   },
   {
     name: 'Crystals',
@@ -159,6 +193,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.6,
     address: '3720 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Crystals at CityCenter Las Vegas',
+    lat: 36.1096,
+    lng: -115.1754,
   },
   {
     name: 'The Forum Shops',
@@ -168,6 +204,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.6,
     address: '3500 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Forum Shops Caesars Palace Las Vegas',
+    lat: 36.1169,
+    lng: -115.1737,
   },
 
   // COFFEE
@@ -180,6 +218,8 @@ const defaultPlaces: Place[] = placesData
     priceLevel: '$$',
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Starbucks Reserve Wynn Las Vegas',
+    lat: 36.1274,
+    lng: -115.1642,
   },
   {
     name: 'Urth Caffé',
@@ -191,6 +231,8 @@ const defaultPlaces: Place[] = placesData
     priceLevel: '$$',
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Urth Caffé Wynn Las Vegas',
+    lat: 36.1285,
+    lng: -115.1651,
   },
   {
     name: 'Bouchon Bakery',
@@ -202,6 +244,8 @@ const defaultPlaces: Place[] = placesData
     priceLevel: '$$',
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Bouchon Bakery Las Vegas',
+    lat: 36.1278,
+    lng: -115.1645,
   },
 
   // FITNESS
@@ -214,6 +258,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.8,
     address: '3131 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Wynn Fitness Center Las Vegas',
+    lat: 36.1274,
+    lng: -115.1642,
   },
   {
     name: 'Equinox',
@@ -224,6 +270,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.7,
     address: '3720 S Las Vegas Blvd, Las Vegas, NV',
     mapQuery: 'Equinox Las Vegas',
+    lat: 36.1096,
+    lng: -115.1754,
   },
 
   // SCHOOLS
@@ -235,6 +283,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.5,
     address: '315 S 7th St, Las Vegas, NV',
     mapQuery: 'Las Vegas Academy',
+    lat: 36.1656,
+    lng: -115.1433,
   },
   {
     name: 'UNLV',
@@ -244,6 +294,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.4,
     address: '4505 S Maryland Pkwy, Las Vegas, NV',
     mapQuery: 'University of Nevada Las Vegas',
+    lat: 36.1085,
+    lng: -115.1436,
   },
 
   // PARKS
@@ -256,6 +308,8 @@ const defaultPlaces: Place[] = placesData
     rating: 4.3,
     address: '4775 S Maryland Pkwy, Las Vegas, NV',
     mapQuery: 'Paradise Park Las Vegas',
+    lat: 36.1085,
+    lng: -115.1436,
   },
   {
     name: 'Symphony Park',
@@ -265,77 +319,7 @@ const defaultPlaces: Place[] = placesData
     rating: 4.5,
     address: '300 S Grand Central Pkwy, Las Vegas, NV',
     mapQuery: 'Symphony Park Las Vegas',
+    lat: 36.1656,
+    lng: -115.1533,
   },
 ]
-
-const ITEMS_PER_PAGE = 6
-
-export function PlaceCardsGrid({ activeCategory, places = defaultPlaces, onPlaceClick }: PlaceCardsGridProps) {
-  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE)
-
-  // Filter places by active category
-  const filteredPlaces = useMemo(() => {
-    if (activeCategory === 'all') {
-      return places
-    }
-    return places.filter((place) => place.category === activeCategory)
-  }, [activeCategory, places])
-
-  // Slice for pagination
-  const visiblePlaces = filteredPlaces.slice(0, visibleCount)
-  const hasMore = visibleCount < filteredPlaces.length
-
-  // Reset visible count when category changes
-  React.useEffect(() => {
-    setVisibleCount(ITEMS_PER_PAGE)
-  }, [activeCategory])
-
-  if (filteredPlaces.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <p className="text-gray-600">No places found in this category.</p>
-      </div>
-    )
-  }
-
-  return (
-    <section className="py-8 bg-gray-50" id="place-cards">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="mb-6">
-          <h2 className="text-2xl md:text-3xl font-serif text-gray-900 mb-2">
-            Nearby Places
-          </h2>
-          <p className="text-gray-600">
-            Showing {visiblePlaces.length} of {filteredPlaces.length} places
-          </p>
-        </div>
-
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {visiblePlaces.map((place, index) => (
-            <div
-              key={`${place.name}-${index}`}
-              onClick={() => onPlaceClick && onPlaceClick(place)}
-              className="cursor-pointer"
-            >
-              <PlaceCard place={place} />
-            </div>
-          ))}
-        </div>
-
-        {/* Load More Button */}
-        {hasMore && (
-          <div className="text-center">
-            <button
-              onClick={() => setVisibleCount((prev) => prev + ITEMS_PER_PAGE)}
-              className="px-8 py-3 bg-[#D4AF37] text-gray-900 font-semibold rounded-lg hover:bg-[#B8941F] transition-colors"
-            >
-              Load More ({filteredPlaces.length - visibleCount} remaining)
-            </button>
-          </div>
-        )}
-      </div>
-    </section>
-  )
-}

@@ -6,6 +6,8 @@ import { Layout, LayoutProps } from "components/layout"
 import { MapHeroSection } from "components/map-hero-section"
 import { CategoryFilterTabs } from "components/category-filter-tabs"
 import { PlaceCardsGrid } from "components/place-cards-grid"
+import { InteractiveMap } from "components/interactive-map"
+import { placesData, type Place } from "lib/places-data"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { JsonLdSchema } from "components/json-ld-schema"
@@ -17,6 +19,7 @@ interface MapPageProps extends LayoutProps {}
 export default function MapPage({ menus }: MapPageProps) {
   const [activeCategory, setActiveCategory] = useState("all")
   const [mapQuery, setMapQuery] = useState("map")
+  const [selectedPlace, setSelectedPlace] = useState<Place | null>(null)
   const mapKey = "AIzaSyDSF9E67HCf0-pecnANALPYA-donlDhIww"
   const baseUrl = "https://www.google.com/maps/embed/v1/"
   const streetAddress = "2827 Paradise Rd, Las Vegas, NV 89109"
@@ -26,6 +29,16 @@ export default function MapPage({ menus }: MapPageProps) {
   const handleCategoryChange = (categoryId: string, query: string) => {
     setActiveCategory(categoryId)
     setMapQuery(query)
+    setSelectedPlace(null) // Clear selection when category changes
+  }
+
+  const handlePlaceClick = (place: Place) => {
+    setSelectedPlace(place)
+    // Scroll to map
+    const mapContainer = document.getElementById('map-container')
+    if (mapContainer) {
+      mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
   }
 
   const getMapUrl = (query: string) => {
@@ -62,42 +75,24 @@ export default function MapPage({ menus }: MapPageProps) {
                 activeCategory={activeCategory}
                 onCategoryChange={handleCategoryChange}
               />
-              <div className="map-container">
-                <div className="info-box d-flex align-items-center">
-                  <div className="media m-0 p-2">
-                    <Image
-                      className="img-fluid _info-window-image"
-                      src="/images/turnberry/photo-21.jpg"
-                      width={75}
-                      height={75}
-                      alt="Turnberry Place"
-                    />
-                    <div className="media-body my-auto pl-3">
-                      <div className="info-window-address">
-                        <div>Turnberry Place Las Vegas</div>
-                        <div className="font-size-80">Las Vegas, NV 89109</div>
-                      </div>
-                      <div className="info-window-property-detail">
-                        <span> Property For Sale</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <iframe
-                  id="gMap"
-                  width="100%"
-                  height="600"
-                  frameBorder="0"
-                  src={getMapUrl(mapQuery)}
-                  allowFullScreen
-                  key={mapQuery}
-                ></iframe>
-              </div>
+              {/* Interactive Map */}
+              <InteractiveMap
+                mapKey={mapKey}
+                center={{ lat: 36.1447, lng: -115.1541 }}
+                zoom={15}
+                activeCategory={activeCategory}
+                places={placesData}
+                onPlaceClick={handlePlaceClick}
+                selectedPlace={selectedPlace}
+              />
             </div>
           </div>
 
           {/* Place Cards Grid */}
-          <PlaceCardsGrid activeCategory={activeCategory} />
+          <PlaceCardsGrid 
+            activeCategory={activeCategory} 
+            onPlaceClick={handlePlaceClick}
+          />
           
           <div className="row mt-5">
             <div className="col-12 col-lg-10 mx-auto">
