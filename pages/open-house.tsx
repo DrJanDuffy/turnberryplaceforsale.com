@@ -3,6 +3,9 @@ import { Layout, LayoutProps } from "components/layout"
 import { getMenus } from "lib/get-menus"
 import { Meta } from "components/meta"
 import { SEOHead } from "../components/seo/SEOHead"
+import { SchemaMarkup } from "../components/seo/SchemaMarkup"
+import { Breadcrumbs } from "../components/seo/Breadcrumbs"
+import { generateEventSchema } from "../lib/schema/generators"
 import Link from "next/link"
 
 interface OpenHousePageProps extends LayoutProps {}
